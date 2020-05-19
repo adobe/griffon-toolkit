@@ -1,0 +1,23 @@
+<section>
+  <header>
+    <h2>
+      <?js= header ?>
+    </h2>
+  </header>
+
+  <article>
+    <?js= content ?>
+    <?js if (children.length > 0) { ?>
+      <h3>Tutorials</h3>
+      <ul>
+        <?js
+          var self = this;
+          children.forEach(function(t) { ?>
+            <li>
+              <?js= self.tutoriallink(t.name) ?>
+            </li>
+        <?js }); ?>
+      </ul>
+    <?js } ?>
+  </article>
+</section>
