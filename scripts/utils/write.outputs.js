@@ -135,8 +135,8 @@ export const writePathLine = ({ alias, path }) => `
 
 const writeEventType = (props) => (props
   ? props === '{'
-    ? '{' :
-    props.useConst
+    ? '{'
+    : props.useConst
       ? `'${props.useConst}'`
       : props.enum
         ? `<enum(${props.enum.join(', ')})>,`
