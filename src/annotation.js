@@ -49,7 +49,7 @@ const publicNamespace = {
  * will return that key from the payload.
  *
  * @example
-  * import { kit, event, annotation } from '@adobe/griffon-toolkit';
+ * import { kit, event, annotation } from '@adobe/griffon-toolkit';
  * const isHidden = annotation.makeNamespacePath('visibility', 'hidden');
  * // isHidden is annotations[?type=='visibility'].payload.hidden
  *
@@ -69,8 +69,7 @@ const publicNamespace = {
  * @param {string} [key] Key inside payload
  * @returns {string}
  */
-const makeNamespacePath = (namespace, key) =>
-  `(annotations[?type==\'${namespace}\'].payload${key ? `.${key}` : ''})[0]`;
+const makeNamespacePath = (namespace, key) => `(annotations[?type=='${namespace}'].payload${key ? `.${key}` : ''})[0]`;
 
 // additional exports should be added here:
 const customExports = { publicNamespace, makeNamespacePath };

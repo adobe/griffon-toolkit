@@ -9,4 +9,5 @@ build
 
 *.log
 
+junit.xml
 src/index.js

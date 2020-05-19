@@ -31,8 +31,6 @@ describe('Annotation Tests', () => {
 
     expect(kit.isMatch(hiddenPath, hiddenEvent)).toBe(true);
     expect(kit.isMatch(hiddenPath, genericEvent)).toBe(false);
-
-    console.log(hiddenPath);
     expect(kit.search(hiddenPath, hiddenEvent)).toBe(true);
 
     expect(kit.search(visibilityPath, hiddenEvent).hidden).toBe(true);

@@ -20,6 +20,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsdoc": "^24.0.0",
     "jest": "^25.4.0",
+    "jest-junit": "^10.0.0",
     "jsdoc": "^3.6.4",
     "jsdoc-memberof-namespace": "^2.2.0",
     "lodash": "^4.17.15"

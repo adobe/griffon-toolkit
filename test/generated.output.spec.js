@@ -14,7 +14,6 @@ governing permissions and limitations under the License.
 import entry from '../src/placesEntry';
 import aep from '../src/aepMobile';
 import root from '../src/event';
-import kit from '../src/kit';
 
 describe('Test Auto Generated Output', () => {
   it('exports paths', () => {

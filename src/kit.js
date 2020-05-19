@@ -59,7 +59,7 @@ const combineMatchers = R.curry((joinStr, matchers) => R.pipe(
  * @param {string[]} matchers valid JMESPath comparator expression
  * @returns {string} joined matcher
  */
-const combineAny = combineMatchers(' || ')
+const combineAny = combineMatchers(' || ');
 
 /**
  * Takes a set of JMESPath matchers and combines together with a `&&`. The result
@@ -69,7 +69,7 @@ const combineAny = combineMatchers(' || ')
  * @param {string[]} matchers valid JMESPath comparator expression
  * @returns {string} joined matcher
  */
-const combineAll = combineMatchers(' && ')
+const combineAll = combineMatchers(' && ');
 
 /**
  * Takes a set of JMESPath matchers and combines together with a `&&`. The result
@@ -110,12 +110,13 @@ const match = R.curry((matcher, data) => jmespath.search(data, `[?${matcher}]`))
  */
 const isMatch = R.curry((matcher, data) => match(matcher, [data]).length > 0);
 
-const processMods = (modifications, data) => (typeof modifications === 'function') ?
-  modifications(data) : modifications;
+const processMods = (modifications, data) => ((typeof modifications === 'function')
+  ? modifications(data) : modifications);
 
 /**
  * Matches data from the event list and performs operations on the results. You can provide an object
  * that will be merged into the resulting data.
+ *
  * @example
  * // takes all objects and adds a red color
  * const makeRed = modify({ color: 'red' }, '*');
