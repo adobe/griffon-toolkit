@@ -1,0 +1,25 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/annotation",
+  "shortDesc": "Annotation Object",
+  "type": "object",
+  "properties": {
+    "payload": {
+      "description": "An object with custom data describing the annotation",
+      "type": "object"
+    },
+    "type": {
+      "alias": "namespace",
+      "description": "This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation",
+      "mock": "test_suite",
+      "type": "string"
+    },
+    "uuid": {
+      "description": "Uniquely identifies each annotation",
+      "mock": "423",
+      "type": "string"
+    }
+  },
+  "required": [
+    "type", "uuid"
+  ]
+}

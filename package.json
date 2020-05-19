@@ -1,0 +1,48 @@
+{
+  "name": "@adobe/griffon-toolkit",
+  "version": "0.0.1",
+  "description": "Toolkit to help developers build Griffon plugin views and validators",
+  "main": "dist/index.js",
+  "dependencies": {
+    "ajv": "^6.12.2",
+    "jmespath": "^0.15.0",
+    "ramda": "^0.27.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "babel-plugin-inline-json-import": "^0.3.2",
+    "create-index": "^2.5.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsdoc": "^24.0.0",
+    "jest": "^25.4.0",
+    "jsdoc": "^3.6.4",
+    "jsdoc-memberof-namespace": "^2.2.0",
+    "lodash": "^4.17.15"
+  },
+  "scripts": {
+    "coverage": "npm run test -- --coverage",
+    "docs": "rm -rf docs; jsdoc -c .jsdoc.json --package ''",
+    "generate": "npm run generate-code && npm run docs",
+    "generate-code": "npx babel-node ./scripts/generate.js",
+    "postdocs": "mv docs/\\@adobe/griffon-toolkit/*/* docs; rm -r docs/\\@adobe",
+    "build": "npx create-index ./src && npx babel src --out-dir dist --delete-dir-on-start --no-comments && rm ./src/index.js",
+    "lint": "eslint \"**/*.js\"",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.corp.adobe.com:dms-mobile/griffon-toolkit.git"
+  },
+  "author": "Adobe Systems",
+  "license": "Apache-2.0",
+  "jest": {
+    "testMatch": [
+      "**/test/**/?(*.)+(spec|test).js"
+    ]
+  }
+}

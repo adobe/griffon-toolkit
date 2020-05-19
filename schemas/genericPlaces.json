@@ -1,0 +1,21 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/genericPlaces",
+  "shortDesc": "Generic Places Event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aepMobile" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.places"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

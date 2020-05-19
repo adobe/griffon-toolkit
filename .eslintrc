@@ -1,0 +1,16 @@
+{
+  "extends": ["plugin:jsdoc/recommended", "airbnb-base"],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "import/prefer-default-export": 0,
+    "max-len": 0,
+    "no-nested-ternary": 0,
+    "no-plusplus": 0,
+    "jsdoc/require-description": 1,
+    "jsdoc/require-returns-description": 0,
+    "jsdoc/check-param-names": ["error", { "allowExtraTrailingParamDocs": true }]
+  }
+}

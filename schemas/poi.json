@@ -1,0 +1,91 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/poi",
+  "shortDesc": "POI Object",
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "description": "The POI latitude",
+      "mock": "40.4045982",
+      "type": "number"
+    },
+    "libraryid": {
+      "alias": "libraryId",
+      "description": "The Places library the POI belongs to",
+      "mock": "04213",
+      "type": "string"
+    },
+    "longitude": {
+      "description": "The POI longitude",
+      "mock": "-111.8636017",
+      "type": "number"
+    },
+    "regionname": {
+      "alias": "name",
+      "description": "The POI name",
+      "mock": "Adobe",
+      "type": "string"
+    },
+    "regionmetadata": {
+      "alias": "metadata",
+      "description": "An object with some defined items and custom data items.",
+      "type": "object",
+      "properties": {
+        "category": {
+          "description": "The POI category",
+          "type": "string"
+        },
+        "city": {
+          "description": "The POI city",
+          "type": "string"
+        },
+        "country": {
+          "description": "The POI country",
+          "type": "string"
+        },
+        "state": {
+          "description": "The POI state",
+          "type": "string"
+        },
+        "street": {
+          "description": "The POI street",
+          "type": "string"
+        }
+      }
+    },
+    "radius": {
+      "description": "The POI radius",
+      "mock": "375",
+      "type": "number"
+    },
+    "regionid": {
+      "alias": "id",
+      "description": "The unique region id",
+      "mock": "31512",
+      "type": "string"
+    },
+    "useriswithin": {
+      "alias": "within",
+      "description": "Is the user currently in the POI",
+      "mock": "false",
+      "type": "boolean"
+    },
+    "weight": {
+      "description": "The weight of the POI. It is used to prioritze POIs when a user is inside multile POIS",
+      "mock": "2",
+      "type": "number"
+    },
+    "type": {
+      "description": "This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation",
+      "mock": "test_suite",
+      "type": "string"
+    },
+    "uuid": {
+      "description": "Uniquely identifies each annotation",
+      "mock": "423",
+      "type": "string"
+    }
+  },
+  "required": [
+    "latitude", "libraryid", "longitude", "radius", "regionid", "weight", "useriswithin"
+  ]
+}

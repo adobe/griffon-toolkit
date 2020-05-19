@@ -1,0 +1,22 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/startPlacesMonitor",
+  "shortDesc": "Start Monitor Event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aepMobile" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventType.placesMonitor"
+        }
+      }
+    }
+  }
+}

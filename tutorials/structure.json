@@ -1,0 +1,21 @@
+{
+  "a_matchers": {
+    "title": "Using Matchers"
+  },
+  "contributing": {
+    "title": "Contribute to Griffon Toolkit",
+    "children": ["schemas", "commands", "customize", "guidelines"]
+  },
+  "schemas": {
+    "title": "Writing Schemas"
+  },
+  "commands": {
+    "title": "How to Run"
+  },
+  "guidelines": {
+    "title": "Contribution Guidelines"
+  },
+  "customize": {
+    "title": "Add Custom Code"
+  }
+}
