@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="18" failures="0" time="6.006">
+  <testsuite name="Annotation Tests" errors="0" failures="0" skipped="0" timestamp="2020-05-19T22:00:06" time="3.455" tests="1">
+    <testcase classname="Annotation Tests can create paths" name="Annotation Tests can create paths" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="Kit Tests" errors="0" failures="0" skipped="0" timestamp="2020-05-19T22:00:10" time="0.529" tests="9">
+    <testcase classname="Kit Tests can match events" name="Kit Tests can match events" time="0.006">
+    </testcase>
+    <testcase classname="Kit Tests can match against all events" name="Kit Tests can match against all events" time="0.001">
+    </testcase>
+    <testcase classname="Kit Tests can match against any events" name="Kit Tests can match against any events" time="0">
+    </testcase>
+    <testcase classname="Kit Tests can match against none of the events" name="Kit Tests can match against none of the events" time="0.002">
+    </testcase>
+    <testcase classname="Kit Tests will expand provided paths" name="Kit Tests will expand provided paths" time="0.001">
+    </testcase>
+    <testcase classname="Kit Tests can test against a schema" name="Kit Tests can test against a schema" time="0.017">
+    </testcase>
+    <testcase classname="Kit Tests can provide schema errors" name="Kit Tests can provide schema errors" time="0.001">
+    </testcase>
+    <testcase classname="Kit Tests can modify data in the results" name="Kit Tests can modify data in the results" time="0.002">
+    </testcase>
+    <testcase classname="Kit Tests can modify the results in bulk" name="Kit Tests can modify the results in bulk" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test Auto Generated Output" errors="0" failures="0" skipped="0" timestamp="2020-05-19T22:00:10" time="0.395" tests="8">
+    <testcase classname="Test Auto Generated Output exports paths" name="Test Auto Generated Output exports paths" time="0.001">
+    </testcase>
+    <testcase classname="Test Auto Generated Output exports inherited paths" name="Test Auto Generated Output exports inherited paths" time="0.001">
+    </testcase>
+    <testcase classname="Test Auto Generated Output exports paths from object refs" name="Test Auto Generated Output exports paths from object refs" time="0">
+    </testcase>
+    <testcase classname="Test Auto Generated Output validates against schemas" name="Test Auto Generated Output validates against schemas" time="0.012">
+    </testcase>
+    <testcase classname="Test Auto Generated Output matches against matchers" name="Test Auto Generated Output matches against matchers" time="0.002">
+    </testcase>
+    <testcase classname="Test Auto Generated Output exports constants" name="Test Auto Generated Output exports constants" time="0">
+    </testcase>
+    <testcase classname="Test Auto Generated Output exports getters" name="Test Auto Generated Output exports getters" time="0.001">
+    </testcase>
+    <testcase classname="Test Auto Generated Output exports get from object functions" name="Test Auto Generated Output exports get from object functions" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>
