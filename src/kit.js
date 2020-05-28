@@ -46,8 +46,29 @@ const ajv = new Ajv({
  */
 const search = R.curry((path, data) => jmespath.search(data, path));
 
+const isAlreadyWrapped = (str) => {
+  if (str.charAt(0) !== '(' || str.charAt(str.length - 1) !== ')') { return false; }
+
+  let parens = 0;
+  for (let i = 1; i < str.length - 2; ++i) {
+    if (str.charAt(i) === '(') { ++parens; }
+    if (str.charAt(i) === ')') {
+      --parens;
+      if (parens < 0) { return false; }
+    }
+  }
+  return true;
+};
+
+const hasAndOrOr = (str) => str.indexOf('&&') !== -1 || str.indexOf('||') !== -1;
+
+const wrapInParens = (str) => {
+  if (!hasAndOrOr(str) || isAlreadyWrapped(str)) { return str; }
+  return `(${str})`;
+};
+
 const combineMatchers = R.curry((joinStr, matchers) => R.pipe(
-  R.map((matcher) => `(${matcher})`),
+  R.map(wrapInParens),
   R.join(joinStr)
 )(matchers));
 
@@ -88,7 +109,7 @@ const combineNone = (matchers) => `!(${combineAny(matchers)})`;
  * @param {string} matcher valid JMESPath comparator expression
  * @returns {string} joined matcher
  */
-const not = (matcher) => `!(${matcher})`;
+const not = (matcher) => `!${wrapInParens(matcher)}`;
 
 /**
  * Performs a JMESPath filter using the provided expression.

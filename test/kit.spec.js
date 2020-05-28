@@ -82,4 +82,12 @@ describe('Kit Tests', () => {
     expect(results[0].size).toBe('large');
     expect(results[1].size).toBe('large');
   });
+  it('correctly wraps paths', () => {
+    expect(kit.not('a')).toBe('!a');
+    expect(kit.not('a && b')).toBe('!(a && b)');
+    expect(kit.combineAll(['a', 'b'])).toBe('a && b');
+    expect(kit.combineAll(['a', 'b && c'])).toBe('a && (b && c)');
+    expect(kit.combineAll(['a', '(b && c)'])).toBe('a && (b && c)');
+    expect(kit.combineAll(['a', '(b) && (c)'])).toBe('a && ((b) && (c))');
+  });
 });
