@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      filterKit - Documentation
+      sessionAnnotation.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,781 +83,238 @@
   <div id="main">
     
       <h1 class="page-title">
-        filterKit
+        sessionAnnotation.js
       </h1>
     
 
     
+      
 
 <section>
-  <header>
-    
-      <h2>
-        
-        filterKit
-        
-      </h2>
-
-      
-    
-  </header>
-
   <article>
-    <div class="container-overview">
-      
-        
-            <div class="description">
-              <p>Contains utility functions for dealing with Griffon filters.</p>
-            </div>
-        
-
-        
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line18">line 18</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-        
-      
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-
-<h4 class="name" id=".match">
-  <span class="type-signature">(static, constant) </span>match<span class="type-signature"></span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>A filter object is an object where all the values are valid JMESPath matchers.
-This will take all these values and <code>&amp;&amp;</code> them together, so that each must pass for an
-event to be valid.</p>
-  </div>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line88">line 88</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-          
-        
-    
-
-    
-      <h3 class="subsection-title">Methods</h3>
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.fromHash">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".fromHash">
-      <span class="type-signature">(static) </span>fromHash<span class="signature">(url)</span><span class="type-signature"> &rarr; {object}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Extracts the filters from the provided url. Returns a filter object.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>url</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Url to decode filters from</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line33">line 33</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.makeHiddenFilter">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".makeHiddenFilter">
-      <span class="type-signature">(static) </span>makeHiddenFilter<span class="signature">(clearTS<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Makes a hidden event filter based on the provided clear timestamp. If null, we'll filter all
-events with a hidden annotation set. If provided, we'll also hide everything before that timestamp
-unless the hidden annotation is explicitly set to <code>false</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-        <th>Attributes</th>
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>clearTS</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      number
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-          <td class="attributes">
-            
-              &lt;optional><br>
-            
-
-            
-
-            
-          </td>
-        
-
-        
-
-        <td class="description last">
-          <p>Hide events before this timestamp</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line54">line 54</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.toHash">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".toHash">
-      <span class="type-signature">(static) </span>toHash<span class="signature">(filters)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Takes a filter object and prepares it for a url hash. It gets converted to JSON and base64 encoded.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>filters</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Filter object</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line72">line 72</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.toPath">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".toPath">
-      <span class="type-signature">(static) </span>toPath<span class="signature">(filters)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Takes a filter object and returns the JMESPath query of the results.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>filters</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Filter object</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line81">line 81</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-    
-
-    
-
-    
+    <pre class="prettyprint source linenums"><code>
+/*
+Copyright 2020 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+*/
+
+import kit from './kit';
+import schema from '../schemas/sessionAnnotation.json';
+
+/**
+ * Contains constants and functions for a Session Annotation Object.
+ *
+ * The structure for a Session Annotation Object is as follows:
+ * ```
+ * {
+ *   payload: &lt;object>,
+ *   namespace: &lt;string>,
+ *   uuid: &lt;string>,
+ * }
+ * ```
+ *
+ * @namespace sessionAnnotation
+ */
+
+/* ADD CUSTOM CONTENT BELOW */
+
+/**
+ * List of keys that are used in the public namespaces
+ *
+ * @enum {string}
+ */
+const publicKey = {
+  /** Key used in session to mark a session as cleared before this timestamp */
+  clearSessionTS: 'clearSessionTS'
+};
+
+/**
+ * List of namespaces that are available to all plugins
+ *
+ * @enum {string}
+ */
+const publicNamespace = {
+  /** Namespace for annotations that effect event visibility */
+  visibility: 'visibility'
+};
+
+/**
+ * Returns a path using the provided namespace. If the optional key is provided, it
+ * will return that key from the payload.
+ *
+ * @example
+ * import { kit, session, sessionAnnotation } from '@adobe/griffon-toolkit';
+ * const publicPath = sessionAnnotation.makeNamespacePath('shared', 'pubic');
+ *
+ * const session = session.mock({
+ *   annotations: [
+ *     annotation.mock({
+ *       [sessionAnnotation.path.namespace]: 'shared',
+ *       [sessionAnnotation.path.payload]: { pubic: true }
+ *     })
+ *   ]
+ * });
+ *
+ * console.log(kit.search(publicPath, session))); // [true]
+ *
+ * @function
+ * @param {string} namespace The namespace to reference
+ * @param {string} [key] Key inside payload
+ * @returns {string}
+ */
+const makeNamespacePath = (namespace, key) => `(annotations[?namespace=='${namespace}'].payload${key ? `.${key}` : ''})[0]`;
+
+/**
+ * Returns a the value of the path using the provided namespace and key.
+ *
+ * @example
+ * import { kit, session, sessionAnnotation } from '@adobe/griffon-toolkit';
+ * const isPublic = sessionAnnotation.search('shared', 'pubic');
+ *
+ * const session = session.mock({
+ *   annotations: [
+ *     annotation.mock({
+ *       [sessionAnnotation.path.namespace]: 'shared',
+ *       [sessionAnnotation.path.payload]: { pubic: true }
+ *     })
+ *   ]
+ * });
+ *
+ * console.log(isPublic(session)); // true
+ *
+ * @function
+ * @param {string} namespace The namespace to reference
+ * @param {string} [key] Key inside payload
+ * @param {*} data Data to search
+ * @returns {string}
+ */
+const search = kit.curry(
+  (namespace, key, data) =>
+    kit.search(makeNamespacePath(namespace, key), data)
+);
+
+
+// additional exports should be added here:
+const customExports = { publicKey, publicNamespace, makeNamespacePath, search };
+
+/* END CUSTOM CONTENT */
+/* The content below is autogenerated. Do not make any changes */
+
+/**
+ * Paths for the keys on a Session Annotation Object
+ *
+ * @enum {string}
+ */
+const path = {
+  /** An object with custom data describing the annotation.&lt;br />Path is `payload`. */
+  payload: 'payload',
+
+  /** This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.&lt;br />Path is `namespace`. */
+  namespace: 'namespace',
+
+  /** Uniquely identifies each annotation.&lt;br />Path is `uuid`. */
+  uuid: 'uuid'
+};
+
+
+/**
+ * Returns the `payload` from the Session Annotation Object.
+ * This is the an object with custom data describing the annotation.
+ *
+ * Path is `payload`.
+ *
+ * @function
+ * @param {object} source The Session Annotation Object instance
+ * @returns {object}
+ */
+const getPayload = kit.search(path.payload);
+
+/**
+ * Returns the data using the specified path from the payload
+ * of the Session Annotation Object.
+ *
+ * @function
+ * @param {...string} path key in object
+ * @param {object} source The Session Annotation Object instance
+ * @returns {*}
+ */
+const getPayloadKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.payload}.${searchPath}`, source)
+);
+
+/**
+ * Returns the `namespace` from the Session Annotation Object.
+ * This is the this is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.
+ *
+ * Path is `namespace`.
+ *
+ * @function
+ * @param {object} source The Session Annotation Object instance
+ * @returns {string}
+ */
+const getNamespace = kit.search(path.namespace);
+
+/**
+ * Returns the `uuid` from the Session Annotation Object.
+ * This is the uniquely identifies each annotation.
+ *
+ * Path is `uuid`.
+ *
+ * @function
+ * @param {object} source The Session Annotation Object instance
+ * @returns {string}
+ */
+const getUuid = kit.search(path.uuid);
+
+
+/**
+ * Generates a Session Annotation Object with some default values set.
+ * Can be useful in testing.
+ * Can override defaults and provide additional data by providing a flat object
+ * of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const mock = (input) => kit.expand({
+  namespace: 'visibility',
+  uuid: '423',
+  ...input
+});
+
+/**
+ * Validates the Session Annotation Object against the json schema
+ *
+ * @function
+ * @param {object} source The Session Annotation Object
+ * @returns {boolean}
+ */
+const validate = kit.validateSchema(schema);
+
+export default {
+  path,
+  mock,
+  schema,
+  validate,
+  ...customExports,
+  getPayload,
+  getPayloadKey,
+  getNamespace,
+  getUuid
+};
+</code></pre>
   </article>
 </section>
 
-
+    
 
 
   </div>

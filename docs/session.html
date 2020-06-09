@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      filterKit - Documentation
+      session - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        filterKit
+        session
       </h1>
     
 
@@ -92,7 +92,7 @@
     
       <h2>
         
-        filterKit
+        session
         
       </h2>
 
@@ -105,7 +105,17 @@
       
         
             <div class="description">
-              <p>Contains utility functions for dealing with Griffon filters.</p>
+              <p>Contains constants and functions for a Griffon Session.</p>
+<p>The structure for a Griffon Session is as follows:</p>
+<pre class="prettyprint source"><code>{
+  annotations: &lt;array>,
+  link: &lt;string>,
+  firstName: &lt;string>,
+  lastName: &lt;string>,
+  name: &lt;string>,
+  uuid: &lt;string>,
+}
+</code></pre>
             </div>
         
 
@@ -142,7 +152,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line18">line 18</a>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line17">line 17</a>
         </li>
       </ul>
     </dd>
@@ -176,18 +186,219 @@
         
             
 
-<h4 class="name" id=".match">
-  <span class="type-signature">(static, constant) </span>match<span class="type-signature"></span>
+<h4 class="name" id=".path">
+  <span class="type-signature">(static, constant) </span>path<span class="type-signature"> :string</span>
 </h4>
 
 
 
 
   <div class="description">
-    <p>A filter object is an object where all the values are valid JMESPath matchers.
-This will take all these values and <code>&amp;&amp;</code> them together, so that each must pass for an
-event to be valid.</p>
+    <p>Paths for the keys on a Griffon Session</p>
   </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>annotations</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Array of Annotation objects.<br />Path is <code>annotations</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>link</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The base url of the application connected to this session.<br />Path is <code>link</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>firstName</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The first name of the user who created the session.<br />Path is <code>firstName</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>lastName</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The last name of the user who created the session.<br />Path is <code>lastName</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>name</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The name of the session.<br />Path is <code>name</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>sessionId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Uniquely identifies each session.<br />Path is <code>uuid</code>.</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
 
 
 
@@ -223,7 +434,7 @@ event to be valid.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line88">line 88</a>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line48">line 48</a>
         </li>
       </ul>
     </dd>
@@ -255,13 +466,13 @@ event to be valid.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.fromHash">
+    <a class="link-icon" href="#.getAnnotations">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".fromHash">
-      <span class="type-signature">(static) </span>fromHash<span class="signature">(url)</span><span class="type-signature"> &rarr; {object}</span>
+    <h4 class="name" id=".getAnnotations">
+      <span class="type-signature">(static) </span>getAnnotations<span class="signature">(source)</span><span class="type-signature"> &rarr; {Array}</span>
     </h4>
   </span>
 
@@ -270,7 +481,9 @@ event to be valid.</p>
 
 
   <div class="description">
-    <p>Extracts the filters from the provided url. Returns a filter object.</p>
+    <p>Returns the <code>annotations</code> from the Griffon Session.
+This is the array of Annotation objects.</p>
+<p>Path is <code>annotations</code>.</p>
   </div>
 
 
@@ -303,14 +516,14 @@ event to be valid.</p>
     
       <tr>
         
-          <td class="name"><code>url</code></td>
+          <td class="name"><code>source</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      string
+      object
     </span>
 
     
@@ -324,7 +537,7 @@ event to be valid.</p>
         
 
         <td class="description last">
-          <p>Url to decode filters from</p>
+          <p>The Griffon Session instance</p>
           
         </td>
       </tr>
@@ -380,7 +593,7 @@ event to be valid.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line33">line 33</a>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line79">line 79</a>
         </li>
       </ul>
     </dd>
@@ -401,13 +614,13 @@ event to be valid.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.makeHiddenFilter">
+    <a class="link-icon" href="#.getFirstName">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".makeHiddenFilter">
-      <span class="type-signature">(static) </span>makeHiddenFilter<span class="signature">(clearTS<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object}</span>
+    <h4 class="name" id=".getFirstName">
+      <span class="type-signature">(static) </span>getFirstName<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -416,9 +629,750 @@ event to be valid.</p>
 
 
   <div class="description">
-    <p>Makes a hidden event filter based on the provided clear timestamp. If null, we'll filter all
-events with a hidden annotation set. If provided, we'll also hide everything before that timestamp
-unless the hidden annotation is explicitly set to <code>false</code>.</p>
+    <p>Returns the <code>firstName</code> from the Griffon Session.
+This is the the first name of the user who created the session.</p>
+<p>Path is <code>firstName</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Griffon Session instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line103">line 103</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getLastName">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getLastName">
+      <span class="type-signature">(static) </span>getLastName<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>lastName</code> from the Griffon Session.
+This is the the last name of the user who created the session.</p>
+<p>Path is <code>lastName</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Griffon Session instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line115">line 115</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getLink">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getLink">
+      <span class="type-signature">(static) </span>getLink<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>link</code> from the Griffon Session.
+This is the the base url of the application connected to this session.</p>
+<p>Path is <code>link</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Griffon Session instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line91">line 91</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getName">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getName">
+      <span class="type-signature">(static) </span>getName<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>name</code> from the Griffon Session.
+This is the the name of the session.</p>
+<p>Path is <code>name</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Griffon Session instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line127">line 127</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getSessionId">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getSessionId">
+      <span class="type-signature">(static) </span>getSessionId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>sessionId</code> from the Griffon Session.
+This is the uniquely identifies each session.</p>
+<p>Path is <code>uuid</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Griffon Session instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line139">line 139</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.mock">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".mock">
+      <span class="type-signature">(static) </span>mock<span class="signature">(&hellip;input)</span><span class="type-signature"> &rarr; {object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Generates a Griffon Session with some default values set.
+Can be useful in testing.
+Can override defaults and provide additional data by providing a flat object
+of paths and values.</p>
   </div>
 
 
@@ -453,14 +1407,14 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
     
       <tr>
         
-          <td class="name"><code>clearTS</code></td>
+          <td class="name"><code>input</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      number
+      function
     </span>
 
     
@@ -472,11 +1426,11 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
         
           <td class="attributes">
             
-              &lt;optional><br>
-            
 
             
 
+            
+              &lt;repeatable><br>
             
           </td>
         
@@ -484,7 +1438,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
         
 
         <td class="description last">
-          <p>Hide events before this timestamp</p>
+          <p>Overrides</p>
           
         </td>
       </tr>
@@ -540,7 +1494,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line54">line 54</a>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line152">line 152</a>
         </li>
       </ul>
     </dd>
@@ -561,13 +1515,13 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.toHash">
+    <a class="link-icon" href="#.validate">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".toHash">
-      <span class="type-signature">(static) </span>toHash<span class="signature">(filters)</span><span class="type-signature"> &rarr; {string}</span>
+    <h4 class="name" id=".validate">
+      <span class="type-signature">(static) </span>validate<span class="signature">(source)</span><span class="type-signature"> &rarr; {boolean}</span>
     </h4>
   </span>
 
@@ -576,7 +1530,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
 
 
   <div class="description">
-    <p>Takes a filter object and prepares it for a url hash. It gets converted to JSON and base64 encoded.</p>
+    <p>Validates the Griffon Session against the json schema</p>
   </div>
 
 
@@ -609,7 +1563,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
     
       <tr>
         
-          <td class="name"><code>filters</code></td>
+          <td class="name"><code>source</code></td>
         
 
         <td class="type">
@@ -630,7 +1584,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
         
 
         <td class="description last">
-          <p>Filter object</p>
+          <p>The Griffon Session</p>
           
         </td>
       </tr>
@@ -686,153 +1640,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line72">line 72</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.toPath">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".toPath">
-      <span class="type-signature">(static) </span>toPath<span class="signature">(filters)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Takes a filter object and returns the JMESPath query of the results.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>filters</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Filter object</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line81">line 81</a>
+          <a href="session.js.html">session.js</a>, <a href="session.js.html#line168">line 168</a>
         </li>
       </ul>
     </dd>

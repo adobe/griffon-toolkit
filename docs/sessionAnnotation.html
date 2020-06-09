@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      filterKit - Documentation
+      sessionAnnotation - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        filterKit
+        sessionAnnotation
       </h1>
     
 
@@ -92,7 +92,7 @@
     
       <h2>
         
-        filterKit
+        sessionAnnotation
         
       </h2>
 
@@ -105,7 +105,14 @@
       
         
             <div class="description">
-              <p>Contains utility functions for dealing with Griffon filters.</p>
+              <p>Contains constants and functions for a Session Annotation Object.</p>
+<p>The structure for a Session Annotation Object is as follows:</p>
+<pre class="prettyprint source"><code>{
+  payload: &lt;object>,
+  namespace: &lt;string>,
+  uuid: &lt;string>,
+}
+</code></pre>
             </div>
         
 
@@ -142,7 +149,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line18">line 18</a>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line17">line 17</a>
         </li>
       </ul>
     </dd>
@@ -176,18 +183,132 @@
         
             
 
-<h4 class="name" id=".match">
-  <span class="type-signature">(static, constant) </span>match<span class="type-signature"></span>
+<h4 class="name" id=".path">
+  <span class="type-signature">(static, constant) </span>path<span class="type-signature"> :string</span>
 </h4>
 
 
 
 
   <div class="description">
-    <p>A filter object is an object where all the values are valid JMESPath matchers.
-This will take all these values and <code>&amp;&amp;</code> them together, so that each must pass for an
-event to be valid.</p>
+    <p>Paths for the keys on a Session Annotation Object</p>
   </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>payload</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>An object with custom data describing the annotation.<br />Path is <code>payload</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>namespace</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.<br />Path is <code>namespace</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>uuid</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Uniquely identifies each annotation.<br />Path is <code>uuid</code>.</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
 
 
 
@@ -223,7 +344,257 @@ event to be valid.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line88">line 88</a>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line121">line 121</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id=".publicKey">
+  <span class="type-signature">(static, constant) </span>publicKey<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>List of keys that are used in the public namespaces</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>clearSessionTS</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Key used in session to mark a session as cleared before this timestamp</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line39">line 39</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id=".publicNamespace">
+  <span class="type-signature">(static, constant) </span>publicNamespace<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>List of namespaces that are available to all plugins</p>
+  </div>
+
+
+
+
+  <h5 class="subsection-title">Properties:</h5>
+
+  
+
+<table class="props">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+
+    <tr>
+      
+        <td class="name"><code>visibility</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Namespace for annotations that effect event visibility</p>
+          </td>
+    </tr>
+
+  
+  </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line49">line 49</a>
         </li>
       </ul>
     </dd>
@@ -255,13 +626,13 @@ event to be valid.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.fromHash">
+    <a class="link-icon" href="#.getNamespace">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".fromHash">
-      <span class="type-signature">(static) </span>fromHash<span class="signature">(url)</span><span class="type-signature"> &rarr; {object}</span>
+    <h4 class="name" id=".getNamespace">
+      <span class="type-signature">(static) </span>getNamespace<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -270,7 +641,9 @@ event to be valid.</p>
 
 
   <div class="description">
-    <p>Extracts the filters from the provided url. Returns a filter object.</p>
+    <p>Returns the <code>namespace</code> from the Session Annotation Object.
+This is the this is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.</p>
+<p>Path is <code>namespace</code>.</p>
   </div>
 
 
@@ -303,14 +676,14 @@ event to be valid.</p>
     
       <tr>
         
-          <td class="name"><code>url</code></td>
+          <td class="name"><code>source</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      string
+      object
     </span>
 
     
@@ -324,7 +697,7 @@ event to be valid.</p>
         
 
         <td class="description last">
-          <p>Url to decode filters from</p>
+          <p>The Session Annotation Object instance</p>
           
         </td>
       </tr>
@@ -380,7 +753,7 @@ event to be valid.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line33">line 33</a>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line168">line 168</a>
         </li>
       </ul>
     </dd>
@@ -401,13 +774,13 @@ event to be valid.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.makeHiddenFilter">
+    <a class="link-icon" href="#.getPayload">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".makeHiddenFilter">
-      <span class="type-signature">(static) </span>makeHiddenFilter<span class="signature">(clearTS<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {object}</span>
+    <h4 class="name" id=".getPayload">
+      <span class="type-signature">(static) </span>getPayload<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
     </h4>
   </span>
 
@@ -416,9 +789,156 @@ event to be valid.</p>
 
 
   <div class="description">
-    <p>Makes a hidden event filter based on the provided clear timestamp. If null, we'll filter all
-events with a hidden annotation set. If provided, we'll also hide everything before that timestamp
-unless the hidden annotation is explicitly set to <code>false</code>.</p>
+    <p>Returns the <code>payload</code> from the Session Annotation Object.
+This is the an object with custom data describing the annotation.</p>
+<p>Path is <code>payload</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Session Annotation Object instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line143">line 143</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getPayloadKey">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getPayloadKey">
+      <span class="type-signature">(static) </span>getPayloadKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the data using the specified path from the payload
+of the Session Annotation Object.</p>
   </div>
 
 
@@ -453,14 +973,395 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
     
       <tr>
         
-          <td class="name"><code>clearTS</code></td>
+          <td class="name"><code>path</code></td>
         
 
         <td class="type">
           
             
     <span class="param-type">
-      number
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>key in object</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The Session Annotation Object instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line154">line 154</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getUuid">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getUuid">
+      <span class="type-signature">(static) </span>getUuid<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>uuid</code> from the Session Annotation Object.
+This is the uniquely identifies each annotation.</p>
+<p>Path is <code>uuid</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Session Annotation Object instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line180">line 180</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.makeNamespacePath">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".makeNamespacePath">
+      <span class="type-signature">(static) </span>makeNamespacePath<span class="signature">(namespace, key<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns a path using the provided namespace. If the optional key is provided, it
+will return that key from the payload.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>namespace</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The namespace to reference</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>key</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
     </span>
 
     
@@ -484,7 +1385,194 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
         
 
         <td class="description last">
-          <p>Hide events before this timestamp</p>
+          <p>Key inside payload</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#makeNamespacePath-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="makeNamespacePath-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>import { kit, session, sessionAnnotation } from '@adobe/griffon-toolkit';
+const publicPath = sessionAnnotation.makeNamespacePath('shared', 'pubic');
+
+const session = session.mock({
+  annotations: [
+    annotation.mock({
+      [sessionAnnotation.path.namespace]: 'shared',
+      [sessionAnnotation.path.payload]: { pubic: true }
+    })
+  ]
+});
+
+console.log(kit.search(publicPath, session))); // [true]</code></pre>
+
+
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line78">line 78</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.mock">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".mock">
+      <span class="type-signature">(static) </span>mock<span class="signature">(&hellip;input)</span><span class="type-signature"> &rarr; {object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Generates a Session Annotation Object with some default values set.
+Can be useful in testing.
+Can override defaults and provide additional data by providing a flat object
+of paths and values.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>input</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Overrides</p>
           
         </td>
       </tr>
@@ -540,7 +1628,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line54">line 54</a>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line193">line 193</a>
         </li>
       </ul>
     </dd>
@@ -561,13 +1649,13 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.toHash">
+    <a class="link-icon" href="#.search">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".toHash">
-      <span class="type-signature">(static) </span>toHash<span class="signature">(filters)</span><span class="type-signature"> &rarr; {string}</span>
+    <h4 class="name" id=".search">
+      <span class="type-signature">(static) </span>search<span class="signature">(namespace, key<span class="signature-attributes">opt</span>, data)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -576,7 +1664,265 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
 
 
   <div class="description">
-    <p>Takes a filter object and prepares it for a url hash. It gets converted to JSON and base64 encoded.</p>
+    <p>Returns a the value of the path using the provided namespace and key.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>namespace</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The namespace to reference</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>key</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Key inside payload</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>data</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      *
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Data to search</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#search-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="search-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>import { kit, session, sessionAnnotation } from '@adobe/griffon-toolkit';
+const isPublic = sessionAnnotation.search('shared', 'pubic');
+
+const session = session.mock({
+  annotations: [
+    annotation.mock({
+      [sessionAnnotation.path.namespace]: 'shared',
+      [sessionAnnotation.path.payload]: { pubic: true }
+    })
+  ]
+});
+
+console.log(isPublic(session)); // true</code></pre>
+
+
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line104">line 104</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.validate">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".validate">
+      <span class="type-signature">(static) </span>validate<span class="signature">(source)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Validates the Session Annotation Object against the json schema</p>
   </div>
 
 
@@ -609,7 +1955,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
     
       <tr>
         
-          <td class="name"><code>filters</code></td>
+          <td class="name"><code>source</code></td>
         
 
         <td class="type">
@@ -630,7 +1976,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
         
 
         <td class="description last">
-          <p>Filter object</p>
+          <p>The Session Annotation Object</p>
           
         </td>
       </tr>
@@ -686,153 +2032,7 @@ unless the hidden annotation is explicitly set to <code>false</code>.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line72">line 72</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.toPath">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".toPath">
-      <span class="type-signature">(static) </span>toPath<span class="signature">(filters)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Takes a filter object and returns the JMESPath query of the results.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>filters</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Filter object</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="filterKit.js.html">filterKit.js</a>, <a href="filterKit.js.html#line81">line 81</a>
+          <a href="sessionAnnotation.js.html">sessionAnnotation.js</a>, <a href="sessionAnnotation.js.html#line206">line 206</a>
         </li>
       </ul>
     </dd>
