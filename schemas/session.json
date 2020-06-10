@@ -4,8 +4,9 @@
   "type": "object",
   "properties": {
     "annotations": {
-      "description": "Array of {@link Annotation} objects",
-      "type": "array"
+      "description": "Array of SessionAnnotation objects",
+      "type": "array",
+      "items": { "$ref": "http://griffon.adobe.com/schemas/sessionAnnotation" }
     },
     "link": {
       "description": "The base url of the application connected to this session",

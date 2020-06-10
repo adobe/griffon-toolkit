@@ -49,7 +49,7 @@ const path = {
   /** The type of event.<br />Path is `type`. */
   rootType: 'type',
 
-  /** Array of {@link Annotation} objects.<br />Path is `annotations`. */
+  /** Array of Annotation objects.<br />Path is `annotations`. */
   annotations: 'annotations',
 
   /** A unique id that differentiates clients from one another.<br />Path is `clientId`. */

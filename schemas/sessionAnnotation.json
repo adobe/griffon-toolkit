@@ -1,5 +1,5 @@
 {
-  "$id": "http://griffon.adobe.com/schemas/session.annotation",
+  "$id": "http://griffon.adobe.com/schemas/sessionAnnotation",
   "shortDesc": "Session Annotation Object",
   "type": "object",
   "properties": {

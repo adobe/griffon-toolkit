@@ -46,7 +46,7 @@ const customExports = {};
  * @enum {string}
  */
 const path = {
-  /** Array of {@link Annotation} objects.<br />Path is `annotations`. */
+  /** Array of SessionAnnotation objects.<br />Path is `annotations`. */
   annotations: 'annotations',
 
   /** The base url of the application connected to this session.<br />Path is `link`. */
@@ -68,7 +68,7 @@ const path = {
 
 /**
  * Returns the `annotations` from the Griffon Session.
- * This is the array of {@link Annotation} objects.
+ * This is the array of SessionAnnotation objects.
  *
  * Path is `annotations`.
  *

@@ -4,8 +4,9 @@
   "type": "object",
   "properties": {
     "annotations": {
-      "description": "Array of {@link Annotation} objects",
-      "type": "array"
+      "description": "Array of Annotation objects",
+      "type": "array",
+      "items": { "$ref": "http://griffon.adobe.com/schemas/annotation" }
     },
     "clientId": {
       "description": "A unique id that differentiates clients from one another",
