@@ -17,6 +17,7 @@ import Ajv from 'ajv';
 import aepMobile from '../schemas/aepMobile.json';
 import event from '../schemas/event.json';
 import annotation from '../schemas/annotation.json';
+import sessionAnnotation from '../schemas/sessionAnnotation.json';
 import genericPlaces from '../schemas/genericPlaces.json';
 import poi from '../schemas/poi.json';
 
@@ -26,7 +27,8 @@ const ajv = new Ajv({
     annotation,
     genericPlaces,
     poi,
-    event
+    event,
+    sessionAnnotation
   ]
 });
 

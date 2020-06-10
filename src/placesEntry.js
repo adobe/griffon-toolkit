@@ -149,7 +149,7 @@ const path = {
   /** The vendor of the plugin that sent the event.<br />Path is `vendor`. */
   vendor: 'vendor',
 
-  /** Array of {@link Annotation} objects.<br />Path is `annotations`. */
+  /** Array of Annotation objects.<br />Path is `annotations`. */
   annotations: 'annotations',
 
   /** A unique id that differentiates clients from one another.<br />Path is `clientId`. */

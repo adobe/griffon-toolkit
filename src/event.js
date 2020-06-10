@@ -46,7 +46,7 @@ const customExports = {};
  * @enum {string}
  */
 const path = {
-  /** Array of {@link Annotation} objects.<br />Path is `annotations`. */
+  /** Array of Annotation objects.<br />Path is `annotations`. */
   annotations: 'annotations',
 
   /** A unique id that differentiates clients from one another.<br />Path is `clientId`. */
@@ -68,7 +68,7 @@ const path = {
 
 /**
  * Returns the `annotations` from the Root Griffon Event.
- * This is the array of {@link Annotation} objects.
+ * This is the array of Annotation objects.
  *
  * Path is `annotations`.
  *

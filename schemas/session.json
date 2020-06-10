@@ -1,0 +1,41 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/session",
+  "shortDesc": "Griffon Session",
+  "type": "object",
+  "properties": {
+    "annotations": {
+      "description": "Array of SessionAnnotation objects",
+      "type": "array",
+      "items": { "$ref": "http://griffon.adobe.com/schemas/sessionAnnotation" }
+    },
+    "link": {
+      "description": "The base url of the application connected to this session",
+      "type": "string",
+      "mock": "test://"
+    },
+    "firstName": {
+      "description": "The first name of the user who created the session",
+      "type": "string",
+      "mock": "John"
+    },
+    "lastName": {
+      "description": "The last name of the user who created the session",
+      "type": "string",
+      "mock": "Doe"
+    },
+    "name": {
+      "description": "The name of the session",
+      "type": "string",
+      "mock": "Test"
+    },
+    "uuid": {
+      "alias": "sessionId",
+      "description": "Uniquely identifies each session",
+      "mock": "abc",
+      "type": "string"
+    }
+  },
+  "required": [
+    "link", "name", "uuid"
+  ]
+}

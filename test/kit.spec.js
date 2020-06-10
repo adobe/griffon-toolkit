@@ -13,8 +13,14 @@ governing permissions and limitations under the License.
 import kit from '../src/kit';
 import entry from '../src/placesEntry';
 import aep from '../src/aepMobile';
+import annotation from '../src/annotation';
 
-const mockEntry = entry.mock();
+const mockEntry = entry.mock({
+  annotations: [annotation.mock()]
+});
+const mockEntryBad = entry.mock({
+  annotations: [{ test: true }]
+});
 const mockAEP = aep.mock();
 const events = [mockEntry, mockAEP];
 const matchAEP = aep.path.eventSource;
@@ -53,6 +59,10 @@ describe('Kit Tests', () => {
   it('can test against a schema', () => {
     expect(kit.validateSchema(entry.schema, mockEntry)).toBe(true);
     expect(kit.validateSchema(entry.schema, mockAEP)).toBe(false);
+  });
+  it('has correct setup for annotations', () => {
+    expect(kit.validateSchema(entry.schema, mockEntry)).toBe(true);
+    expect(kit.validateSchema(entry.schema, mockEntryBad)).toBe(false);
   });
   it('can provide schema errors', () => {
     expect(kit.schemaErrors(entry.schema, mockEntry)).toBe(false);
