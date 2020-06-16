@@ -27,7 +27,7 @@ Install the toolkit:
 npm install --save @adobe/griffon-toolkit
 ```
 
-The toolkit is organized into namespaces. There is one package for each event that is registered in the toolkit as well as a `core` library. These namespaces can be imported like so:
+The toolkit is organized into namespaces. There is one package for each event that is registered in the toolkit as well as additional libraries like `core`. These namespaces can be imported like so:
 
 ```
 import { placesEntry ) from '@adobe/griffon-toolkit';
