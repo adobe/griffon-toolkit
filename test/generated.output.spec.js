@@ -46,6 +46,11 @@ describe('Test Auto Generated Output', () => {
     expect(root.getClientId(mock)).toBe('appleABC');
     expect(root.getRootType(mock)).toBe('generic');
   });
+  it('exports the parent depth', () => {
+    expect(root.parentDepth).toBe(0);
+    expect(aep.parentDepth).toBe(1);
+    expect(entry.parentDepth).toBe(3);
+  });
   it('exports get from object functions', () => {
     const mock = root.mock({
       [root.path.payload]: {

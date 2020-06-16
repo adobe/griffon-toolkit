@@ -108,6 +108,19 @@ const path = {
 };
 
 /**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = 3;
+
+/**
+ * A label that can be used when describing this object
+ */
+const prettyLabel = 'Request Places Event';
+
+/**
  * The value for `requestType` for a Request Places Event.
  *
  * Path is `payload.ACPExtensionEventData.requesttype`.
@@ -192,7 +205,10 @@ const getRequestType = kit.search(path.requestType);
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.requesttype==\'requestgetnearbyplaces\'',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\''
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
+  'clientId',
+  'timestamp',
+  'type'
 ]);
 
 /**
@@ -220,7 +236,7 @@ const mock = (input) => kit.expand({
   'payload.ACPExtensionEventData.latitude': 40.4349,
   'payload.ACPExtensionEventData.longitude': -111.891,
   'payload.ACPExtensionEventData.requesttype': 'requestgetnearbyplaces',
-  'payload.ACPExtensionEventSource': 'com.adobe.eventsource.responsecontent',
+  'payload.ACPExtensionEventSource': 'com.adobe.eventsource.requestcontent',
   'payload.ACPExtensionEventType': 'com.adobe.eventtype.places',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -253,5 +269,7 @@ export default {
   matcher,
   REQUEST_TYPE,
   EVENT_SOURCE,
-  EVENT_TYPE
+  EVENT_TYPE,
+  prettyLabel,
+  parentDepth
 };

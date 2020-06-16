@@ -65,6 +65,19 @@ const path = {
   sessionId: 'uuid'
 };
 
+/**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = 0;
+
+/**
+ * A label that can be used when describing this object
+ */
+const prettyLabel = 'Griffon Session';
+
 
 /**
  * Returns the `annotations` from the Griffon Session.
@@ -178,5 +191,7 @@ export default {
   getFirstName,
   getLastName,
   getName,
-  getSessionId
+  getSessionId,
+  prettyLabel,
+  parentDepth
 };

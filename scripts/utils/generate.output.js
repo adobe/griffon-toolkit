@@ -33,11 +33,11 @@ import {
 import {
   ucFirst,
   CUSTOM_CONTENT_START,
-  CUSTOM_CONTENT_END
+  CUSTOM_CONTENT_END,
+  writeFile
 } from './shared';
 
 const fs = require('fs');
-const filePath = require('path');
 
 /*
  * Formats the data into a common structure so it can be used by all the writes
@@ -47,7 +47,7 @@ const makePropertyProps = (property, key, path, parent) => ({
   path: [...path, key].join('.'),
   alias: property.alias || key,
   useConst: property.const,
-  useMock: property.mock || property.const,
+  useMock: property.const || property.mock,
   useMatch: property.const || property.match,
   parent,
   snakeName: lodash.snakeCase(property.alias || key).toUpperCase()
@@ -174,20 +174,14 @@ const extractCustom = (outputFile) => {
   return DEFAULT_CUSTOM;
 };
 
-/*
- * Writes the content to disk
- */
-const writeFile = (file, content) => {
-  // make sure the directory exists
-  const outputDir = filePath.dirname(file);
-  if (!fs.existsSync(outputDir)) { fs.mkdirSync(outputDir); }
+const calculateDepth = (schema, schemaMap, depth = 0) => {
+  if (!schema.allOf) { return depth; }
 
-  try {
-    fs.writeFileSync(file, content);
-    console.log(`output => ${file}`);
-  } catch (err) {
-    console.error(err);
-  }
+  let maxDepth = depth;
+  schema.allOf.forEach((ref) => {
+    maxDepth = Math.max(maxDepth, calculateDepth(schemaMap[ref.$ref], schemaMap, depth + 1));
+  });
+  return maxDepth;
 };
 
 /*
@@ -210,17 +204,20 @@ export default (schema, outputFile, schemaMap) => {
 
   const namespace = outputFile.match(/src\/(.*).js/)[1];
 
+  const depth = calculateDepth(schema, schemaMap);
+
   const output = writeFullContent({
     namespace,
     shortDesc: schema.shortDesc,
     customCode: extractCustom(outputFile),
+    depth,
     mock: writeMock({
       shortDesc: schema.shortDesc,
       mocks: expandedFull.mocks
     }),
     ...expanded,
     ...expandedFull,
-    exports
+    exports: [...exports, 'prettyLabel', 'parentDepth']
   });
 
   writeFile(outputFile, output);
