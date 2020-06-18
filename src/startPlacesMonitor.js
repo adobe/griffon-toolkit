@@ -91,6 +91,19 @@ const path = {
 };
 
 /**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = 2;
+
+/**
+ * A label that can be used when describing this object
+ */
+const label = 'Start Monitor Event';
+
+/**
  * The value for `eventSource` for a Start Monitor Event.
  *
  * Path is `payload.ACPExtensionEventSource`.
@@ -117,7 +130,10 @@ const EVENT_TYPE = 'com.adobe.eventType.placesMonitor';
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventType.placesMonitor\''
+  'payload.ACPExtensionEventType==\'com.adobe.eventType.placesMonitor\'',
+  'clientId',
+  'timestamp',
+  'type'
 ]);
 
 /**
@@ -141,7 +157,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const mock = (input) => kit.expand({
-  'payload.ACPExtensionEventSource': 'com.adobe.eventsource.responsecontent',
+  'payload.ACPExtensionEventSource': 'com.adobe.eventsource.requestcontent',
   'payload.ACPExtensionEventType': 'com.adobe.eventType.placesMonitor',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -169,5 +185,7 @@ export default {
   isMatch,
   matcher,
   EVENT_SOURCE,
-  EVENT_TYPE
+  EVENT_TYPE,
+  label,
+  parentDepth
 };

@@ -96,6 +96,19 @@ const path = {
 };
 
 /**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = 3;
+
+/**
+ * A label that can be used when describing this object
+ */
+const label = 'Receive Places Event';
+
+/**
  * The value for `eventSource` for a Receive Places Event.
  *
  * Path is `payload.ACPExtensionEventSource`.
@@ -135,7 +148,10 @@ const getPOIs = kit.search(path.POIs);
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.nearbypois',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\''
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
+  'clientId',
+  'timestamp',
+  'type'
 ]);
 
 /**
@@ -188,5 +204,7 @@ export default {
   isMatch,
   matcher,
   EVENT_SOURCE,
-  EVENT_TYPE
+  EVENT_TYPE,
+  label,
+  parentDepth
 };

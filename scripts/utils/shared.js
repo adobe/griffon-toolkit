@@ -10,8 +10,31 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
+/*
+  eslint no-console: 0
+*/
+
+const filePath = require('path');
+const fs = require('fs');
+
 export const CUSTOM_CONTENT_START = 'ADD CUSTOM CONTENT BELOW';
 export const CUSTOM_CONTENT_END = 'END CUSTOM CONTENT';
 
 export const ucFirst = (str) => str.replace(/^\w/, (c) => c.toUpperCase());
 export const lcFirst = (str) => (str || '').replace(/^\w/, (c) => c.toLowerCase());
+
+/*
+ * Writes the content to disk
+ */
+export const writeFile = (file, content) => {
+  // make sure the directory exists
+  const outputDir = filePath.dirname(file);
+  if (!fs.existsSync(outputDir)) { fs.mkdirSync(outputDir); }
+
+  try {
+    fs.writeFileSync(file, content);
+    console.log(`output => ${file}`);
+  } catch (err) {
+    console.error(err);
+  }
+};

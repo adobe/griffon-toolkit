@@ -130,6 +130,19 @@ const path = {
   uuid: 'uuid'
 };
 
+/**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = 0;
+
+/**
+ * A label that can be used when describing this object
+ */
+const label = 'Session Annotation Object';
+
 
 /**
  * Returns the `payload` from the Session Annotation Object.
@@ -215,5 +228,7 @@ export default {
   getPayload,
   getPayloadKey,
   getNamespace,
-  getUuid
+  getUuid,
+  label,
+  parentDepth
 };

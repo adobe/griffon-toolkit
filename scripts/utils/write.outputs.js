@@ -56,6 +56,7 @@ export const writeFullContent = ({
   shortDesc,
   constants,
   customCode,
+  depth,
   event,
   exports,
   paths,
@@ -102,6 +103,19 @@ import schema from '../schemas/${namespace}.json';
 const path = {${paths.join(`,
 `)}
 };
+
+/**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = ${depth};
+
+/**
+ * A label that can be used when describing this object
+ */
+const label = '${shortDesc}';
 ${constants}
 ${gets}${writeMatches(matches, shortDesc)}
 ${mock}

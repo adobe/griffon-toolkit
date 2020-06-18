@@ -66,6 +66,19 @@ const path = {
 };
 
 /**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = 1;
+
+/**
+ * A label that can be used when describing this object
+ */
+const label = 'Log Event';
+
+/**
  * The value for `rootType` for a Log Event.
  *
  * Path is `type`.
@@ -94,7 +107,9 @@ const getType = kit.search(path.type);
  * @constant
  */
 const matcher = kit.combineAll([
-  'type==\'log\''
+  'type==\'log\'',
+  'clientId',
+  'timestamp'
 ]);
 
 /**
@@ -118,7 +133,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const mock = (input) => kit.expand({
-  type: 'generic',
+  type: 'log',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   uuid: '123',
@@ -143,5 +158,7 @@ export default {
   getType,
   isMatch,
   matcher,
-  ROOT_TYPE
+  ROOT_TYPE,
+  label,
+  parentDepth
 };

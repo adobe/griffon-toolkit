@@ -18,11 +18,13 @@ import * as R from 'ramda';
 import Ajv from 'ajv';
 
 import generateOutput from './utils/generate.output';
+import generateReference from './utils/generate.reference';
 
 const filePath = require('path');
 const fs = require('fs');
 
 const schemaPath = filePath.join(__dirname, '../schemas');
+const srcPath = filePath.join(__dirname, '../src');
 
 const ajv = new Ajv();
 const schemaFiles = {};
@@ -53,3 +55,5 @@ R.mapObjIndexed((schemaName, schemaFile) => {
   const { schema } = ajv.getSchema(schemaName);
   generateOutput(schema, outputFile, schemaMap);
 }, schemaFiles);
+
+generateReference(schemaFiles, `${srcPath}/reference.js`);

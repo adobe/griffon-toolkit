@@ -1,6 +1,6 @@
 {
   "$id": "http://griffon.adobe.com/schemas/aepMobile",
-  "shortDesc": "Root AEP Event",
+  "shortDesc": "Generic Mobile Event",
   "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/event" }],
   "type": "object",
   "properties": {
@@ -22,12 +22,15 @@
           "alias": "eventSource",
           "description": "The event source",
           "type": "string",
-          "mock": "com.adobe.eventsource.responsecontent"
+          "mock": "com.adobe.eventsource.responsecontent",
+          "match": true
         },
         "ACPExtensionEventType": {
           "alias": "eventType",
           "description": "The event type",
-          "type": "string"
+          "type": "string",
+          "mock": "test event",
+          "match": true
         },
         "ACPExtensionEventUniqueIdentifier": {
           "alias": "eventId",

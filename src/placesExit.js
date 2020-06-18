@@ -166,6 +166,19 @@ const path = {
 };
 
 /**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = 3;
+
+/**
+ * A label that can be used when describing this object
+ */
+const label = 'Places Exit Event';
+
+/**
  * The value for `regionEventType` for a Places Exit Event.
  *
  * Path is `payload.ACPExtensionEventData.regioneventtype`.
@@ -226,7 +239,10 @@ const getRegionEventType = kit.search(path.regionEventType);
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.regioneventtype==\'exit\'',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\''
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
+  'clientId',
+  'timestamp',
+  'type'
 ]);
 
 /**
@@ -292,5 +308,7 @@ export default {
   matcher,
   REGION_EVENT_TYPE,
   EVENT_SOURCE,
-  EVENT_TYPE
+  EVENT_TYPE,
+  label,
+  parentDepth
 };
