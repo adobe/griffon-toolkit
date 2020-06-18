@@ -141,7 +141,7 @@ const parentDepth = 0;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Session Annotation Object';
+const label = 'Session Annotation Object';
 
 
 /**
@@ -229,6 +229,6 @@ export default {
   getPayloadKey,
   getNamespace,
   getUuid,
-  prettyLabel,
+  label,
   parentDepth
 };

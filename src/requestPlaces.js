@@ -118,7 +118,7 @@ const parentDepth = 3;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Request Places Event';
+const label = 'Request Places Event';
 
 /**
  * The value for `requestType` for a Request Places Event.
@@ -270,6 +270,6 @@ export default {
   REQUEST_TYPE,
   EVENT_SOURCE,
   EVENT_TYPE,
-  prettyLabel,
+  label,
   parentDepth
 };

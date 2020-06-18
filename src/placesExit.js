@@ -176,7 +176,7 @@ const parentDepth = 3;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Places Exit Event';
+const label = 'Places Exit Event';
 
 /**
  * The value for `regionEventType` for a Places Exit Event.
@@ -309,6 +309,6 @@ export default {
   REGION_EVENT_TYPE,
   EVENT_SOURCE,
   EVENT_TYPE,
-  prettyLabel,
+  label,
   parentDepth
 };

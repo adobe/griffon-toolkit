@@ -217,7 +217,7 @@ export default (schema, outputFile, schemaMap) => {
     }),
     ...expanded,
     ...expandedFull,
-    exports: [...exports, 'prettyLabel', 'parentDepth']
+    exports: [...exports, 'label', 'parentDepth']
   });
 
   writeFile(outputFile, output);

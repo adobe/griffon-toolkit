@@ -49,7 +49,7 @@ const getLabel = (source) => {
       && file.isMatch
       && file.isMatch(source)
     ) {
-      match = file.prettyLabel;
+      match = file.label;
       matchDepth = file.parentDepth;
     }
   }

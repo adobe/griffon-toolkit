@@ -117,7 +117,7 @@ const parentDepth = 0;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'POI Object';
+const label = 'POI Object';
 
 
 /**
@@ -382,6 +382,6 @@ export default {
   getWeight,
   getType,
   getUuid,
-  prettyLabel,
+  label,
   parentDepth
 };

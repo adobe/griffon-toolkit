@@ -101,7 +101,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Generic Places Event';
+const label = 'Generic Places Event';
 
 /**
  * The value for `eventType` for a Generic Places Event.
@@ -176,6 +176,6 @@ export default {
   isMatch,
   matcher,
   EVENT_TYPE,
-  prettyLabel,
+  label,
   parentDepth
 };

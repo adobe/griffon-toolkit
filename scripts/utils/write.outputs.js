@@ -115,7 +115,7 @@ const parentDepth = ${depth};
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = '${shortDesc}';
+const label = '${shortDesc}';
 ${constants}
 ${gets}${writeMatches(matches, shortDesc)}
 ${mock}

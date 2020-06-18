@@ -142,7 +142,7 @@ const parentDepth = 0;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Annotation Object';
+const label = 'Annotation Object';
 
 
 /**
@@ -230,6 +230,6 @@ export default {
   getPayloadKey,
   getNamespace,
   getUuid,
-  prettyLabel,
+  label,
   parentDepth
 };

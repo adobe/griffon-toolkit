@@ -106,7 +106,7 @@ const parentDepth = 3;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Receive Places Event';
+const label = 'Receive Places Event';
 
 /**
  * The value for `eventSource` for a Receive Places Event.
@@ -205,6 +205,6 @@ export default {
   matcher,
   EVENT_SOURCE,
   EVENT_TYPE,
-  prettyLabel,
+  label,
   parentDepth
 };

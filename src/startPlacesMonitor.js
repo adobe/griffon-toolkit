@@ -101,7 +101,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Start Monitor Event';
+const label = 'Start Monitor Event';
 
 /**
  * The value for `eventSource` for a Start Monitor Event.
@@ -186,6 +186,6 @@ export default {
   matcher,
   EVENT_SOURCE,
   EVENT_TYPE,
-  prettyLabel,
+  label,
   parentDepth
 };

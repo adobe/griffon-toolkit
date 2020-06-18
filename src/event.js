@@ -76,7 +76,7 @@ const parentDepth = 0;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Generic Event';
+const label = 'Generic Event';
 
 
 /**
@@ -228,6 +228,6 @@ export default {
   getRootId,
   isMatch,
   matcher,
-  prettyLabel,
+  label,
   parentDepth
 };

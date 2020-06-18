@@ -76,7 +76,7 @@ const parentDepth = 0;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Griffon Session';
+const label = 'Griffon Session';
 
 
 /**
@@ -192,6 +192,6 @@ export default {
   getLastName,
   getName,
   getSessionId,
-  prettyLabel,
+  label,
   parentDepth
 };

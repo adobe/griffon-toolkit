@@ -101,7 +101,7 @@ const parentDepth = 1;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Generic Mobile Event';
+const label = 'Generic Mobile Event';
 
 
 /**
@@ -258,6 +258,6 @@ export default {
   getVendor,
   isMatch,
   matcher,
-  prettyLabel,
+  label,
   parentDepth
 };

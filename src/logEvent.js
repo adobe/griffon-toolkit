@@ -76,7 +76,7 @@ const parentDepth = 1;
 /**
  * A label that can be used when describing this object
  */
-const prettyLabel = 'Log Event';
+const label = 'Log Event';
 
 /**
  * The value for `rootType` for a Log Event.
@@ -159,6 +159,6 @@ export default {
   isMatch,
   matcher,
   ROOT_TYPE,
-  prettyLabel,
+  label,
   parentDepth
 };
