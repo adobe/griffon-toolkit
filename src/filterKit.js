@@ -62,6 +62,18 @@ const makeHiddenFilter = (clearTS) => (clearTS
   : kit.not(`${annotation.publicMatcher.hidden} == \`true\``)
 );
 
+
+/**
+ * Makes a event filter using the provided client ids.
+ *
+ * @function
+ * @param {string[]} clients Array of clientIds to filter by
+ * @returns {object} Filter object
+ */
+const makeClientFilter = (clients) => kit.combineAny(
+  R.map((client) => `${event.path.clientId} == \`${client}\``, clients)
+);
+
 /**
  * Takes a filter object and prepares it for a url hash. It gets converted to JSON and base64 encoded.
  *
@@ -93,6 +105,7 @@ const match = R.curry(
 
 export default {
   fromHash,
+  makeClientFilter,
   makeHiddenFilter,
   match,
   toHash,

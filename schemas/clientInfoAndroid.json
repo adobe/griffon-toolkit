@@ -1,0 +1,96 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/clientInfoAndroid",
+  "shortDesc": "iOS Client Info Event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/clientInfo" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "deviceInfo": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "Canonical platform name": {
+              "alias": "platform",
+              "type": "string",
+              "description": "Canonical name for the platform. Used for Griffon identifying if the device is iOS or Android",
+              "const": "Android"
+            },
+            "Device name": {
+              "alias": "deviceName",
+              "type": "string",
+              "description": "Read from Build.MODEL, which is the end-user-visible name for the end product.",
+              "mock": "Testing Android"
+            },
+            "Device type": {
+              "alias": "deviceType",
+              "type": "string",
+              "description": "The style of interface to use on the current device.",
+              "mock": "Phone"
+            },
+            "Device manufacturer": {
+              "alias": "manufacturer",
+              "type": "string",
+              "description": "The manufacturer of the product/hardware.",
+              "mock": "Google"
+            },
+            "Operating system": {
+              "alias": "os",
+              "type": "string",
+              "description": "The value is in the format \"Android <OperatingSystemVersion>\"",
+              "mock": "Android 10"
+            },
+            "Screen size": {
+              "alias": "screenSize",
+              "type": "string",
+              "description": "Phones display resolution in pixels (width x height)",
+              "mock": "1080x2028"
+            },
+            "Battery level": {
+              "alias": "batteryLevel",
+              "type": "integer",
+              "description": "The battery charge level for the device. This is integer value ranging from 1 to 100. If unable to fetch battery value -1 is returned",
+              "mock": 94
+            },
+            "Location service enabled": {
+              "alias": "locationEnabled",
+              "type": "boolean",
+              "description": "The current enabled/disabled state of location for the device.",
+              "mock": true
+            },
+            "Location authorization status": {
+              "alias": "locationAuth",
+              "type": "string",
+              "description": "Tells the app’s authorization status for using location services.",
+              "mock": "When in use"
+            },
+            "Carrier name": {
+              "alias": "carrierName",
+              "type": "string",
+              "description": "Represents the carrier name. \"Unknown\" if this value is not available, or not valid on the platform.",
+              "mock": "Google Fi"
+            },
+            "Low power mode enabled": {
+              "alias": "lowPowerMode",
+              "type": "boolean",
+              "description": "Indicates whether Low Power Mode is enabled on an iOS device.",
+              "mock": false
+            }
+          },
+          "required": [
+            "Canonical platform name"
+          ]
+        }
+      },
+      "required": [
+        "type", "version", "deviceInfo", "appSettings"
+      ]
+    },
+    "type": {
+      "inherit": true,
+      "const": "client"
+    }
+  }
+}

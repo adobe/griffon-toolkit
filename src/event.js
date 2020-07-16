@@ -24,7 +24,7 @@ import schema from '../schemas/event.json';
  *   clientId: <string>,
  *   payload: <object>,
  *   timestamp: <number>,
- *   type: <enum(blob, control, generic, log, status)>,
+ *   type: <enum(blob, client, control, generic, log, status)>,
  *   uuid: <string>,
  * }
  * ```

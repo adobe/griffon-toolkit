@@ -14,6 +14,7 @@ governing permissions and limitations under the License.
 import entry from '../src/placesEntry';
 import aep from '../src/aepMobile';
 import root from '../src/event';
+import iosClient from '../src/clientInfoIOS';
 
 describe('Test Auto Generated Output', () => {
   it('exports paths', () => {
@@ -60,5 +61,16 @@ describe('Test Auto Generated Output', () => {
     });
     expect(root.getPayloadKey('size', mock)).toBe('L');
     expect(root.getPayloadKey('dimensions.width', mock)).toBe(800);
+  });
+  it('handles keys with spaces in them', () => {
+    // some schemas have spaces in the key names. This test validates that those
+    // schemas work correctly
+    const mock = iosClient.mock({
+      [iosClient.path.os]: 'iOS 13'
+    });
+
+    expect(iosClient.isMatch(mock)).toBe(true);
+    expect(iosClient.getPlatform(mock)).toBe('iOS');
+    expect(iosClient.getOs(mock)).toBe('iOS 13');
   });
 });
