@@ -149,7 +149,6 @@ const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.nearbypois',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
-  'clientId',
   'timestamp',
   'type'
 ]);

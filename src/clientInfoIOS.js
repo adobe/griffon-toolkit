@@ -310,7 +310,6 @@ const matcher = kit.combineAll([
   'payload.deviceInfo."Canonical platform name"==\'iOS\'',
   'payload.type==\'connect\'',
   'type==\'client\'',
-  'clientId',
   'timestamp'
 ]);
 

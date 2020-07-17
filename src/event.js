@@ -171,7 +171,6 @@ const getRootId = kit.search(path.rootId);
  * @constant
  */
 const matcher = kit.combineAll([
-  'clientId',
   'timestamp',
   'type'
 ]);

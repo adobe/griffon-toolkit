@@ -122,7 +122,6 @@ const EVENT_TYPE = 'com.adobe.eventtype.places';
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
   'payload.ACPExtensionEventSource',
-  'clientId',
   'timestamp',
   'type'
 ]);

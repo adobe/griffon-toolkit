@@ -131,7 +131,6 @@ const EVENT_TYPE = 'com.adobe.eventType.placesMonitor';
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventType.placesMonitor\'',
-  'clientId',
   'timestamp',
   'type'
 ]);

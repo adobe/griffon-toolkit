@@ -198,7 +198,6 @@ const getVendor = kit.search(path.vendor);
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource',
   'payload.ACPExtensionEventType',
-  'clientId',
   'timestamp',
   'type'
 ]);

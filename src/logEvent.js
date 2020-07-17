@@ -108,7 +108,6 @@ const getType = kit.search(path.type);
  */
 const matcher = kit.combineAll([
   'type==\'log\'',
-  'clientId',
   'timestamp'
 ]);
 

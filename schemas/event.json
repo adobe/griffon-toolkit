@@ -11,8 +11,7 @@
     "clientId": {
       "description": "A unique id that differentiates clients from one another",
       "mock": "appleABC",
-      "type": "string",
-      "match": true
+      "type": "string"
     },
     "payload": {
       "description": "An object with custom data describing the event",
