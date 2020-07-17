@@ -13,6 +13,9 @@ governing permissions and limitations under the License.
 
 import aepMobile from './aepMobile';
 import annotation from './annotation';
+import clientInfo from './clientInfo';
+import clientInfoAndroid from './clientInfoAndroid';
+import clientInfoIOS from './clientInfoIOS';
 import event from './event';
 import genericPlaces from './genericPlaces';
 import logEvent from './logEvent';
@@ -26,7 +29,7 @@ import sessionAnnotation from './sessionAnnotation';
 import startPlacesMonitor from './startPlacesMonitor';
 
 const schemaFiles = {
-  aepMobile, annotation, event, genericPlaces, logEvent, placesEntry, placesExit, poi, receivePlaces, requestPlaces, session, sessionAnnotation, startPlacesMonitor
+  aepMobile, annotation, clientInfo, clientInfoAndroid, clientInfoIOS, event, genericPlaces, logEvent, placesEntry, placesExit, poi, receivePlaces, requestPlaces, session, sessionAnnotation, startPlacesMonitor
 };
 
 /**

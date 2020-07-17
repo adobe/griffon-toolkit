@@ -9,7 +9,7 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
-
+import * as R from 'ramda';
 import {
   ucFirst,
   lcFirst,
@@ -19,9 +19,20 @@ import {
 
 const makeStrValue = (value, type) => (type === 'string' ? `'${value}'` : value);
 
-const normalizeType = (type) => (type === 'array' ? 'Array' : type);
+const normalizeType = (type) => (
+  type === 'array' ? 'Array'
+    : type === 'integer' ? 'number'
+      : type
+);
 
 const escapeQuote = (str) => str.replace(/'/g, '\\\'');
+
+
+const preparePath = R.pipe(
+  R.split('.'),
+  R.map((str) => (str.indexOf(' ') >= 0 ? `"${str}"` : str)),
+  R.join('.')
+);
 
 /*
  * Writes a matcher. Is written if constants are found on the schema.
@@ -144,7 +155,7 @@ export const writeCommentLine = ({ description, path }) => `
  * Writes a path declaration
  */
 export const writePathLine = ({ alias, path }) => `
-  ${alias}: '${path}'`;
+  ${alias}: '${preparePath(path)}'`;
 
 
 const writeEventType = (props) => (props
@@ -227,7 +238,10 @@ const mock = (input) => kit.expand({${mocks || ''}
 });
 `;
 
-const normalizePath = (path) => (path.indexOf('.') < 0 ? path : `'${path}'`);
+const normalizePath = R.pipe(
+  preparePath,
+  (path) => (path.indexOf('.') < 0 ? path : `'${path}'`)
+);
 
 /*
  * Writes a single mock line. Looks for `mock` declarations in the schema def.
@@ -242,7 +256,7 @@ export const writeMockLine = ({
 export const writeMatch = ({
   path, useConst
 }) => (
-  useConst ? `${path}=='${useConst}'` : path
+  useConst ? `${preparePath(path)}=='${useConst}'` : path
 );
 
 /*

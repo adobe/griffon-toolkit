@@ -29,7 +29,7 @@
       "description": "The type of event",
       "type": "string",
       "mock": "generic",
-      "enum": ["blob", "control", "generic", "log", "status"],
+      "enum": ["blob", "client", "control", "generic", "log", "status"],
       "match": true
     },
     "uuid": {

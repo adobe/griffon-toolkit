@@ -31,7 +31,7 @@ import schema from '../schemas/startPlacesMonitor.json';
  *   annotations: <array>,
  *   clientId: <string>,
  *   timestamp: <number>,
- *   type: <enum(blob, control, generic, log, status)>,
+ *   type: <enum(blob, client, control, generic, log, status)>,
  *   uuid: <string>,
  * }
  * ```

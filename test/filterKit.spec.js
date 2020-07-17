@@ -24,11 +24,18 @@ const makeHiddenAnnotation = (value = true) => annotation.mock({
 
 const plainEvent = event.mock({
   [event.path.rootId]: 'plainEvent',
+  [event.path.clientId]: 'abc',
   [event.path.timestamp]: Date.parse('01 Jan 2020 01:01:00 GMT')
 });
 const plainEvent2 = event.mock({
   [event.path.rootId]: 'plainEvent2',
+  [event.path.clientId]: 'abc',
   [event.path.timestamp]: Date.parse('01 Jan 2020 02:01:00 GMT')
+});
+const plainEvent3 = event.mock({
+  [event.path.rootId]: 'plainEvent3',
+  [event.path.clientId]: 'efg',
+  [event.path.timestamp]: Date.parse('01 Jan 2020 03:01:00 GMT')
 });
 const hiddenEvent = event.mock({
   [event.path.rootId]: 'hiddenEvent',
@@ -62,6 +69,16 @@ describe('Filter Kit', () => {
 
       // valid if hidden is true
       expect(results[1].uuid).toBe('visibleEvent');
+    });
+  });
+
+  describe('makeClientFilter', () => {
+    it('makes a filter that chooses events by client id', () => {
+      const match = kit.match(filterKit.makeClientFilter(['abc']));
+      const matchMore = kit.match(filterKit.makeClientFilter(['abc', 'efg']));
+
+      expect(match([plainEvent, plainEvent2, plainEvent3]).length).toBe(2);
+      expect(matchMore([plainEvent, plainEvent2, plainEvent3]).length).toBe(3);
     });
   });
 

@@ -212,7 +212,14 @@ const modifyBulk = R.curry((instructions, data) => R.map(
  * @param {string} path A valid JMESPath
  * @returns {Array}
  */
-const convertPath = (path) => path.split('.');
+const inQuotes = /"(.*?)"/;
+const convertPath = R.pipe(
+  R.split('.'),
+  R.map((section) => {
+    const hasQuotes = section.match(inQuotes);
+    return hasQuotes ? hasQuotes[1] : section;
+  })
+);
 
 /**
  * Expands all the provided path/value pairs, converting
@@ -234,7 +241,8 @@ const convertPath = (path) => path.split('.');
 const expand = R.pipe(
   R.reject(R.isNil),
   R.toPairs,
-  R.reduce((acc, [path, value]) => R.assocPath(convertPath(path), value, acc), {})
+  R.reduce((acc, [path, value]) => R.assocPath(convertPath(path), value, acc),
+    {})
 );
 
 /**
