@@ -56,6 +56,16 @@ describe('Kit Tests', () => {
       .expand({ 'size.width': 200, 'size.height': 300 }))
       .toEqual({ size: { width: 200, height: 300 } });
   });
+  it('will map and expand provided paths', () => {
+    const path = {
+      width: 'size.width',
+      height: 'size.height'
+    }
+    expect(kit.expandWithPaths(
+      path,
+      { 'width': 200, 'height': 300 }
+    )).toEqual({ size: { width: 200, height: 300 } });
+  });
   it('can test against a schema', () => {
     expect(kit.validateSchema(entry.schema, mockEntry)).toBe(true);
     expect(kit.validateSchema(entry.schema, mockAEP)).toBe(false);

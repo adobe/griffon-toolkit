@@ -246,6 +246,38 @@ const expand = R.pipe(
 );
 
 /**
+ * Expands with paths. Calls expand, but first will map the provided datas
+ * keys using the provided path map.
+ *
+ * @function
+ * @param {object} paths Flat object that maps keys to JMESPaths
+ * @param {object} kvps Flat object where keys are JMESPaths or path keys
+ * @returns {object}
+ * @example
+ * import core from 'griffon-toolkit/core';
+ *
+ * const path = {
+ *   width: 'size.width',
+ *   height: 'size.height'
+ * };
+ *
+ * // returns { size: { width: 200, height: 300 } }
+ * core.expandWithPath({ width: 200, height: 300 });
+ * @see kit.expand
+ */
+const expandWithPaths = R.curry((path, kvps) => R.pipe(
+  (kvps) => {
+    const mapped = {};
+    R.forEachObjIndexed((value, key) => {
+      const newKey = path[key] || key;
+      mapped[newKey] = value;
+    }, kvps);
+    return mapped;
+  },
+  expand
+)(kvps));
+
+/**
  * Takes the provided json schema and validates the provided data against it
  * using AJV.
  *
@@ -289,6 +321,7 @@ export default {
   curry,
   isMatch,
   expand,
+  expandWithPaths,
   match,
   modify,
   modifyBulk,

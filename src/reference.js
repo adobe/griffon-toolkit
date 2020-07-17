@@ -16,20 +16,26 @@ import annotation from './annotation';
 import clientInfo from './clientInfo';
 import clientInfoAndroid from './clientInfoAndroid';
 import clientInfoIOS from './clientInfoIOS';
+import command from './command';
+import configUpdateCommand from './configUpdateCommand';
 import event from './event';
+import fakeEventCommand from './fakeEventCommand';
 import genericPlaces from './genericPlaces';
 import logEvent from './logEvent';
+import logForwardCommand from './logForwardCommand';
 import placesEntry from './placesEntry';
 import placesExit from './placesExit';
 import poi from './poi';
 import receivePlaces from './receivePlaces';
 import requestPlaces from './requestPlaces';
+import screenshotCaptureCommand from './screenshotCaptureCommand';
 import session from './session';
 import sessionAnnotation from './sessionAnnotation';
+import startEventForwardingCommand from './startEventForwardingCommand';
 import startPlacesMonitor from './startPlacesMonitor';
 
 const schemaFiles = {
-  aepMobile, annotation, clientInfo, clientInfoAndroid, clientInfoIOS, event, genericPlaces, logEvent, placesEntry, placesExit, poi, receivePlaces, requestPlaces, session, sessionAnnotation, startPlacesMonitor
+  aepMobile, annotation, clientInfo, clientInfoAndroid, clientInfoIOS, command, configUpdateCommand, event, fakeEventCommand, genericPlaces, logEvent, logForwardCommand, placesEntry, placesExit, poi, receivePlaces, requestPlaces, screenshotCaptureCommand, session, sessionAnnotation, startEventForwardingCommand, startPlacesMonitor
 };
 
 /**

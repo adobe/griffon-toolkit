@@ -30,6 +30,13 @@ describe('Test Auto Generated Output', () => {
     const mock = entry.mock();
     expect(entry.validate(mock)).toBe(true);
   });
+  it('creates a make command', () => {
+    expect(root.make()).toEqual({});
+
+    const entryEvent = entry.make();
+    expect(Object.keys(entryEvent.payload).length).toBe(3);
+    expect(entry.getRegionEventType(entryEvent)).toBe('entry');
+  });
   it('matches against matchers', () => {
     const events = [
       entry.mock(),
@@ -46,6 +53,13 @@ describe('Test Auto Generated Output', () => {
     const mock = root.mock();
     expect(root.getClientId(mock)).toBe('appleABC');
     expect(root.getRootType(mock)).toBe('generic');
+  });
+  it('generates a generic get', () => {
+    const entryEvent = entry.mock({
+      city: 'Appleton'
+    });
+    expect(entry.get('city', entryEvent)).toBe('Appleton');
+    expect(entry.get(entry.path.city, entryEvent)).toBe('Appleton');
   });
   it('exports the parent depth', () => {
     expect(root.parentDepth).toBe(0);

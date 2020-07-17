@@ -78,6 +78,15 @@ const parentDepth = 0;
  */
 const label = 'Griffon Session';
 
+/**
+ * Retrieves a value from the object. You can provide either a path or an alias.
+ *
+ * @function
+ * @param path or alias
+ * @param {*} data Data to search
+ * @returns {*}
+ */
+const get = kit.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
  * Returns the `annotations` from the Griffon Session.
@@ -153,6 +162,17 @@ const getSessionId = kit.search(path.sessionId);
 
 
 /**
+ * Generates a Griffon Session with the const values set.
+ * Can be useful in testing.
+ * Can provide additional data by providing a flat object of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const make = kit.expand;
+
+/**
  * Generates a Griffon Session with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
@@ -162,12 +182,12 @@ const getSessionId = kit.search(path.sessionId);
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input) => kit.expand({
+const mock = (input) => kit.expandWithPaths(path, {
   link: 'test://',
   firstName: 'John',
   lastName: 'Doe',
   name: 'Test',
-  uuid: 'abc',
+  sessionId: 'abc',
   ...input
 });
 
@@ -183,8 +203,10 @@ const validate = kit.validateSchema(schema);
 export default {
   path,
   mock,
+  make,
   schema,
   validate,
+  get,
   ...customExports,
   getAnnotations,
   getLink,

@@ -144,6 +144,15 @@ const parentDepth = 0;
  */
 const label = 'Annotation Object';
 
+/**
+ * Retrieves a value from the object. You can provide either a path or an alias.
+ *
+ * @function
+ * @param path or alias
+ * @param {*} data Data to search
+ * @returns {*}
+ */
+const get = kit.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
  * Returns the `payload` from the Annotation Object.
@@ -196,6 +205,17 @@ const getUuid = kit.search(path.uuid);
 
 
 /**
+ * Generates a Annotation Object with the const values set.
+ * Can be useful in testing.
+ * Can provide additional data by providing a flat object of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const make = kit.expand;
+
+/**
  * Generates a Annotation Object with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
@@ -205,8 +225,8 @@ const getUuid = kit.search(path.uuid);
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input) => kit.expand({
-  type: 'test_suite',
+const mock = (input) => kit.expandWithPaths(path, {
+  namespace: 'test_suite',
   uuid: '423',
   ...input
 });
@@ -223,8 +243,10 @@ const validate = kit.validateSchema(schema);
 export default {
   path,
   mock,
+  make,
   schema,
   validate,
+  get,
   ...customExports,
   getPayload,
   getPayloadKey,

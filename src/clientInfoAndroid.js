@@ -167,6 +167,15 @@ const TYPE = 'connect';
  */
 const ROOT_TYPE = 'client';
 
+/**
+ * Retrieves a value from the object. You can provide either a path or an alias.
+ *
+ * @function
+ * @param path or alias
+ * @param {*} data Data to search
+ * @returns {*}
+ */
+const get = kit.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
  * Returns the `platform` from the iOS Client Info Event.
@@ -324,6 +333,22 @@ const matcher = kit.combineAll([
 const isMatch = (source) => kit.isMatch(matcher, source);
 
 /**
+ * Generates a iOS Client Info Event with the const values set.
+ * Can be useful in testing.
+ * Can provide additional data by providing a flat object of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const make = (input) => kit.expandWithPaths(path, {
+  platform: 'Android',
+  type: 'connect',
+  rootType: 'client',
+  ...input
+});
+
+/**
  * Generates a iOS Client Info Event with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
@@ -333,22 +358,22 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input) => kit.expand({
-  'payload.deviceInfo."Canonical platform name"': 'Android',
-  'payload.deviceInfo."Device name"': 'Testing Android',
-  'payload.deviceInfo."Device type"': 'Phone',
-  'payload.deviceInfo."Device manufacturer"': 'Google',
-  'payload.deviceInfo."Operating system"': 'Android 10',
-  'payload.deviceInfo."Screen size"': '1080x2028',
-  'payload.deviceInfo."Battery level"': 94,
-  'payload.deviceInfo."Location service enabled"': true,
-  'payload.deviceInfo."Location authorization status"': 'When in use',
-  'payload.deviceInfo."Carrier name"': 'Google Fi',
-  'payload.type': 'connect',
-  type: 'client',
+const mock = (input) => kit.expandWithPaths(path, {
+  platform: 'Android',
+  deviceName: 'Testing Android',
+  deviceType: 'Phone',
+  manufacturer: 'Google',
+  os: 'Android 10',
+  screenSize: '1080x2028',
+  batteryLevel: 94,
+  locationEnabled: true,
+  locationAuth: 'When in use',
+  carrierName: 'Google Fi',
+  type: 'connect',
+  rootType: 'client',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
-  uuid: '123',
+  rootId: '123',
   ...input
 });
 
@@ -364,8 +389,10 @@ const validate = kit.validateSchema(schema);
 export default {
   path,
   mock,
+  make,
   schema,
   validate,
+  get,
   ...customExports,
   getPlatform,
   getDeviceName,

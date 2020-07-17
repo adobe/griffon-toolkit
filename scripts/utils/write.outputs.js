@@ -72,6 +72,7 @@ export const writeFullContent = ({
   exports,
   paths,
   gets,
+  make,
   mock,
   matches,
   namespace
@@ -128,7 +129,17 @@ const parentDepth = ${depth};
  */
 const label = '${shortDesc}';
 ${constants}
+/**
+ * Retrieves a value from the object. You can provide either a path or an alias.
+ *
+ * @function
+ * @param path or alias
+ * @param {*} data Data to search
+ * @returns {*}
+ */
+const get = kit.curry((alias, data) => kit.search(path[alias] || alias, data));
 ${gets}${writeMatches(matches, shortDesc)}
+${make}
 ${mock}
 /**
  * Validates the ${shortDesc} against the json schema
@@ -233,10 +244,31 @@ export const writeMock = ({
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input) => kit.expand({${mocks || ''}
+const mock = (input) => kit.expandWithPaths(path, {${mocks || ''}
   ...input
 });
 `;
+
+/*
+ * Writes a function that can be used to create this object. Looks for `const` declarations in the schema def.
+ */
+export const writeMake = ({
+  shortDesc,
+  makes
+}) => `
+/**
+ * Generates a ${shortDesc} with the const values set.
+ * Can be useful in testing.
+ * Can provide additional data by providing a flat object of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const make = ${makes ? `(input) => kit.expandWithPaths(path, {${makes}
+  ...input
+})` : 'kit.expand'};`;
+
 
 const normalizePath = R.pipe(
   preparePath,
@@ -247,11 +279,11 @@ const normalizePath = R.pipe(
  * Writes a single mock line. Looks for `mock` declarations in the schema def.
  */
 export const writeMockLine = ({
-  path,
+  alias,
   type,
   useMock
 }) => `
-  ${normalizePath(path)}: ${makeStrValue(useMock, type)},`;
+  ${alias}: ${makeStrValue(useMock, type)},`;
 
 export const writeMatch = ({
   path, useConst

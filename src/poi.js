@@ -119,6 +119,15 @@ const parentDepth = 0;
  */
 const label = 'POI Object';
 
+/**
+ * Retrieves a value from the object. You can provide either a path or an alias.
+ *
+ * @function
+ * @param path or alias
+ * @param {*} data Data to search
+ * @returns {*}
+ */
+const get = kit.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
  * Returns the `latitude` from the POI Object.
@@ -327,6 +336,17 @@ const getUuid = kit.search(path.uuid);
 
 
 /**
+ * Generates a POI Object with the const values set.
+ * Can be useful in testing.
+ * Can provide additional data by providing a flat object of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const make = kit.expand;
+
+/**
  * Generates a POI Object with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
@@ -336,14 +356,14 @@ const getUuid = kit.search(path.uuid);
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input) => kit.expand({
+const mock = (input) => kit.expandWithPaths(path, {
   latitude: 40.4045982,
-  libraryid: '04213',
+  libraryId: '04213',
   longitude: -111.8636017,
-  regionname: 'Adobe',
+  name: 'Adobe',
   radius: 375,
-  regionid: '31512',
-  useriswithin: false,
+  id: '31512',
+  within: false,
   weight: 2,
   type: 'test_suite',
   uuid: '423',
@@ -362,8 +382,10 @@ const validate = kit.validateSchema(schema);
 export default {
   path,
   mock,
+  make,
   schema,
   validate,
+  get,
   ...customExports,
   getLatitude,
   getLibraryId,

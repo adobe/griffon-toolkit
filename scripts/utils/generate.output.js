@@ -25,6 +25,7 @@ import {
   writeStructureLine,
   writeGet,
   writeGetFromObject,
+  writeMake,
   writeMock,
   writeMockLine,
   writeMatch,
@@ -60,7 +61,7 @@ const makePropertyProps = (property, key, path, parent) => ({
  */
 export const expandMyProperties = ({
   path = [],
-  output: outputIn = { gets: '', exports: ['path', 'mock', 'schema', 'validate', '...customExports'] },
+  output: outputIn = { gets: '', exports: ['path', 'mock', 'make', 'schema', 'validate', 'get', '...customExports'] },
   properties,
   parent
 }) => {
@@ -97,7 +98,7 @@ export const expandMyProperties = ({
 const expandFullProperties = ({
   path = [],
   output: outputIn = {
-    paths: [], event: '', mocks: '', matches: [], constants: '', exports: []
+    paths: [], event: '', makes: '', mocks: '', matches: [], constants: '', exports: []
   },
   properties,
   depth = 2,
@@ -113,6 +114,9 @@ const expandFullProperties = ({
       }
       if (props.mock || props.const) {
         output.mocks += writeMockLine(props);
+      }
+      if (props.const) {
+        output.makes += writeMockLine(props);
       }
       writePath += writePathLine(props);
       output.paths.push(writePath);
@@ -214,6 +218,10 @@ export default (schema, outputFile, schemaMap) => {
     mock: writeMock({
       shortDesc: schema.shortDesc,
       mocks: expandedFull.mocks
+    }),
+    make: writeMake({
+      shortDesc: schema.shortDesc,
+      makes: expandedFull.makes
     }),
     ...expanded,
     ...expandedFull,

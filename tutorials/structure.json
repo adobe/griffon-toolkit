@@ -1,4 +1,7 @@
 {
+  "a_data_class": {
+    "title": "Data Classes"
+  },
   "a_matchers": {
     "title": "Using Matchers"
   },

@@ -147,6 +147,15 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
  */
 const EVENT_TYPE = 'com.adobe.eventtype.places';
 
+/**
+ * Retrieves a value from the object. You can provide either a path or an alias.
+ *
+ * @function
+ * @param path or alias
+ * @param {*} data Data to search
+ * @returns {*}
+ */
+const get = kit.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
  * Returns the `count` from the Request Places Event.
@@ -221,6 +230,22 @@ const matcher = kit.combineAll([
 const isMatch = (source) => kit.isMatch(matcher, source);
 
 /**
+ * Generates a Request Places Event with the const values set.
+ * Can be useful in testing.
+ * Can provide additional data by providing a flat object of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const make = (input) => kit.expandWithPaths(path, {
+  requestType: 'requestgetnearbyplaces',
+  eventSource: 'com.adobe.eventsource.requestcontent',
+  eventType: 'com.adobe.eventtype.places',
+  ...input
+});
+
+/**
  * Generates a Request Places Event with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
@@ -230,18 +255,18 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input) => kit.expand({
-  'payload.ACPExtensionEventData.count': 10,
-  'payload.ACPExtensionEventData.latitude': 40.4349,
-  'payload.ACPExtensionEventData.longitude': -111.891,
-  'payload.ACPExtensionEventData.requesttype': 'requestgetnearbyplaces',
-  'payload.ACPExtensionEventSource': 'com.adobe.eventsource.requestcontent',
-  'payload.ACPExtensionEventType': 'com.adobe.eventtype.places',
+const mock = (input) => kit.expandWithPaths(path, {
+  count: 10,
+  latitude: 40.4349,
+  longitude: -111.891,
+  requestType: 'requestgetnearbyplaces',
+  eventSource: 'com.adobe.eventsource.requestcontent',
+  eventType: 'com.adobe.eventtype.places',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
-  type: 'generic',
-  uuid: '123',
+  rootType: 'generic',
+  rootId: '123',
   ...input
 });
 
@@ -257,8 +282,10 @@ const validate = kit.validateSchema(schema);
 export default {
   path,
   mock,
+  make,
   schema,
   validate,
+  get,
   ...customExports,
   getCount,
   getLatitude,

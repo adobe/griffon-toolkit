@@ -1,0 +1,27 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/screenshotCaptureCommand",
+  "shortDesc": "Screenshot Capture Command",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/command" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of command",
+          "type": "string",
+          "const": "screenshot"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "vendor": {
+      "inherit": true,
+      "type": "string",
+      "const": "com.adobe.griffon.mobile"
+    }
+  }
+}
