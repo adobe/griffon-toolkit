@@ -266,12 +266,12 @@ const expand = R.pipe(
  * @see kit.expand
  */
 const expandWithPaths = R.curry((path, kvps) => R.pipe(
-  (kvps) => {
+  (data) => {
     const mapped = {};
     R.forEachObjIndexed((value, key) => {
       const newKey = path[key] || key;
       mapped[newKey] = value;
-    }, kvps);
+    }, data);
     return mapped;
   },
   expand

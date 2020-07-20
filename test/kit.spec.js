@@ -60,10 +60,10 @@ describe('Kit Tests', () => {
     const path = {
       width: 'size.width',
       height: 'size.height'
-    }
+    };
     expect(kit.expandWithPaths(
       path,
-      { 'width': 200, 'height': 300 }
+      { width: 200, height: 300 }
     )).toEqual({ size: { width: 200, height: 300 } });
   });
   it('can test against a schema', () => {

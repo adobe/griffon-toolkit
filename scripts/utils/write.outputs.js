@@ -269,12 +269,6 @@ const make = ${makes ? `(input) => kit.expandWithPaths(path, {${makes}
   ...input
 })` : 'kit.expand'};`;
 
-
-const normalizePath = R.pipe(
-  preparePath,
-  (path) => (path.indexOf('.') < 0 ? path : `'${path}'`)
-);
-
 /*
  * Writes a single mock line. Looks for `mock` declarations in the schema def.
  */
