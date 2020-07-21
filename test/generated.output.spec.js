@@ -11,10 +11,10 @@ governing permissions and limitations under the License.
 */
 
 // import jmespath from 'jmespath';
-import entry from '../src/placesEntry';
-import aep from '../src/aepMobile';
-import root from '../src/event';
-import iosClient from '../src/clientInfoIOS';
+import entry from '../packages/aep-mobile/src/placesEntry';
+import aep from '../packages/aep-mobile/src/mobileEvent';
+import root from '../packages/common/src/event';
+import iosClient from '../packages/aep-mobile/src/clientInfoIOS';
 
 describe('Test Auto Generated Output', () => {
   it('exports paths', () => {
@@ -25,10 +25,6 @@ describe('Test Auto Generated Output', () => {
   });
   it('exports paths from object refs', () => {
     expect(Object.keys(entry.path).length).toBe(30);
-  });
-  it('validates against schemas', () => {
-    const mock = entry.mock();
-    expect(entry.validate(mock)).toBe(true);
   });
   it('creates a make command', () => {
     expect(root.make()).toEqual({});

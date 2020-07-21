@@ -1,0 +1,32 @@
+{
+  "name": "@adobe/griffon-toolkit-aep-mobile",
+  "description": "Events definitions for the AEP Mobile SDK",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adobe/griffon-toolkit.git",
+    "directory": "packages/aep-mobile"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Adobe Systems",
+  "license": "Apache-2.0",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "ajv": "^6.12.2",
+    "jmespath": "^0.15.0",
+    "lerna": "^3.22.1",
+    "ramda": "^0.27.0"
+  },
+  "dependencies": {
+    "@adobe/griffon-toolkit": "*"
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "babel src --out-dir dist --root-mode upward"
+  },
+  "main": "dist/index.js"
+}

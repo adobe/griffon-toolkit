@@ -1,24 +1,23 @@
 {
-  "a_data_class": {
+  "a2_installation": {
+    "title": "Installation"
+  },
+  "a3_data_class": {
     "title": "Data Classes"
   },
-  "a_matchers": {
+  "a4_matchers": {
     "title": "Using Matchers"
   },
-  "contributing": {
-    "title": "Contribute to Griffon Toolkit",
-    "children": ["schemas", "commands", "customize", "guidelines"]
-  },
-  "schemas": {
+  "c2_schemas": {
     "title": "Writing Schemas"
   },
-  "commands": {
+  "c3_commands": {
     "title": "How to Run"
   },
-  "guidelines": {
+  "c4_guidelines": {
     "title": "Contribution Guidelines"
   },
-  "customize": {
+  "c5_customize": {
     "title": "Add Custom Code"
   }
 }

@@ -1,0 +1,37 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/common/command",
+  "shortDesc": "Outgoing Command",
+  "group": "command",
+  "type": "object",
+  "properties": {
+    "clientId": {
+      "description": "A unique id that differentiates clients from one another",
+      "mock": "appleABC",
+      "type": "string"
+    },
+    "payload": {
+      "description": "An object with custom data describing the event",
+      "type": "object"
+    },
+    "timestamp": {
+      "description": "When the command was triggered",
+      "mock": "Date.parse('12 Jan 2020 07:23:17 GMT')",
+      "type": "number",
+      "match": true
+    },
+    "type": {
+      "alias": "rootType",
+      "description": "The type of event. For commands it's always 'control'.",
+      "type": "string",
+      "const": "control"
+    },
+    "vendor": {
+      "description": "The vendor of the plugin to receive the command",
+      "type": "string",
+      "mock": "com.adobe.mobile.sdk"
+    }
+  },
+  "required": [
+    "timestamp", "type"
+  ]
+}

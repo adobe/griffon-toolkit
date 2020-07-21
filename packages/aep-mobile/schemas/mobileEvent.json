@@ -1,0 +1,52 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent",
+  "shortDesc": "Generic Mobile Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "alias": "eventData",
+          "description": "An object with the custom data describing the event",
+          "type": "object"
+        },
+        "ACPExtensionEventName": {
+          "alias": "eventName",
+          "description": "The name of the event",
+          "type": "string"
+        },
+        "ACPExtensionEventSource": {
+          "alias": "eventSource",
+          "description": "The event source",
+          "type": "string",
+          "mock": "com.adobe.eventsource.responsecontent",
+          "match": true
+        },
+        "ACPExtensionEventType": {
+          "alias": "eventType",
+          "description": "The event type",
+          "type": "string",
+          "mock": "test event",
+          "match": true
+        },
+        "ACPExtensionEventUniqueIdentifier": {
+          "alias": "eventId",
+          "description": "The unique event id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ACPExtensionEventSource", "ACPExtensionEventType"
+      ]
+    },
+    "vendor": {
+      "description": "The vendor of the plugin that sent the event",
+      "type": "string",
+      "mock": "com.adobe.mobile.sdk"
+    }
+  }
+}

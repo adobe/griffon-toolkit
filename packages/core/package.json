@@ -1,0 +1,28 @@
+{
+  "name": "@adobe/griffon-toolkit",
+  "description": "Core files used by griffon-toolkit",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adobe/griffon-toolkit.git",
+    "directory": "packages/core"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Adobe Systems",
+  "license": "Apache-2.0",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "ajv": "^6.12.2",
+    "jmespath": "^0.15.0",
+    "ramda": "^0.27.0"
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "babel src --out-dir dist --root-mode upward"
+  },
+  "main": "dist/index.js"
+}

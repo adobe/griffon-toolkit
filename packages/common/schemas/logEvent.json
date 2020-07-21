@@ -1,0 +1,26 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/common/logEvent",
+  "shortDesc": "Log Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "payload": {
+    "inherit": true,
+    "type": "object",
+    "properties": {
+      "logline": {
+        "description": "Represents a line logged by the application",
+        "type": "string",
+        "mock": "07-16 11:28:56.116 20544:20583 V/AdobeExperienceSDK ]↵EventHub(AMSEventHub) - Registering extension"
+      }
+    },
+    "required": [
+      "logline"
+    ]
+  },
+  "properties": {
+    "type": {
+      "const": "log"
+    }
+  }
+}

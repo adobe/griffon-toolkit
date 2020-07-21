@@ -1,0 +1,53 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/requestPlaces",
+  "shortDesc": "Request Places Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/genericPlaces" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "alias": "data",
+          "type": "object",
+          "properties": {
+            "count": {
+              "description": "The number of POIs to return",
+              "type": "number",
+              "mock": 10
+            },
+            "latitude": {
+              "description": "The latitude to search from",
+              "type": "number",
+              "mock": 40.4349
+            },
+            "longitude": {
+              "description": "The longitude to search from",
+              "type": "number",
+              "mock": -111.8910
+            },
+            "requesttype": {
+              "alias": "requestType",
+              "description": "The type of request we are making",
+              "type": "string",
+              "const": "requestgetnearbyplaces"
+            }
+          },
+          "required": [
+            "count", "latitude", "longitude", "requesttype"
+          ]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

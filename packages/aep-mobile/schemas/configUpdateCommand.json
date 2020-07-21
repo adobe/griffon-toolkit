@@ -1,0 +1,32 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/configUpdateCommand",
+  "shortDesc": "Config Update Command",
+  "group": "command",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/command" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of command",
+          "type": "string",
+          "const": "configUpdate"
+        },
+        "detail": {
+          "description": "Object containing the config paths and values to update",
+          "type": "object"
+        }
+      },
+      "required": [
+        "type", "detail"
+      ]
+    },
+    "vendor": {
+      "inherit": true,
+      "type": "string",
+      "const": "com.adobe.griffon.mobile"
+    }
+  }
+}

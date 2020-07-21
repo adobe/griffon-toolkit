@@ -1,0 +1,43 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/placesExit",
+  "shortDesc": "Places Exit Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/genericPlaces" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "alias": "data",
+          "type": "object",
+          "properties": {
+            "triggeringregion": {
+              "alias": "POI",
+              "description": "The POI that the user exited",
+              "$ref": "http://griffon.adobe.com/schemas/common/poi"
+            },
+            "regioneventtype": {
+              "type": "string",
+              "alias": "regionEventType",
+              "description": "The type of action that took place. In this case it is exit",
+              "const": "exit"
+            }
+          },
+          "required": [
+            "triggeringregion", "regioneventtype"
+          ]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.responsecontent"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

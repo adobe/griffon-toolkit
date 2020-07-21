@@ -1,0 +1,28 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/startEventForwardingCommand",
+  "shortDesc": "Start Event Forwarding Command",
+  "group": "command",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/command" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of command",
+          "type": "string",
+          "const": "startEventForwarding"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "vendor": {
+      "inherit": true,
+      "type": "string",
+      "const": "com.adobe.griffon.mobile"
+    }
+  }
+}

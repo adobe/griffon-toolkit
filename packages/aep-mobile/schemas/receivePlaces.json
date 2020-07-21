@@ -1,0 +1,41 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/receivePlaces",
+  "shortDesc": "Receive Places Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/genericPlaces" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "alias": "data",
+          "type": "object",
+          "properties": {
+            "nearbypois": {
+              "alias": "POIs",
+              "description": "The resulting POIs",
+              "match": true,
+              "type": "array",
+              "contains": {
+                "$ref": "http://griffon.adobe.com/schemas/common/poi"
+              }
+            }
+          },
+          "required": [
+            "nearybypois"
+          ]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.responsecontent"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

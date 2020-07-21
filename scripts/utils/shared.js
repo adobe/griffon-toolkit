@@ -10,10 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-/*
-  eslint no-console: 0
-*/
-
 const filePath = require('path');
 const fs = require('fs');
 

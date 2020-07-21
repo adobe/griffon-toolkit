@@ -10,10 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-/*
-  eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}],
-  no-console: 0
-*/
 import lodash from 'lodash';
 import * as R from 'ramda';
 
@@ -61,7 +57,7 @@ const makePropertyProps = (property, key, path, parent) => ({
  */
 export const expandMyProperties = ({
   path = [],
-  output: outputIn = { gets: '', exports: ['path', 'mock', 'make', 'schema', 'validate', 'get', '...customExports'] },
+  output: outputIn = { gets: '', exports: ['path', 'mock', 'make', 'schema', 'get', '...customExports'] },
   properties,
   parent
 }) => {
@@ -213,6 +209,7 @@ export default (schema, outputFile, schemaMap) => {
   const output = writeFullContent({
     namespace,
     shortDesc: schema.shortDesc,
+    group: schema.group,
     customCode: extractCustom(outputFile),
     depth,
     mock: writeMock({
@@ -225,7 +222,7 @@ export default (schema, outputFile, schemaMap) => {
     }),
     ...expanded,
     ...expandedFull,
-    exports: [...exports, 'label', 'parentDepth']
+    exports: [...exports, 'label', 'group', 'parentDepth']
   });
 
   writeFile(outputFile, output);
