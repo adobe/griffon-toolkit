@@ -9,7 +9,7 @@
       "inherit": true,
       "type": "object",
       "properties": {
-        "blobid": {
+        "blobId": {
           "description": "ID returned from the blob service",
           "type": "string",
           "mock": "abcdefg"
