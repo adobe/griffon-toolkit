@@ -24,7 +24,9 @@ import schema from '../schemas/logForwardCommand.json';
  *     type: 'logForwarding'
  *     detail: {
  *       enable: <boolean>,
+ *       ...
  *     },
+ *     ...
  *   },
  *   vendor: 'com.adobe.griffon.mobile'
  *   clientId: <string>,

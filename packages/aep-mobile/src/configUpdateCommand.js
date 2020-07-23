@@ -23,6 +23,7 @@ import schema from '../schemas/configUpdateCommand.json';
  *   payload: {
  *     type: 'configUpdate'
  *     detail: <object>,
+ *     ...
  *   },
  *   vendor: 'com.adobe.griffon.mobile'
  *   clientId: <string>,

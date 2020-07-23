@@ -33,10 +33,12 @@ import schema from '../schemas/clientInfoAndroid.json';
  *       Location authorization status: <string>,
  *       Carrier name: <string>,
  *       Low power mode enabled: <boolean>,
+ *       ...
  *     },
  *     appSettings: <object>,
  *     type: 'connect'
  *     version: <string>,
+ *     ...
  *   },
  *   type: 'client'
  *   annotations: <array>,

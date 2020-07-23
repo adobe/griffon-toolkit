@@ -22,6 +22,7 @@ import schema from '../schemas/startEventForwardingCommand.json';
  * {
  *   payload: {
  *     type: 'startEventForwarding'
+ *     ...
  *   },
  *   vendor: 'com.adobe.griffon.mobile'
  *   clientId: <string>,

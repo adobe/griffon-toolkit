@@ -168,7 +168,7 @@ export const writePathLine = ({ alias, path }) => `
   ${alias}: '${preparePath(path)}'`;
 
 
-const writeEventType = (props) => (props
+const writeEventType = (props, name) => (props
   ? props === '{'
     ? '{'
     : props.useConst
@@ -176,16 +176,19 @@ const writeEventType = (props) => (props
       : props.enum
         ? `<enum(${props.enum.join(', ')})>,`
         : `<${props.type}>,`
-  : '},'
+  : name === '...' ? '' : '},'
 );
-const writeEventName = (name) => (name ? `${name}: ` : '');
+const writeEventName = (name) => (
+  name === '...' ? name
+    : name ? `${name}: ` : ''
+);
 
 /*
  * Writes a line about the structure. This will be spit out in the comments
  * of the object and is used to document the object structure.
  */
 export const writeStructureLine = (pad, name, props) => `
- * ${''.padStart(pad, ' ')}${writeEventName(name)}${writeEventType(props)}`;
+ * ${''.padStart(pad, ' ')}${writeEventName(name)}${writeEventType(props, name)}`;
 
 /*
  * Writes a getter that gets a piece of content from the object

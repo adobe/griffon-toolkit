@@ -27,7 +27,9 @@ import schema from '../schemas/fakeEventCommand.json';
  *       eventType: <string>,
  *       eventSource: <string>,
  *       eventData: <object>,
+ *       ...
  *     },
+ *     ...
  *   },
  *   vendor: 'com.adobe.griffon.mobile'
  *   clientId: <string>,

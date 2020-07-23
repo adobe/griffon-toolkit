@@ -33,10 +33,12 @@ import schema from '../schemas/clientInfoIOS.json';
  *       Location service enabled: <boolean>,
  *       Location authorization status: <string>,
  *       Low power mode enabled: <boolean>,
+ *       ...
  *     },
  *     appSettings: <object>,
  *     type: 'connect'
  *     version: <string>,
+ *     ...
  *   },
  *   type: 'client'
  *   annotations: <array>,

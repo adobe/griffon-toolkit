@@ -135,6 +135,9 @@ const expandFullProperties = ({
           depth: depth + 2,
           parent
         });
+        if (property.additionalProperties !== false) {
+          output.event += writeStructureLine(depth + 2, '...');
+        }
         output.event += writeStructureLine(depth);
       } else {
         output.event += writeStructureLine(depth, key, props);

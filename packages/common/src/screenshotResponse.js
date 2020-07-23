@@ -23,6 +23,7 @@ import schema from '../schemas/screenshotResponse.json';
  *   payload: {
  *     blobid: <string>,
  *     mimeType: <string>,
+ *     ...
  *   },
  *   type: 'blob'
  *   annotations: <array>,

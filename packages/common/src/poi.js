@@ -30,6 +30,7 @@ import schema from '../schemas/poi.json';
  *     country: <string>,
  *     state: <string>,
  *     street: <string>,
+ *     ...
  *   },
  *   radius: <number>,
  *   regionid: <string>,

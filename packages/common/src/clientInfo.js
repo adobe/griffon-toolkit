@@ -25,6 +25,7 @@ import schema from '../schemas/clientInfo.json';
  *     deviceInfo: <object>,
  *     type: 'connect'
  *     version: <string>,
+ *     ...
  *   },
  *   type: 'client'
  *   annotations: <array>,

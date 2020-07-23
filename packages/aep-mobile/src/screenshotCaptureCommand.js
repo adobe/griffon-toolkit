@@ -22,6 +22,7 @@ import schema from '../schemas/screenshotCaptureCommand.json';
  * {
  *   payload: {
  *     type: 'screenshot'
+ *     ...
  *   },
  *   vendor: 'com.adobe.griffon.mobile'
  *   clientId: <string>,
