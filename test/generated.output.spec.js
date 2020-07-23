@@ -11,10 +11,10 @@ governing permissions and limitations under the License.
 */
 
 // import jmespath from 'jmespath';
-import entry from '../src/placesEntry';
-import aep from '../src/aepMobile';
-import root from '../src/event';
-import iosClient from '../src/clientInfoIOS';
+import entry from '../packages/aep-mobile/src/placesEntry';
+import aep from '../packages/aep-mobile/src/mobileEvent';
+import root from '../packages/common/src/event';
+import iosClient from '../packages/aep-mobile/src/clientInfoIOS';
 
 describe('Test Auto Generated Output', () => {
   it('exports paths', () => {
@@ -26,9 +26,12 @@ describe('Test Auto Generated Output', () => {
   it('exports paths from object refs', () => {
     expect(Object.keys(entry.path).length).toBe(30);
   });
-  it('validates against schemas', () => {
-    const mock = entry.mock();
-    expect(entry.validate(mock)).toBe(true);
+  it('creates a make command', () => {
+    expect(root.make()).toEqual({});
+
+    const entryEvent = entry.make();
+    expect(Object.keys(entryEvent.payload).length).toBe(3);
+    expect(entry.getRegionEventType(entryEvent)).toBe('entry');
   });
   it('matches against matchers', () => {
     const events = [
@@ -46,6 +49,13 @@ describe('Test Auto Generated Output', () => {
     const mock = root.mock();
     expect(root.getClientId(mock)).toBe('appleABC');
     expect(root.getRootType(mock)).toBe('generic');
+  });
+  it('generates a generic get', () => {
+    const entryEvent = entry.mock({
+      city: 'Appleton'
+    });
+    expect(entry.get('city', entryEvent)).toBe('Appleton');
+    expect(entry.get(entry.path.city, entryEvent)).toBe('Appleton');
   });
   it('exports the parent depth', () => {
     expect(root.parentDepth).toBe(0);

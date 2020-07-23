@@ -1,0 +1,56 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/fakeEventCommand",
+  "shortDesc": "Fake Event Command",
+  "group": "command",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/command" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "The type of command",
+          "type": "string",
+          "const": "fakeEvent"
+        },
+        "detail": {
+          "description": "Additional command detail",
+          "type": "object",
+          "properties": {
+            "eventName": {
+              "description": "The name of the event",
+              "mock": "Fake Event",
+              "type": "string"
+            },
+            "eventType": {
+              "description": "The event type",
+              "mock": "com.adobe.eventtype.fake",
+              "type": "string"
+            },
+            "eventSource": {
+              "description": "The event source",
+              "mock": "com.adobe.eventsource.responsecontent",
+              "type": "string"
+            },
+            "eventData": {
+              "description": "An object with the custom data describing the event",
+              "type": "object"
+            }
+          },
+          "required": [
+            "eventType", "eventSource"
+          ]
+        }
+      },
+      "required": [
+        "type", "detail"
+      ]
+    },
+    "vendor": {
+      "inherit": true,
+      "type": "string",
+      "const": "com.adobe.griffon.mobile"
+    }
+  }
+}

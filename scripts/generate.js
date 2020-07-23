@@ -10,40 +10,42 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-/*
-  eslint no-console: 0
-*/
-
 import * as R from 'ramda';
 import Ajv from 'ajv';
 
 import generateOutput from './utils/generate.output';
-import generateReference from './utils/generate.reference';
 
 const filePath = require('path');
 const fs = require('fs');
 
-const schemaPath = filePath.join(__dirname, '../schemas');
-const srcPath = filePath.join(__dirname, '../src');
+const packagePath = filePath.join(__dirname, '../packages');
 
 const ajv = new Ajv();
 const schemaFiles = {};
 const schemaMap = {};
 
-// read in all the schemas
-fs.readdirSync(schemaPath).map((fileName) => {
-  const fullFile = filePath.join(schemaPath, fileName);
+fs.readdirSync(packagePath).forEach((dirName) => {
+  const schemaPath = filePath.join(packagePath, dirName, '/schemas');
 
   try {
-    const data = fs.readFileSync(fullFile, 'utf8');
+    // read in all the schemas
+    fs.readdirSync(schemaPath).forEach((fileName) => {
+      const fullFile = filePath.join(schemaPath, fileName);
 
-    const schema = JSON.parse(data);
-    schemaFiles[fullFile] = schema.$id;
-    schemaMap[schema.$id] = schema;
-    return ajv.addSchema(schema);
-  } catch (err) {
-    console.error(err);
-    return false;
+      try {
+        const data = fs.readFileSync(fullFile, 'utf8');
+
+        const schema = JSON.parse(data);
+        schemaFiles[fullFile] = schema.$id;
+        schemaMap[schema.$id] = schema;
+        return ajv.addSchema(schema);
+      } catch (err) {
+        console.error(err);
+      }
+      return false;
+    });
+  } catch (e) {
+    // skip
   }
 });
 
@@ -55,5 +57,3 @@ R.mapObjIndexed((schemaName, schemaFile) => {
   const { schema } = ajv.getSchema(schemaName);
   generateOutput(schema, outputFile, schemaMap);
 }, schemaFiles);
-
-generateReference(schemaFiles, `${srcPath}/reference.js`);

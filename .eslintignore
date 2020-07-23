@@ -4,3 +4,4 @@ dist
 node_modules
 docs
 jsdoc-template
+packages/**/index.js

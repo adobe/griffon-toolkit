@@ -1,0 +1,32 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/common/screenshotResponse",
+  "shortDesc": "Screenshot Response Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "blobid": {
+          "description": "ID returned from the blob service",
+          "type": "string",
+          "mock": "abcdefg"
+        },
+        "mimeType": {
+          "description": "Describes the type of blob content uploaded",
+          "type": "string",
+          "mock": "images/jpg"
+        }
+      },
+      "required": [
+        "mimeType", "blobid"
+      ]
+    },
+    "type": {
+      "inherit": true,
+      "const": "blob"
+    }
+  }
+}

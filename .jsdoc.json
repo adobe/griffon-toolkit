@@ -1,28 +1,28 @@
 {
   "tags": {
-      "allowUnknownTags": true,
-      "dictionaries": ["jsdoc"]
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
   },
   "source": {
-      "include": ["src", "package.json", "README.md"],
-      "includePattern": ".js$",
-      "excludePattern": "(node_modules/|docs)"
+    "include": ["packages", "package.json", "README.md"],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
   },
   "plugins": [
     "plugins/markdown",
     "node_modules/jsdoc-memberof-namespace"
   ],
   "templates": {
-      "referenceTitle": "griffon-toolkit",
-      "disableSort": false,
-      "collapse": true
+    "referenceTitle": "griffon-toolkit",
+    "disableSort": false,
+    "collapse": true
   },
   "opts": {
-      "destination": "./docs",
-      "encoding": "utf8",
-      "private": true,
-      "recurse": true,
-      "tutorials": "./tutorials",
-      "template": "./jsdoc-template"
+    "destination": "./docs",
+    "encoding": "utf8",
+    "private": true,
+    "recurse": true,
+    "tutorials": "./tutorials",
+    "template": "./jsdoc-template"
   }
 }

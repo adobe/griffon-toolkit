@@ -1,0 +1,39 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/common/clientInfo",
+  "shortDesc": "Client Info Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "appSettings": {
+          "description": "A map containing details about the settings of the application on which Griffon is registered",
+          "type": "object"
+        },
+        "deviceInfo": {
+          "description": "A map containing details about the connected device",
+          "type": "object"
+        },
+        "type": {
+          "description": "Constant value representing this event will initiate a connection",
+          "type": "string",
+          "const": "connect"
+        },
+        "version": {
+          "description": "Griffon SDK Extension version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type", "version"
+      ]
+    },
+    "type": {
+      "inherit": true,
+      "const": "client"
+    }
+  }
+}

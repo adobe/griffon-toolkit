@@ -366,14 +366,35 @@ function buildNav(members) {
   var seen = {};
   var seenTutorials = {};
 
-  nav += buildMemberNav(members.classes, 'Classes', seen, linkto);
-  nav += buildMemberNav(members.modules, 'Modules', {}, linkto);
-  // TODO: as needed, comment back in later
-  // nav += buildMemberNav(members.externals, 'Externals', seen, linktoExternal);
-  // nav += buildMemberNav(members.events, 'Events', seen, linkto);
-  nav += buildMemberNav(members.namespaces, 'Namespaces', seen, linkto);
+  const sortedTut = { a: [], c: [] };
+
+  members.tutorials.forEach(tutorial => {
+    const group = tutorial.name[0];
+    sortedTut[group].push(tutorial);
+  });
+
+  nav += "<h3 class='reference-subtitle'>Getting Started</h3>";
+  nav += buildMemberNav(sortedTut.a, '', seenTutorials, linktoTutorial);
+
+  nav += "<h3 class='reference-subtitle'>Contributing</h3>";
+  nav += buildMemberNav(sortedTut.c, '', seenTutorials, linktoTutorial);
+
+  const apiDocs = {};
+
+
+  nav += "<h3 class='reference-subtitle'>API Reference</h3>";
+
+  members.namespaces.forEach(namespace => {
+    const group = namespace.meta.shortpath.split('/')[0];
+    apiDocs[group] = apiDocs[group] || [];
+    apiDocs[group].push(namespace);
+  });
+
+  Object.keys(apiDocs).sort().forEach(group => {
+    nav += buildMemberNav(apiDocs[group], group, seen, linkto);
+  })
+
   // nav += buildMemberNav(members.mixins, 'Mixins', seen, linkto);
-  nav += buildMemberNav(members.tutorials, 'Tutorials', seenTutorials, linktoTutorial);
   // nav += buildMemberNav(members.interfaces, 'Interfaces', seen, linkto);
 
   if (members.globals.length) {

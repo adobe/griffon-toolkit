@@ -10,10 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-/*
-  eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}],
-  no-console: 0
-*/
 import lodash from 'lodash';
 import * as R from 'ramda';
 
@@ -25,6 +21,7 @@ import {
   writeStructureLine,
   writeGet,
   writeGetFromObject,
+  writeMake,
   writeMock,
   writeMockLine,
   writeMatch,
@@ -60,7 +57,7 @@ const makePropertyProps = (property, key, path, parent) => ({
  */
 export const expandMyProperties = ({
   path = [],
-  output: outputIn = { gets: '', exports: ['path', 'mock', 'schema', 'validate', '...customExports'] },
+  output: outputIn = { gets: '', exports: ['path', 'mock', 'make', 'schema', 'get', '...customExports'] },
   properties,
   parent
 }) => {
@@ -97,7 +94,7 @@ export const expandMyProperties = ({
 const expandFullProperties = ({
   path = [],
   output: outputIn = {
-    paths: [], event: '', mocks: '', matches: [], constants: '', exports: []
+    paths: [], event: '', makes: '', mocks: '', matches: [], constants: '', exports: []
   },
   properties,
   depth = 2,
@@ -113,6 +110,9 @@ const expandFullProperties = ({
       }
       if (props.mock || props.const) {
         output.mocks += writeMockLine(props);
+      }
+      if (props.const) {
+        output.makes += writeMockLine(props);
       }
       writePath += writePathLine(props);
       output.paths.push(writePath);
@@ -209,15 +209,20 @@ export default (schema, outputFile, schemaMap) => {
   const output = writeFullContent({
     namespace,
     shortDesc: schema.shortDesc,
+    group: schema.group,
     customCode: extractCustom(outputFile),
     depth,
     mock: writeMock({
       shortDesc: schema.shortDesc,
       mocks: expandedFull.mocks
     }),
+    make: writeMake({
+      shortDesc: schema.shortDesc,
+      makes: expandedFull.makes
+    }),
     ...expanded,
     ...expandedFull,
-    exports: [...exports, 'label', 'parentDepth']
+    exports: [...exports, 'label', 'group', 'parentDepth']
   });
 
   writeFile(outputFile, output);
