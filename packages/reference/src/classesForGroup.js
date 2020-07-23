@@ -16,15 +16,15 @@ import * as aep from '@adobe/griffon-toolkit-aep-mobile';
 
 const references = [common, aep];
 
-export default group => {
+export default (group) => {
   const matches = {};
-    R.forEach(
-      R.forEachObjIndexed((file, key) => {
-        if (file.group === group) {
-          matches[key] = file;
-        }
-      }),
-      references
-    );
+  R.forEach(
+    R.forEachObjIndexed((file, key) => {
+      if (file.group === group) {
+        matches[key] = file;
+      }
+    }),
+    references
+  );
   return matches;
 };

@@ -7,6 +7,7 @@
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
+    "ajv": "^6.12.3",
     "babel-plugin-inline-json-import": "^0.3.2",
     "create-index": "^2.5.0",
     "eslint": "^6.8.0",
@@ -17,8 +18,9 @@
     "jest-junit": "^10.0.0",
     "jsdoc": "^3.6.4",
     "jsdoc-memberof-namespace": "^2.2.0",
+    "lerna": "^3.22.1",
     "lodash": "^4.17.15",
-    "lerna": "^3.22.1"
+    "ramda": "^0.27.0"
   },
   "scripts": {
     "coverage": "npm run test -- --coverage",

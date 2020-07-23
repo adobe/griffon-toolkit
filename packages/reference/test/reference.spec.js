@@ -43,4 +43,3 @@ describe('classesForGroup', () => {
     expect(Object.keys(classesForGroup('construct')).indexOf('annotation')).not.toBe(-1);
   });
 });
-
