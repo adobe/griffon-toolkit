@@ -21,7 +21,7 @@ import schema from '../schemas/screenshotResponse.json';
  * ```
  * {
  *   payload: {
- *     blobid: <string>,
+ *     blobId: <string>,
  *     mimeType: <string>,
  *   },
  *   type: 'blob'
@@ -53,8 +53,8 @@ const path = {
   /** An object with custom data describing the event.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** ID returned from the blob service.<br />Path is `payload.blobid`. */
-  blobid: 'payload.blobid',
+  /** ID returned from the blob service.<br />Path is `payload.blobId`. */
+  blobId: 'payload.blobId',
 
   /** Describes the type of blob content uploaded.<br />Path is `payload.mimeType`. */
   mimeType: 'payload.mimeType',
@@ -113,16 +113,16 @@ const ROOT_TYPE = 'blob';
 const get = kit.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `blobid` from the Screenshot Response Event.
+ * Returns the `blobId` from the Screenshot Response Event.
  * This is the iD returned from the blob service.
  *
- * Path is `payload.blobid`.
+ * Path is `payload.blobId`.
  *
  * @function
  * @param {object} source The Screenshot Response Event instance
  * @returns {string}
  */
-const getBlobid = kit.search(path.blobid);
+const getBlobId = kit.search(path.blobId);
 
 /**
  * Returns the `mimeType` from the Screenshot Response Event.
@@ -182,7 +182,7 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  blobid: 'abcdefg',
+  blobId: 'abcdefg',
   mimeType: 'images/jpg',
   rootType: 'blob',
   clientId: 'appleABC',
@@ -199,7 +199,7 @@ export default {
   schema,
   get,
   ...customExports,
-  getBlobid,
+  getBlobId,
   getMimeType,
   isMatch,
   matcher,
