@@ -74,16 +74,6 @@
       "description": "The weight of the POI. It is used to prioritze POIs when a user is inside multile POIS",
       "mock": "2",
       "type": "number"
-    },
-    "type": {
-      "description": "This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation",
-      "mock": "test_suite",
-      "type": "string"
-    },
-    "uuid": {
-      "description": "Uniquely identifies each annotation",
-      "mock": "423",
-      "type": "string"
     }
   },
   "required": [

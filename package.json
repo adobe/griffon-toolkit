@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.2.1",
   "main": "dist/index.js",
+  "dependencies": {
+    "ramda": "^0.27.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
@@ -20,8 +23,7 @@
     "jsdoc": "^3.6.5",
     "jsdoc-memberof-namespace": "^2.2.0",
     "lerna": "^3.22.1",
-    "lodash": "^4.17.19",
-    "ramda": "^0.27.0"
+    "lodash": "^4.17.15"
   },
   "scripts": {
     "coverage": "npm run test -- --coverage",

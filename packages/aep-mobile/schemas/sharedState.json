@@ -1,0 +1,55 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/sharedState",
+  "shortDesc": "Shared State Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "description": "The full list of current configuration values",
+          "properties": {
+            "state.owner": {
+              "alias": "stateOwner",
+              "description": "In SDK extension that owns the shared state that is being updated",
+              "type": "string",
+              "mock": "com.adobe.mobule.eventhub"
+            }
+          },
+          "additionalProperties": false,
+          "required": [ "stateowner" ]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.sharedstate"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.hub"
+        },
+        "metadata": {
+          "inherit": true,
+          "type": "object",
+          "description": "Additional metadata that is attacked to SDK events",
+          "properties": {
+            "state.data": {
+              "alias": "stateData",
+              "type": "object",
+              "description": "The data that is being written to shared state.",
+              "mock": "{ version: '2.1.3' }"
+            }
+          },
+          "required": [ "state.data" ]
+        }
+      },
+      "required": [
+        "ACPExtensionEventData", "metadata"
+      ]
+    }
+  }
+}

@@ -16,7 +16,7 @@ import jmespath from 'jmespath';
 /**
  * Contains core functions for Griffon.
  *
- * @namespace kit
+ * @namespace toolkit
  */
 
 /**
@@ -114,8 +114,15 @@ export const match = R.curry((matcher, data) => jmespath.search(data, `[?${match
  */
 export const isMatch = R.curry((matcher, data) => match(matcher, [data]).length > 0);
 
-const processMods = (modifications, data) => ((typeof modifications === 'function')
-  ? modifications(data) : modifications);
+const processMods = (mods, data) => (
+  typeof mods === 'function'
+    ? mods(data)
+    : Array.isArray(mods)
+      ? R.map((v) => processMods(v, data), mods)
+      : typeof mods === 'object'
+        ? R.mapObjIndexed((v) => processMods(v, data), mods)
+        : mods
+);
 
 /**
  * Matches data from the event list and performs operations on the results. You can provide an object
@@ -186,7 +193,8 @@ export const modifyBulk = R.curry((instructions, data) => R.map(
   }
 )(data));
 
-const inQuotes = /"(.*?)"/;
+const IN_QUOTES_RX = /"(.*?)"/;
+const PATH_RX = /(?<group>".*"|[^\n."]+)/g;
 
 /**
  * Takes a path and coverts it to an array by splitting the periods.
@@ -195,13 +203,14 @@ const inQuotes = /"(.*?)"/;
  * @param {string} path A valid JMESPath
  * @returns {Array}
  */
-export const convertPath = R.pipe(
-  R.split('.'),
+
+export const convertPath = (path) => R.pipe(
+  (pathIn) => pathIn.match(PATH_RX),
   R.map((section) => {
-    const hasQuotes = section.match(inQuotes);
+    const hasQuotes = section.match(IN_QUOTES_RX);
     return hasQuotes ? hasQuotes[1] : section;
   })
-);
+)(path);
 
 /**
  * Expands all the provided path/value pairs, converting
@@ -223,8 +232,10 @@ export const convertPath = R.pipe(
 export const expand = R.pipe(
   R.reject(R.isNil),
   R.toPairs,
-  R.reduce((acc, [path, value]) => R.assocPath(convertPath(path), value, acc),
-    {})
+  R.reduce((acc, [path, value]) => R.mergeDeepLeft(
+    R.assocPath(convertPath(path), value, {}),
+    acc
+  ), {})
 );
 
 /**

@@ -1,0 +1,40 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/sharedStateVersions",
+  "shortDesc": "Shared State - Versions",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/sharedState" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "state.data": {
+              "inherit": true,
+              "properties": {
+                "version": {
+                  "alias": "sdkVersion",
+                  "description": "The version of the SDK",
+                  "type": "string",
+                  "mock": "2.7.1"
+                },
+                "extensions": {
+                  "description": "A mapping of versions per sdk extension",
+                  "type": "object",
+                  "mock": "{ Lifecycle: '2.4.0', 'com.adobe.ACPGriffon': '2.0.0' }"
+                }
+              },
+              "required": [
+                "version", "extensions"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
