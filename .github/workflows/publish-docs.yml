@@ -6,7 +6,9 @@ name: Publish Docs
 on:
   push:
     branches:
-      - master
+      - main
+  pull_request:
+    types: [closed]
   watch:
     types: [started] 
 
