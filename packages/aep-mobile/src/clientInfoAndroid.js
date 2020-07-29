@@ -55,68 +55,68 @@ import schema from '../schemas/clientInfoAndroid.json';
  * @enum {string}
  */
 const path = {
-  /** An object with custom data describing the event.<br />Path is `payload`. */
-  payload: 'payload',
+  /** An object with custom data describing the event.<br />Path is `p.a.y.l.o.a.d`. */
+  payload: 'p.a.y.l.o.a.d',
 
-  /** A map containing details about the connected device.<br />Path is `payload.deviceInfo`. */
-  deviceInfo: 'payload.deviceInfo',
+  /** A map containing details about the connected device.<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o`. */
+  deviceInfo: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o',
 
-  /** Canonical name for the platform. Used for Griffon identifying if the device is iOS or Android.<br />Path is `payload.deviceInfo."Canonical platform name"`. */
-  platform: 'payload.deviceInfo."Canonical platform name"',
+  /** Canonical name for the platform. Used for Griffon identifying if the device is iOS or Android.<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".C.a.n.o.n.i.c.a.l." ".p.l.a.t.f.o.r.m." ".n.a.m.e`. */
+  platform: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".C.a.n.o.n.i.c.a.l." ".p.l.a.t.f.o.r.m." ".n.a.m.e',
 
-  /** Read from Build.MODEL, which is the end-user-visible name for the end product..<br />Path is `payload.deviceInfo."Device name"`. */
-  deviceName: 'payload.deviceInfo."Device name"',
+  /** Read from Build.MODEL, which is the end-user-visible name for the end product..<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".D.e.v.i.c.e." ".n.a.m.e`. */
+  deviceName: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".D.e.v.i.c.e." ".n.a.m.e',
 
-  /** The style of interface to use on the current device..<br />Path is `payload.deviceInfo."Device type"`. */
-  deviceType: 'payload.deviceInfo."Device type"',
+  /** The style of interface to use on the current device..<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".D.e.v.i.c.e." ".t.y.p.e`. */
+  deviceType: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".D.e.v.i.c.e." ".t.y.p.e',
 
-  /** The manufacturer of the product/hardware..<br />Path is `payload.deviceInfo."Device manufacturer"`. */
-  manufacturer: 'payload.deviceInfo."Device manufacturer"',
+  /** The manufacturer of the product/hardware..<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".D.e.v.i.c.e." ".m.a.n.u.f.a.c.t.u.r.e.r`. */
+  manufacturer: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".D.e.v.i.c.e." ".m.a.n.u.f.a.c.t.u.r.e.r',
 
-  /** The value is in the format "Android <OperatingSystemVersion>".<br />Path is `payload.deviceInfo."Operating system"`. */
-  os: 'payload.deviceInfo."Operating system"',
+  /** The value is in the format "Android <OperatingSystemVersion>".<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".O.p.e.r.a.t.i.n.g." ".s.y.s.t.e.m`. */
+  os: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".O.p.e.r.a.t.i.n.g." ".s.y.s.t.e.m',
 
-  /** Phones display resolution in pixels (width x height).<br />Path is `payload.deviceInfo."Screen size"`. */
-  screenSize: 'payload.deviceInfo."Screen size"',
+  /** Phones display resolution in pixels (width x height).<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".S.c.r.e.e.n." ".s.i.z.e`. */
+  screenSize: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".S.c.r.e.e.n." ".s.i.z.e',
 
-  /** The battery charge level for the device. This is integer value ranging from 1 to 100. If unable to fetch battery value -1 is returned.<br />Path is `payload.deviceInfo."Battery level"`. */
-  batteryLevel: 'payload.deviceInfo."Battery level"',
+  /** The battery charge level for the device. This is integer value ranging from 1 to 100. If unable to fetch battery value -1 is returned.<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".B.a.t.t.e.r.y." ".l.e.v.e.l`. */
+  batteryLevel: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".B.a.t.t.e.r.y." ".l.e.v.e.l',
 
-  /** The current enabled/disabled state of location for the device..<br />Path is `payload.deviceInfo."Location service enabled"`. */
-  locationEnabled: 'payload.deviceInfo."Location service enabled"',
+  /** The current enabled/disabled state of location for the device..<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".L.o.c.a.t.i.o.n." ".s.e.r.v.i.c.e." ".e.n.a.b.l.e.d`. */
+  locationEnabled: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".L.o.c.a.t.i.o.n." ".s.e.r.v.i.c.e." ".e.n.a.b.l.e.d',
 
-  /** Tells the app’s authorization status for using location services..<br />Path is `payload.deviceInfo."Location authorization status"`. */
-  locationAuth: 'payload.deviceInfo."Location authorization status"',
+  /** Tells the app’s authorization status for using location services..<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".L.o.c.a.t.i.o.n." ".a.u.t.h.o.r.i.z.a.t.i.o.n." ".s.t.a.t.u.s`. */
+  locationAuth: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".L.o.c.a.t.i.o.n." ".a.u.t.h.o.r.i.z.a.t.i.o.n." ".s.t.a.t.u.s',
 
-  /** Represents the carrier name. "Unknown" if this value is not available, or not valid on the platform..<br />Path is `payload.deviceInfo."Carrier name"`. */
-  carrierName: 'payload.deviceInfo."Carrier name"',
+  /** Represents the carrier name. "Unknown" if this value is not available, or not valid on the platform..<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".C.a.r.r.i.e.r." ".n.a.m.e`. */
+  carrierName: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".C.a.r.r.i.e.r." ".n.a.m.e',
 
-  /** Indicates whether Low Power Mode is enabled on an iOS device..<br />Path is `payload.deviceInfo."Low power mode enabled"`. */
-  lowPowerMode: 'payload.deviceInfo."Low power mode enabled"',
+  /** Indicates whether Low Power Mode is enabled on an iOS device..<br />Path is `p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".L.o.w." ".p.o.w.e.r." ".m.o.d.e." ".e.n.a.b.l.e.d`. */
+  lowPowerMode: 'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".L.o.w." ".p.o.w.e.r." ".m.o.d.e." ".e.n.a.b.l.e.d',
 
-  /** A map containing details about the settings of the application on which Griffon is registered.<br />Path is `payload.appSettings`. */
-  appSettings: 'payload.appSettings',
+  /** A map containing details about the settings of the application on which Griffon is registered.<br />Path is `p.a.y.l.o.a.d.".".a.p.p.S.e.t.t.i.n.g.s`. */
+  appSettings: 'p.a.y.l.o.a.d.".".a.p.p.S.e.t.t.i.n.g.s',
 
-  /** Constant value representing this event will initiate a connection.<br />Path is `payload.type`. */
-  type: 'payload.type',
+  /** Constant value representing this event will initiate a connection.<br />Path is `p.a.y.l.o.a.d.".".t.y.p.e`. */
+  type: 'p.a.y.l.o.a.d.".".t.y.p.e',
 
-  /** Griffon SDK Extension version.<br />Path is `payload.version`. */
-  version: 'payload.version',
+  /** Griffon SDK Extension version.<br />Path is `p.a.y.l.o.a.d.".".v.e.r.s.i.o.n`. */
+  version: 'p.a.y.l.o.a.d.".".v.e.r.s.i.o.n',
 
-  /** The type of event.<br />Path is `type`. */
-  rootType: 'type',
+  /** The type of event.<br />Path is `t.y.p.e`. */
+  rootType: 't.y.p.e',
 
-  /** Array of Annotation objects.<br />Path is `annotations`. */
-  annotations: 'annotations',
+  /** Array of Annotation objects.<br />Path is `a.n.n.o.t.a.t.i.o.n.s`. */
+  annotations: 'a.n.n.o.t.a.t.i.o.n.s',
 
-  /** A unique id that differentiates clients from one another.<br />Path is `clientId`. */
-  clientId: 'clientId',
+  /** A unique id that differentiates clients from one another.<br />Path is `c.l.i.e.n.t.I.d`. */
+  clientId: 'c.l.i.e.n.t.I.d',
 
-  /** When the event occurred.<br />Path is `timestamp`. */
-  timestamp: 'timestamp',
+  /** When the event occurred.<br />Path is `t.i.m.e.s.t.a.m.p`. */
+  timestamp: 't.i.m.e.s.t.a.m.p',
 
-  /** Uniquely identifies each event.<br />Path is `uuid`. */
-  rootId: 'uuid'
+  /** Uniquely identifies each event.<br />Path is `u.u.i.d`. */
+  rootId: 'u.u.i.d'
 };
 
 /**
@@ -140,7 +140,7 @@ const group = 'event';
 /**
  * The value for `platform` for a iOS Client Info Event.
  *
- * Path is `payload,deviceInfo,Canonical platform name`.
+ * Path is `payload.deviceInfo.Canonical platform name`.
  *
  * @constant
  */
@@ -149,7 +149,7 @@ const PLATFORM = 'Android';
 /**
  * The value for `type` for a iOS Client Info Event.
  *
- * Path is `payload,type`.
+ * Path is `payload.type`.
  *
  * @constant
  */
@@ -178,7 +178,7 @@ const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
  * Returns the `platform` from the iOS Client Info Event.
  * This is the canonical name for the platform. Used for Griffon identifying if the device is iOS or Android.
  *
- * Path is `payload,deviceInfo,Canonical platform name`.
+ * Path is `payload.deviceInfo.Canonical platform name`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -190,7 +190,7 @@ const getPlatform = kit.search(path.platform);
  * Returns the `deviceName` from the iOS Client Info Event.
  * This is the read from Build.MODEL, which is the end-user-visible name for the end product..
  *
- * Path is `payload,deviceInfo,Device name`.
+ * Path is `payload.deviceInfo.Device name`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -202,7 +202,7 @@ const getDeviceName = kit.search(path.deviceName);
  * Returns the `deviceType` from the iOS Client Info Event.
  * This is the the style of interface to use on the current device..
  *
- * Path is `payload,deviceInfo,Device type`.
+ * Path is `payload.deviceInfo.Device type`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -214,7 +214,7 @@ const getDeviceType = kit.search(path.deviceType);
  * Returns the `manufacturer` from the iOS Client Info Event.
  * This is the the manufacturer of the product/hardware..
  *
- * Path is `payload,deviceInfo,Device manufacturer`.
+ * Path is `payload.deviceInfo.Device manufacturer`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -226,7 +226,7 @@ const getManufacturer = kit.search(path.manufacturer);
  * Returns the `os` from the iOS Client Info Event.
  * This is the the value is in the format "Android <OperatingSystemVersion>".
  *
- * Path is `payload,deviceInfo,Operating system`.
+ * Path is `payload.deviceInfo.Operating system`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -238,7 +238,7 @@ const getOs = kit.search(path.os);
  * Returns the `screenSize` from the iOS Client Info Event.
  * This is the phones display resolution in pixels (width x height).
  *
- * Path is `payload,deviceInfo,Screen size`.
+ * Path is `payload.deviceInfo.Screen size`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -250,7 +250,7 @@ const getScreenSize = kit.search(path.screenSize);
  * Returns the `batteryLevel` from the iOS Client Info Event.
  * This is the the battery charge level for the device. This is integer value ranging from 1 to 100. If unable to fetch battery value -1 is returned.
  *
- * Path is `payload,deviceInfo,Battery level`.
+ * Path is `payload.deviceInfo.Battery level`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -262,7 +262,7 @@ const getBatteryLevel = kit.search(path.batteryLevel);
  * Returns the `locationEnabled` from the iOS Client Info Event.
  * This is the the current enabled/disabled state of location for the device..
  *
- * Path is `payload,deviceInfo,Location service enabled`.
+ * Path is `payload.deviceInfo.Location service enabled`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -274,7 +274,7 @@ const getLocationEnabled = kit.search(path.locationEnabled);
  * Returns the `locationAuth` from the iOS Client Info Event.
  * This is the tells the app’s authorization status for using location services..
  *
- * Path is `payload,deviceInfo,Location authorization status`.
+ * Path is `payload.deviceInfo.Location authorization status`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -286,7 +286,7 @@ const getLocationAuth = kit.search(path.locationAuth);
  * Returns the `carrierName` from the iOS Client Info Event.
  * This is the represents the carrier name. "Unknown" if this value is not available, or not valid on the platform..
  *
- * Path is `payload,deviceInfo,Carrier name`.
+ * Path is `payload.deviceInfo.Carrier name`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -298,7 +298,7 @@ const getCarrierName = kit.search(path.carrierName);
  * Returns the `lowPowerMode` from the iOS Client Info Event.
  * This is the indicates whether Low Power Mode is enabled on an iOS device..
  *
- * Path is `payload,deviceInfo,Low power mode enabled`.
+ * Path is `payload.deviceInfo.Low power mode enabled`.
  *
  * @function
  * @param {object} source The iOS Client Info Event instance
@@ -313,10 +313,10 @@ const getLowPowerMode = kit.search(path.lowPowerMode);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.deviceInfo."Canonical platform name"==\'Android\'',
-  'payload.type==\'connect\'',
-  'type==\'client\'',
-  'timestamp'
+  'p.a.y.l.o.a.d.".".d.e.v.i.c.e.I.n.f.o.".".C.a.n.o.n.i.c.a.l." ".p.l.a.t.f.o.r.m." ".n.a.m.e==\'Android\'',
+  'p.a.y.l.o.a.d.".".t.y.p.e==\'connect\'',
+  't.y.p.e==\'client\'',
+  't.i.m.e.s.t.a.m.p'
 ]);
 
 /**
@@ -372,6 +372,14 @@ const mock = (input) => kit.expandWithPaths(path, {
   rootId: '123',
   ...input
 });
+
+/* ADD CUSTOM CONTENT BELOW */
+
+// additional exports should be added here:
+const customExports = {};
+
+/* END CUSTOM CONTENT */
+/* The content below is autogenerated. Do not make any changes */
 
 export default {
   path,

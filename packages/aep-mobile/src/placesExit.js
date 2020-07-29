@@ -65,92 +65,92 @@ import schema from '../schemas/placesExit.json';
  * @enum {string}
  */
 const path = {
-  /** An object with custom data describing the event.<br />Path is `payload`. */
-  payload: 'payload',
+  /** An object with custom data describing the event.<br />Path is `p.a.y.l.o.a.d`. */
+  payload: 'p.a.y.l.o.a.d',
 
-  /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
-  data: 'payload.ACPExtensionEventData',
+  /** An object with the custom data describing the event.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a`. */
+  data: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a',
 
-  /** The POI that the user exited.<br />Path is `payload.ACPExtensionEventData.triggeringregion`. */
-  POI: 'payload.ACPExtensionEventData.triggeringregion',
+  /** The POI that the user exited.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n`. */
+  POI: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n',
 
-  /** The POI latitude.<br />Path is `payload.ACPExtensionEventData.triggeringregion.latitude`. */
-  latitude: 'payload.ACPExtensionEventData.triggeringregion.latitude',
+  /** The POI latitude.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".l.a.t.i.t.u.d.e`. */
+  latitude: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".l.a.t.i.t.u.d.e',
 
-  /** The Places library the POI belongs to.<br />Path is `payload.ACPExtensionEventData.triggeringregion.libraryid`. */
-  libraryId: 'payload.ACPExtensionEventData.triggeringregion.libraryid',
+  /** The Places library the POI belongs to.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".l.i.b.r.a.r.y.i.d`. */
+  libraryId: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".l.i.b.r.a.r.y.i.d',
 
-  /** The POI longitude.<br />Path is `payload.ACPExtensionEventData.triggeringregion.longitude`. */
-  longitude: 'payload.ACPExtensionEventData.triggeringregion.longitude',
+  /** The POI longitude.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".l.o.n.g.i.t.u.d.e`. */
+  longitude: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".l.o.n.g.i.t.u.d.e',
 
-  /** The POI name.<br />Path is `payload.ACPExtensionEventData.triggeringregion.regionname`. */
-  name: 'payload.ACPExtensionEventData.triggeringregion.regionname',
+  /** The POI name.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.n.a.m.e`. */
+  name: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.n.a.m.e',
 
-  /** An object with some defined items and custom data items..<br />Path is `payload.ACPExtensionEventData.triggeringregion.regionmetadata`. */
-  metadata: 'payload.ACPExtensionEventData.triggeringregion.regionmetadata',
+  /** An object with some defined items and custom data items..<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a`. */
+  metadata: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a',
 
-  /** The POI category.<br />Path is `payload.ACPExtensionEventData.triggeringregion.regionmetadata.category`. */
-  category: 'payload.ACPExtensionEventData.triggeringregion.regionmetadata.category',
+  /** The POI category.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".c.a.t.e.g.o.r.y`. */
+  category: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".c.a.t.e.g.o.r.y',
 
-  /** The POI city.<br />Path is `payload.ACPExtensionEventData.triggeringregion.regionmetadata.city`. */
-  city: 'payload.ACPExtensionEventData.triggeringregion.regionmetadata.city',
+  /** The POI city.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".c.i.t.y`. */
+  city: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".c.i.t.y',
 
-  /** The POI country.<br />Path is `payload.ACPExtensionEventData.triggeringregion.regionmetadata.country`. */
-  country: 'payload.ACPExtensionEventData.triggeringregion.regionmetadata.country',
+  /** The POI country.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".c.o.u.n.t.r.y`. */
+  country: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".c.o.u.n.t.r.y',
 
-  /** The POI state.<br />Path is `payload.ACPExtensionEventData.triggeringregion.regionmetadata.state`. */
-  state: 'payload.ACPExtensionEventData.triggeringregion.regionmetadata.state',
+  /** The POI state.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".s.t.a.t.e`. */
+  state: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".s.t.a.t.e',
 
-  /** The POI street.<br />Path is `payload.ACPExtensionEventData.triggeringregion.regionmetadata.street`. */
-  street: 'payload.ACPExtensionEventData.triggeringregion.regionmetadata.street',
+  /** The POI street.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".s.t.r.e.e.t`. */
+  street: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.m.e.t.a.d.a.t.a.".".s.t.r.e.e.t',
 
-  /** The POI radius.<br />Path is `payload.ACPExtensionEventData.triggeringregion.radius`. */
-  radius: 'payload.ACPExtensionEventData.triggeringregion.radius',
+  /** The POI radius.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.a.d.i.u.s`. */
+  radius: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.a.d.i.u.s',
 
-  /** The unique region id.<br />Path is `payload.ACPExtensionEventData.triggeringregion.regionid`. */
-  id: 'payload.ACPExtensionEventData.triggeringregion.regionid',
+  /** The unique region id.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.i.d`. */
+  id: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".r.e.g.i.o.n.i.d',
 
-  /** Is the user currently in the POI.<br />Path is `payload.ACPExtensionEventData.triggeringregion.useriswithin`. */
-  within: 'payload.ACPExtensionEventData.triggeringregion.useriswithin',
+  /** Is the user currently in the POI.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".u.s.e.r.i.s.w.i.t.h.i.n`. */
+  within: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".u.s.e.r.i.s.w.i.t.h.i.n',
 
-  /** The weight of the POI. It is used to prioritze POIs when a user is inside multile POIS.<br />Path is `payload.ACPExtensionEventData.triggeringregion.weight`. */
-  weight: 'payload.ACPExtensionEventData.triggeringregion.weight',
+  /** The weight of the POI. It is used to prioritze POIs when a user is inside multile POIS.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".w.e.i.g.h.t`. */
+  weight: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".t.r.i.g.g.e.r.i.n.g.r.e.g.i.o.n.".".w.e.i.g.h.t',
 
-  /** The type of action that took place. In this case it is exit.<br />Path is `payload.ACPExtensionEventData.regioneventtype`. */
-  regionEventType: 'payload.ACPExtensionEventData.regioneventtype',
+  /** The type of action that took place. In this case it is exit.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".r.e.g.i.o.n.e.v.e.n.t.t.y.p.e`. */
+  regionEventType: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".r.e.g.i.o.n.e.v.e.n.t.t.y.p.e',
 
-  /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
-  eventSource: 'payload.ACPExtensionEventSource',
+  /** The event source.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.S.o.u.r.c.e`. */
+  eventSource: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.S.o.u.r.c.e',
 
-  /** The event type.<br />Path is `payload.ACPExtensionEventType`. */
-  eventType: 'payload.ACPExtensionEventType',
+  /** The event type.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.T.y.p.e`. */
+  eventType: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.T.y.p.e',
 
-  /** The name of the event.<br />Path is `payload.ACPExtensionEventName`. */
-  eventName: 'payload.ACPExtensionEventName',
+  /** The name of the event.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.N.a.m.e`. */
+  eventName: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.N.a.m.e',
 
-  /** The event number generated by the SDK.<br />Path is `payload.ACPExtensionEventNumber`. */
-  sdkEventNumber: 'payload.ACPExtensionEventNumber',
+  /** The event number generated by the SDK.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.N.u.m.b.e.r`. */
+  sdkEventNumber: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.N.u.m.b.e.r',
 
-  /** The unique event id.<br />Path is `payload.ACPExtensionEventUniqueIdentifier`. */
-  eventId: 'payload.ACPExtensionEventUniqueIdentifier',
+  /** The unique event id.<br />Path is `p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.U.n.i.q.u.e.I.d.e.n.t.i.f.i.e.r`. */
+  eventId: 'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.U.n.i.q.u.e.I.d.e.n.t.i.f.i.e.r',
 
-  /** The type of event.<br />Path is `type`. */
-  rootType: 'type',
+  /** The type of event.<br />Path is `t.y.p.e`. */
+  rootType: 't.y.p.e',
 
-  /** The vendor of the plugin that sent the event.<br />Path is `vendor`. */
-  vendor: 'vendor',
+  /** The vendor of the plugin that sent the event.<br />Path is `v.e.n.d.o.r`. */
+  vendor: 'v.e.n.d.o.r',
 
-  /** Array of Annotation objects.<br />Path is `annotations`. */
-  annotations: 'annotations',
+  /** Array of Annotation objects.<br />Path is `a.n.n.o.t.a.t.i.o.n.s`. */
+  annotations: 'a.n.n.o.t.a.t.i.o.n.s',
 
-  /** A unique id that differentiates clients from one another.<br />Path is `clientId`. */
-  clientId: 'clientId',
+  /** A unique id that differentiates clients from one another.<br />Path is `c.l.i.e.n.t.I.d`. */
+  clientId: 'c.l.i.e.n.t.I.d',
 
-  /** When the event occurred.<br />Path is `timestamp`. */
-  timestamp: 'timestamp',
+  /** When the event occurred.<br />Path is `t.i.m.e.s.t.a.m.p`. */
+  timestamp: 't.i.m.e.s.t.a.m.p',
 
-  /** Uniquely identifies each event.<br />Path is `uuid`. */
-  rootId: 'uuid'
+  /** Uniquely identifies each event.<br />Path is `u.u.i.d`. */
+  rootId: 'u.u.i.d'
 };
 
 /**
@@ -174,7 +174,7 @@ const group = 'event';
 /**
  * The value for `regionEventType` for a Places Exit Event.
  *
- * Path is `payload,ACPExtensionEventData,regioneventtype`.
+ * Path is `payload.ACPExtensionEventData.regioneventtype`.
  *
  * @constant
  */
@@ -183,7 +183,7 @@ const REGION_EVENT_TYPE = 'exit';
 /**
  * The value for `eventSource` for a Places Exit Event.
  *
- * Path is `payload,ACPExtensionEventSource`.
+ * Path is `payload.ACPExtensionEventSource`.
  *
  * @constant
  */
@@ -192,7 +192,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
 /**
  * The value for `eventType` for a Places Exit Event.
  *
- * Path is `payload,ACPExtensionEventType`.
+ * Path is `payload.ACPExtensionEventType`.
  *
  * @constant
  */
@@ -218,35 +218,10 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `data` from the Places Exit Event.
- * This is the .
- *
- * Path is `payload,ACPExtensionEventData`.
- *
- * @function
- * @param {object} source The Places Exit Event instance
- * @returns {object}
- */
-const getData = kit.search(path.data);
-
-/**
- * Returns the data using the specified path from the data
- * of the Places Exit Event.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Places Exit Event instance
- * @returns {*}
- */
-const getDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.data}.${searchPath}`, source)
-);
-
-/**
  * Returns the `POI` from the Places Exit Event.
  * This is the the POI that the user exited.
  *
- * Path is `payload,ACPExtensionEventData,triggeringregion`.
+ * Path is `payload.ACPExtensionEventData.triggeringregion`.
  *
  * @function
  * @param {object} source The Places Exit Event instance
@@ -258,7 +233,7 @@ const getPOI = kit.search(path.POI);
  * Returns the `regionEventType` from the Places Exit Event.
  * This is the the type of action that took place. In this case it is exit.
  *
- * Path is `payload,ACPExtensionEventData,regioneventtype`.
+ * Path is `payload.ACPExtensionEventData.regioneventtype`.
  *
  * @function
  * @param {object} source The Places Exit Event instance
@@ -273,11 +248,11 @@ const getRegionEventType = kit.search(path.regionEventType);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventData.regioneventtype==\'exit\'',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
-  'type==\'generic\'',
-  'timestamp'
+  'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.D.a.t.a.".".r.e.g.i.o.n.e.v.e.n.t.t.y.p.e==\'exit\'',
+  'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.S.o.u.r.c.e==\'com.adobe.eventsource.responsecontent\'',
+  'p.a.y.l.o.a.d.".".A.C.P.E.x.t.e.n.s.i.o.n.E.v.e.n.t.T.y.p.e==\'com.adobe.eventtype.places\'',
+  't.y.p.e==\'generic\'',
+  't.i.m.e.s.t.a.m.p'
 ]);
 
 /**
@@ -336,6 +311,14 @@ const mock = (input) => kit.expandWithPaths(path, {
   ...input
 });
 
+/* ADD CUSTOM CONTENT BELOW */
+
+// additional exports should be added here:
+const customExports = {};
+
+/* END CUSTOM CONTENT */
+/* The content below is autogenerated. Do not make any changes */
+
 export default {
   path,
   mock,
@@ -343,8 +326,6 @@ export default {
   schema,
   get,
   ...customExports,
-  getData,
-  getDataKey,
   getPOI,
   getRegionEventType,
   isMatch,

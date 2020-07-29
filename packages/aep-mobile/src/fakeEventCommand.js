@@ -45,38 +45,38 @@ import schema from '../schemas/fakeEventCommand.json';
  * @enum {string}
  */
 const path = {
-  /** An object with custom data describing the event.<br />Path is `payload`. */
-  payload: 'payload',
+  /** An object with custom data describing the event.<br />Path is `p.a.y.l.o.a.d`. */
+  payload: 'p.a.y.l.o.a.d',
 
-  /** The type of command.<br />Path is `payload.type`. */
-  type: 'payload.type',
+  /** The type of command.<br />Path is `p.a.y.l.o.a.d.".".t.y.p.e`. */
+  type: 'p.a.y.l.o.a.d.".".t.y.p.e',
 
-  /** Additional command detail.<br />Path is `payload.detail`. */
-  detail: 'payload.detail',
+  /** Additional command detail.<br />Path is `p.a.y.l.o.a.d.".".d.e.t.a.i.l`. */
+  detail: 'p.a.y.l.o.a.d.".".d.e.t.a.i.l',
 
-  /** The name of the event.<br />Path is `payload.detail.eventName`. */
-  eventName: 'payload.detail.eventName',
+  /** The name of the event.<br />Path is `p.a.y.l.o.a.d.".".d.e.t.a.i.l.".".e.v.e.n.t.N.a.m.e`. */
+  eventName: 'p.a.y.l.o.a.d.".".d.e.t.a.i.l.".".e.v.e.n.t.N.a.m.e',
 
-  /** The event type.<br />Path is `payload.detail.eventType`. */
-  eventType: 'payload.detail.eventType',
+  /** The event type.<br />Path is `p.a.y.l.o.a.d.".".d.e.t.a.i.l.".".e.v.e.n.t.T.y.p.e`. */
+  eventType: 'p.a.y.l.o.a.d.".".d.e.t.a.i.l.".".e.v.e.n.t.T.y.p.e',
 
-  /** The event source.<br />Path is `payload.detail.eventSource`. */
-  eventSource: 'payload.detail.eventSource',
+  /** The event source.<br />Path is `p.a.y.l.o.a.d.".".d.e.t.a.i.l.".".e.v.e.n.t.S.o.u.r.c.e`. */
+  eventSource: 'p.a.y.l.o.a.d.".".d.e.t.a.i.l.".".e.v.e.n.t.S.o.u.r.c.e',
 
-  /** An object with the custom data describing the event.<br />Path is `payload.detail.eventData`. */
-  eventData: 'payload.detail.eventData',
+  /** An object with the custom data describing the event.<br />Path is `p.a.y.l.o.a.d.".".d.e.t.a.i.l.".".e.v.e.n.t.D.a.t.a`. */
+  eventData: 'p.a.y.l.o.a.d.".".d.e.t.a.i.l.".".e.v.e.n.t.D.a.t.a',
 
-  /** The vendor of the plugin to receive the command.<br />Path is `vendor`. */
-  vendor: 'vendor',
+  /** The vendor of the plugin to receive the command.<br />Path is `v.e.n.d.o.r`. */
+  vendor: 'v.e.n.d.o.r',
 
-  /** A unique id that differentiates clients from one another.<br />Path is `clientId`. */
-  clientId: 'clientId',
+  /** A unique id that differentiates clients from one another.<br />Path is `c.l.i.e.n.t.I.d`. */
+  clientId: 'c.l.i.e.n.t.I.d',
 
-  /** When the command was triggered.<br />Path is `timestamp`. */
-  timestamp: 'timestamp',
+  /** When the command was triggered.<br />Path is `t.i.m.e.s.t.a.m.p`. */
+  timestamp: 't.i.m.e.s.t.a.m.p',
 
-  /** The type of event. For commands it's always 'control'..<br />Path is `type`. */
-  rootType: 'type'
+  /** The type of event. For commands it's always 'control'..<br />Path is `t.y.p.e`. */
+  rootType: 't.y.p.e'
 };
 
 /**
@@ -100,7 +100,7 @@ const group = 'command';
 /**
  * The value for `type` for a Fake Event Command.
  *
- * Path is `payload,type`.
+ * Path is `payload.type`.
  *
  * @constant
  */
@@ -138,7 +138,7 @@ const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
  * Returns the `type` from the Fake Event Command.
  * This is the the type of command.
  *
- * Path is `payload,type`.
+ * Path is `payload.type`.
  *
  * @function
  * @param {object} source The Fake Event Command instance
@@ -150,7 +150,7 @@ const getType = kit.search(path.type);
  * Returns the `detail` from the Fake Event Command.
  * This is the additional command detail.
  *
- * Path is `payload,detail`.
+ * Path is `payload.detail`.
  *
  * @function
  * @param {object} source The Fake Event Command instance
@@ -175,7 +175,7 @@ const getDetailKey = kit.curry(
  * Returns the `eventName` from the Fake Event Command.
  * This is the the name of the event.
  *
- * Path is `payload,detail,eventName`.
+ * Path is `payload.detail.eventName`.
  *
  * @function
  * @param {object} source The Fake Event Command instance
@@ -187,7 +187,7 @@ const getEventName = kit.search(path.eventName);
  * Returns the `eventType` from the Fake Event Command.
  * This is the the event type.
  *
- * Path is `payload,detail,eventType`.
+ * Path is `payload.detail.eventType`.
  *
  * @function
  * @param {object} source The Fake Event Command instance
@@ -199,7 +199,7 @@ const getEventType = kit.search(path.eventType);
  * Returns the `eventSource` from the Fake Event Command.
  * This is the the event source.
  *
- * Path is `payload,detail,eventSource`.
+ * Path is `payload.detail.eventSource`.
  *
  * @function
  * @param {object} source The Fake Event Command instance
@@ -211,7 +211,7 @@ const getEventSource = kit.search(path.eventSource);
  * Returns the `eventData` from the Fake Event Command.
  * This is the an object with the custom data describing the event.
  *
- * Path is `payload,detail,eventData`.
+ * Path is `payload.detail.eventData`.
  *
  * @function
  * @param {object} source The Fake Event Command instance
@@ -239,10 +239,10 @@ const getEventDataKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.type==\'fakeEvent\'',
-  'vendor==\'com.adobe.griffon.mobile\'',
-  'timestamp',
-  'type==\'control\''
+  'p.a.y.l.o.a.d.".".t.y.p.e==\'fakeEvent\'',
+  'v.e.n.d.o.r==\'com.adobe.griffon.mobile\'',
+  't.i.m.e.s.t.a.m.p',
+  't.y.p.e==\'control\''
 ]);
 
 /**
@@ -291,6 +291,14 @@ const mock = (input) => kit.expandWithPaths(path, {
   rootType: 'control',
   ...input
 });
+
+/* ADD CUSTOM CONTENT BELOW */
+
+// additional exports should be added here:
+const customExports = {};
+
+/* END CUSTOM CONTENT */
+/* The content below is autogenerated. Do not make any changes */
 
 export default {
   path,
