@@ -13,20 +13,26 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/configurationUpdate.json';
+import schema from '../schemas/sharedStateVersions.json';
 
 /**
- * Contains constants and functions for a Configuration Update.
+ * Contains constants and functions for a Shared State - Versions.
  *
- * The structure for a Configuration Update is as follows:
+ * The structure for a Shared State - Versions is as follows:
  * ```
  * {
  *   payload: {
- *     ACPExtensionEventData: {
- *       config.update: <object>,
+ *     metadata: {
+ *       state.data: {
+ *         version: <string>,
+ *         extensions: <object>,
+ *       },
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.configuration'
+ *     ACPExtensionEventData: {
+ *       state.owner: <string>,
+ *     },
+ *     ACPExtensionEventSource: 'com.adobe.eventsource.sharedstate'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.hub'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -40,11 +46,11 @@ import schema from '../schemas/configurationUpdate.json';
  * }
  * ```
  *
- * @namespace configurationUpdate
+ * @namespace sharedStateVersions
  */
 
 /**
- * Paths for the keys on a Configuration Update
+ * Paths for the keys on a Shared State - Versions
  *
  * @enum {string}
  */
@@ -52,11 +58,23 @@ const path = {
   /** An object with custom data describing the event.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
+  /** Additional metadata that is attacked to SDK events.<br />Path is `payload.metadata`. */
+  metadata: 'payload.metadata',
+
+  /** The data that is being written to shared state..<br />Path is `payload.metadata."state.data"`. */
+  stateData: 'payload.metadata."state.data"',
+
+  /** The version of the SDK.<br />Path is `payload.metadata."state.data".version`. */
+  sdkVersion: 'payload.metadata."state.data".version',
+
+  /** A mapping of versions per sdk extension.<br />Path is `payload.metadata."state.data".extensions`. */
+  extensions: 'payload.metadata."state.data".extensions',
+
+  /** The full list of current configuration values.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** The configuration values to write.<br />Path is `payload.ACPExtensionEventData."config.update"`. */
-  configData: 'payload.ACPExtensionEventData."config.update"',
+  /** In SDK extension that owns the shared state that is being updated.<br />Path is `payload.ACPExtensionEventData."state.owner"`. */
+  stateOwner: 'payload.ACPExtensionEventData."state.owner"',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -98,12 +116,12 @@ const path = {
  *
  * @constant
  */
-const parentDepth = 2;
+const parentDepth = 3;
 
 /**
  * A label that can be used when describing this object
  */
-const label = 'Configuration Update';
+const label = 'Shared State - Versions';
 
 /**
  * A grouping for this object
@@ -111,25 +129,25 @@ const label = 'Configuration Update';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a Configuration Update.
+ * The value for `eventSource` for a Shared State - Versions.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventsource.sharedstate';
 
 /**
- * The value for `eventType` for a Configuration Update.
+ * The value for `eventType` for a Shared State - Versions.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.configuration';
+const EVENT_TYPE = 'com.adobe.eventtype.hub';
 
 /**
- * The value for `rootType` for a Configuration Update.
+ * The value for `rootType` for a Shared State - Versions.
  *
  * Path is `type`.
  *
@@ -148,55 +166,67 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `configData` from the Configuration Update.
- * This is the the configuration values to write.
+ * Returns the `sdkVersion` from the Shared State - Versions.
+ * This is the the version of the SDK.
  *
- * Path is `payload,ACPExtensionEventData,config.update`.
+ * Path is `payload,metadata,state.data,version`.
  *
  * @function
- * @param {object} source The Configuration Update instance
- * @returns {object}
+ * @param {object} source The Shared State - Versions instance
+ * @returns {string}
  */
-const getConfigData = kit.search(path.configData);
+const getSdkVersion = kit.search(path.sdkVersion);
 
 /**
- * Returns the data using the specified path from the configData
- * of the Configuration Update.
+ * Returns the `extensions` from the Shared State - Versions.
+ * This is the a mapping of versions per sdk extension.
+ *
+ * Path is `payload,metadata,state.data,extensions`.
+ *
+ * @function
+ * @param {object} source The Shared State - Versions instance
+ * @returns {object}
+ */
+const getExtensions = kit.search(path.extensions);
+
+/**
+ * Returns the data using the specified path from the extensions
+ * of the Shared State - Versions.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Configuration Update instance
+ * @param {object} source The Shared State - Versions instance
  * @returns {*}
  */
-const getConfigDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.configData}.${searchPath}`, source)
+const getExtensionsKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.extensions}.${searchPath}`, source)
 );
 
 /**
- * Matcher can be used to find matching Configuration Update objects.
+ * Matcher can be used to find matching Shared State - Versions objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.configuration\'',
+  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.sharedstate\'',
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.hub\'',
   'type==\'generic\'',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Configuration Update event.
+ * Tests the provided source against the matcher to see if it's Shared State - Versions event.
  *
  * @function
- * @param {object} source The Configuration Update instance
+ * @param {object} source The Shared State - Versions instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 
 /**
- * Generates a Configuration Update with the const values set.
+ * Generates a Shared State - Versions with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -205,14 +235,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  eventSource: 'com.adobe.eventsource.sharedstate',
+  eventType: 'com.adobe.eventtype.hub',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a Configuration Update with some default values set.
+ * Generates a Shared State - Versions with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -222,9 +252,12 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  configData: { 'analytics.debugApiEnabled': true },
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  stateData: { version: '2.1.3' },
+  sdkVersion: '2.7.1',
+  extensions: { Lifecycle: '2.4.0', 'com.adobe.ACPGriffon': '2.0.0' },
+  stateOwner: 'com.adobe.mobule.eventhub',
+  eventSource: 'com.adobe.eventsource.sharedstate',
+  eventType: 'com.adobe.eventtype.hub',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -249,8 +282,9 @@ export default {
   schema,
   get,
   ...customExports,
-  getConfigData,
-  getConfigDataKey,
+  getSdkVersion,
+  getExtensions,
+  getExtensionsKey,
   isMatch,
   matcher,
   EVENT_SOURCE,

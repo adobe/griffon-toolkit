@@ -13,20 +13,25 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/configurationUpdate.json';
+import schema from '../schemas/analyticsResponse.json';
 
 /**
- * Contains constants and functions for a Configuration Update.
+ * Contains constants and functions for a Analytics Response.
  *
- * The structure for a Configuration Update is as follows:
+ * The structure for a Analytics Response is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       config.update: <object>,
+ *       requestEventIdentifier: <string>,
+ *       hitUrl: <string>,
+ *       headers: {
+ *         ETag: <string>,
+ *       },
+ *       hitHost: <string>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.configuration'
+ *     ACPExtensionEventSource: 'com.adobe.eventsource.responsecontent'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.analytics'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -40,11 +45,11 @@ import schema from '../schemas/configurationUpdate.json';
  * }
  * ```
  *
- * @namespace configurationUpdate
+ * @namespace analyticsResponse
  */
 
 /**
- * Paths for the keys on a Configuration Update
+ * Paths for the keys on a Analytics Response
  *
  * @enum {string}
  */
@@ -55,8 +60,20 @@ const path = {
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** The configuration values to write.<br />Path is `payload.ACPExtensionEventData."config.update"`. */
-  configData: 'payload.ACPExtensionEventData."config.update"',
+  /** The ID of the event that this is a response to.<br />Path is `payload.ACPExtensionEventData.requestEventIdentifier`. */
+  requestEventId: 'payload.ACPExtensionEventData.requestEventIdentifier',
+
+  /** Query parameter of the data that was passed to Analytics.<br />Path is `payload.ACPExtensionEventData.hitUrl`. */
+  hitUrl: 'payload.ACPExtensionEventData.hitUrl',
+
+  /** The headers returned from the request.<br />Path is `payload.ACPExtensionEventData.headers`. */
+  hitHeaders: 'payload.ACPExtensionEventData.headers',
+
+  /** The value used to pull the processing information from the Hit Debugger Service.<br />Path is `payload.ACPExtensionEventData.headers.ETag`. */
+  ETag: 'payload.ACPExtensionEventData.headers.ETag',
+
+  /** The host url of the service that was hit to pass the data to Analytics.<br />Path is `payload.ACPExtensionEventData.hitHost`. */
+  hitHost: 'payload.ACPExtensionEventData.hitHost',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -103,7 +120,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Configuration Update';
+const label = 'Analytics Response';
 
 /**
  * A grouping for this object
@@ -111,25 +128,25 @@ const label = 'Configuration Update';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a Configuration Update.
+ * The value for `eventSource` for a Analytics Response.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
 
 /**
- * The value for `eventType` for a Configuration Update.
+ * The value for `eventType` for a Analytics Response.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.configuration';
+const EVENT_TYPE = 'com.adobe.eventtype.analytics';
 
 /**
- * The value for `rootType` for a Configuration Update.
+ * The value for `rootType` for a Analytics Response.
  *
  * Path is `type`.
  *
@@ -148,55 +165,103 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `configData` from the Configuration Update.
- * This is the the configuration values to write.
+ * Returns the `requestEventId` from the Analytics Response.
+ * This is the the ID of the event that this is a response to.
  *
- * Path is `payload,ACPExtensionEventData,config.update`.
+ * Path is `payload,ACPExtensionEventData,requestEventIdentifier`.
  *
  * @function
- * @param {object} source The Configuration Update instance
- * @returns {object}
+ * @param {object} source The Analytics Response instance
+ * @returns {string}
  */
-const getConfigData = kit.search(path.configData);
+const getRequestEventId = kit.search(path.requestEventId);
 
 /**
- * Returns the data using the specified path from the configData
- * of the Configuration Update.
+ * Returns the `hitUrl` from the Analytics Response.
+ * This is the query parameter of the data that was passed to Analytics.
+ *
+ * Path is `payload,ACPExtensionEventData,hitUrl`.
+ *
+ * @function
+ * @param {object} source The Analytics Response instance
+ * @returns {string}
+ */
+const getHitUrl = kit.search(path.hitUrl);
+
+/**
+ * Returns the `hitHeaders` from the Analytics Response.
+ * This is the the headers returned from the request.
+ *
+ * Path is `payload,ACPExtensionEventData,headers`.
+ *
+ * @function
+ * @param {object} source The Analytics Response instance
+ * @returns {object}
+ */
+const getHitHeaders = kit.search(path.hitHeaders);
+
+/**
+ * Returns the data using the specified path from the hitHeaders
+ * of the Analytics Response.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Configuration Update instance
+ * @param {object} source The Analytics Response instance
  * @returns {*}
  */
-const getConfigDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.configData}.${searchPath}`, source)
+const getHitHeadersKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.hitHeaders}.${searchPath}`, source)
 );
 
 /**
- * Matcher can be used to find matching Configuration Update objects.
+ * Returns the `ETag` from the Analytics Response.
+ * This is the the value used to pull the processing information from the Hit Debugger Service.
+ *
+ * Path is `payload,ACPExtensionEventData,headers,ETag`.
+ *
+ * @function
+ * @param {object} source The Analytics Response instance
+ * @returns {string}
+ */
+const getETag = kit.search(path.ETag);
+
+/**
+ * Returns the `hitHost` from the Analytics Response.
+ * This is the the host url of the service that was hit to pass the data to Analytics.
+ *
+ * Path is `payload,ACPExtensionEventData,hitHost`.
+ *
+ * @function
+ * @param {object} source The Analytics Response instance
+ * @returns {string}
+ */
+const getHitHost = kit.search(path.hitHost);
+
+/**
+ * Matcher can be used to find matching Analytics Response objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.configuration\'',
+  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.analytics\'',
   'type==\'generic\'',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Configuration Update event.
+ * Tests the provided source against the matcher to see if it's Analytics Response event.
  *
  * @function
- * @param {object} source The Configuration Update instance
+ * @param {object} source The Analytics Response instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 
 /**
- * Generates a Configuration Update with the const values set.
+ * Generates a Analytics Response with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -205,14 +270,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  eventSource: 'com.adobe.eventsource.responsecontent',
+  eventType: 'com.adobe.eventtype.analytics',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a Configuration Update with some default values set.
+ * Generates a Analytics Response with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -222,9 +287,12 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  configData: { 'analytics.debugApiEnabled': true },
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  requestEventId: 'abc-efg',
+  hitUrl: 'ndh=1&c.&a.&AppID=TestApp-Swift&DayOfWeek=5',
+  ETag: 'qwerty-asdfgh',
+  hitHost: 'https://testorg.sc.omtrdc.net/b/ss/mobile5griffon.analytics.debug/0/OIP-2.3.0-2.7.1/s',
+  eventSource: 'com.adobe.eventsource.responsecontent',
+  eventType: 'com.adobe.eventtype.analytics',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -249,8 +317,12 @@ export default {
   schema,
   get,
   ...customExports,
-  getConfigData,
-  getConfigDataKey,
+  getRequestEventId,
+  getHitUrl,
+  getHitHeaders,
+  getHitHeadersKey,
+  getETag,
+  getHitHost,
   isMatch,
   matcher,
   EVENT_SOURCE,

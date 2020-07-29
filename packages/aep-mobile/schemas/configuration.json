@@ -12,6 +12,7 @@
         "ACPExtensionEventData": {
           "inherit": true,
           "type": "object",
+          "alias": "eventData",
           "description": "The full list of current configuration values",
           "properties": {
             "build.environment": {

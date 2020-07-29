@@ -1,6 +1,6 @@
 {
-  "$id": "http://griffon.adobe.com/schemas/aep-mobile/configurationUpdate",
-  "shortDesc": "Configuration Update",
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/genericTrack",
+  "shortDesc": "Generic Track Event",
   "group": "event",
   "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
   "type": "object",
@@ -13,16 +13,14 @@
           "inherit": true,
           "type": "object",
           "properties": {
-            "config.update": {
-              "alias": "configData",
+            "contextdata": {
+              "alias": "contextData",
+              "description": "Context data sent with the track call",
               "type": "object",
-              "description": "The configuration values to write",
-              "mock": "{ 'analytics.debugApiEnabled': true }"
+              "mock": "{ 'myapp.purchase': '1' }"
             }
           },
-          "additionalProperties": false,
-          "required": [ "ACPExtensionEventData", "metadata" ]
-
+          "required": ["contextdata"]
         },
         "ACPExtensionEventSource": {
           "inherit": true,
@@ -30,12 +28,10 @@
         },
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventtype.configuration"
+          "const": "com.adobe.eventtype.generic.track"
         }
       },
-      "required": [
-        "ACPExtensionEventData"
-      ]
+      "required": ["ACPExtensionEventData"]
     }
   }
 }

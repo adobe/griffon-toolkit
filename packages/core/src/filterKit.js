@@ -16,7 +16,7 @@ import { match, combineAll } from './kit';
 /**
  * Contains utility functions for dealing with Griffon filters.
  *
- * @namespace filterKit
+ * @namespace filters
  */
 
 const HASH_REGEX = /.*#filters=(.*)/;

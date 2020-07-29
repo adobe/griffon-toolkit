@@ -41,7 +41,7 @@
               "alias": "stateData",
               "type": "object",
               "description": "The data that is being written to shared state.",
-              "mock": "{ \"version\": \"2.1.3\" }"
+              "mock": "{ version: '2.1.3' }"
             }
           },
           "required": [ "state.data" ]

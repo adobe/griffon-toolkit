@@ -13,20 +13,20 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/configurationUpdate.json';
+import schema from '../schemas/genericTrack.json';
 
 /**
- * Contains constants and functions for a Configuration Update.
+ * Contains constants and functions for a Generic Track Event.
  *
- * The structure for a Configuration Update is as follows:
+ * The structure for a Generic Track Event is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       config.update: <object>,
+ *       contextdata: <object>,
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.configuration'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.generic.track'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -40,11 +40,11 @@ import schema from '../schemas/configurationUpdate.json';
  * }
  * ```
  *
- * @namespace configurationUpdate
+ * @namespace genericTrack
  */
 
 /**
- * Paths for the keys on a Configuration Update
+ * Paths for the keys on a Generic Track Event
  *
  * @enum {string}
  */
@@ -55,8 +55,8 @@ const path = {
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** The configuration values to write.<br />Path is `payload.ACPExtensionEventData."config.update"`. */
-  configData: 'payload.ACPExtensionEventData."config.update"',
+  /** Context data sent with the track call.<br />Path is `payload.ACPExtensionEventData.contextdata`. */
+  contextData: 'payload.ACPExtensionEventData.contextdata',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -103,7 +103,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Configuration Update';
+const label = 'Generic Track Event';
 
 /**
  * A grouping for this object
@@ -111,7 +111,7 @@ const label = 'Configuration Update';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a Configuration Update.
+ * The value for `eventSource` for a Generic Track Event.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
@@ -120,16 +120,16 @@ const group = 'event';
 const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
 
 /**
- * The value for `eventType` for a Configuration Update.
+ * The value for `eventType` for a Generic Track Event.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.configuration';
+const EVENT_TYPE = 'com.adobe.eventtype.generic.track';
 
 /**
- * The value for `rootType` for a Configuration Update.
+ * The value for `rootType` for a Generic Track Event.
  *
  * Path is `type`.
  *
@@ -148,55 +148,55 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `configData` from the Configuration Update.
- * This is the the configuration values to write.
+ * Returns the `contextData` from the Generic Track Event.
+ * This is the context data sent with the track call.
  *
- * Path is `payload,ACPExtensionEventData,config.update`.
+ * Path is `payload,ACPExtensionEventData,contextdata`.
  *
  * @function
- * @param {object} source The Configuration Update instance
+ * @param {object} source The Generic Track Event instance
  * @returns {object}
  */
-const getConfigData = kit.search(path.configData);
+const getContextData = kit.search(path.contextData);
 
 /**
- * Returns the data using the specified path from the configData
- * of the Configuration Update.
+ * Returns the data using the specified path from the contextData
+ * of the Generic Track Event.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Configuration Update instance
+ * @param {object} source The Generic Track Event instance
  * @returns {*}
  */
-const getConfigDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.configData}.${searchPath}`, source)
+const getContextDataKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.contextData}.${searchPath}`, source)
 );
 
 /**
- * Matcher can be used to find matching Configuration Update objects.
+ * Matcher can be used to find matching Generic Track Event objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.configuration\'',
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.generic.track\'',
   'type==\'generic\'',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Configuration Update event.
+ * Tests the provided source against the matcher to see if it's Generic Track Event event.
  *
  * @function
- * @param {object} source The Configuration Update instance
+ * @param {object} source The Generic Track Event instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 
 /**
- * Generates a Configuration Update with the const values set.
+ * Generates a Generic Track Event with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -206,13 +206,13 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  */
 const make = (input) => kit.expandWithPaths(path, {
   eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  eventType: 'com.adobe.eventtype.generic.track',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a Configuration Update with some default values set.
+ * Generates a Generic Track Event with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -222,9 +222,9 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  configData: { 'analytics.debugApiEnabled': true },
+  contextData: { 'myapp.purchase': '1' },
   eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  eventType: 'com.adobe.eventtype.generic.track',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -249,8 +249,8 @@ export default {
   schema,
   get,
   ...customExports,
-  getConfigData,
-  getConfigDataKey,
+  getContextData,
+  getContextDataKey,
   isMatch,
   matcher,
   EVENT_SOURCE,

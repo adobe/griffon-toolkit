@@ -1,0 +1,27 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/trackAction",
+  "shortDesc": "Track Action Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/genericTrack" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "action": {
+              "description": "The action that was triggered in the application",
+              "type": "string",
+              "mock": "OrderConfirmed"
+            }
+          },
+          "required": ["contextdata", "action"]
+        }
+      }
+    }
+  }
+}

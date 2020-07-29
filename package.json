@@ -2,6 +2,9 @@
   "private": true,
   "version": "0.2.1",
   "main": "dist/index.js",
+  "dependencies": {
+    "ramda": "^0.27.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -12,6 +15,7 @@
     "create-index": "^2.5.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-import-resolver-lerna": "^1.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsdoc": "^24.0.0",
     "jest": "^25.4.0",
@@ -19,8 +23,7 @@
     "jsdoc": "^3.6.4",
     "jsdoc-memberof-namespace": "^2.2.0",
     "lerna": "^3.22.1",
-    "lodash": "^4.17.15",
-    "ramda": "^0.27.0"
+    "lodash": "^4.17.15"
   },
   "scripts": {
     "coverage": "npm run test -- --coverage",

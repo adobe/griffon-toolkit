@@ -1,0 +1,169 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/lifecycleStart",
+  "shortDesc": "Lifecycle Start",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "description": "The lifecycle data",
+          "properties": {
+            "maxsessionlength": {
+              "alias": "maxSessionLength",
+              "description": "The amount of time before a session expires",
+              "type": "integer",
+              "mock": 604800
+            },
+            "sessionevent": {
+              "alias": "sessionEvent",
+              "description": "The type of event that triggers the new session",
+              "type": "string",
+              "mock": "start"
+            },
+            "lifecyclecontextdata": {
+              "alias": "contextData",
+              "description": "Context data about the device",
+              "type": "object",
+              "properties": {
+                "appid": {
+                  "alias": "appId",
+                  "description": "The id of the application",
+                  "type": "string",
+                  "mock": "TestApp-Swift 1.0"
+                },
+                "launches": {
+                  "description": "The number of times the app has launched",
+                  "type": "string",
+                  "mock": "5"
+                },
+                "crashevent": {
+                  "alias": "crashEvent",
+                  "description": "The name of the applications crash event",
+                  "type": "string",
+                  "mock": "CrashEvent"
+                },
+                "devicename": {
+                  "alias": "deviceName",
+                  "description": "The name of device",
+                  "type": "string",
+                  "mock": "iPhone XR"
+                },
+                "hourofday": {
+                  "alias": "hourOfDay",
+                  "description": "The hour in the day that the app launched",
+                  "type": "string",
+                  "mock": "10"
+                },
+                "dayssincelastuse": {
+                  "alias": "daysSinceLastUse",
+                  "description": "Number of days since the app was last launched",
+                  "type": "string",
+                  "mock": "1"
+                },
+                "runmode": {
+                  "alias": "runMode",
+                  "description": "Type of application format. Will change if on a smart device.",
+                  "type": "string",
+                  "mock": "Application"
+                },
+                "previousosversion": {
+                  "alias": "previousOsVersion",
+                  "description": "The version of the OS the last time the app launched",
+                  "type": "string",
+                  "mock": "iOS 14.0"
+                },
+                "locale": {
+                  "description": "The language the device is running under",
+                  "type": "string",
+                  "mock": "en-US"
+                },
+                "carriername": {
+                  "alias": "carrierName",
+                  "description": "The phone provider the device goes through",
+                  "type": "string",
+                  "mock": "Verizon"
+                },
+                "dayssincefirstuse": {
+                  "alias": "daysSinceFirstUse",
+                  "description": "The number of days since the first launch of the application",
+                  "type": "string",
+                  "mock": "7"
+                },
+                "dayofweek": {
+                  "alias": "dayOfWeek",
+                  "description": "The day of week that the app launched",
+                  "type": "string",
+                  "mock": "3"
+                },
+                "launchevent": {
+                  "alias": "launchEvent",
+                  "description": "The name of the application launch event",
+                  "type": "string",
+                  "mock": "LaunchEvent"
+                },
+                "previousappid": {
+                  "alias": "previousAppId",
+                  "description": "The id of the application the last time the app was launched",
+                  "type": "string",
+                  "mock": "TestApp-Swift 0.9"
+                },
+                "resolution": {
+                  "description": "The resolution of the device",
+                  "type": "string",
+                  "mock": "1242x2688"
+                },
+                "ignoredsessionlength": {
+                  "alias": "ignoredSessionLength",
+                  "description": "Used in calculdating length of session",
+                  "type": "string",
+                  "mock": "-1595526608"
+                },
+                "osversion": {
+                  "alias": "osVersion",
+                  "description": "The version of the OS",
+                  "type": "string",
+                  "mock": "iOS 14.0"
+                }
+              }
+            },
+            "starttimestampseconds": {
+              "alias": "startTimestamp",
+              "description": "The timestamp when the session started",
+              "type": "number",
+              "mock": 1595526618
+            },
+            "previoussessionpausetimestampseconds": {
+              "alias": "previousSessionPauseTimestamp",
+              "description": "The timestamp when the previous session was paused (if applicable)",
+              "type": "number",
+              "mock": 0
+            },
+            "previoussessionstarttimestampseconds": {
+              "alias": "previousSessionStartTimestamp",
+              "description": "The timestamp when the previous session was started",
+              "type": "number",
+              "mock": 1595526608
+            }
+          }
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.responsecontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.lifecycle"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

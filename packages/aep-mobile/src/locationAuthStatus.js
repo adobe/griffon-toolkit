@@ -13,20 +13,21 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/configurationUpdate.json';
+import schema from '../schemas/locationAuthStatus.json';
 
 /**
- * Contains constants and functions for a Configuration Update.
+ * Contains constants and functions for a Location Auth Status.
  *
- * The structure for a Configuration Update is as follows:
+ * The structure for a Location Auth Status is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       config.update: <object>,
+ *       authstatus: <string>,
+ *       requesttype: 'requestsetauthorizationstatus'
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.configuration'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.places'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -40,11 +41,11 @@ import schema from '../schemas/configurationUpdate.json';
  * }
  * ```
  *
- * @namespace configurationUpdate
+ * @namespace locationAuthStatus
  */
 
 /**
- * Paths for the keys on a Configuration Update
+ * Paths for the keys on a Location Auth Status
  *
  * @enum {string}
  */
@@ -55,8 +56,11 @@ const path = {
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** The configuration values to write.<br />Path is `payload.ACPExtensionEventData."config.update"`. */
-  configData: 'payload.ACPExtensionEventData."config.update"',
+  /** The response from the allow location popup in the app.<br />Path is `payload.ACPExtensionEventData.authstatus`. */
+  status: 'payload.ACPExtensionEventData.authstatus',
+
+  /** The type of request we are making.<br />Path is `payload.ACPExtensionEventData.requesttype`. */
+  requestType: 'payload.ACPExtensionEventData.requesttype',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -98,12 +102,12 @@ const path = {
  *
  * @constant
  */
-const parentDepth = 2;
+const parentDepth = 3;
 
 /**
  * A label that can be used when describing this object
  */
-const label = 'Configuration Update';
+const label = 'Location Auth Status';
 
 /**
  * A grouping for this object
@@ -111,7 +115,16 @@ const label = 'Configuration Update';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a Configuration Update.
+ * The value for `requestType` for a Location Auth Status.
+ *
+ * Path is `payload,ACPExtensionEventData,requesttype`.
+ *
+ * @constant
+ */
+const REQUEST_TYPE = 'requestsetauthorizationstatus';
+
+/**
+ * The value for `eventSource` for a Location Auth Status.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
@@ -120,16 +133,16 @@ const group = 'event';
 const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
 
 /**
- * The value for `eventType` for a Configuration Update.
+ * The value for `eventType` for a Location Auth Status.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.configuration';
+const EVENT_TYPE = 'com.adobe.eventtype.places';
 
 /**
- * The value for `rootType` for a Configuration Update.
+ * The value for `rootType` for a Location Auth Status.
  *
  * Path is `type`.
  *
@@ -148,55 +161,55 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `configData` from the Configuration Update.
- * This is the the configuration values to write.
+ * Returns the `status` from the Location Auth Status.
+ * This is the the response from the allow location popup in the app.
  *
- * Path is `payload,ACPExtensionEventData,config.update`.
- *
- * @function
- * @param {object} source The Configuration Update instance
- * @returns {object}
- */
-const getConfigData = kit.search(path.configData);
-
-/**
- * Returns the data using the specified path from the configData
- * of the Configuration Update.
+ * Path is `payload,ACPExtensionEventData,authstatus`.
  *
  * @function
- * @param {...string} path key in object
- * @param {object} source The Configuration Update instance
- * @returns {*}
+ * @param {object} source The Location Auth Status instance
+ * @returns {string}
  */
-const getConfigDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.configData}.${searchPath}`, source)
-);
+const getStatus = kit.search(path.status);
 
 /**
- * Matcher can be used to find matching Configuration Update objects.
+ * Returns the `requestType` from the Location Auth Status.
+ * This is the the type of request we are making.
+ *
+ * Path is `payload,ACPExtensionEventData,requesttype`.
+ *
+ * @function
+ * @param {object} source The Location Auth Status instance
+ * @returns {string}
+ */
+const getRequestType = kit.search(path.requestType);
+
+/**
+ * Matcher can be used to find matching Location Auth Status objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
+  'payload.ACPExtensionEventData.requesttype==\'requestsetauthorizationstatus\'',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.configuration\'',
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
   'type==\'generic\'',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Configuration Update event.
+ * Tests the provided source against the matcher to see if it's Location Auth Status event.
  *
  * @function
- * @param {object} source The Configuration Update instance
+ * @param {object} source The Location Auth Status instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 
 /**
- * Generates a Configuration Update with the const values set.
+ * Generates a Location Auth Status with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -205,14 +218,15 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
+  requestType: 'requestsetauthorizationstatus',
   eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  eventType: 'com.adobe.eventtype.places',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a Configuration Update with some default values set.
+ * Generates a Location Auth Status with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -222,9 +236,10 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  configData: { 'analytics.debugApiEnabled': true },
+  status: 'always',
+  requestType: 'requestsetauthorizationstatus',
   eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  eventType: 'com.adobe.eventtype.places',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -249,10 +264,11 @@ export default {
   schema,
   get,
   ...customExports,
-  getConfigData,
-  getConfigDataKey,
+  getStatus,
+  getRequestType,
   isMatch,
   matcher,
+  REQUEST_TYPE,
   EVENT_SOURCE,
   EVENT_TYPE,
   ROOT_TYPE,

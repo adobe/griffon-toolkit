@@ -41,7 +41,7 @@ const fs = require('fs');
  */
 const makePropertyProps = (property, key, path, parent) => ({
   ...property,
-  path: [...path, key].join('.'),
+  path: [...path, key],
   alias: property.alias || key,
   useConst: property.const,
   useMock: property.const || property.mock,
@@ -65,10 +65,10 @@ export const expandMyProperties = ({
   R.forEachObjIndexed(
     (property, key) => {
       const props = makePropertyProps(property, key, path, parent);
-      if (!property.inherit) {
+      if (!property.inherit || property.alias) {
         output.gets += writeGet(props);
         output.exports.push(`get${ucFirst(props.alias)}`);
-        if (property.type === 'object') {
+        if (property.type === 'object' || property.inherit) {
           output.gets += writeGetFromObject(props);
           output.exports.push(`get${ucFirst(props.alias)}Key`);
         }
@@ -84,6 +84,7 @@ export const expandMyProperties = ({
     },
     properties
   );
+
   return output;
 };
 
@@ -135,9 +136,6 @@ const expandFullProperties = ({
           depth: depth + 2,
           parent
         });
-        if (property.additionalProperties !== false) {
-          output.event += writeStructureLine(depth + 2, '...');
-        }
         output.event += writeStructureLine(depth);
       } else {
         output.event += writeStructureLine(depth, key, props);
