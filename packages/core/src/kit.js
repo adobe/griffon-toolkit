@@ -12,7 +12,6 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import jmespath from 'jmespath';
-import Ajv from 'ajv';
 
 /**
  * Contains core functions for Griffon.
@@ -270,45 +269,3 @@ export const expandWithPaths = R.curry((path, kvps) => R.pipe(
   },
   expand
 )(kvps));
-
-/**
- * Takes the provided json schema and validates the provided data against it
- * using AJV.
- *
- * @function
- * @param {object} schema Json Schema
- * @param {object} data Data to test
- * @returns {Array}
- */
-export const validateSchema = R.curry((rootSchemas, schema, data) => {
-  const ajv = new Ajv({
-    schemas: rootSchemas
-  });
-
-  try {
-    return ajv.validate(schema, data);
-  } catch (e) {
-    return false;
-  }
-});
-
-/**
- * Takes the provided json schema and returns any validation errors. Returns false if no errors.
- *
- * @function
- * @param {object} schema Json Schema
- * @param {object} data Data to test
- * @returns {Array}
- */
-export const schemaErrors = R.curry((rootSchemas, schema, data) => {
-  const ajv = new Ajv({
-    schemas: rootSchemas
-  });
-
-  try {
-    if (ajv.validate(schema, data)) { return false; }
-    return ajv.errors;
-  } catch (e) {
-    return e;
-  }
-});
