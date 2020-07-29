@@ -27,7 +27,6 @@ const normalizeType = (type) => (
 
 const escapeQuote = (str) => str.replace(/'/g, '\\\'');
 
-
 const preparePath = R.pipe(
   R.split('.'),
   R.map((str) => (str.indexOf(' ') >= 0 ? `"${str}"` : str)),
@@ -77,8 +76,7 @@ export const writeFullContent = ({
   mock,
   matches,
   namespace
-}) => `
-/*
+}) => `/*
 Copyright 2020 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License. You may obtain a copy
@@ -148,7 +146,6 @@ const get = kit.curry((alias, data) => kit.search(path[alias] || alias, data));
 ${gets}${writeMatches(matches, shortDesc)}
 ${make}
 ${mock}
-
 export default {
   ${exports.join(`,
   `)}
@@ -166,7 +163,6 @@ export const writeCommentLine = ({ description, path }) => `
  */
 export const writePathLine = ({ alias, path }) => `
   ${alias}: '${preparePath(path)}'`;
-
 
 const writeEventType = (props) => (props
   ? props === '{'
@@ -254,8 +250,7 @@ const mock = (input) => kit.expandWithPaths(path, {${mocks || ''}
 export const writeMake = ({
   shortDesc,
   makes
-}) => `
-/**
+}) => `/**
  * Generates a ${shortDesc} with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.

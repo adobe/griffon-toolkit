@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -166,7 +165,6 @@ const getName = kit.search(path.name);
  */
 const getSessionId = kit.search(path.sessionId);
 
-
 /**
  * Generates a Griffon Session with the const values set.
  * Can be useful in testing.
@@ -196,7 +194,6 @@ const mock = (input) => kit.expandWithPaths(path, {
   sessionId: 'abc',
   ...input
 });
-
 
 export default {
   path,

@@ -14,23 +14,9 @@ import * as kit from '../src';
 import entry from '../../aep-mobile/src/placesEntry';
 import aep from '../../aep-mobile/src/mobileEvent';
 import annotation from '../../common/src/annotation';
-import genericPlaces from '../../aep-mobile/src/genericPlaces';
-import poi from '../../common/src/poi';
-import event from '../../common/src/event';
-
-const rootSchemas = [
-  aep.schema,
-  annotation.schema,
-  genericPlaces.schema,
-  poi.schema,
-  event.schema
-];
 
 const mockEntry = entry.mock({
   annotations: [annotation.mock()]
-});
-const mockEntryBad = entry.mock({
-  annotations: [{ test: true }]
 });
 const mockAEP = aep.mock();
 const events = [mockEntry, mockAEP];
@@ -76,18 +62,6 @@ describe('Kit Tests', () => {
       path,
       { width: 200, height: 300 }
     )).toEqual({ size: { width: 200, height: 300 } });
-  });
-  it('can test against a schema', () => {
-    expect(kit.validateSchema(rootSchemas, entry.schema, mockEntry)).toBe(true);
-    expect(kit.validateSchema(rootSchemas, entry.schema, mockAEP)).toBe(false);
-  });
-  it('has correct setup for annotations', () => {
-    expect(kit.validateSchema(rootSchemas, entry.schema, mockEntry)).toBe(true);
-    expect(kit.validateSchema(rootSchemas, entry.schema, mockEntryBad)).toBe(false);
-  });
-  it('can provide schema errors', () => {
-    expect(kit.schemaErrors(rootSchemas, entry.schema, mockEntry)).toBe(false);
-    expect(kit.schemaErrors(rootSchemas, entry.schema, mockAEP).length).toBe(1);
   });
   it('can modify data in the results', () => {
     const results = kit.modify(

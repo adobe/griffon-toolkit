@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -106,7 +105,6 @@ const search = kit.curry(
   (namespace, key, data) => kit.search(makeNamespacePath(namespace, key), data)
 );
 
-
 // additional exports should be added here:
 const customExports = {
   publicKey, publicNamespace, makeNamespacePath, search
@@ -208,7 +206,6 @@ const getNamespace = kit.search(path.namespace);
  */
 const getUuid = kit.search(path.uuid);
 
-
 /**
  * Generates a Session Annotation Object with the const values set.
  * Can be useful in testing.
@@ -235,7 +232,6 @@ const mock = (input) => kit.expandWithPaths(path, {
   uuid: '423',
   ...input
 });
-
 
 export default {
   path,

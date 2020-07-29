@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -340,7 +339,6 @@ const getType = kit.search(path.type);
  */
 const getUuid = kit.search(path.uuid);
 
-
 /**
  * Generates a POI Object with the const values set.
  * Can be useful in testing.
@@ -375,7 +373,6 @@ const mock = (input) => kit.expandWithPaths(path, {
   uuid: '423',
   ...input
 });
-
 
 export default {
   path,
