@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -224,7 +223,6 @@ const matcher = kit.combineAll([
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
-
 /**
  * Generates a Shared State - Versions with the const values set.
  * Can be useful in testing.
@@ -265,7 +263,6 @@ const mock = (input) => kit.expandWithPaths(path, {
   rootId: '123',
   ...input
 });
-
 
 /* ADD CUSTOM CONTENT BELOW */
 

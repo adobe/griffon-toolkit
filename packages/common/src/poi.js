@@ -1,4 +1,3 @@
-
 /*
 Copyright 2020 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -300,7 +299,6 @@ const getWithin = kit.search(path.within);
  */
 const getWeight = kit.search(path.weight);
 
-
 /**
  * Generates a POI Object with the const values set.
  * Can be useful in testing.
@@ -334,7 +332,6 @@ const mock = (input) => kit.expandWithPaths(path, {
   ...input
 });
 
-
 /* ADD CUSTOM CONTENT BELOW */
 
 /**
@@ -349,7 +346,6 @@ const getCustomMetadata = R.pipe(
   getMetadata,
   R.omit(['category', 'street', 'city', 'state', 'country'])
 );
-
 
 // additional exports should be added here:
 const customExports = { getCustomMetadata };
