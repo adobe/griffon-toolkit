@@ -12,20 +12,18 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/requestPlaces.json';
+import schema from '../schemas/locationAuthStatus.json';
 
 /**
- * Contains constants and functions for a Request Places Event.
+ * Contains constants and functions for a Location Auth Status.
  *
- * The structure for a Request Places Event is as follows:
+ * The structure for a Location Auth Status is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       count: <number>,
- *       latitude: <number>,
- *       longitude: <number>,
- *       requesttype: 'requestgetnearbyplaces'
+ *       authstatus: <string>,
+ *       requesttype: 'requestsetauthorizationstatus'
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
  *     ACPExtensionEventType: 'com.adobe.eventtype.places'
@@ -42,11 +40,11 @@ import schema from '../schemas/requestPlaces.json';
  * }
  * ```
  *
- * @namespace requestPlaces
+ * @namespace locationAuthStatus
  */
 
 /**
- * Paths for the keys on a Request Places Event
+ * Paths for the keys on a Location Auth Status
  *
  * @enum {string}
  */
@@ -55,16 +53,10 @@ const path = {
   payload: 'payload',
 
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
-  data: 'payload.ACPExtensionEventData',
+  eventData: 'payload.ACPExtensionEventData',
 
-  /** The number of POIs to return.<br />Path is `payload.ACPExtensionEventData.count`. */
-  count: 'payload.ACPExtensionEventData.count',
-
-  /** The latitude to search from.<br />Path is `payload.ACPExtensionEventData.latitude`. */
-  latitude: 'payload.ACPExtensionEventData.latitude',
-
-  /** The longitude to search from.<br />Path is `payload.ACPExtensionEventData.longitude`. */
-  longitude: 'payload.ACPExtensionEventData.longitude',
+  /** The response from the allow location popup in the app.<br />Path is `payload.ACPExtensionEventData.authstatus`. */
+  status: 'payload.ACPExtensionEventData.authstatus',
 
   /** The type of request we are making.<br />Path is `payload.ACPExtensionEventData.requesttype`. */
   requestType: 'payload.ACPExtensionEventData.requesttype',
@@ -114,7 +106,7 @@ const parentDepth = 3;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Request Places Event';
+const label = 'Location Auth Status';
 
 /**
  * A grouping for this object
@@ -122,16 +114,16 @@ const label = 'Request Places Event';
 const group = 'event';
 
 /**
- * The value for `requestType` for a Request Places Event.
+ * The value for `requestType` for a Location Auth Status.
  *
  * Path is `payload,ACPExtensionEventData,requesttype`.
  *
  * @constant
  */
-const REQUEST_TYPE = 'requestgetnearbyplaces';
+const REQUEST_TYPE = 'requestsetauthorizationstatus';
 
 /**
- * The value for `eventSource` for a Request Places Event.
+ * The value for `eventSource` for a Location Auth Status.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
@@ -140,7 +132,7 @@ const REQUEST_TYPE = 'requestgetnearbyplaces';
 const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
 
 /**
- * The value for `eventType` for a Request Places Event.
+ * The value for `eventType` for a Location Auth Status.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
@@ -149,7 +141,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
 const EVENT_TYPE = 'com.adobe.eventtype.places';
 
 /**
- * The value for `rootType` for a Request Places Event.
+ * The value for `rootType` for a Location Auth Status.
  *
  * Path is `type`.
  *
@@ -168,86 +160,37 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `data` from the Request Places Event.
- * This is the .
+ * Returns the `status` from the Location Auth Status.
+ * This is the the response from the allow location popup in the app.
  *
- * Path is `payload,ACPExtensionEventData`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {object}
- */
-const getData = kit.search(path.data);
-
-/**
- * Returns the data using the specified path from the data
- * of the Request Places Event.
+ * Path is `payload,ACPExtensionEventData,authstatus`.
  *
  * @function
- * @param {...string} path key in object
- * @param {object} source The Request Places Event instance
- * @returns {*}
+ * @param {object} source The Location Auth Status instance
+ * @returns {string}
  */
-const getDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.data}.${searchPath}`, source)
-);
+const getStatus = kit.search(path.status);
 
 /**
- * Returns the `count` from the Request Places Event.
- * This is the the number of POIs to return.
- *
- * Path is `payload,ACPExtensionEventData,count`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getCount = kit.search(path.count);
-
-/**
- * Returns the `latitude` from the Request Places Event.
- * This is the the latitude to search from.
- *
- * Path is `payload,ACPExtensionEventData,latitude`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getLatitude = kit.search(path.latitude);
-
-/**
- * Returns the `longitude` from the Request Places Event.
- * This is the the longitude to search from.
- *
- * Path is `payload,ACPExtensionEventData,longitude`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getLongitude = kit.search(path.longitude);
-
-/**
- * Returns the `requestType` from the Request Places Event.
+ * Returns the `requestType` from the Location Auth Status.
  * This is the the type of request we are making.
  *
  * Path is `payload,ACPExtensionEventData,requesttype`.
  *
  * @function
- * @param {object} source The Request Places Event instance
+ * @param {object} source The Location Auth Status instance
  * @returns {string}
  */
 const getRequestType = kit.search(path.requestType);
 
 /**
- * Matcher can be used to find matching Request Places Event objects.
+ * Matcher can be used to find matching Location Auth Status objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventData.requesttype==\'requestgetnearbyplaces\'',
+  'payload.ACPExtensionEventData.requesttype==\'requestsetauthorizationstatus\'',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
   'type==\'generic\'',
@@ -255,16 +198,16 @@ const matcher = kit.combineAll([
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Request Places Event event.
+ * Tests the provided source against the matcher to see if it's Location Auth Status event.
  *
  * @function
- * @param {object} source The Request Places Event instance
+ * @param {object} source The Location Auth Status instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Request Places Event with the const values set.
+ * Generates a Location Auth Status with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -273,7 +216,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  requestType: 'requestgetnearbyplaces',
+  requestType: 'requestsetauthorizationstatus',
   eventSource: 'com.adobe.eventsource.requestcontent',
   eventType: 'com.adobe.eventtype.places',
   rootType: 'generic',
@@ -281,7 +224,7 @@ const make = (input) => kit.expandWithPaths(path, {
 });
 
 /**
- * Generates a Request Places Event with some default values set.
+ * Generates a Location Auth Status with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -291,10 +234,8 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  count: 10,
-  latitude: 40.4349,
-  longitude: -111.891,
-  requestType: 'requestgetnearbyplaces',
+  status: 'always',
+  requestType: 'requestsetauthorizationstatus',
   eventSource: 'com.adobe.eventsource.requestcontent',
   eventType: 'com.adobe.eventtype.places',
   rootType: 'generic',
@@ -320,11 +261,7 @@ export default {
   schema,
   get,
   ...customExports,
-  getData,
-  getDataKey,
-  getCount,
-  getLatitude,
-  getLongitude,
+  getStatus,
   getRequestType,
   isMatch,
   matcher,

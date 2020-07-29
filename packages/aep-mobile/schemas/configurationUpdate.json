@@ -1,0 +1,41 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/configurationUpdate",
+  "shortDesc": "Configuration Update",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "config.update": {
+              "alias": "configData",
+              "type": "object",
+              "description": "The configuration values to write",
+              "mock": "{ 'analytics.debugApiEnabled': true }"
+            }
+          },
+          "additionalProperties": false,
+          "required": [ "ACPExtensionEventData", "metadata" ]
+
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.configuration"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

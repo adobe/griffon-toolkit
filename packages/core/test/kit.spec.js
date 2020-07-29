@@ -77,6 +77,17 @@ describe('Kit Tests', () => {
       { width: 200, height: 300 }
     )).toEqual({ size: { width: 200, height: 300 } });
   });
+  it('will merge while expanding', () => {
+    const path = {
+      size: 'size',
+      width: 'size.width',
+      height: 'size.height'
+    };
+    expect(kit.expandWithPaths(
+      path,
+      { width: 200, height: 300, size: { mode: 'resize' } }
+    )).toEqual({ size: { width: 200, height: 300, mode: 'resize' } });
+  });
   it('can test against a schema', () => {
     expect(kit.validateSchema(rootSchemas, entry.schema, mockEntry)).toBe(true);
     expect(kit.validateSchema(rootSchemas, entry.schema, mockAEP)).toBe(false);
@@ -100,10 +111,26 @@ describe('Kit Tests', () => {
     expect(results[0].uuid).toBe('123');
     expect(results[1].color).toBeFalsy();
   });
+  it('can mod with a function', () => {
+    const results = kit.modify(
+      ({ uuid }) => ({ theUUID: uuid }),
+      entry.matcher,
+      events
+    );
+    expect(results[0].theUUID).toBe('123');
+    expect(results[1].theUUID).toBeFalsy();
+  });
   it('can modify the results in bulk', () => {
     const results = kit.modifyBulk([
       { matcher: entry.matcher, modifications: { color: 'red' } },
-      { matcher: matchAEP, mods: { size: 'large' } }
+      {
+        matcher: matchAEP,
+        mods: {
+          size: 'large',
+          theUUID: ({ uuid }) => uuid,
+          colors: ['green', () => 'red']
+        }
+      }
     ], events);
 
     expect(results.length).toBe(2);
@@ -112,6 +139,8 @@ describe('Kit Tests', () => {
     expect(results[1].color).toBeFalsy();
     expect(results[0].size).toBe('large');
     expect(results[1].size).toBe('large');
+    expect(results[1].theUUID).toBe('123');
+    expect(results[1].colors).toEqual(['green', 'red']);
   });
   it('correctly wraps paths', () => {
     expect(kit.not('a')).toBe('!a');
@@ -121,4 +150,10 @@ describe('Kit Tests', () => {
     expect(kit.combineAll(['a', '(b && c)'])).toBe('a && (b && c)');
     expect(kit.combineAll(['a', '(b) && (c)'])).toBe('a && ((b) && (c))');
   });
+  it('correctly parses paths', () => {
+    expect(kit.convertPath('a.b.c')).toEqual(['a', 'b', 'c']);
+    expect(kit.convertPath('a."b.e".c')).toEqual(['a', 'b.e', 'c']);
+  });
 });
+
+// ^(([^\n."])|(\".*\")*\.?)*$

@@ -12,23 +12,26 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/requestPlaces.json';
+import schema from '../schemas/sharedStateVersions.json';
 
 /**
- * Contains constants and functions for a Request Places Event.
+ * Contains constants and functions for a Shared State - Versions.
  *
- * The structure for a Request Places Event is as follows:
+ * The structure for a Shared State - Versions is as follows:
  * ```
  * {
  *   payload: {
- *     ACPExtensionEventData: {
- *       count: <number>,
- *       latitude: <number>,
- *       longitude: <number>,
- *       requesttype: 'requestgetnearbyplaces'
+ *     metadata: {
+ *       state.data: {
+ *         version: <string>,
+ *         extensions: <object>,
+ *       },
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.places'
+ *     ACPExtensionEventData: {
+ *       state.owner: <string>,
+ *     },
+ *     ACPExtensionEventSource: 'com.adobe.eventsource.sharedstate'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.hub'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -42,11 +45,11 @@ import schema from '../schemas/requestPlaces.json';
  * }
  * ```
  *
- * @namespace requestPlaces
+ * @namespace sharedStateVersions
  */
 
 /**
- * Paths for the keys on a Request Places Event
+ * Paths for the keys on a Shared State - Versions
  *
  * @enum {string}
  */
@@ -54,20 +57,23 @@ const path = {
   /** An object with custom data describing the event.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
-  data: 'payload.ACPExtensionEventData',
+  /** Additional metadata that is attacked to SDK events.<br />Path is `payload.metadata`. */
+  metadata: 'payload.metadata',
 
-  /** The number of POIs to return.<br />Path is `payload.ACPExtensionEventData.count`. */
-  count: 'payload.ACPExtensionEventData.count',
+  /** The data that is being written to shared state..<br />Path is `payload.metadata."state.data"`. */
+  stateData: 'payload.metadata."state.data"',
 
-  /** The latitude to search from.<br />Path is `payload.ACPExtensionEventData.latitude`. */
-  latitude: 'payload.ACPExtensionEventData.latitude',
+  /** The version of the SDK.<br />Path is `payload.metadata."state.data".version`. */
+  sdkVersion: 'payload.metadata."state.data".version',
 
-  /** The longitude to search from.<br />Path is `payload.ACPExtensionEventData.longitude`. */
-  longitude: 'payload.ACPExtensionEventData.longitude',
+  /** A mapping of versions per sdk extension.<br />Path is `payload.metadata."state.data".extensions`. */
+  extensions: 'payload.metadata."state.data".extensions',
 
-  /** The type of request we are making.<br />Path is `payload.ACPExtensionEventData.requesttype`. */
-  requestType: 'payload.ACPExtensionEventData.requesttype',
+  /** The full list of current configuration values.<br />Path is `payload.ACPExtensionEventData`. */
+  eventData: 'payload.ACPExtensionEventData',
+
+  /** In SDK extension that owns the shared state that is being updated.<br />Path is `payload.ACPExtensionEventData."state.owner"`. */
+  stateOwner: 'payload.ACPExtensionEventData."state.owner"',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -114,7 +120,7 @@ const parentDepth = 3;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Request Places Event';
+const label = 'Shared State - Versions';
 
 /**
  * A grouping for this object
@@ -122,34 +128,25 @@ const label = 'Request Places Event';
 const group = 'event';
 
 /**
- * The value for `requestType` for a Request Places Event.
- *
- * Path is `payload,ACPExtensionEventData,requesttype`.
- *
- * @constant
- */
-const REQUEST_TYPE = 'requestgetnearbyplaces';
-
-/**
- * The value for `eventSource` for a Request Places Event.
+ * The value for `eventSource` for a Shared State - Versions.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventsource.sharedstate';
 
 /**
- * The value for `eventType` for a Request Places Event.
+ * The value for `eventType` for a Shared State - Versions.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.places';
+const EVENT_TYPE = 'com.adobe.eventtype.hub';
 
 /**
- * The value for `rootType` for a Request Places Event.
+ * The value for `rootType` for a Shared State - Versions.
  *
  * Path is `type`.
  *
@@ -168,103 +165,66 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `data` from the Request Places Event.
- * This is the .
+ * Returns the `sdkVersion` from the Shared State - Versions.
+ * This is the the version of the SDK.
  *
- * Path is `payload,ACPExtensionEventData`.
+ * Path is `payload,metadata,state.data,version`.
  *
  * @function
- * @param {object} source The Request Places Event instance
- * @returns {object}
+ * @param {object} source The Shared State - Versions instance
+ * @returns {string}
  */
-const getData = kit.search(path.data);
+const getSdkVersion = kit.search(path.sdkVersion);
 
 /**
- * Returns the data using the specified path from the data
- * of the Request Places Event.
+ * Returns the `extensions` from the Shared State - Versions.
+ * This is the a mapping of versions per sdk extension.
+ *
+ * Path is `payload,metadata,state.data,extensions`.
+ *
+ * @function
+ * @param {object} source The Shared State - Versions instance
+ * @returns {object}
+ */
+const getExtensions = kit.search(path.extensions);
+
+/**
+ * Returns the data using the specified path from the extensions
+ * of the Shared State - Versions.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Request Places Event instance
+ * @param {object} source The Shared State - Versions instance
  * @returns {*}
  */
-const getDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.data}.${searchPath}`, source)
+const getExtensionsKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.extensions}.${searchPath}`, source)
 );
 
 /**
- * Returns the `count` from the Request Places Event.
- * This is the the number of POIs to return.
- *
- * Path is `payload,ACPExtensionEventData,count`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getCount = kit.search(path.count);
-
-/**
- * Returns the `latitude` from the Request Places Event.
- * This is the the latitude to search from.
- *
- * Path is `payload,ACPExtensionEventData,latitude`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getLatitude = kit.search(path.latitude);
-
-/**
- * Returns the `longitude` from the Request Places Event.
- * This is the the longitude to search from.
- *
- * Path is `payload,ACPExtensionEventData,longitude`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getLongitude = kit.search(path.longitude);
-
-/**
- * Returns the `requestType` from the Request Places Event.
- * This is the the type of request we are making.
- *
- * Path is `payload,ACPExtensionEventData,requesttype`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {string}
- */
-const getRequestType = kit.search(path.requestType);
-
-/**
- * Matcher can be used to find matching Request Places Event objects.
+ * Matcher can be used to find matching Shared State - Versions objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventData.requesttype==\'requestgetnearbyplaces\'',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
+  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.sharedstate\'',
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.hub\'',
   'type==\'generic\'',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Request Places Event event.
+ * Tests the provided source against the matcher to see if it's Shared State - Versions event.
  *
  * @function
- * @param {object} source The Request Places Event instance
+ * @param {object} source The Shared State - Versions instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Request Places Event with the const values set.
+ * Generates a Shared State - Versions with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -273,15 +233,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  requestType: 'requestgetnearbyplaces',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.places',
+  eventSource: 'com.adobe.eventsource.sharedstate',
+  eventType: 'com.adobe.eventtype.hub',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a Request Places Event with some default values set.
+ * Generates a Shared State - Versions with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -291,12 +250,12 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  count: 10,
-  latitude: 40.4349,
-  longitude: -111.891,
-  requestType: 'requestgetnearbyplaces',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.places',
+  stateData: { version: '2.1.3' },
+  sdkVersion: '2.7.1',
+  extensions: { Lifecycle: '2.4.0', 'com.adobe.ACPGriffon': '2.0.0' },
+  stateOwner: 'com.adobe.mobule.eventhub',
+  eventSource: 'com.adobe.eventsource.sharedstate',
+  eventType: 'com.adobe.eventtype.hub',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -320,15 +279,11 @@ export default {
   schema,
   get,
   ...customExports,
-  getData,
-  getDataKey,
-  getCount,
-  getLatitude,
-  getLongitude,
-  getRequestType,
+  getSdkVersion,
+  getExtensions,
+  getExtensionsKey,
   isMatch,
   matcher,
-  REQUEST_TYPE,
   EVENT_SOURCE,
   EVENT_TYPE,
   ROOT_TYPE,

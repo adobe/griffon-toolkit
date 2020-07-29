@@ -14,6 +14,7 @@ governing permissions and limitations under the License.
 import entry from '../packages/aep-mobile/src/placesEntry';
 import aep from '../packages/aep-mobile/src/mobileEvent';
 import root from '../packages/common/src/event';
+import configuration from '../packages/aep-mobile/src/configuration';
 import iosClient from '../packages/aep-mobile/src/clientInfoIOS';
 
 describe('Test Auto Generated Output', () => {
@@ -21,10 +22,10 @@ describe('Test Auto Generated Output', () => {
     expect(Object.keys(root.path).length).toBe(6);
   });
   it('exports inherited paths', () => {
-    expect(Object.keys(aep.path).length).toBe(12);
+    expect(Object.keys(aep.path).length).toBe(13);
   });
   it('exports paths from object refs', () => {
-    expect(Object.keys(entry.path).length).toBe(30);
+    expect(Object.keys(entry.path).length).toBe(29);
   });
   it('creates a make command', () => {
     expect(root.make()).toEqual({});
@@ -82,5 +83,13 @@ describe('Test Auto Generated Output', () => {
     expect(iosClient.isMatch(mock)).toBe(true);
     expect(iosClient.getPlatform(mock)).toBe('iOS');
     expect(iosClient.getOs(mock)).toBe('iOS 13');
+  });
+  it('handles keys with dots in them', () => {
+    const mock = configuration.mock({
+      launchPropertyId: 'abcd',
+      eventData: { box: true }
+    });
+    expect(configuration.getLaunchPropertyId(mock)).toBe('abcd');
+    expect(configuration.getEventData(mock)['property.id']).toBe('abcd');
   });
 });

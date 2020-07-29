@@ -1,0 +1,39 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/locationAuthStatus",
+  "shortDesc": "Location Auth Status",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/genericPlaces" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "authstatus": {
+              "alias": "status",
+              "description": "The response from the allow location popup in the app",
+              "type": "string",
+              "mock": "always"
+            },
+            "requesttype": {
+              "alias": "requestType",
+              "description": "The type of request we are making",
+              "type": "string",
+              "const": "requestsetauthorizationstatus"
+            }
+          },
+          "required": ["authstatus", "requesttype"]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        }
+      },
+      "required": ["ACPExtensionEventData"]
+    }
+  }
+}

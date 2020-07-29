@@ -12,23 +12,25 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/requestPlaces.json';
+import schema from '../schemas/analyticsResponse.json';
 
 /**
- * Contains constants and functions for a Request Places Event.
+ * Contains constants and functions for a Analytics Response.
  *
- * The structure for a Request Places Event is as follows:
+ * The structure for a Analytics Response is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       count: <number>,
- *       latitude: <number>,
- *       longitude: <number>,
- *       requesttype: 'requestgetnearbyplaces'
+ *       requestEventIdentifier: <string>,
+ *       hitUrl: <string>,
+ *       headers: {
+ *         ETag: <string>,
+ *       },
+ *       hitHost: <string>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.places'
+ *     ACPExtensionEventSource: 'com.adobe.eventsource.responsecontent'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.analytics'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -42,11 +44,11 @@ import schema from '../schemas/requestPlaces.json';
  * }
  * ```
  *
- * @namespace requestPlaces
+ * @namespace analyticsResponse
  */
 
 /**
- * Paths for the keys on a Request Places Event
+ * Paths for the keys on a Analytics Response
  *
  * @enum {string}
  */
@@ -55,19 +57,22 @@ const path = {
   payload: 'payload',
 
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
-  data: 'payload.ACPExtensionEventData',
+  eventData: 'payload.ACPExtensionEventData',
 
-  /** The number of POIs to return.<br />Path is `payload.ACPExtensionEventData.count`. */
-  count: 'payload.ACPExtensionEventData.count',
+  /** The ID of the event that this is a response to.<br />Path is `payload.ACPExtensionEventData.requestEventIdentifier`. */
+  requestEventId: 'payload.ACPExtensionEventData.requestEventIdentifier',
 
-  /** The latitude to search from.<br />Path is `payload.ACPExtensionEventData.latitude`. */
-  latitude: 'payload.ACPExtensionEventData.latitude',
+  /** Query parameter of the data that was passed to Analytics.<br />Path is `payload.ACPExtensionEventData.hitUrl`. */
+  hitUrl: 'payload.ACPExtensionEventData.hitUrl',
 
-  /** The longitude to search from.<br />Path is `payload.ACPExtensionEventData.longitude`. */
-  longitude: 'payload.ACPExtensionEventData.longitude',
+  /** The headers returned from the request.<br />Path is `payload.ACPExtensionEventData.headers`. */
+  hitHeaders: 'payload.ACPExtensionEventData.headers',
 
-  /** The type of request we are making.<br />Path is `payload.ACPExtensionEventData.requesttype`. */
-  requestType: 'payload.ACPExtensionEventData.requesttype',
+  /** The value used to pull the processing information from the Hit Debugger Service.<br />Path is `payload.ACPExtensionEventData.headers.ETag`. */
+  ETag: 'payload.ACPExtensionEventData.headers.ETag',
+
+  /** The host url of the service that was hit to pass the data to Analytics.<br />Path is `payload.ACPExtensionEventData.hitHost`. */
+  hitHost: 'payload.ACPExtensionEventData.hitHost',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -109,12 +114,12 @@ const path = {
  *
  * @constant
  */
-const parentDepth = 3;
+const parentDepth = 2;
 
 /**
  * A label that can be used when describing this object
  */
-const label = 'Request Places Event';
+const label = 'Analytics Response';
 
 /**
  * A grouping for this object
@@ -122,34 +127,25 @@ const label = 'Request Places Event';
 const group = 'event';
 
 /**
- * The value for `requestType` for a Request Places Event.
- *
- * Path is `payload,ACPExtensionEventData,requesttype`.
- *
- * @constant
- */
-const REQUEST_TYPE = 'requestgetnearbyplaces';
-
-/**
- * The value for `eventSource` for a Request Places Event.
+ * The value for `eventSource` for a Analytics Response.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
 
 /**
- * The value for `eventType` for a Request Places Event.
+ * The value for `eventType` for a Analytics Response.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.places';
+const EVENT_TYPE = 'com.adobe.eventtype.analytics';
 
 /**
- * The value for `rootType` for a Request Places Event.
+ * The value for `rootType` for a Analytics Response.
  *
  * Path is `type`.
  *
@@ -168,103 +164,102 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `data` from the Request Places Event.
- * This is the .
+ * Returns the `requestEventId` from the Analytics Response.
+ * This is the the ID of the event that this is a response to.
  *
- * Path is `payload,ACPExtensionEventData`.
+ * Path is `payload,ACPExtensionEventData,requestEventIdentifier`.
  *
  * @function
- * @param {object} source The Request Places Event instance
- * @returns {object}
+ * @param {object} source The Analytics Response instance
+ * @returns {string}
  */
-const getData = kit.search(path.data);
+const getRequestEventId = kit.search(path.requestEventId);
 
 /**
- * Returns the data using the specified path from the data
- * of the Request Places Event.
+ * Returns the `hitUrl` from the Analytics Response.
+ * This is the query parameter of the data that was passed to Analytics.
+ *
+ * Path is `payload,ACPExtensionEventData,hitUrl`.
+ *
+ * @function
+ * @param {object} source The Analytics Response instance
+ * @returns {string}
+ */
+const getHitUrl = kit.search(path.hitUrl);
+
+/**
+ * Returns the `hitHeaders` from the Analytics Response.
+ * This is the the headers returned from the request.
+ *
+ * Path is `payload,ACPExtensionEventData,headers`.
+ *
+ * @function
+ * @param {object} source The Analytics Response instance
+ * @returns {object}
+ */
+const getHitHeaders = kit.search(path.hitHeaders);
+
+/**
+ * Returns the data using the specified path from the hitHeaders
+ * of the Analytics Response.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Request Places Event instance
+ * @param {object} source The Analytics Response instance
  * @returns {*}
  */
-const getDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.data}.${searchPath}`, source)
+const getHitHeadersKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.hitHeaders}.${searchPath}`, source)
 );
 
 /**
- * Returns the `count` from the Request Places Event.
- * This is the the number of POIs to return.
+ * Returns the `ETag` from the Analytics Response.
+ * This is the the value used to pull the processing information from the Hit Debugger Service.
  *
- * Path is `payload,ACPExtensionEventData,count`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getCount = kit.search(path.count);
-
-/**
- * Returns the `latitude` from the Request Places Event.
- * This is the the latitude to search from.
- *
- * Path is `payload,ACPExtensionEventData,latitude`.
+ * Path is `payload,ACPExtensionEventData,headers,ETag`.
  *
  * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getLatitude = kit.search(path.latitude);
-
-/**
- * Returns the `longitude` from the Request Places Event.
- * This is the the longitude to search from.
- *
- * Path is `payload,ACPExtensionEventData,longitude`.
- *
- * @function
- * @param {object} source The Request Places Event instance
- * @returns {number}
- */
-const getLongitude = kit.search(path.longitude);
-
-/**
- * Returns the `requestType` from the Request Places Event.
- * This is the the type of request we are making.
- *
- * Path is `payload,ACPExtensionEventData,requesttype`.
- *
- * @function
- * @param {object} source The Request Places Event instance
+ * @param {object} source The Analytics Response instance
  * @returns {string}
  */
-const getRequestType = kit.search(path.requestType);
+const getETag = kit.search(path.ETag);
 
 /**
- * Matcher can be used to find matching Request Places Event objects.
+ * Returns the `hitHost` from the Analytics Response.
+ * This is the the host url of the service that was hit to pass the data to Analytics.
+ *
+ * Path is `payload,ACPExtensionEventData,hitHost`.
+ *
+ * @function
+ * @param {object} source The Analytics Response instance
+ * @returns {string}
+ */
+const getHitHost = kit.search(path.hitHost);
+
+/**
+ * Matcher can be used to find matching Analytics Response objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventData.requesttype==\'requestgetnearbyplaces\'',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
+  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.analytics\'',
   'type==\'generic\'',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Request Places Event event.
+ * Tests the provided source against the matcher to see if it's Analytics Response event.
  *
  * @function
- * @param {object} source The Request Places Event instance
+ * @param {object} source The Analytics Response instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Request Places Event with the const values set.
+ * Generates a Analytics Response with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -273,15 +268,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  requestType: 'requestgetnearbyplaces',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.places',
+  eventSource: 'com.adobe.eventsource.responsecontent',
+  eventType: 'com.adobe.eventtype.analytics',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a Request Places Event with some default values set.
+ * Generates a Analytics Response with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -291,12 +285,12 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  count: 10,
-  latitude: 40.4349,
-  longitude: -111.891,
-  requestType: 'requestgetnearbyplaces',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.places',
+  requestEventId: 'abc-efg',
+  hitUrl: 'ndh=1&c.&a.&AppID=TestApp-Swift&DayOfWeek=5',
+  ETag: 'qwerty-asdfgh',
+  hitHost: 'https://testorg.sc.omtrdc.net/b/ss/mobile5griffon.analytics.debug/0/OIP-2.3.0-2.7.1/s',
+  eventSource: 'com.adobe.eventsource.responsecontent',
+  eventType: 'com.adobe.eventtype.analytics',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -320,15 +314,14 @@ export default {
   schema,
   get,
   ...customExports,
-  getData,
-  getDataKey,
-  getCount,
-  getLatitude,
-  getLongitude,
-  getRequestType,
+  getRequestEventId,
+  getHitUrl,
+  getHitHeaders,
+  getHitHeadersKey,
+  getETag,
+  getHitHost,
   isMatch,
   matcher,
-  REQUEST_TYPE,
   EVENT_SOURCE,
   EVENT_TYPE,
   ROOT_TYPE,

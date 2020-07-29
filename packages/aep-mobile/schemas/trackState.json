@@ -1,0 +1,27 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/trackState",
+  "shortDesc": "Track State Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/genericTrack" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "state": {
+              "description": "The state that should be tracked",
+              "type": "string",
+              "mock": "NoMoneyState"
+            }
+          },
+          "required": ["contextdata", "state"]
+        }
+      }
+    }
+  }
+}

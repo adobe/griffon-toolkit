@@ -10,23 +10,24 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import annotation from './annotation';
-import clientInfo from './clientInfo';
-import command from './command';
-import event from './event';
-import logEvent from './logEvent';
-import poi from './poi';
-import screenshotResponse from './screenshotResponse';
-import session from './session';
-import sessionAnnotation from './sessionAnnotation';
+import poi from '../src/poi';
 
-/*
- * Contains a mapping of all the schemas in this package
- *
- * @constant
- */
-const schemaFiles = {
-  annotation, clientInfo, command, event, logEvent, poi, screenshotResponse, session, sessionAnnotation
-};
+describe('POI', () => {
+  it('can pull custom metadata', () => {
+    const mock = poi.mock({
+      metadata: { capacity: 25, nearPark: true },
+      category: 'coffee house',
+      city: 'New York',
+      country: 'USA',
+      street: '34 ABC Way',
+      state: 'NY'
+    });
 
-export default { schemaFiles };
+    expect(Object.keys(poi.getMetadata(mock)).length).toBe(7);
+
+    const custom = poi.getCustomMetadata(mock);
+    expect(Object.keys(custom).length).toBe(2);
+    expect(custom.capacity).toBe(25);
+    expect(custom.nearPark).toBe(true);
+  });
+});

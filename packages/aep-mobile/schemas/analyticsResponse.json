@@ -1,0 +1,62 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/analyticsResponse",
+  "shortDesc": "Analytics Response",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "requestEventIdentifier": {
+              "alias": "requestEventId",
+              "description": "The ID of the event that this is a response to",
+              "type": "string",
+              "mock": "abc-efg"
+            },
+            "hitUrl": {
+              "description": "Query parameter of the data that was passed to Analytics",
+              "type": "string",
+              "mock": "ndh=1&c.&a.&AppID=TestApp-Swift&DayOfWeek=5"
+            },
+            "headers": {
+              "alias": "hitHeaders",
+              "description": "The headers returned from the request",
+              "type": "object",
+              "properties": {
+                "ETag": {
+                  "description": "The value used to pull the processing information from the Hit Debugger Service",
+                  "type": "string",
+                  "mock": "qwerty-asdfgh"
+                }
+              },
+              "required": [ "ETag" ]
+            },
+            "hitHost": {
+              "description": "The host url of the service that was hit to pass the data to Analytics",
+              "type": "string",
+              "mock": "https://testorg.sc.omtrdc.net/b/ss/mobile5griffon.analytics.debug/0/OIP-2.3.0-2.7.1/s"
+            }
+          },
+          "required": [ "requestEventIdentifier", "headers" ]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.responsecontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.analytics"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

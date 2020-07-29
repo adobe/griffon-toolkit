@@ -1,0 +1,58 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/configuration",
+  "shortDesc": "Configuration Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "alias": "eventData",
+          "description": "The full list of current configuration values",
+          "properties": {
+            "build.environment": {
+              "alias": "buildEnvironment",
+              "description": "In the Launch UI, the type of environment this configuration was generated for",
+              "type": "string",
+              "mock": "dev"
+            },
+            "experienceCloud.org": {
+              "alias": "experienceCloudOrg",
+              "description": "The IMS Org that the mobile app's config was created by",
+              "type": "string",
+              "mock": "abc@AdobeOrg"
+            },
+            "property.id": {
+              "alias": "launchPropertyId",
+              "description": "The ID of the property inside launch",
+              "type": "string",
+              "mock": "abcd1234"
+            },
+            "rules.url": {
+              "alias": "rulesUrl",
+              "description": "The URL to download the rules configuration for the property",
+              "type": "string",
+              "mock": "http://assets.adobedtm.com/abc/abcdefg-development-rules.zip"
+            }
+          }
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.responsecontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.configuration"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}
