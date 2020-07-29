@@ -11,6 +11,7 @@ governing permissions and limitations under the License.
 */
 import * as R from 'ramda';
 import {
+  escapeQuote,
   ucFirst,
   lcFirst,
   CUSTOM_CONTENT_START,
@@ -25,9 +26,7 @@ const normalizeType = (type) => (
       : type
 );
 
-const escapeQuote = (str) => str.replace(/'/g, '\\\'');
-
-const preparePath = R.pipe(
+export const preparePath = R.pipe(
   R.map((str) => (
     str.indexOf(' ') >= 0 || str.indexOf('.') >= 0
       ? `"${str}"` : str)),
@@ -164,6 +163,7 @@ export const writeCommentLine = ({ description, path }) => `
  */
 export const writePathLine = ({ alias, path }) => `
   ${alias}: '${preparePath(path)}'`;
+
 
 const writeEventType = (props, name) => (props
   ? props === '{'

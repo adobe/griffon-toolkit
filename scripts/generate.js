@@ -14,6 +14,7 @@ import * as R from 'ramda';
 import Ajv from 'ajv';
 
 import generateOutput from './utils/generate.output';
+import generateReference from './generate.reference';
 
 const filePath = require('path');
 const fs = require('fs');
@@ -52,8 +53,16 @@ fs.readdirSync(packagePath).forEach((dirName) => {
 /*
  * Takes all the schema files and outputs a script file with the generated content.
  */
+const results = [];
+
 R.mapObjIndexed((schemaName, schemaFile) => {
   const outputFile = schemaFile.replace('schemas', 'src').replace('json', 'js');
   const { schema } = ajv.getSchema(schemaName);
-  generateOutput(schema, outputFile, schemaMap);
+  const output = generateOutput(schema, outputFile, schemaMap);
+  results.push({
+    ...output,
+    outputFile
+  })
 }, schemaFiles);
+
+generateReference(results);

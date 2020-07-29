@@ -28,7 +28,7 @@
   "scripts": {
     "coverage": "npm run test -- --coverage",
     "docs": "rm -rf docs; jsdoc -c .jsdoc.json --package ''",
-    "generate": "npm run generate-code && npm run docs",
+    "generate": "npm run generate-code && npm run docs && npm run build",
     "generate-code": "npx babel-node ./scripts/generate.js",
     "postinstall": "lerna bootstrap",
     "build:make-index": "lerna exec --parallel --ignore @adobe/griffon-toolkit 'npx create-index ./src'",

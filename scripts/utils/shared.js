@@ -34,3 +34,5 @@ export const writeFile = (file, content) => {
     console.error(err);
   }
 };
+
+export const escapeQuote = (str) => str.replace(/'/g, '\\\'');

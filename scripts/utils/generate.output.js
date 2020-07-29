@@ -15,6 +15,7 @@ import * as R from 'ramda';
 
 import mergeProperties from './merge.properties';
 import {
+  preparePath,
   writeFullContent,
   writeCommentLine,
   writePathLine,
@@ -33,7 +34,7 @@ import {
   CUSTOM_CONTENT_END,
   writeFile
 } from './shared';
-
+import DEFAULT_CUSTOM from './default.custom';
 const fs = require('fs');
 
 /*
@@ -95,7 +96,14 @@ export const expandMyProperties = ({
 const expandFullProperties = ({
   path = [],
   output: outputIn = {
-    paths: [], event: '', makes: '', mocks: '', matches: [], constants: '', exports: []
+    paths: [],
+    event: '',
+    makes: '',
+    mocks: '',
+    matches: [],
+    constants: '',
+    exports: [],
+    pathMap: {}
   },
   properties,
   depth = 2,
@@ -117,6 +125,7 @@ const expandFullProperties = ({
       }
       writePath += writePathLine(props);
       output.paths.push(writePath);
+      output.pathMap[props.alias] = preparePath(props.path);
 
       if (props.useMatch) {
         output.matches.push(writeMatch(props));
@@ -146,16 +155,7 @@ const expandFullProperties = ({
   return output;
 };
 
-/*
- * Used when first genreating the file. After that point, it will be replaced with the inner
- * contents of the string.
- */
-const DEFAULT_CUSTOM = ` */
 
-// additional exports should be added here:
-const customExports = {};
-
-/* `;
 
 /*
  * Pulls out the custom content for existing generated files.
@@ -205,12 +205,13 @@ export default (schema, outputFile, schemaMap) => {
   const namespace = outputFile.match(/src\/(.*).js/)[1];
 
   const depth = calculateDepth(schema, schemaMap);
+  const customCode = extractCustom(outputFile);
 
   const output = writeFullContent({
     namespace,
     shortDesc: schema.shortDesc,
     group: schema.group,
-    customCode: extractCustom(outputFile),
+    customCode,
     depth,
     mock: writeMock({
       shortDesc: schema.shortDesc,
@@ -226,4 +227,12 @@ export default (schema, outputFile, schemaMap) => {
   });
 
   writeFile(outputFile, output);
+
+  return {
+    depth,
+    customCode,
+    matchers: expandedFull.matches,
+    shortDesc: schema.shortDesc,
+    paths: expandedFull.pathMap
+  }
 };
