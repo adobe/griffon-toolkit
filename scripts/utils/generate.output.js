@@ -45,7 +45,7 @@ const makePropertyProps = (property, key, path, parent) => ({
   alias: property.alias || key,
   useConst: property.const,
   useMock: property.const || property.mock,
-  useMatch: property.const || property.match,
+  useMatch: (property.const && property.match !== false) || property.match,
   parent,
   snakeName: lodash.snakeCase(property.alias || key).toUpperCase()
 });

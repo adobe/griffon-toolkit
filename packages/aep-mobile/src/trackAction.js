@@ -171,7 +171,6 @@ const getAction = kit.search(path.action);
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.generic.track\'',
-  'type==\'generic\'',
   'timestamp'
 ]);
 

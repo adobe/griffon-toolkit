@@ -9,6 +9,16 @@
       "inherit": true,
       "type": "object",
       "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "stateowner": {
+              "inherit": true,
+              "const": "com.adobe.module.eventhub"
+            }
+          }
+        },
         "metadata": {
           "inherit": true,
           "type": "object",
@@ -25,6 +35,7 @@
                 "extensions": {
                   "description": "A mapping of versions per sdk extension",
                   "type": "object",
+                  "match": true,
                   "mock": "{ Lifecycle: '2.4.0', 'com.adobe.ACPGriffon': '2.0.0' }"
                 }
               },

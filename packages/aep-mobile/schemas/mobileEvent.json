@@ -51,7 +51,8 @@
     },
     "type": {
       "inherit": true,
-      "const": "generic"
+      "const": "generic",
+      "match": false
     },
     "vendor": {
       "description": "The vendor of the plugin that sent the event",

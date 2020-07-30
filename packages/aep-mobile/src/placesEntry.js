@@ -276,7 +276,6 @@ const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.regioneventtype==\'entry\'',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
-  'type==\'generic\'',
   'timestamp'
 ]);
 

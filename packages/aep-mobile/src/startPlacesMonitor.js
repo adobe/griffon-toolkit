@@ -22,7 +22,7 @@ import schema from '../schemas/startPlacesMonitor.json';
  * {
  *   payload: {
  *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventType.placesMonitor'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.placesmonitor'
  *     ACPExtensionEventData: <object>,
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
@@ -120,7 +120,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventType.placesMonitor';
+const EVENT_TYPE = 'com.adobe.eventtype.placesmonitor';
 
 /**
  * The value for `rootType` for a Start Monitor Event.
@@ -149,8 +149,7 @@ const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventType.placesMonitor\'',
-  'type==\'generic\'',
+  'payload.ACPExtensionEventType==\'com.adobe.eventtype.placesmonitor\'',
   'timestamp'
 ]);
 
@@ -174,7 +173,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  */
 const make = (input) => kit.expandWithPaths(path, {
   eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventType.placesMonitor',
+  eventType: 'com.adobe.eventtype.placesmonitor',
   rootType: 'generic',
   ...input
 });
@@ -191,7 +190,7 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventType.placesMonitor',
+  eventType: 'com.adobe.eventtype.placesmonitor',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
