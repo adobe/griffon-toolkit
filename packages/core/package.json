@@ -1,7 +1,7 @@
 {
   "name": "@adobe/griffon-toolkit",
   "description": "Core files used by griffon-toolkit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/adobe/griffon-toolkit.git",
