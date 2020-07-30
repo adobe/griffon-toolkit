@@ -334,7 +334,6 @@ const getRulesUrl = kit.search(path.rulesUrl);
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.configuration\'',
-  'type==\'generic\'',
   'timestamp'
 ]);
 
