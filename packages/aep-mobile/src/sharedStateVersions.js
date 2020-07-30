@@ -21,14 +21,14 @@ import schema from '../schemas/sharedStateVersions.json';
  * ```
  * {
  *   payload: {
+ *     ACPExtensionEventData: {
+ *       stateowner: 'com.adobe.module.eventhub'
+ *     },
  *     metadata: {
  *       state.data: {
  *         version: <string>,
  *         extensions: <object>,
  *       },
- *     },
- *     ACPExtensionEventData: {
- *       state.owner: <string>,
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventsource.sharedstate'
  *     ACPExtensionEventType: 'com.adobe.eventtype.hub'
@@ -57,6 +57,12 @@ const path = {
   /** An object with custom data describing the event.<br />Path is `payload`. */
   payload: 'payload',
 
+  /** The full list of current configuration values.<br />Path is `payload.ACPExtensionEventData`. */
+  eventData: 'payload.ACPExtensionEventData',
+
+  /** In SDK extension that owns the shared state that is being updated.<br />Path is `payload.ACPExtensionEventData.stateowner`. */
+  stateOwner: 'payload.ACPExtensionEventData.stateowner',
+
   /** Additional metadata that is attacked to SDK events.<br />Path is `payload.metadata`. */
   metadata: 'payload.metadata',
 
@@ -68,12 +74,6 @@ const path = {
 
   /** A mapping of versions per sdk extension.<br />Path is `payload.metadata."state.data".extensions`. */
   extensions: 'payload.metadata."state.data".extensions',
-
-  /** The full list of current configuration values.<br />Path is `payload.ACPExtensionEventData`. */
-  eventData: 'payload.ACPExtensionEventData',
-
-  /** In SDK extension that owns the shared state that is being updated.<br />Path is `payload.ACPExtensionEventData."state.owner"`. */
-  stateOwner: 'payload.ACPExtensionEventData."state.owner"',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -126,6 +126,15 @@ const label = 'Shared State - Versions';
  * A grouping for this object
  */
 const group = 'event';
+
+/**
+ * The value for `stateOwner` for a Shared State - Versions.
+ *
+ * Path is `payload,ACPExtensionEventData,stateowner`.
+ *
+ * @constant
+ */
+const STATE_OWNER = 'com.adobe.module.eventhub';
 
 /**
  * The value for `eventSource` for a Shared State - Versions.
@@ -208,9 +217,10 @@ const getExtensionsKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
+  'payload.ACPExtensionEventData.stateowner==\'com.adobe.module.eventhub\'',
+  'payload.metadata."state.data".extensions',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.sharedstate\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.hub\'',
-  'type==\'generic\'',
   'timestamp'
 ]);
 
@@ -233,6 +243,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
+  stateOwner: 'com.adobe.module.eventhub',
   eventSource: 'com.adobe.eventsource.sharedstate',
   eventType: 'com.adobe.eventtype.hub',
   rootType: 'generic',
@@ -250,10 +261,10 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
+  stateOwner: 'com.adobe.module.eventhub',
   stateData: { version: '2.1.3' },
   sdkVersion: '2.7.1',
   extensions: { Lifecycle: '2.4.0', 'com.adobe.ACPGriffon': '2.0.0' },
-  stateOwner: 'com.adobe.mobule.eventhub',
   eventSource: 'com.adobe.eventsource.sharedstate',
   eventType: 'com.adobe.eventtype.hub',
   rootType: 'generic',
@@ -284,6 +295,7 @@ export default {
   getExtensionsKey,
   isMatch,
   matcher,
+  STATE_OWNER,
   EVENT_SOURCE,
   EVENT_TYPE,
   ROOT_TYPE,

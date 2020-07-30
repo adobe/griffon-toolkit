@@ -250,7 +250,6 @@ const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.requesttype==\'requestgetnearbyplaces\'',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
-  'type==\'generic\'',
   'timestamp'
 ]);
 

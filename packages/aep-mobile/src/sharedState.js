@@ -22,7 +22,7 @@ import schema from '../schemas/sharedState.json';
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       state.owner: <string>,
+ *       stateowner: <string>,
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventsource.sharedstate'
  *     ACPExtensionEventType: 'com.adobe.eventtype.hub'
@@ -57,8 +57,8 @@ const path = {
   /** The full list of current configuration values.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** In SDK extension that owns the shared state that is being updated.<br />Path is `payload.ACPExtensionEventData."state.owner"`. */
-  stateOwner: 'payload.ACPExtensionEventData."state.owner"',
+  /** In SDK extension that owns the shared state that is being updated.<br />Path is `payload.ACPExtensionEventData.stateowner`. */
+  stateOwner: 'payload.ACPExtensionEventData.stateowner',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -159,7 +159,7 @@ const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
  * Returns the `stateOwner` from the Shared State Event.
  * This is the in SDK extension that owns the shared state that is being updated.
  *
- * Path is `payload,ACPExtensionEventData,state.owner`.
+ * Path is `payload,ACPExtensionEventData,stateowner`.
  *
  * @function
  * @param {object} source The Shared State Event instance
@@ -201,7 +201,6 @@ const getStateDataKey = kit.curry(
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.sharedstate\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.hub\'',
-  'type==\'generic\'',
   'timestamp'
 ]);
 

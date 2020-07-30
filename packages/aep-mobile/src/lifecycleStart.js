@@ -533,7 +533,6 @@ const getPreviousSessionStartTimestamp = kit.search(path.previousSessionStartTim
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.lifecycle\'',
-  'type==\'generic\'',
   'timestamp'
 ]);
 

@@ -15,7 +15,7 @@
         },
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventType.placesMonitor"
+          "const": "com.adobe.eventtype.placesmonitor"
         }
       }
     }

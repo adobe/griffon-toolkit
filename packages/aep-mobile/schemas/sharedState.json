@@ -14,7 +14,7 @@
           "type": "object",
           "description": "The full list of current configuration values",
           "properties": {
-            "state.owner": {
+            "stateowner": {
               "alias": "stateOwner",
               "description": "In SDK extension that owns the shared state that is being updated",
               "type": "string",
