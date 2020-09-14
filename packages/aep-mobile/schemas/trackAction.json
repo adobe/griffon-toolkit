@@ -16,7 +16,8 @@
             "action": {
               "description": "The action that was triggered in the application",
               "type": "string",
-              "mock": "OrderConfirmed"
+              "mock": "OrderConfirmed",
+              "match": true
             }
           },
           "required": ["contextdata", "action"]
