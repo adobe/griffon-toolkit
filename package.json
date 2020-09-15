@@ -28,6 +28,7 @@
   "scripts": {
     "coverage": "npm run test -- --coverage",
     "docs": "rm -rf docs; jsdoc -c .jsdoc.json --package ''",
+    "postdocs": "mv -f docs-temp/griffon-toolkit-root/* docs; rm -rf docs-temp",
     "generate": "npm run generate-code && npm run docs",
     "generate-code": "npx babel-node ./scripts/generate.js",
     "postinstall": "lerna bootstrap",
