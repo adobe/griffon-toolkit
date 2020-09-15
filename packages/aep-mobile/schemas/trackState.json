@@ -16,7 +16,8 @@
             "state": {
               "description": "The state that should be tracked",
               "type": "string",
-              "mock": "NoMoneyState"
+              "mock": "NoMoneyState",
+              "match": true
             }
           },
           "required": ["contextdata", "state"]
