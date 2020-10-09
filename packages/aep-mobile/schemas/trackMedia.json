@@ -1,0 +1,70 @@
+{
+    "$id": "http://griffon.adobe.com/schemas/aep-mobile/trackMedia",
+    "shortDesc": "Track Media Event",
+    "group": "event",
+    "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+    "type": "object",
+    "properties": {
+      "payload": {
+        "inherit": true,
+        "type": "object",
+        "properties": {
+          "ACPExtensionEventData": {
+            "inherit": true,
+            "type": "object",
+            "properties": {
+              "trackerid": {
+                "alias": "trackerid",
+                "description": "The unique tracker ID",
+                "type": "string",
+                "mock": "trackerId123"
+              },
+              "sessionid": {
+                "alias": "sessionid",
+                "description": "The unique session ID",
+                "type": "string",
+                "mock": "sessionid123"
+              },
+              "event.name": {
+                "alias": "mediaEventName",
+                "description": "The event name",
+                "type": "string"
+              },
+              "event.param": {
+                "alias": "eventParams",
+                "description": "Information about the event based on the event type",
+                "type": "object"
+              },
+              "event.metadata": {
+                "alias": "eventMetadata",
+                "description": "An object with the standard and custom data describing the event",
+                "type": "object"
+              },
+              "event.timestamp": {
+                "alias": "eventTimestamp",
+                "description": "The event timestamp",
+                "type": "number",
+                "mock": 1599617251119
+              },
+              "event.internal": {
+                "alias": "eventInternal",
+                "description": "Display the event in griffon if set to true",
+                "type": "boolean",
+                "mock": false
+              }
+            },
+            "required": ["event.name", "event.timestamp", "event.internal"]
+          },
+          "ACPExtensionEventSource": {
+            "inherit": true,
+            "const": "com.adobe.eventsource.media.trackmedia"
+          },
+          "ACPExtensionEventType": {
+            "inherit": true,
+            "const": "com.adobe.eventtype.media"
+          }
+        },
+        "required": ["ACPExtensionEventData"]
+      }
+    }
+  }
