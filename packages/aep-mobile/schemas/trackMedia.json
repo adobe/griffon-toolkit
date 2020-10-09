@@ -50,7 +50,8 @@
                 "alias": "eventInternal",
                 "description": "Display the event in griffon if set to true",
                 "type": "boolean",
-                "mock": false
+                "mock": false,
+                "match": true
               }
             },
             "required": ["event.name", "event.timestamp", "event.internal"]
