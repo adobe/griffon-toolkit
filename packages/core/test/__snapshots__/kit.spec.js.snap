@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Kit Tests matches case insensitive 1`] = `
+Array [
+  Object {
+    "id": "a",
+    "name": "ABC",
+  },
+  Object {
+    "id": "c",
+    "name": "abc",
+  },
+]
+`;
+
+exports[`Kit Tests matches regular expressions 1`] = `
+Array [
+  Object {
+    "id": "b",
+    "name": "ei/ei/o",
+  },
+]
+`;
+
+exports[`Kit Tests matches regular expressions 2`] = `
+Array [
+  Object {
+    "id": "a",
+    "name": "MeCasaABCasa",
+  },
+  Object {
+    "id": "c",
+    "name": "abc",
+  },
+]
+`;

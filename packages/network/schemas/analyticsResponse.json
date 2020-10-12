@@ -1,0 +1,20 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/network/analytics.response",
+  "shortDesc": "Network Request",
+  "group": "network",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/network.response" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "url": {
+          "inherit": true,
+          "regex": "\/.*\/b\/ss\/.*\/",
+          "mock": "https://omnireportlaunch.112.2o7.net/b/ss/omnireport.launch/1/JS-2.20"
+        }
+      }
+    }
+  }
+}

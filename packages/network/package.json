@@ -1,11 +1,11 @@
 {
-  "name": "@adobe/griffon-toolkit-aep-mobile",
-  "description": "Events definitions for the AEP Mobile SDK",
-  "version": "0.2.0",
+  "name": "@adobe/griffon-toolkit-network",
+  "description": "Common network requests and responses",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/adobe/griffon-toolkit.git",
-    "directory": "packages/aep-mobile"
+    "directory": "packages/network"
   },
   "publishConfig": {
     "access": "public"
@@ -16,6 +16,7 @@
     "dist/"
   ],
   "dependencies": {
+    "@adobe/griffon-toolkit-common": "*",
     "@adobe/griffon-toolkit": "*"
   },
   "scripts": {
