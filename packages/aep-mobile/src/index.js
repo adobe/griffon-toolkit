@@ -23,5 +23,6 @@ export { default as sharedStateVersions } from './sharedStateVersions.js';
 export { default as startEventForwardingCommand } from './startEventForwardingCommand.js';
 export { default as startPlacesMonitor } from './startPlacesMonitor.js';
 export { default as trackAction } from './trackAction.js';
+export { default as trackMedia } from './trackMedia.js';
 export { default as trackState } from './trackState.js';
 
