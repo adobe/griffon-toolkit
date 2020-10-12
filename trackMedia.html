@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      startEventForwardingCommand - Documentation
+      trackMedia - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        startEventForwardingCommand
+        trackMedia
       </h1>
     
 
@@ -92,7 +92,7 @@
     
       <h2>
         
-        startEventForwardingCommand
+        trackMedia
         
       </h2>
 
@@ -105,16 +105,31 @@
       
         
             <div class="description">
-              <p>Contains constants and functions for a Start Event Forwarding Command.</p>
-<p>The structure for a Start Event Forwarding Command is as follows:</p>
+              <p>Contains constants and functions for a Track Media Event.</p>
+<p>The structure for a Track Media Event is as follows:</p>
 <pre class="prettyprint source"><code>{
   payload: {
-    type: 'startEventForwarding'
+    ACPExtensionEventData: {
+      trackerid: &lt;string>,
+      sessionid: &lt;string>,
+      event.name: &lt;string>,
+      event.param: &lt;object>,
+      event.metadata: &lt;object>,
+      event.timestamp: &lt;number>,
+      event.internal: &lt;boolean>,
+    },
+    ACPExtensionEventSource: 'com.adobe.eventsource.media.trackmedia'
+    ACPExtensionEventType: 'com.adobe.eventtype.media'
+    ACPExtensionEventName: &lt;string>,
+    ACPExtensionEventNumber: &lt;integer>,
+    ACPExtensionEventUniqueIdentifier: &lt;string>,
   },
-  vendor: 'com.adobe.griffon.mobile'
+  type: 'generic'
+  vendor: &lt;string>,
+  annotations: &lt;array>,
   clientId: &lt;string>,
   timestamp: &lt;number>,
-  type: 'control'
+  uuid: &lt;string>,
 }
 </code></pre>
             </div>
@@ -153,7 +168,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line17">line 17</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line17">line 17</a>
         </li>
       </ul>
     </dd>
@@ -184,6 +199,142 @@
     
         <h3 class="subsection-title">Members</h3>
 
+        
+            
+
+<h4 class="name" id=".EVENT_SOURCE">
+  <span class="type-signature">(static, constant) </span>EVENT_SOURCE<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventSource</code> for a Track Media Event.</p>
+<p>Path is <code>payload,ACPExtensionEventSource</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line143">line 143</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id=".EVENT_TYPE">
+  <span class="type-signature">(static, constant) </span>EVENT_TYPE<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventType</code> for a Track Media Event.</p>
+<p>Path is <code>payload,ACPExtensionEventType</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line152">line 152</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
         
             
 
@@ -232,7 +383,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line77">line 77</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line134">line 134</a>
         </li>
       </ul>
     </dd>
@@ -299,7 +450,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line72">line 72</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line129">line 129</a>
         </li>
       </ul>
     </dd>
@@ -329,7 +480,7 @@
 
 
   <div class="description">
-    <p>Matcher can be used to find matching Start Event Forwarding Command objects.</p>
+    <p>Matcher can be used to find matching Track Media Event objects.</p>
   </div>
 
 
@@ -366,7 +517,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line134">line 134</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line289">line 289</a>
         </li>
       </ul>
     </dd>
@@ -445,7 +596,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line67">line 67</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line124">line 124</a>
         </li>
       </ul>
     </dd>
@@ -475,7 +626,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Paths for the keys on a Start Event Forwarding Command</p>
+    <p>Paths for the keys on a Track Media Event</p>
   </div>
 
 
@@ -536,7 +687,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>type</code></td>
+        <td class="name"><code>eventData</code></td>
       
 
       <td class="type">
@@ -557,7 +708,384 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The type of command.<br />Path is <code>payload.type</code>.</p>
+          <p>An object with the custom data describing the event.<br />Path is <code>payload.ACPExtensionEventData</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>trackerid</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The unique tracker ID.<br />Path is <code>payload.ACPExtensionEventData.trackerid</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>sessionid</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The unique session ID.<br />Path is <code>payload.ACPExtensionEventData.sessionid</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>mediaEventName</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event name.<br />Path is <code>payload.ACPExtensionEventData.&quot;event.name&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventParams</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Information about the event based on the event type.<br />Path is <code>payload.ACPExtensionEventData.&quot;event.param&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventMetadata</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>An object with the standard and custom data describing the event.<br />Path is <code>payload.ACPExtensionEventData.&quot;event.metadata&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventTimestamp</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event timestamp.<br />Path is <code>payload.ACPExtensionEventData.&quot;event.timestamp&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventInternal</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Display the event in griffon if set to true.<br />Path is <code>payload.ACPExtensionEventData.&quot;event.internal&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventSource</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event source.<br />Path is <code>payload.ACPExtensionEventSource</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventType</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event type.<br />Path is <code>payload.ACPExtensionEventType</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventName</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The name of the event.<br />Path is <code>payload.ACPExtensionEventName</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>sdkEventNumber</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event number generated by the SDK.<br />Path is <code>payload.ACPExtensionEventNumber</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The unique event id.<br />Path is <code>payload.ACPExtensionEventUniqueIdentifier</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>rootType</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The type of event.<br />Path is <code>type</code>.</p>
           </td>
     </tr>
 
@@ -586,7 +1114,36 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The vendor of the plugin to receive the command.<br />Path is <code>vendor</code>.</p>
+          <p>The vendor of the plugin that sent the event.<br />Path is <code>vendor</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>annotations</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Array of Annotation objects.<br />Path is <code>annotations</code>.</p>
           </td>
     </tr>
 
@@ -644,7 +1201,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>When the command was triggered.<br />Path is <code>timestamp</code>.</p>
+          <p>When the event occurred.<br />Path is <code>timestamp</code>.</p>
           </td>
     </tr>
 
@@ -652,7 +1209,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>rootType</code></td>
+        <td class="name"><code>rootId</code></td>
       
 
       <td class="type">
@@ -673,7 +1230,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The type of event. For commands it's always 'control'..<br />Path is <code>type</code>.</p>
+          <p>Uniquely identifies each event.<br />Path is <code>uuid</code>.</p>
           </td>
     </tr>
 
@@ -715,7 +1272,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line41">line 41</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line56">line 56</a>
         </li>
       </ul>
     </dd>
@@ -745,7 +1302,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>The value for <code>rootType</code> for a Start Event Forwarding Command.</p>
+    <p>The value for <code>rootType</code> for a Track Media Event.</p>
 <p>Path is <code>type</code>.</p>
   </div>
 
@@ -783,143 +1340,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line104">line 104</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-          
-        
-            
-
-<h4 class="name" id=".TYPE">
-  <span class="type-signature">(static, constant) </span>TYPE<span class="type-signature"></span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>The value for <code>type</code> for a Start Event Forwarding Command.</p>
-<p>Path is <code>payload,type</code>.</p>
-  </div>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line86">line 86</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-          
-        
-            
-
-<h4 class="name" id=".VENDOR">
-  <span class="type-signature">(static, constant) </span>VENDOR<span class="type-signature"></span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>The value for <code>vendor</code> for a Start Event Forwarding Command.</p>
-<p>Path is <code>vendor</code>.</p>
-  </div>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line95">line 95</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line161">line 161</a>
         </li>
       </ul>
     </dd>
@@ -1096,7 +1517,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line114">line 114</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line171">line 171</a>
         </li>
       </ul>
     </dd>
@@ -1117,13 +1538,13 @@ use a schema that is more specific over a more generic schema</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getType">
+    <a class="link-icon" href="#.getEventInternal">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getType">
-      <span class="type-signature">(static) </span>getType<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    <h4 class="name" id=".getEventInternal">
+      <span class="type-signature">(static) </span>getEventInternal<span class="signature">(source)</span><span class="type-signature"> &rarr; {boolean}</span>
     </h4>
   </span>
 
@@ -1132,9 +1553,9 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Returns the <code>type</code> from the Start Event Forwarding Command.
-This is the the type of command.</p>
-<p>Path is <code>payload,type</code>.</p>
+    <p>Returns the <code>eventInternal</code> from the Track Media Event.
+This is the display the event in griffon if set to true.</p>
+<p>Path is <code>payload,ACPExtensionEventData,event.internal</code>.</p>
   </div>
 
 
@@ -1188,7 +1609,7 @@ This is the the type of command.</p>
         
 
         <td class="description last">
-          <p>The Start Event Forwarding Command instance</p>
+          <p>The Track Media Event instance</p>
           
         </td>
       </tr>
@@ -1244,7 +1665,1287 @@ This is the the type of command.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line126">line 126</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line281">line 281</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getEventMetadata">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getEventMetadata">
+      <span class="type-signature">(static) </span>getEventMetadata<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>eventMetadata</code> from the Track Media Event.
+This is the an object with the standard and custom data describing the event.</p>
+<p>Path is <code>payload,ACPExtensionEventData,event.metadata</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Track Media Event instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line244">line 244</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getEventMetadataKey">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getEventMetadataKey">
+      <span class="type-signature">(static) </span>getEventMetadataKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the data using the specified path from the eventMetadata
+of the Track Media Event.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>path</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>key in object</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The Track Media Event instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line255">line 255</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getEventParams">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getEventParams">
+      <span class="type-signature">(static) </span>getEventParams<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>eventParams</code> from the Track Media Event.
+This is the information about the event based on the event type.</p>
+<p>Path is <code>payload,ACPExtensionEventData,event.param</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Track Media Event instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line219">line 219</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getEventParamsKey">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getEventParamsKey">
+      <span class="type-signature">(static) </span>getEventParamsKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the data using the specified path from the eventParams
+of the Track Media Event.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>path</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>key in object</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The Track Media Event instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line230">line 230</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getEventTimestamp">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getEventTimestamp">
+      <span class="type-signature">(static) </span>getEventTimestamp<span class="signature">(source)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>eventTimestamp</code> from the Track Media Event.
+This is the the event timestamp.</p>
+<p>Path is <code>payload,ACPExtensionEventData,event.timestamp</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Track Media Event instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line269">line 269</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getMediaEventName">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getMediaEventName">
+      <span class="type-signature">(static) </span>getMediaEventName<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>mediaEventName</code> from the Track Media Event.
+This is the the event name.</p>
+<p>Path is <code>payload,ACPExtensionEventData,event.name</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Track Media Event instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line207">line 207</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getSessionid">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getSessionid">
+      <span class="type-signature">(static) </span>getSessionid<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>sessionid</code> from the Track Media Event.
+This is the the unique session ID.</p>
+<p>Path is <code>payload,ACPExtensionEventData,sessionid</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Track Media Event instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line195">line 195</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getTrackerid">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getTrackerid">
+      <span class="type-signature">(static) </span>getTrackerid<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>trackerid</code> from the Track Media Event.
+This is the the unique tracker ID.</p>
+<p>Path is <code>payload,ACPExtensionEventData,trackerid</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The Track Media Event instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line183">line 183</a>
         </li>
       </ul>
     </dd>
@@ -1280,7 +2981,7 @@ This is the the type of command.</p>
 
 
   <div class="description">
-    <p>Tests the provided source against the matcher to see if it's Start Event Forwarding Command event.</p>
+    <p>Tests the provided source against the matcher to see if it's Track Media Event event.</p>
   </div>
 
 
@@ -1334,7 +3035,7 @@ This is the the type of command.</p>
         
 
         <td class="description last">
-          <p>The Start Event Forwarding Command instance</p>
+          <p>The Track Media Event instance</p>
           
         </td>
       </tr>
@@ -1390,7 +3091,7 @@ This is the the type of command.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line149">line 149</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line303">line 303</a>
         </li>
       </ul>
     </dd>
@@ -1437,7 +3138,7 @@ This is the the type of command.</p>
 
 
   <div class="description">
-    <p>Generates a Start Event Forwarding Command with the const values set.
+    <p>Generates a Track Media Event with the const values set.
 Can be useful in testing.
 Can provide additional data by providing a flat object of paths and values.</p>
   </div>
@@ -1561,7 +3262,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line159">line 159</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line313">line 313</a>
         </li>
       </ul>
     </dd>
@@ -1597,7 +3298,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
 
 
   <div class="description">
-    <p>Generates a Start Event Forwarding Command with some default values set.
+    <p>Generates a Track Media Event with some default values set.
 Can be useful in testing.
 Can override defaults and provide additional data by providing a flat object
 of paths and values.</p>
@@ -1722,7 +3423,7 @@ of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_startEventForwardingCommand.js.html">aep-mobile/src/startEventForwardingCommand.js</a>, <a href="aep-mobile_src_startEventForwardingCommand.js.html#line176">line 176</a>
+          <a href="aep-mobile_src_trackMedia.js.html">aep-mobile/src/trackMedia.js</a>, <a href="aep-mobile_src_trackMedia.js.html#line330">line 330</a>
         </li>
       </ul>
     </dd>
