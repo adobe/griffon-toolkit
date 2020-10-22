@@ -1,0 +1,36 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/analyticsMapping",
+  "shortDesc": "Analytics Mapping",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "description": "An object containing metadata about the request",
+          "type": "object",
+          "properties": {
+            "source": {
+              "inherit": true,
+              "type": "string",
+              "const": "com.adobe.analytics"
+            },
+            "primaryHitId": {
+              "inherit": true,
+              "type": "string",
+              "mock": "2FC717AB05158000-4023A7954DCA58D7"
+            }
+          }
+        },
+        "name": {
+          "inherit": true,
+          "type": "string",
+          "const": "analytics.mapping"
+        }
+      }
+    }
+  }
+}

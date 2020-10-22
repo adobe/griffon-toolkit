@@ -1,0 +1,31 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeHitReceived",
+  "shortDesc": "Hit Received",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "description": "An object containing metadata about the request",
+          "type": "object",
+          "properties": {
+            "source": {
+              "inherit": true,
+              "type": "string",
+              "const": "com.adobe.edge.konductor"
+            }
+          }
+        },
+        "name": {
+          "inherit": true,
+          "type": "string",
+          "const": "hitReceived"
+        }
+      }
+    }
+  }
+}

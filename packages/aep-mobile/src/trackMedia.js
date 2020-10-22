@@ -287,6 +287,7 @@ const getEventInternal = kit.search(path.eventInternal);
  * @constant
  */
 const matcher = kit.combineAll([
+  'payload.ACPExtensionEventData."event.internal"',
   'payload.ACPExtensionEventSource==\'com.adobe.eventsource.media.trackmedia\'',
   'payload.ACPExtensionEventType==\'com.adobe.eventtype.media\'',
   'timestamp'
