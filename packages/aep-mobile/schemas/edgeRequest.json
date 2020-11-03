@@ -1,0 +1,43 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeRequest",
+  "shortDesc": "Platform Edge Request",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "datasetId": {
+              "description": "The dataset to apply the XDM data to",
+              "type": "string",
+              "mock": "abcdefg"
+            },
+            "xdm": {
+              "description": "The XDM data send to the server",
+              "type": "object",
+              "mock": "{ eventType: 'commerce.purchases' }"
+            }
+          },
+          "required": [ "xdm", "datasetId" ]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.edge"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

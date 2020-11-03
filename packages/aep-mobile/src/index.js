@@ -6,6 +6,8 @@ export { default as clientInfoIOS } from './clientInfoIOS.js';
 export { default as configUpdateCommand } from './configUpdateCommand.js';
 export { default as configuration } from './configuration.js';
 export { default as configurationUpdate } from './configurationUpdate.js';
+export { default as edgeRequest } from './edgeRequest.js';
+export { default as edgeResponse } from './edgeResponse.js';
 export { default as fakeEventCommand } from './fakeEventCommand.js';
 export { default as genericPlaces } from './genericPlaces.js';
 export { default as genericTrack } from './genericTrack.js';

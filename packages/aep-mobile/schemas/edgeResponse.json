@@ -1,0 +1,54 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeResponse",
+  "shortDesc": "Platform Edge Response",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "requestId": {
+              "description": "The ID of the edge service request",
+              "type": "string",
+              "mock": "BC123-8901-1234-AAFF-580993AC6258"
+            },
+            "type": {
+              "alias": "requestType",
+              "description": "The type of request that was made",
+              "type": "string",
+              "mock": "state:store"
+            },
+            "payload": {
+              "alias": "requestPayload",
+              "description": "The information received in the response",
+              "type": "object"
+            },
+            "hitHost": {
+              "description": "The host url of the service that was hit to pass the data to Analytics",
+              "type": "string",
+              "mock": "https://testorg.sc.omtrdc.net/b/ss/mobile5griffon.analytics.debug/0/OIP-2.3.0-2.7.1/s"
+            }
+          },
+          "required": [ "requestEventIdentifier", "headers" ]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.responsecontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.edge"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

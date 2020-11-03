@@ -1,0 +1,57 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/edge/edgeEvent",
+  "shortDesc": "Generic Edge Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "description": "An object containing metadata about the request",
+          "type": "object",
+          "properties": {
+            "requestId": {
+              "description": "The request id that is shared between the different service requests",
+              "type": "string",
+              "mock": "93619B4C-D4EE-4BA9-BE3F-DD430A155013",
+              "match": true
+            },
+            "source": {
+              "alias": "eventSource",
+              "description": "The event source",
+              "type": "string",
+              "mock": "com.adobe.edge.konductor",
+              "match": true
+            }
+          }
+        },
+        "name": {
+          "description": "The name of the event",
+          "type": "string"
+        },
+        "messages": {
+          "description": "Messages received from the service",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "context": {
+          "description": "Additional context provided by the service",
+          "type": "object"
+        }
+      },
+      "required": [
+        "attributes"
+      ]
+    },
+    "type": {
+      "inherit": true,
+      "type": "string",
+      "const": "service"
+    }
+  }
+}
