@@ -1,8 +1,8 @@
 {
-  "$id": "http://griffon.adobe.com/schemas/aep-mobile/analyticsMapping",
+  "$id": "http://griffon.adobe.com/schemas/edge/analyticsMapping",
   "shortDesc": "Analytics Mapping",
   "group": "event",
-  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/edge/edgeEvent" }],
   "type": "object",
   "properties": {
     "payload": {

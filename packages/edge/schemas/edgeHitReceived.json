@@ -1,8 +1,8 @@
 {
-  "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeHitReceived",
+  "$id": "http://griffon.adobe.com/schemas/edge/edgeHitReceived",
   "shortDesc": "Hit Received",
   "group": "event",
-  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/edge/edgeEvent" }],
   "type": "object",
   "properties": {
     "payload": {

@@ -21,7 +21,7 @@
             "xdm": {
               "description": "The XDM data send to the server",
               "type": "object",
-              "mock": "{ 'eventType': 'commerce.purchases' }"
+              "mock": "{ eventType: 'commerce.purchases' }"
             }
           },
           "required": [ "xdm", "datasetId" ]

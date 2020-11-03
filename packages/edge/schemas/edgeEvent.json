@@ -1,5 +1,5 @@
 {
-  "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeEvent",
+  "$id": "http://griffon.adobe.com/schemas/edge/edgeEvent",
   "shortDesc": "Generic Edge Event",
   "group": "event",
   "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],

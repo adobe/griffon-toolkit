@@ -236,7 +236,7 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   datasetId: 'abcdefg',
-  xdm: { 'eventType': 'commerce.purchases' },
+  xdm: { eventType: 'commerce.purchases' },
   eventSource: 'com.adobe.eventsource.requestcontent',
   eventType: 'com.adobe.eventtype.edge',
   rootType: 'generic',

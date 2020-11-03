@@ -24,13 +24,16 @@ import schema from '../schemas/analyticsMapping.json';
  *     attributes: {
  *       source: 'com.adobe.analytics'
  *       primaryHitId: <string>,
+ *       requestId: <string>,
  *     },
  *     name: 'analytics.mapping'
+ *     messages: <array>,
+ *     context: <object>,
  *   },
+ *   type: 'service'
  *   annotations: <array>,
  *   clientId: <string>,
  *   timestamp: <number>,
- *   type: <enum(blob, client, control, generic, log, status)>,
  *   uuid: <string>,
  * }
  * ```
@@ -50,11 +53,25 @@ const path = {
   /** An object containing metadata about the request.<br />Path is `payload.attributes`. */
   attributes: 'payload.attributes',
 
-  source: 'payload.attributes.source',
+  /** The event source.<br />Path is `payload.attributes.source`. */
+  eventSource: 'payload.attributes.source',
 
   primaryHitId: 'payload.attributes.primaryHitId',
 
+  /** The request id that is shared between the different service requests.<br />Path is `payload.attributes.requestId`. */
+  requestId: 'payload.attributes.requestId',
+
+  /** The name of the event.<br />Path is `payload.name`. */
   name: 'payload.name',
+
+  /** Messages received from the service.<br />Path is `payload.messages`. */
+  messages: 'payload.messages',
+
+  /** Additional context provided by the service.<br />Path is `payload.context`. */
+  context: 'payload.context',
+
+  /** The type of event.<br />Path is `type`. */
+  rootType: 'type',
 
   /** Array of Annotation objects.<br />Path is `annotations`. */
   annotations: 'annotations',
@@ -64,9 +81,6 @@ const path = {
 
   /** When the event occurred.<br />Path is `timestamp`. */
   timestamp: 'timestamp',
-
-  /** The type of event.<br />Path is `type`. */
-  rootType: 'type',
 
   /** Uniquely identifies each event.<br />Path is `uuid`. */
   rootId: 'uuid'
@@ -78,7 +92,7 @@ const path = {
  *
  * @constant
  */
-const parentDepth = 1;
+const parentDepth = 2;
 
 /**
  * A label that can be used when describing this object
@@ -91,13 +105,13 @@ const label = 'Analytics Mapping';
 const group = 'event';
 
 /**
- * The value for `source` for a Analytics Mapping.
+ * The value for `eventSource` for a Analytics Mapping.
  *
  * Path is `payload,attributes,source`.
  *
  * @constant
  */
-const SOURCE = 'com.adobe.analytics';
+const EVENT_SOURCE = 'com.adobe.analytics';
 
 /**
  * The value for `name` for a Analytics Mapping.
@@ -107,6 +121,15 @@ const SOURCE = 'com.adobe.analytics';
  * @constant
  */
 const NAME = 'analytics.mapping';
+
+/**
+ * The value for `rootType` for a Analytics Mapping.
+ *
+ * Path is `type`.
+ *
+ * @constant
+ */
+const ROOT_TYPE = 'service';
 
 /**
  * Retrieves a value from the object. You can provide either a path or an alias.
@@ -151,9 +174,10 @@ const getAttributesKey = kit.curry(
  */
 const matcher = kit.combineAll([
   'payload.attributes.source==\'com.adobe.analytics\'',
+  'payload.attributes.requestId',
   'payload.name==\'analytics.mapping\'',
-  'timestamp',
-  'type'
+  'type==\'service\'',
+  'timestamp'
 ]);
 
 /**
@@ -175,8 +199,9 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  source: 'com.adobe.analytics',
+  eventSource: 'com.adobe.analytics',
   name: 'analytics.mapping',
+  rootType: 'service',
   ...input
 });
 
@@ -191,12 +216,13 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  source: 'com.adobe.analytics',
+  eventSource: 'com.adobe.analytics',
   primaryHitId: '2FC717AB05158000-4023A7954DCA58D7',
+  requestId: '93619B4C-D4EE-4BA9-BE3F-DD430A155013',
   name: 'analytics.mapping',
+  rootType: 'service',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
-  rootType: 'generic',
   rootId: '123',
   ...input
 });
@@ -220,8 +246,9 @@ export default {
   getAttributesKey,
   isMatch,
   matcher,
-  SOURCE,
+  EVENT_SOURCE,
   NAME,
+  ROOT_TYPE,
   label,
   group,
   parentDepth
