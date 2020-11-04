@@ -365,6 +365,7 @@ const mock = (input) => kit.expandWithPaths(path, {
   locationEnabled: true,
   locationAuth: 'When in use',
   carrierName: 'Google Fi',
+  lowPowerMode: false,
   type: 'connect',
   rootType: 'client',
   clientId: 'appleABC',

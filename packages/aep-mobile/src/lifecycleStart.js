@@ -592,6 +592,7 @@ const mock = (input) => kit.expandWithPaths(path, {
   ignoredSessionLength: '-1595526608',
   osVersion: 'iOS 14.0',
   startTimestamp: 1595526618,
+  previousSessionPauseTimestamp: 0,
   previousSessionStartTimestamp: 1595526608,
   eventSource: 'com.adobe.eventsource.responsecontent',
   eventType: 'com.adobe.eventtype.lifecycle',

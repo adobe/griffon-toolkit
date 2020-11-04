@@ -332,6 +332,7 @@ const mock = (input) => kit.expandWithPaths(path, {
   trackerid: 'trackerId123',
   sessionid: 'sessionid123',
   eventTimestamp: 1599617251119,
+  eventInternal: false,
   eventSource: 'com.adobe.eventsource.media.trackmedia',
   eventType: 'com.adobe.eventtype.media',
   rootType: 'generic',
@@ -339,7 +340,6 @@ const mock = (input) => kit.expandWithPaths(path, {
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   rootId: '123',
-  eventInternal: false,
   ...input
 });
 

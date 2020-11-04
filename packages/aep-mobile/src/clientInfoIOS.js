@@ -365,6 +365,7 @@ const mock = (input) => kit.expandWithPaths(path, {
   batteryState: 'Battery Full',
   locationEnabled: true,
   locationAuth: 'Always',
+  lowPowerMode: false,
   type: 'connect',
   rootType: 'client',
   clientId: 'appleABC',

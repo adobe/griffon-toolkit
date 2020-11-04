@@ -39,16 +39,21 @@ const fs = require('fs');
 /*
  * Formats the data into a common structure so it can be used by all the writes
  */
-const makePropertyProps = (property, key, path, parent) => ({
-  ...property,
-  path: [...path, key],
-  alias: property.alias || key,
-  useConst: property.const,
-  useMock: property.const || property.mock,
-  useMatch: (property.const && property.match !== false) || property.match,
-  parent,
-  snakeName: lodash.snakeCase(property.alias || key).toUpperCase()
-});
+const makePropertyProps = (property, key, path, parent) => {
+  const constDefined = R.type(property.const) !== 'Undefined';
+  const mockDefined = R.type(property.mock) !== 'Undefined';
+
+  return {
+    ...property,
+    path: [...path, key],
+    alias: property.alias || key,
+    useConst: property.const,
+    useMock: constDefined ? property.const : mockDefined ? property.mock : undefined,
+    useMatch: (constDefined && property.match !== false) || property.match,
+    parent,
+    snakeName: lodash.snakeCase(property.alias || key).toUpperCase()
+  };
+};
 
 /*
  * This is the code we want to generate for just this class. We don't export
@@ -109,7 +114,7 @@ const expandFullProperties = ({
       if (property.description) {
         writePath += writeCommentLine(props);
       }
-      if (props.mock || props.const) {
+      if (R.type(props.useMock) !== 'Undefined') {
         output.mocks += writeMockLine(props);
       }
       if (props.const) {
