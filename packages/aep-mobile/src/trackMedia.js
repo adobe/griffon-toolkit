@@ -339,6 +339,7 @@ const mock = (input) => kit.expandWithPaths(path, {
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   rootId: '123',
+  eventInternal: false,
   ...input
 });
 
