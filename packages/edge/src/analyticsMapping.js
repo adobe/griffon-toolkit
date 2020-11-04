@@ -173,10 +173,10 @@ const getAttributesKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.attributes.source==\'com.adobe.analytics\'',
+  'payload.attributes.source==`com.adobe.analytics`',
   'payload.attributes.requestId',
-  'payload.name==\'analytics.mapping\'',
-  'type==\'service\'',
+  'payload.name==`analytics.mapping`',
+  'type==`service`',
   'timestamp'
 ]);
 

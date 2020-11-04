@@ -313,9 +313,9 @@ const getLowPowerMode = kit.search(path.lowPowerMode);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.deviceInfo."Canonical platform name"==\'Android\'',
-  'payload.type==\'connect\'',
-  'type==\'client\'',
+  'payload.deviceInfo."Canonical platform name"==`Android`',
+  'payload.type==`connect`',
+  'type==`client`',
   'timestamp'
 ]);
 
@@ -365,6 +365,7 @@ const mock = (input) => kit.expandWithPaths(path, {
   locationEnabled: true,
   locationAuth: 'When in use',
   carrierName: 'Google Fi',
+  lowPowerMode: false,
   type: 'connect',
   rootType: 'client',
   clientId: 'appleABC',

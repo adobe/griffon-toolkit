@@ -78,7 +78,7 @@ const path = {
   /** The event timestamp.<br />Path is `payload.ACPExtensionEventData."event.timestamp"`. */
   eventTimestamp: 'payload.ACPExtensionEventData."event.timestamp"',
 
-  /** Display the event in griffon if set to true.<br />Path is `payload.ACPExtensionEventData."event.internal"`. */
+  /** Display the event in griffon if set to false.<br />Path is `payload.ACPExtensionEventData."event.internal"`. */
   eventInternal: 'payload.ACPExtensionEventData."event.internal"',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
@@ -270,7 +270,7 @@ const getEventTimestamp = kit.search(path.eventTimestamp);
 
 /**
  * Returns the `eventInternal` from the Track Media Event.
- * This is the display the event in griffon if set to true.
+ * This is the display the event in griffon if set to false.
  *
  * Path is `payload,ACPExtensionEventData,event.internal`.
  *
@@ -287,9 +287,9 @@ const getEventInternal = kit.search(path.eventInternal);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventData."event.internal"',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.media.trackmedia\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.media\'',
+  'payload.ACPExtensionEventData."event.internal"==`false`',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.media.trackmedia`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.media`',
   'timestamp'
 ]);
 
@@ -332,6 +332,7 @@ const mock = (input) => kit.expandWithPaths(path, {
   trackerid: 'trackerId123',
   sessionid: 'sessionid123',
   eventTimestamp: 1599617251119,
+  eventInternal: false,
   eventSource: 'com.adobe.eventsource.media.trackmedia',
   eventType: 'com.adobe.eventtype.media',
   rootType: 'generic',

@@ -161,10 +161,10 @@ const getDetailKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.type==\'configUpdate\'',
-  'vendor==\'com.adobe.griffon.mobile\'',
+  'payload.type==`configUpdate`',
+  'vendor==`com.adobe.griffon.mobile`',
   'timestamp',
-  'type==\'control\''
+  'type==`control`'
 ]);
 
 /**

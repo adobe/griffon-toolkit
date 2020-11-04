@@ -243,8 +243,8 @@ const getHitHost = kit.search(path.hitHost);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.analytics\'',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.analytics`',
   'timestamp'
 ]);
 

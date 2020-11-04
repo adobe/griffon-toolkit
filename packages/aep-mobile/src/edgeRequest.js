@@ -194,8 +194,8 @@ const getXdmKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.requestcontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.edge\'',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`',
   'timestamp'
 ]);
 
