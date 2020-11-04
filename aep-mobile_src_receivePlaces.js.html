@@ -285,8 +285,8 @@ const getPOIs = kit.search(path.POIs);
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.nearbypois',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.places`',
   'timestamp'
 ]);
 

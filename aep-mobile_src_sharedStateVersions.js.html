@@ -311,10 +311,10 @@ const getExtensionsKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventData.stateowner==\'com.adobe.module.eventhub\'',
+  'payload.ACPExtensionEventData.stateowner==`com.adobe.module.eventhub`',
   'payload.metadata."state.data".extensions',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.sharedstate\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.hub\'',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.sharedstate`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.hub`',
   'timestamp'
 ]);
 
