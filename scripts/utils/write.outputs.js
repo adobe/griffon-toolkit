@@ -280,7 +280,7 @@ export const writeMockLine = ({
 export const writeMatch = ({
   path, useConst
 }) => (
-  useConst ? `${preparePath(path)}=='${useConst}'` : preparePath(path)
+  R.type(useConst) !== 'Undefined' ? `${preparePath(path)}==\`${useConst}\`` : preparePath(path)
 );
 
 /*

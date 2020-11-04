@@ -313,9 +313,9 @@ const getLowPowerMode = kit.search(path.lowPowerMode);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.deviceInfo."Canonical platform name"==\'Android\'',
-  'payload.type==\'connect\'',
-  'type==\'client\'',
+  'payload.deviceInfo."Canonical platform name"==`Android`',
+  'payload.type==`connect`',
+  'type==`client`',
   'timestamp'
 ]);
 

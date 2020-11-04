@@ -134,7 +134,7 @@ const getMimeType = kit.search(path.mimeType);
  * @constant
  */
 const matcher = kit.combineAll([
-  'type==\'blob\'',
+  'type==`blob`',
   'timestamp'
 ]);
 

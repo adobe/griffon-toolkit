@@ -227,7 +227,7 @@ const getContextKey = kit.curry(
 const matcher = kit.combineAll([
   'payload.attributes.requestId',
   'payload.attributes.source',
-  'type==\'service\'',
+  'type==`service`',
   'timestamp'
 ]);
 

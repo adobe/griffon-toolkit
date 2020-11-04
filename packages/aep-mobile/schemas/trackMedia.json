@@ -48,9 +48,9 @@
               },
               "event.internal": {
                 "alias": "eventInternal",
-                "description": "Display the event in griffon if set to true",
+                "description": "Display the event in griffon if set to false",
                 "type": "boolean",
-                "mock": false,
+                "const": false,
                 "match": true
               }
             },

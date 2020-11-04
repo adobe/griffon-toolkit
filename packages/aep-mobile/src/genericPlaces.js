@@ -139,7 +139,7 @@ const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.places`',
   'payload.ACPExtensionEventSource',
   'timestamp'
 ]);

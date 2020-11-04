@@ -170,10 +170,10 @@ const getAttributesKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.attributes.source==\'com.adobe.edge.konductor\'',
+  'payload.attributes.source==`com.adobe.edge.konductor`',
   'payload.attributes.requestId',
-  'payload.name==\'hitReceived\'',
-  'type==\'service\'',
+  'payload.name==`hitReceived`',
+  'type==`service`',
   'timestamp'
 ]);
 

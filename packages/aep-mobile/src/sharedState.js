@@ -199,8 +199,8 @@ const getStateDataKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.sharedstate\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.hub\'',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.sharedstate`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.hub`',
   'timestamp'
 ]);
 
