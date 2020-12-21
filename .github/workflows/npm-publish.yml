@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: npm-publish
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  npm-publish:
+    name: npm-publish
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@master
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 10.0.0
+    - name: install and build 
+      run: |
+        npm ci
+        npm run build
+    - name: lerna publish
+      run: npx lerna publish from-package
+      env: # More info about the environment variables in the README
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
+        NPM_AUTH_TOKEN: ${{ secrets.ADOBE_BOT_NPM_TOKEN }} # This will be shared with your repo as an org secret
+        NPM_AUTH: ${{ secrets.ADOBE_BOT_NPM_TOKEN }} # This will be shared with your repo as an org secret
