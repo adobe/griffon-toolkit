@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      clientInfoIOS - Documentation
+      identityResponse - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        clientInfoIOS
+        identityResponse
       </h1>
     
 
@@ -92,7 +92,7 @@
     
       <h2>
         
-        clientInfoIOS
+        identityResponse
         
       </h2>
 
@@ -105,28 +105,22 @@
       
         
             <div class="description">
-              <p>Contains constants and functions for a iOS Client Info Event.</p>
-<p>The structure for a iOS Client Info Event is as follows:</p>
+              <p>Contains constants and functions for a Identity Response.</p>
+<p>The structure for a Identity Response is as follows:</p>
 <pre class="prettyprint source"><code>{
   payload: {
-    deviceInfo: {
-      Canonical platform name: 'iOS'
-      Device name: &lt;string>,
-      Device type: &lt;string>,
-      Model: &lt;string>,
-      Operating system: &lt;string>,
-      Screen size: &lt;string>,
-      Battery level: &lt;integer>,
-      Battery state: &lt;string>,
-      Location service enabled: &lt;boolean>,
-      Location authorization status: &lt;string>,
-      Low power mode enabled: &lt;boolean>,
+    ACPExtensionEventData: {
+      mid: &lt;string>,
+      pushidentifier: &lt;string>,
     },
-    appSettings: &lt;object>,
-    type: 'connect'
-    version: &lt;string>,
+    ACPExtensionEventSource: 'com.adobe.eventsource.responseidentity'
+    ACPExtensionEventType: 'com.adobe.eventtype.identity'
+    ACPExtensionEventName: &lt;string>,
+    ACPExtensionEventNumber: &lt;integer>,
+    ACPExtensionEventUniqueIdentifier: &lt;string>,
   },
-  type: 'client'
+  type: 'generic'
+  vendor: &lt;string>,
   annotations: &lt;array>,
   clientId: &lt;string>,
   timestamp: &lt;number>,
@@ -169,7 +163,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line17">line 17</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line17">line 17</a>
         </li>
       </ul>
     </dd>
@@ -200,6 +194,142 @@
     
         <h3 class="subsection-title">Members</h3>
 
+        
+            
+
+<h4 class="name" id=".EVENT_SOURCE">
+  <span class="type-signature">(static, constant) </span>EVENT_SOURCE<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventSource</code> for a Identity Response.</p>
+<p>Path is <code>payload,ACPExtensionEventSource</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line123">line 123</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id=".EVENT_TYPE">
+  <span class="type-signature">(static, constant) </span>EVENT_TYPE<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventType</code> for a Identity Response.</p>
+<p>Path is <code>payload,ACPExtensionEventType</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line132">line 132</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
         
             
 
@@ -248,7 +378,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line138">line 138</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line114">line 114</a>
         </li>
       </ul>
     </dd>
@@ -315,7 +445,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line133">line 133</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line109">line 109</a>
         </li>
       </ul>
     </dd>
@@ -345,7 +475,7 @@
 
 
   <div class="description">
-    <p>Matcher can be used to find matching iOS Client Info Event objects.</p>
+    <p>Matcher can be used to find matching Identity Response objects.</p>
   </div>
 
 
@@ -382,7 +512,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line315">line 315</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line183">line 183</a>
         </li>
       </ul>
     </dd>
@@ -461,7 +591,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line128">line 128</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line104">line 104</a>
         </li>
       </ul>
     </dd>
@@ -491,7 +621,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Paths for the keys on a iOS Client Info Event</p>
+    <p>Paths for the keys on a Identity Response</p>
   </div>
 
 
@@ -552,7 +682,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>deviceInfo</code></td>
+        <td class="name"><code>eventData</code></td>
       
 
       <td class="type">
@@ -573,7 +703,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>A map containing details about the connected device.<br />Path is <code>payload.deviceInfo</code>.</p>
+          <p>An object with the custom data describing the event.<br />Path is <code>payload.ACPExtensionEventData</code>.</p>
           </td>
     </tr>
 
@@ -581,7 +711,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>platform</code></td>
+        <td class="name"><code>mid</code></td>
       
 
       <td class="type">
@@ -602,7 +732,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>Canonical name for the platform. Used for Griffon identifying if the device is iOS or Android.<br />Path is <code>payload.deviceInfo.&quot;Canonical platform name&quot;</code>.</p>
+          <p>The unique ID assigned by Adobe.<br />Path is <code>payload.ACPExtensionEventData.mid</code>.</p>
           </td>
     </tr>
 
@@ -610,7 +740,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>deviceName</code></td>
+        <td class="name"><code>pushIdentifier</code></td>
       
 
       <td class="type">
@@ -631,7 +761,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The name identifying the device..<br />Path is <code>payload.deviceInfo.&quot;Device name&quot;</code>.</p>
+          <p>The token used to send push messages.<br />Path is <code>payload.ACPExtensionEventData.pushidentifier</code>.</p>
           </td>
     </tr>
 
@@ -639,7 +769,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>deviceType</code></td>
+        <td class="name"><code>eventSource</code></td>
       
 
       <td class="type">
@@ -660,7 +790,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The style of interface to use on the current device..<br />Path is <code>payload.deviceInfo.&quot;Device type&quot;</code>.</p>
+          <p>The event source.<br />Path is <code>payload.ACPExtensionEventSource</code>.</p>
           </td>
     </tr>
 
@@ -668,7 +798,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>model</code></td>
+        <td class="name"><code>eventType</code></td>
       
 
       <td class="type">
@@ -689,7 +819,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The model of the device..<br />Path is <code>payload.deviceInfo.Model</code>.</p>
+          <p>The event type.<br />Path is <code>payload.ACPExtensionEventType</code>.</p>
           </td>
     </tr>
 
@@ -697,7 +827,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>os</code></td>
+        <td class="name"><code>eventName</code></td>
       
 
       <td class="type">
@@ -718,7 +848,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The value is in the format &quot;<OperationSystemName> <OperatingSystemVersion>&quot;.<br />Path is <code>payload.deviceInfo.&quot;Operating system&quot;</code>.</p>
+          <p>The name of the event.<br />Path is <code>payload.ACPExtensionEventName</code>.</p>
           </td>
     </tr>
 
@@ -726,7 +856,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>screenSize</code></td>
+        <td class="name"><code>sdkEventNumber</code></td>
       
 
       <td class="type">
@@ -747,7 +877,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>Phones display resolution in pixels (width x height).<br />Path is <code>payload.deviceInfo.&quot;Screen size&quot;</code>.</p>
+          <p>The event number generated by the SDK.<br />Path is <code>payload.ACPExtensionEventNumber</code>.</p>
           </td>
     </tr>
 
@@ -755,7 +885,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>batteryLevel</code></td>
+        <td class="name"><code>eventId</code></td>
       
 
       <td class="type">
@@ -776,210 +906,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The battery charge level for the device. This is integer value ranging from 1 to 100. If unable to fetch battery value -1 is returned.<br />Path is <code>payload.deviceInfo.&quot;Battery level&quot;</code>.</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>batteryState</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The battery state for the device..<br />Path is <code>payload.deviceInfo.&quot;Battery state&quot;</code>.</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>locationEnabled</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>A boolean value indicating whether location services are enabled on the device. Users can enable or disable location services by toggling the Location Services switch in Settings &gt; Privacy..<br />Path is <code>payload.deviceInfo.&quot;Location service enabled&quot;</code>.</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>locationAuth</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Tells the app’s authorization status for using location services..<br />Path is <code>payload.deviceInfo.&quot;Location authorization status&quot;</code>.</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>lowPowerMode</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Indicates whether Low Power Mode is enabled on an iOS device..<br />Path is <code>payload.deviceInfo.&quot;Low power mode enabled&quot;</code>.</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>appSettings</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>A map containing details about the settings of the application on which Griffon is registered.<br />Path is <code>payload.appSettings</code>.</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>type</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Constant value representing this event will initiate a connection.<br />Path is <code>payload.type</code>.</p>
-          </td>
-    </tr>
-
-  
-
-    <tr>
-      
-        <td class="name"><code>version</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Griffon SDK Extension version.<br />Path is <code>payload.version</code>.</p>
+          <p>The unique event id.<br />Path is <code>payload.ACPExtensionEventUniqueIdentifier</code>.</p>
           </td>
     </tr>
 
@@ -1009,6 +936,35 @@ use a schema that is more specific over a more generic schema</p>
 
         <td class="description last">
           <p>The type of event.<br />Path is <code>type</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>vendor</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The vendor of the plugin that sent the event.<br />Path is <code>vendor</code>.</p>
           </td>
     </tr>
 
@@ -1166,75 +1122,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line57">line 57</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-          
-        
-            
-
-<h4 class="name" id=".PLATFORM">
-  <span class="type-signature">(static, constant) </span>PLATFORM<span class="type-signature"></span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>The value for <code>platform</code> for a iOS Client Info Event.</p>
-<p>Path is <code>payload,deviceInfo,Canonical platform name</code>.</p>
-  </div>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line147">line 147</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line51">line 51</a>
         </li>
       </ul>
     </dd>
@@ -1264,7 +1152,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>The value for <code>rootType</code> for a iOS Client Info Event.</p>
+    <p>The value for <code>rootType</code> for a Identity Response.</p>
 <p>Path is <code>type</code>.</p>
   </div>
 
@@ -1302,75 +1190,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line165">line 165</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-          
-        
-            
-
-<h4 class="name" id=".TYPE">
-  <span class="type-signature">(static, constant) </span>TYPE<span class="type-signature"></span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>The value for <code>type</code> for a iOS Client Info Event.</p>
-<p>Path is <code>payload,type</code>.</p>
-  </div>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line156">line 156</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line141">line 141</a>
         </li>
       </ul>
     </dd>
@@ -1547,7 +1367,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line175">line 175</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line151">line 151</a>
         </li>
       </ul>
     </dd>
@@ -1568,13 +1388,13 @@ use a schema that is more specific over a more generic schema</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getBatteryLevel">
+    <a class="link-icon" href="#.getMid">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getBatteryLevel">
-      <span class="type-signature">(static) </span>getBatteryLevel<span class="signature">(source)</span><span class="type-signature"> &rarr; {number}</span>
+    <h4 class="name" id=".getMid">
+      <span class="type-signature">(static) </span>getMid<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1583,9 +1403,9 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Returns the <code>batteryLevel</code> from the iOS Client Info Event.
-This is the the battery charge level for the device. This is integer value ranging from 1 to 100. If unable to fetch battery value -1 is returned.</p>
-<p>Path is <code>payload,deviceInfo,Battery level</code>.</p>
+    <p>Returns the <code>mid</code> from the Identity Response.
+This is the the unique ID assigned by Adobe.</p>
+<p>Path is <code>payload,ACPExtensionEventData,mid</code>.</p>
   </div>
 
 
@@ -1639,7 +1459,7 @@ This is the the battery charge level for the device. This is integer value rangi
         
 
         <td class="description last">
-          <p>The iOS Client Info Event instance</p>
+          <p>The Identity Response instance</p>
           
         </td>
       </tr>
@@ -1695,7 +1515,7 @@ This is the the battery charge level for the device. This is integer value rangi
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line259">line 259</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line163">line 163</a>
         </li>
       </ul>
     </dd>
@@ -1716,13 +1536,13 @@ This is the the battery charge level for the device. This is integer value rangi
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getBatteryState">
+    <a class="link-icon" href="#.getPushIdentifier">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getBatteryState">
-      <span class="type-signature">(static) </span>getBatteryState<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    <h4 class="name" id=".getPushIdentifier">
+      <span class="type-signature">(static) </span>getPushIdentifier<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1731,9 +1551,9 @@ This is the the battery charge level for the device. This is integer value rangi
 
 
   <div class="description">
-    <p>Returns the <code>batteryState</code> from the iOS Client Info Event.
-This is the the battery state for the device..</p>
-<p>Path is <code>payload,deviceInfo,Battery state</code>.</p>
+    <p>Returns the <code>pushIdentifier</code> from the Identity Response.
+This is the the token used to send push messages.</p>
+<p>Path is <code>payload,ACPExtensionEventData,pushidentifier</code>.</p>
   </div>
 
 
@@ -1787,7 +1607,7 @@ This is the the battery state for the device..</p>
         
 
         <td class="description last">
-          <p>The iOS Client Info Event instance</p>
+          <p>The Identity Response instance</p>
           
         </td>
       </tr>
@@ -1843,1339 +1663,7 @@ This is the the battery state for the device..</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line271">line 271</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getDeviceName">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getDeviceName">
-      <span class="type-signature">(static) </span>getDeviceName<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>deviceName</code> from the iOS Client Info Event.
-This is the the name identifying the device..</p>
-<p>Path is <code>payload,deviceInfo,Device name</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line199">line 199</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getDeviceType">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getDeviceType">
-      <span class="type-signature">(static) </span>getDeviceType<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>deviceType</code> from the iOS Client Info Event.
-This is the the style of interface to use on the current device..</p>
-<p>Path is <code>payload,deviceInfo,Device type</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line211">line 211</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getLocationAuth">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getLocationAuth">
-      <span class="type-signature">(static) </span>getLocationAuth<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>locationAuth</code> from the iOS Client Info Event.
-This is the tells the app’s authorization status for using location services..</p>
-<p>Path is <code>payload,deviceInfo,Location authorization status</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line295">line 295</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getLocationEnabled">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getLocationEnabled">
-      <span class="type-signature">(static) </span>getLocationEnabled<span class="signature">(source)</span><span class="type-signature"> &rarr; {boolean}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>locationEnabled</code> from the iOS Client Info Event.
-This is the a boolean value indicating whether location services are enabled on the device. Users can enable or disable location services by toggling the Location Services switch in Settings &gt; Privacy..</p>
-<p>Path is <code>payload,deviceInfo,Location service enabled</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line283">line 283</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getLowPowerMode">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getLowPowerMode">
-      <span class="type-signature">(static) </span>getLowPowerMode<span class="signature">(source)</span><span class="type-signature"> &rarr; {boolean}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>lowPowerMode</code> from the iOS Client Info Event.
-This is the indicates whether Low Power Mode is enabled on an iOS device..</p>
-<p>Path is <code>payload,deviceInfo,Low power mode enabled</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line307">line 307</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getModel">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getModel">
-      <span class="type-signature">(static) </span>getModel<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>model</code> from the iOS Client Info Event.
-This is the the model of the device..</p>
-<p>Path is <code>payload,deviceInfo,Model</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line223">line 223</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getOs">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getOs">
-      <span class="type-signature">(static) </span>getOs<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>os</code> from the iOS Client Info Event.
-This is the the value is in the format &quot;<OperationSystemName> <OperatingSystemVersion>&quot;.</p>
-<p>Path is <code>payload,deviceInfo,Operating system</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line235">line 235</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getPlatform">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getPlatform">
-      <span class="type-signature">(static) </span>getPlatform<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>platform</code> from the iOS Client Info Event.
-This is the canonical name for the platform. Used for Griffon identifying if the device is iOS or Android.</p>
-<p>Path is <code>payload,deviceInfo,Canonical platform name</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line187">line 187</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getScreenSize">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getScreenSize">
-      <span class="type-signature">(static) </span>getScreenSize<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>screenSize</code> from the iOS Client Info Event.
-This is the phones display resolution in pixels (width x height).</p>
-<p>Path is <code>payload,deviceInfo,Screen size</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The iOS Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line247">line 247</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line175">line 175</a>
         </li>
       </ul>
     </dd>
@@ -3211,7 +1699,7 @@ This is the phones display resolution in pixels (width x height).</p>
 
 
   <div class="description">
-    <p>Tests the provided source against the matcher to see if it's iOS Client Info Event event.</p>
+    <p>Tests the provided source against the matcher to see if it's Identity Response event.</p>
   </div>
 
 
@@ -3265,7 +1753,7 @@ This is the phones display resolution in pixels (width x height).</p>
         
 
         <td class="description last">
-          <p>The iOS Client Info Event instance</p>
+          <p>The Identity Response instance</p>
           
         </td>
       </tr>
@@ -3321,7 +1809,7 @@ This is the phones display resolution in pixels (width x height).</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line330">line 330</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line198">line 198</a>
         </li>
       </ul>
     </dd>
@@ -3368,7 +1856,7 @@ This is the phones display resolution in pixels (width x height).</p>
 
 
   <div class="description">
-    <p>Generates a iOS Client Info Event with the const values set.
+    <p>Generates a Identity Response with the const values set.
 Can be useful in testing.
 Can provide additional data by providing a flat object of paths and values.</p>
   </div>
@@ -3492,7 +1980,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line340">line 340</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line208">line 208</a>
         </li>
       </ul>
     </dd>
@@ -3528,7 +2016,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
 
 
   <div class="description">
-    <p>Generates a iOS Client Info Event with some default values set.
+    <p>Generates a Identity Response with some default values set.
 Can be useful in testing.
 Can override defaults and provide additional data by providing a flat object
 of paths and values.</p>
@@ -3653,7 +2141,7 @@ of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_clientInfoIOS.js.html">aep-mobile/src/clientInfoIOS.js</a>, <a href="aep-mobile_src_clientInfoIOS.js.html#line357">line 357</a>
+          <a href="aep-mobile_src_identityResponse.js.html">aep-mobile/src/identityResponse.js</a>, <a href="aep-mobile_src_identityResponse.js.html#line225">line 225</a>
         </li>
       </ul>
     </dd>
