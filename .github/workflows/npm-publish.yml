@@ -29,7 +29,10 @@ jobs:
         npm run build
     - name: lerna publish
       run: |
-        npm login --registry=https://registry.npmjs.org --scope=@adobe
+        echo "@adobe:registry=http://registry.npmjs.org/" > .npmrc
+        echo "registry=http://registry.npmjs.org/" >> .npmrc
+        echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+        npm whoami
         npx lerna publish from-package --yes --no-verify-access
       env: # More info about the environment variables in the README
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
