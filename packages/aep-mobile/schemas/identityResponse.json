@@ -1,0 +1,43 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/identityResponse",
+  "shortDesc": "Identity Response",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "mid": {
+              "description": "The unique ID assigned by Adobe",
+              "type": "string",
+              "mock": "123423412123412341243",
+              "match": true
+            },
+            "pushidentifier": {
+              "alias": "pushIdentifier",
+              "description": "The token used to send push messages",
+              "type": "string",
+              "mock": "asdfwerfasdfae-asdfasdfasdf"
+            }
+          },
+          "required": ["mid"]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.responseidentity"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.identity"
+        }
+      },
+      "required": ["ACPExtensionEventData"]
+    }
+  }
+}
