@@ -1,7 +1,7 @@
 {
   "name": "@adobe/griffon-toolkit-edge",
   "description": "Events definitions for the AEP Edge Services",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/adobe/griffon-toolkit.git",

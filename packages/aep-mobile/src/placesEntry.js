@@ -273,9 +273,9 @@ const getRegionEventType = kit.search(path.regionEventType);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventData.regioneventtype==\'entry\'',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responsecontent\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.places\'',
+  'payload.ACPExtensionEventData.regioneventtype==`entry`',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.places`',
   'timestamp'
 ]);
 

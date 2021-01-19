@@ -118,7 +118,7 @@ const getLogLine = kit.search(path.logLine);
  * @constant
  */
 const matcher = kit.combineAll([
-  'type==\'log\'',
+  'type==`log`',
   'timestamp'
 ]);
 

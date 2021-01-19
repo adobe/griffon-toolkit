@@ -171,7 +171,7 @@ const getVendor = kit.search(path.vendor);
  */
 const matcher = kit.combineAll([
   'timestamp',
-  'type==\'control\''
+  'type==`control`'
 ]);
 
 /**

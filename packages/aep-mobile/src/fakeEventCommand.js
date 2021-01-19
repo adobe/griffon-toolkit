@@ -239,10 +239,10 @@ const getEventDataKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.type==\'fakeEvent\'',
-  'vendor==\'com.adobe.griffon.mobile\'',
+  'payload.type==`fakeEvent`',
+  'vendor==`com.adobe.griffon.mobile`',
   'timestamp',
-  'type==\'control\''
+  'type==`control`'
 ]);
 
 /**

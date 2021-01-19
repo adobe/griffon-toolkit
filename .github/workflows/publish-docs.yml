@@ -7,10 +7,12 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    types: [closed]
-  watch:
-    types: [started] 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Trigger by pressing star
+#  watch:
+#    types: [started] 
 
 jobs:
   docs:
