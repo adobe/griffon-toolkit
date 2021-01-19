@@ -1,0 +1,61 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/cepheus/pushFeedback",
+  "shortDesc": "Push Request Feedback",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/cepheus/cepheusEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "event": {
+          "alias": "eventName",
+          "description": "The name of the event",
+          "type": "string",
+          "const": "feedback sent to pipeline"
+        },
+        "responseCode": {
+          "description": "Response code",
+          "type": "integer",
+          "mock": "200"
+        },
+        "responseMessage": {
+          "description": "Response message",
+          "type": "string",
+          "mock": "OK"
+        },
+        "feedback": {
+          "description": "The response",
+          "type": "object",
+          "properties": {
+            "groupID": {
+              "alias": "groupId",
+              "description": "id to stitch the requests together",
+              "type": "string",
+              "mock": "the-group-id"
+            },
+            "platform": {
+              "description": "The platform to send the push to",
+              "type": "string",
+              "mock": "fcmV1"
+            },
+            "status": {
+              "description": "The status of the request",
+              "type": "string",
+              "mock": "success"
+            }
+          },
+          "additionalProperties": true,
+          "required": [
+            "groupID"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "event"
+      ]
+    }
+  }
+}

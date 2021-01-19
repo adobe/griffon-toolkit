@@ -1,0 +1,18 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/cepheus/cepheusEvent",
+  "shortDesc": "Generic Cepheus Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "type": {
+      "inherit": true,
+      "const": "Push Service"
+    },
+    "vendor": {
+      "description": "The vendor of the service that sent the event",
+      "type": "string",
+      "const": "com.adobe.cepheus"
+    }
+  }
+}

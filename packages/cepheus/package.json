@@ -1,0 +1,26 @@
+{
+  "name": "@adobe/griffon-toolkit-cepheus",
+  "description": "Events definitions for the Cepheus service",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adobe/griffon-toolkit.git",
+    "directory": "packages/cepheus"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Adobe Systems",
+  "license": "Apache-2.0",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "@adobe/griffon-toolkit": "*"
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "babel src --out-dir dist --root-mode upward"
+  },
+  "main": "dist/index.js"
+}

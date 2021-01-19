@@ -1,0 +1,47 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/cepheus/pushDeduped",
+  "shortDesc": "Push Request Dedupe",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/cepheus/cepheusEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "event": {
+          "alias": "eventName",
+          "description": "The name of the event",
+          "type": "string",
+          "const": "push passed deduplication step"
+        },
+        "groupID": {
+          "alias": "groupId",
+          "description": "id to stitch the requests together",
+          "type": "string",
+          "mock": "the-group-id"
+        },
+        "platform": {
+          "description": "The platform to send the push to",
+          "type": "string",
+          "mock": "fcmV1"
+        },
+        "pushTokens": {
+          "alias": "pushToken",
+          "description": "The push token to send to",
+          "type": "string",
+          "mock": "asdfasdf-asdfasdf-asdfasdf"
+        },
+        "duplicatePushToken": {
+          "description": "The push token that was deduped",
+          "type": "string",
+          "mock": "asdfasdf-asdfasdf-asdfasdf"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "event", "groupID"
+      ]
+    }
+  }
+}
