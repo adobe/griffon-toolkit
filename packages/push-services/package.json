@@ -1,6 +1,6 @@
 {
-  "name": "@adobe/griffon-toolkit-cepheus",
-  "description": "Events definitions for the Cepheus service",
+  "name": "@adobe/griffon-toolkit-push-services",
+  "description": "Events definitions for the push services",
   "version": "0.0.1",
   "repository": {
     "type": "git",
