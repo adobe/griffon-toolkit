@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      command - Documentation
+      pushRequest - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        command
+        pushRequest
       </h1>
     
 
@@ -92,7 +92,7 @@
     
       <h2>
         
-        command
+        pushRequest
         
       </h2>
 
@@ -105,14 +105,21 @@
       
         
             <div class="description">
-              <p>Contains constants and functions for a Outgoing Command.</p>
-<p>The structure for a Outgoing Command is as follows:</p>
+              <p>Contains constants and functions for a Push Request.</p>
+<p>The structure for a Push Request is as follows:</p>
 <pre class="prettyprint source"><code>{
+  payload: {
+    event: 'push request from pipeline'
+    groupID: &lt;string>,
+    platform: &lt;string>,
+    pushTokens: &lt;string>,
+  },
+  type: 'Push Service'
+  vendor: 'com.adobe.cepheus'
+  annotations: &lt;array>,
   clientId: &lt;string>,
-  payload: &lt;object>,
   timestamp: &lt;number>,
-  type: 'control'
-  vendor: &lt;string>,
+  uuid: &lt;string>,
 }
 </code></pre>
             </div>
@@ -151,7 +158,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line17">line 17</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line17">line 17</a>
         </li>
       </ul>
     </dd>
@@ -182,6 +189,74 @@
     
         <h3 class="subsection-title">Members</h3>
 
+        
+            
+
+<h4 class="name" id=".EVENT_NAME">
+  <span class="type-signature">(static, constant) </span>EVENT_NAME<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventName</code> for a Push Request.</p>
+<p>Path is <code>payload,event</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line106">line 106</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
         
             
 
@@ -230,7 +305,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line72">line 72</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line97">line 97</a>
         </li>
       </ul>
     </dd>
@@ -297,7 +372,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line67">line 67</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line92">line 92</a>
         </li>
       </ul>
     </dd>
@@ -327,7 +402,7 @@
 
 
   <div class="description">
-    <p>Matcher can be used to find matching Outgoing Command objects.</p>
+    <p>Matcher can be used to find matching Push Request objects.</p>
   </div>
 
 
@@ -364,7 +439,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line172">line 172</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line190">line 190</a>
         </li>
       </ul>
     </dd>
@@ -443,7 +518,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line62">line 62</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line87">line 87</a>
         </li>
       </ul>
     </dd>
@@ -473,7 +548,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Paths for the keys on a Outgoing Command</p>
+    <p>Paths for the keys on a Push Request</p>
   </div>
 
 
@@ -502,35 +577,6 @@ use a schema that is more specific over a more generic schema</p>
 
   <tbody>
     
-
-    <tr>
-      
-        <td class="name"><code>clientId</code></td>
-      
-
-      <td class="type">
-        
-          
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-        
-      </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>A unique id that differentiates clients from one another.<br />Path is <code>clientId</code>.</p>
-          </td>
-    </tr>
-
-  
 
     <tr>
       
@@ -563,7 +609,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>timestamp</code></td>
+        <td class="name"><code>eventName</code></td>
       
 
       <td class="type">
@@ -584,7 +630,94 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>When the command was triggered.<br />Path is <code>timestamp</code>.</p>
+          <p>The name of the event.<br />Path is <code>payload.event</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>groupId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>id to stitch the requests together.<br />Path is <code>payload.groupID</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>platform</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The platform to send the push to.<br />Path is <code>payload.platform</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>pushToken</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The push token to send to.<br />Path is <code>payload.pushTokens</code>.</p>
           </td>
     </tr>
 
@@ -613,7 +746,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The type of event. For commands it's always 'control'..<br />Path is <code>type</code>.</p>
+          <p>The type of event.<br />Path is <code>type</code>.</p>
           </td>
     </tr>
 
@@ -642,7 +775,123 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The vendor of the plugin to receive the command.<br />Path is <code>vendor</code>.</p>
+          <p>The vendor of the service that sent the event.<br />Path is <code>vendor</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>annotations</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Array of Annotation objects.<br />Path is <code>annotations</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>clientId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>A unique id that differentiates clients from one another.<br />Path is <code>clientId</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>timestamp</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>When the event occurred.<br />Path is <code>timestamp</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>rootId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Uniquely identifies each event.<br />Path is <code>uuid</code>.</p>
           </td>
     </tr>
 
@@ -684,7 +933,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line39">line 39</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line46">line 46</a>
         </li>
       </ul>
     </dd>
@@ -714,7 +963,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>The value for <code>rootType</code> for a Outgoing Command.</p>
+    <p>The value for <code>rootType</code> for a Push Request.</p>
 <p>Path is <code>type</code>.</p>
   </div>
 
@@ -752,7 +1001,75 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line81">line 81</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line115">line 115</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id=".VENDOR">
+  <span class="type-signature">(static, constant) </span>VENDOR<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>vendor</code> for a Push Request.</p>
+<p>Path is <code>vendor</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line124">line 124</a>
         </li>
       </ul>
     </dd>
@@ -929,7 +1246,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line91">line 91</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line134">line 134</a>
         </li>
       </ul>
     </dd>
@@ -950,13 +1267,13 @@ use a schema that is more specific over a more generic schema</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getClientId">
+    <a class="link-icon" href="#.getEventName">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getClientId">
-      <span class="type-signature">(static) </span>getClientId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    <h4 class="name" id=".getEventName">
+      <span class="type-signature">(static) </span>getEventName<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -965,9 +1282,9 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Returns the <code>clientId</code> from the Outgoing Command.
-This is the a unique id that differentiates clients from one another.</p>
-<p>Path is <code>clientId</code>.</p>
+    <p>Returns the <code>eventName</code> from the Push Request.
+This is the the name of the event.</p>
+<p>Path is <code>payload,event</code>.</p>
   </div>
 
 
@@ -1021,7 +1338,7 @@ This is the a unique id that differentiates clients from one another.</p>
         
 
         <td class="description last">
-          <p>The Outgoing Command instance</p>
+          <p>The Push Request instance</p>
           
         </td>
       </tr>
@@ -1077,7 +1394,7 @@ This is the a unique id that differentiates clients from one another.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line103">line 103</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line146">line 146</a>
         </li>
       </ul>
     </dd>
@@ -1098,13 +1415,13 @@ This is the a unique id that differentiates clients from one another.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getPayload">
+    <a class="link-icon" href="#.getGroupId">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getPayload">
-      <span class="type-signature">(static) </span>getPayload<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
+    <h4 class="name" id=".getGroupId">
+      <span class="type-signature">(static) </span>getGroupId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1113,9 +1430,9 @@ This is the a unique id that differentiates clients from one another.</p>
 
 
   <div class="description">
-    <p>Returns the <code>payload</code> from the Outgoing Command.
-This is the an object with custom data describing the event.</p>
-<p>Path is <code>payload</code>.</p>
+    <p>Returns the <code>groupId</code> from the Push Request.
+This is the id to stitch the requests together.</p>
+<p>Path is <code>payload,groupID</code>.</p>
   </div>
 
 
@@ -1169,7 +1486,7 @@ This is the an object with custom data describing the event.</p>
         
 
         <td class="description last">
-          <p>The Outgoing Command instance</p>
+          <p>The Push Request instance</p>
           
         </td>
       </tr>
@@ -1225,7 +1542,7 @@ This is the an object with custom data describing the event.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line115">line 115</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line158">line 158</a>
         </li>
       </ul>
     </dd>
@@ -1246,13 +1563,13 @@ This is the an object with custom data describing the event.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getPayloadKey">
+    <a class="link-icon" href="#.getPlatform">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getPayloadKey">
-      <span class="type-signature">(static) </span>getPayloadKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    <h4 class="name" id=".getPlatform">
+      <span class="type-signature">(static) </span>getPlatform<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1261,8 +1578,9 @@ This is the an object with custom data describing the event.</p>
 
 
   <div class="description">
-    <p>Returns the data using the specified path from the payload
-of the Outgoing Command.</p>
+    <p>Returns the <code>platform</code> from the Push Request.
+This is the the platform to send the push to.</p>
+<p>Path is <code>payload,platform</code>.</p>
   </div>
 
 
@@ -1284,8 +1602,6 @@ of the Outgoing Command.</p>
       <th>Type</th>
 
       
-        <th>Attributes</th>
-      
 
       
 
@@ -1294,45 +1610,6 @@ of the Outgoing Command.</p>
   </thead>
 
   <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>path</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-          <td class="attributes">
-            
-
-            
-
-            
-              &lt;repeatable><br>
-            
-          </td>
-        
-
-        
-
-        <td class="description last">
-          <p>key in object</p>
-          
-        </td>
-      </tr>
-
     
       <tr>
         
@@ -1353,19 +1630,11 @@ of the Outgoing Command.</p>
         </td>
 
         
-          <td class="attributes">
-            
-
-            
-
-            
-          </td>
-        
 
         
 
         <td class="description last">
-          <p>The Outgoing Command instance</p>
+          <p>The Push Request instance</p>
           
         </td>
       </tr>
@@ -1421,7 +1690,7 @@ of the Outgoing Command.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line126">line 126</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line170">line 170</a>
         </li>
       </ul>
     </dd>
@@ -1442,13 +1711,13 @@ of the Outgoing Command.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getRootType">
+    <a class="link-icon" href="#.getPushToken">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getRootType">
-      <span class="type-signature">(static) </span>getRootType<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    <h4 class="name" id=".getPushToken">
+      <span class="type-signature">(static) </span>getPushToken<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1457,9 +1726,9 @@ of the Outgoing Command.</p>
 
 
   <div class="description">
-    <p>Returns the <code>rootType</code> from the Outgoing Command.
-This is the the type of event. For commands it's always 'control'..</p>
-<p>Path is <code>type</code>.</p>
+    <p>Returns the <code>pushToken</code> from the Push Request.
+This is the the push token to send to.</p>
+<p>Path is <code>payload,pushTokens</code>.</p>
   </div>
 
 
@@ -1513,7 +1782,7 @@ This is the the type of event. For commands it's always 'control'..</p>
         
 
         <td class="description last">
-          <p>The Outgoing Command instance</p>
+          <p>The Push Request instance</p>
           
         </td>
       </tr>
@@ -1569,303 +1838,7 @@ This is the the type of event. For commands it's always 'control'..</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line152">line 152</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getTimestamp">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getTimestamp">
-      <span class="type-signature">(static) </span>getTimestamp<span class="signature">(source)</span><span class="type-signature"> &rarr; {number}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>timestamp</code> from the Outgoing Command.
-This is the when the command was triggered.</p>
-<p>Path is <code>timestamp</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The Outgoing Command instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line140">line 140</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getVendor">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getVendor">
-      <span class="type-signature">(static) </span>getVendor<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>vendor</code> from the Outgoing Command.
-This is the the vendor of the plugin to receive the command.</p>
-<p>Path is <code>vendor</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The Outgoing Command instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line164">line 164</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line182">line 182</a>
         </li>
       </ul>
     </dd>
@@ -1901,7 +1874,7 @@ This is the the vendor of the plugin to receive the command.</p>
 
 
   <div class="description">
-    <p>Tests the provided source against the matcher to see if it's Outgoing Command event.</p>
+    <p>Tests the provided source against the matcher to see if it's Push Request event.</p>
   </div>
 
 
@@ -1955,7 +1928,7 @@ This is the the vendor of the plugin to receive the command.</p>
         
 
         <td class="description last">
-          <p>The Outgoing Command instance</p>
+          <p>The Push Request instance</p>
           
         </td>
       </tr>
@@ -2011,7 +1984,7 @@ This is the the vendor of the plugin to receive the command.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line185">line 185</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line205">line 205</a>
         </li>
       </ul>
     </dd>
@@ -2058,7 +2031,7 @@ This is the the vendor of the plugin to receive the command.</p>
 
 
   <div class="description">
-    <p>Generates a Outgoing Command with the const values set.
+    <p>Generates a Push Request with the const values set.
 Can be useful in testing.
 Can provide additional data by providing a flat object of paths and values.</p>
   </div>
@@ -2182,7 +2155,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line195">line 195</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line215">line 215</a>
         </li>
       </ul>
     </dd>
@@ -2218,7 +2191,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
 
 
   <div class="description">
-    <p>Generates a Outgoing Command with some default values set.
+    <p>Generates a Push Request with some default values set.
 Can be useful in testing.
 Can override defaults and provide additional data by providing a flat object
 of paths and values.</p>
@@ -2343,7 +2316,7 @@ of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_command.js.html">common/src/command.js</a>, <a href="common_src_command.js.html#line210">line 210</a>
+          <a href="push-services_src_pushRequest.js.html">push-services/src/pushRequest.js</a>, <a href="push-services_src_pushRequest.js.html#line232">line 232</a>
         </li>
       </ul>
     </dd>
