@@ -15,9 +15,9 @@ import * as kit from '@adobe/griffon-toolkit';
 import schema from '../schemas/edgeRequest.json';
 
 /**
- * Contains constants and functions for a Platform Edge Request.
+ * Contains constants and functions for a AEP Edge Request.
  *
- * The structure for a Platform Edge Request is as follows:
+ * The structure for a AEP Edge Request is as follows:
  * ```
  * {
  *   payload: {
@@ -44,7 +44,7 @@ import schema from '../schemas/edgeRequest.json';
  */
 
 /**
- * Paths for the keys on a Platform Edge Request
+ * Paths for the keys on a AEP Edge Request
  *
  * @enum {string}
  */
@@ -106,7 +106,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Platform Edge Request';
+const label = 'AEP Edge Request';
 
 /**
  * A grouping for this object
@@ -114,7 +114,7 @@ const label = 'Platform Edge Request';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a Platform Edge Request.
+ * The value for `eventSource` for a AEP Edge Request.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
@@ -123,7 +123,7 @@ const group = 'event';
 const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
 
 /**
- * The value for `eventType` for a Platform Edge Request.
+ * The value for `eventType` for a AEP Edge Request.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
@@ -132,7 +132,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
 const EVENT_TYPE = 'com.adobe.eventtype.edge';
 
 /**
- * The value for `rootType` for a Platform Edge Request.
+ * The value for `rootType` for a AEP Edge Request.
  *
  * Path is `type`.
  *
@@ -151,36 +151,36 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `datasetId` from the Platform Edge Request.
+ * Returns the `datasetId` from the AEP Edge Request.
  * This is the the dataset to apply the XDM data to.
  *
  * Path is `payload,ACPExtensionEventData,datasetId`.
  *
  * @function
- * @param {object} source The Platform Edge Request instance
+ * @param {object} source The AEP Edge Request instance
  * @returns {string}
  */
 const getDatasetId = kit.search(path.datasetId);
 
 /**
- * Returns the `xdm` from the Platform Edge Request.
+ * Returns the `xdm` from the AEP Edge Request.
  * This is the the XDM data send to the server.
  *
  * Path is `payload,ACPExtensionEventData,xdm`.
  *
  * @function
- * @param {object} source The Platform Edge Request instance
+ * @param {object} source The AEP Edge Request instance
  * @returns {object}
  */
 const getXdm = kit.search(path.xdm);
 
 /**
  * Returns the data using the specified path from the xdm
- * of the Platform Edge Request.
+ * of the AEP Edge Request.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Platform Edge Request instance
+ * @param {object} source The AEP Edge Request instance
  * @returns {*}
  */
 const getXdmKey = kit.curry(
@@ -188,7 +188,7 @@ const getXdmKey = kit.curry(
 );
 
 /**
- * Matcher can be used to find matching Platform Edge Request objects.
+ * Matcher can be used to find matching AEP Edge Request objects.
  *
  * @see kit.match
  * @constant
@@ -200,16 +200,16 @@ const matcher = kit.combineAll([
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Platform Edge Request event.
+ * Tests the provided source against the matcher to see if it's AEP Edge Request event.
  *
  * @function
- * @param {object} source The Platform Edge Request instance
+ * @param {object} source The AEP Edge Request instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Platform Edge Request with the const values set.
+ * Generates a AEP Edge Request with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -225,7 +225,7 @@ const make = (input) => kit.expandWithPaths(path, {
 });
 
 /**
- * Generates a Platform Edge Request with some default values set.
+ * Generates a AEP Edge Request with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.

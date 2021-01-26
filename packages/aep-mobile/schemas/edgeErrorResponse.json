@@ -1,6 +1,6 @@
 {
-  "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeResponse",
-  "shortDesc": "AEP Edge Response",
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeErrorResponse",
+  "shortDesc": "AEP Edge Error Response",
   "group": "event",
   "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
   "type": "object",
@@ -18,12 +18,6 @@
               "type": "string",
               "mock": "BC123-8901-1234-AAFF-580993AC6258"
             },
-            "requestEventId": {
-              "alias": "requestEventId",
-              "description": "The event ID of the event that this is a response to",
-              "type": "string",
-              "mock": "abc-efg"
-            },
             "type": {
               "alias": "requestType",
               "description": "The type of request that was made",
@@ -35,17 +29,11 @@
               "description": "The information received in the response",
               "type": "array"
             }
-          },
-          "required": [ "requestEventId" ]
+          }
         },
         "ACPExtensionEventSource": {
           "inherit": true,
-          "not": {
-            "enum": [
-              "com.adobe.eventsource.errorresponsecontent",
-              "com.adobe.eventsource.requestcontent"
-            ]
-          }
+          "const": "com.adobe.eventsource.errorresponsecontent"
         },
         "ACPExtensionEventType": {
           "inherit": true,

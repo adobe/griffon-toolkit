@@ -1,6 +1,6 @@
 {
   "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeRequest",
-  "shortDesc": "Platform Edge Request",
+  "shortDesc": "AEP Edge Request",
   "group": "event",
   "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
   "type": "object",
