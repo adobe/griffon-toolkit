@@ -220,9 +220,9 @@ const getStatus = kit.search(path.status);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.event==\'push sent to platform service\'',
-  'type==\'Push Service\'',
-  'vendor==\'com.adobe.cepheus\'',
+  'payload.event==`push sent to platform service`',
+  'type==`Push Service`',
+  'vendor==`com.adobe.cepheus`',
   'timestamp'
 ]);
 

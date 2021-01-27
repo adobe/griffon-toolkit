@@ -250,9 +250,9 @@ const getStatus = kit.search(path.status);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.event==\'feedback sent to pipeline\'',
-  'type==\'Push Service\'',
-  'vendor==\'com.adobe.cepheus\'',
+  'payload.event==`feedback sent to pipeline`',
+  'type==`Push Service`',
+  'vendor==`com.adobe.cepheus`',
   'timestamp'
 ]);
 

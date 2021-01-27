@@ -12,37 +12,52 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/cepheusEvent.json';
+import schema from '../schemas/streamingValidation.json';
 
 /**
- * Contains constants and functions for a Generic Cepheus Event.
+ * Contains constants and functions for a Streaming Validation.
  *
- * The structure for a Generic Cepheus Event is as follows:
+ * The structure for a Streaming Validation is as follows:
  * ```
  * {
- *   type: 'Push Service'
- *   vendor: 'com.adobe.cepheus'
+ *   payload: {
+ *     name: <string>,
+ *     messages: <array>,
+ *     context: <object>,
+ *   },
+ *   type: 'service'
+ *   vendor: 'com.adobe.streaming.validation'
  *   annotations: <array>,
  *   clientId: <string>,
- *   payload: <object>,
  *   timestamp: <number>,
  *   uuid: <string>,
  * }
  * ```
  *
- * @namespace cepheusEvent
+ * @namespace streamingValidation
  */
 
 /**
- * Paths for the keys on a Generic Cepheus Event
+ * Paths for the keys on a Streaming Validation
  *
  * @enum {string}
  */
 const path = {
+  /** An object with custom data describing the event.<br />Path is `payload`. */
+  payload: 'payload',
+
+  /** The name of the event.<br />Path is `payload.name`. */
+  name: 'payload.name',
+
+  /** Messages received from the service.<br />Path is `payload.messages`. */
+  messages: 'payload.messages',
+
+  /** Additional context provided by the service.<br />Path is `payload.context`. */
+  context: 'payload.context',
+
   /** The type of event.<br />Path is `type`. */
   rootType: 'type',
 
-  /** The vendor of the service that sent the event.<br />Path is `vendor`. */
   vendor: 'vendor',
 
   /** Array of Annotation objects.<br />Path is `annotations`. */
@@ -50,9 +65,6 @@ const path = {
 
   /** A unique id that differentiates clients from one another.<br />Path is `clientId`. */
   clientId: 'clientId',
-
-  /** An object with custom data describing the event.<br />Path is `payload`. */
-  payload: 'payload',
 
   /** When the event occurred.<br />Path is `timestamp`. */
   timestamp: 'timestamp',
@@ -72,7 +84,7 @@ const parentDepth = 1;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Generic Cepheus Event';
+const label = 'Streaming Validation';
 
 /**
  * A grouping for this object
@@ -80,22 +92,22 @@ const label = 'Generic Cepheus Event';
 const group = 'event';
 
 /**
- * The value for `rootType` for a Generic Cepheus Event.
+ * The value for `rootType` for a Streaming Validation.
  *
  * Path is `type`.
  *
  * @constant
  */
-const ROOT_TYPE = 'Push Service';
+const ROOT_TYPE = 'service';
 
 /**
- * The value for `vendor` for a Generic Cepheus Event.
+ * The value for `vendor` for a Streaming Validation.
  *
  * Path is `vendor`.
  *
  * @constant
  */
-const VENDOR = 'com.adobe.cepheus';
+const VENDOR = 'com.adobe.streaming.validation';
 
 /**
  * Retrieves a value from the object. You can provide either a path or an alias.
@@ -108,40 +120,89 @@ const VENDOR = 'com.adobe.cepheus';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `vendor` from the Generic Cepheus Event.
- * This is the the vendor of the service that sent the event.
+ * Returns the `name` from the Streaming Validation.
+ * This is the the name of the event.
+ *
+ * Path is `payload,name`.
+ *
+ * @function
+ * @param {object} source The Streaming Validation instance
+ * @returns {string}
+ */
+const getName = kit.search(path.name);
+
+/**
+ * Returns the `messages` from the Streaming Validation.
+ * This is the messages received from the service.
+ *
+ * Path is `payload,messages`.
+ *
+ * @function
+ * @param {object} source The Streaming Validation instance
+ * @returns {Array}
+ */
+const getMessages = kit.search(path.messages);
+
+/**
+ * Returns the `context` from the Streaming Validation.
+ * This is the additional context provided by the service.
+ *
+ * Path is `payload,context`.
+ *
+ * @function
+ * @param {object} source The Streaming Validation instance
+ * @returns {object}
+ */
+const getContext = kit.search(path.context);
+
+/**
+ * Returns the data using the specified path from the context
+ * of the Streaming Validation.
+ *
+ * @function
+ * @param {...string} path key in object
+ * @param {object} source The Streaming Validation instance
+ * @returns {*}
+ */
+const getContextKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.context}.${searchPath}`, source)
+);
+
+/**
+ * Returns the `vendor` from the Streaming Validation.
+ * This is the .
  *
  * Path is `vendor`.
  *
  * @function
- * @param {object} source The Generic Cepheus Event instance
+ * @param {object} source The Streaming Validation instance
  * @returns {string}
  */
 const getVendor = kit.search(path.vendor);
 
 /**
- * Matcher can be used to find matching Generic Cepheus Event objects.
+ * Matcher can be used to find matching Streaming Validation objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'type==`Push Service`',
-  'vendor==`com.adobe.cepheus`',
+  'type==`service`',
+  'vendor==`com.adobe.streaming.validation`',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Generic Cepheus Event event.
+ * Tests the provided source against the matcher to see if it's Streaming Validation event.
  *
  * @function
- * @param {object} source The Generic Cepheus Event instance
+ * @param {object} source The Streaming Validation instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Generic Cepheus Event with the const values set.
+ * Generates a Streaming Validation with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -150,13 +211,13 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  rootType: 'Push Service',
-  vendor: 'com.adobe.cepheus',
+  rootType: 'service',
+  vendor: 'com.adobe.streaming.validation',
   ...input
 });
 
 /**
- * Generates a Generic Cepheus Event with some default values set.
+ * Generates a Streaming Validation with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -166,8 +227,8 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  rootType: 'Push Service',
-  vendor: 'com.adobe.cepheus',
+  rootType: 'service',
+  vendor: 'com.adobe.streaming.validation',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   rootId: '123',
@@ -189,6 +250,10 @@ export default {
   schema,
   get,
   ...customExports,
+  getName,
+  getMessages,
+  getContext,
+  getContextKey,
   getVendor,
   isMatch,
   matcher,

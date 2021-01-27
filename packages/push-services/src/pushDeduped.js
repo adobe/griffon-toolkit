@@ -204,9 +204,9 @@ const getDuplicatePushToken = kit.search(path.duplicatePushToken);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.event==\'push passed deduplication step\'',
-  'type==\'Push Service\'',
-  'vendor==\'com.adobe.cepheus\'',
+  'payload.event==`push passed deduplication step`',
+  'type==`Push Service`',
+  'vendor==`com.adobe.cepheus`',
   'timestamp'
 ]);
 
