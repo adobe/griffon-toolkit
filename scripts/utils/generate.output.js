@@ -24,6 +24,7 @@ import {
   writeMake,
   writeMock,
   writeMockLine,
+  writeCombineMatch,
   writeMatch,
   writeConstant
 } from './write.outputs';
@@ -47,6 +48,7 @@ const makePropertyProps = (property, key, path, parent) => {
     ...property,
     path: [...path, key],
     alias: property.alias || key,
+    useCombine: property.oneOf || property.not,
     useConst: property.const,
     useMock: constDefined ? property.const : mockDefined ? property.mock : undefined,
     useMatch: (constDefined && property.match !== false) || property.match,
@@ -123,8 +125,12 @@ const expandFullProperties = ({
       writePath += writePathLine(props);
       output.paths.push(writePath);
 
-      if (props.useMatch) {
+      if (props.useMatch && !props.useCombine) {
         output.matches.push(writeMatch(props));
+      }
+
+      if (props.useCombine) {
+        output.matches.push(writeCombineMatch(props));
       }
 
       if (props.useConst) {

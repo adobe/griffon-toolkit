@@ -12,22 +12,21 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/edgeResponse.json';
+import schema from '../schemas/edgeErrorResponse.json';
 
 /**
- * Contains constants and functions for a AEP Edge Response.
+ * Contains constants and functions for a AEP Edge Error Response.
  *
- * The structure for a AEP Edge Response is as follows:
+ * The structure for a AEP Edge Error Response is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
  *       requestId: <string>,
- *       requestEventId: <string>,
  *       type: <string>,
  *       payload: <array>,
  *     },
- *     ACPExtensionEventSource: <string>,
+ *     ACPExtensionEventSource: 'com.adobe.eventsource.errorresponsecontent'
  *     ACPExtensionEventType: 'com.adobe.eventtype.edge'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
@@ -42,11 +41,11 @@ import schema from '../schemas/edgeResponse.json';
  * }
  * ```
  *
- * @namespace edgeResponse
+ * @namespace edgeErrorResponse
  */
 
 /**
- * Paths for the keys on a AEP Edge Response
+ * Paths for the keys on a AEP Edge Error Response
  *
  * @enum {string}
  */
@@ -59,9 +58,6 @@ const path = {
 
   /** The request ID of the edge service request.<br />Path is `payload.ACPExtensionEventData.requestId`. */
   requestId: 'payload.ACPExtensionEventData.requestId',
-
-  /** The event ID of the event that this is a response to.<br />Path is `payload.ACPExtensionEventData.requestEventId`. */
-  requestEventId: 'payload.ACPExtensionEventData.requestEventId',
 
   /** The type of request that was made.<br />Path is `payload.ACPExtensionEventData.type`. */
   requestType: 'payload.ACPExtensionEventData.type',
@@ -114,7 +110,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const label = 'AEP Edge Response';
+const label = 'AEP Edge Error Response';
 
 /**
  * A grouping for this object
@@ -122,7 +118,16 @@ const label = 'AEP Edge Response';
 const group = 'event';
 
 /**
- * The value for `eventType` for a AEP Edge Response.
+ * The value for `eventSource` for a AEP Edge Error Response.
+ *
+ * Path is `payload,ACPExtensionEventSource`.
+ *
+ * @constant
+ */
+const EVENT_SOURCE = 'com.adobe.eventsource.errorresponsecontent';
+
+/**
+ * The value for `eventType` for a AEP Edge Error Response.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
@@ -131,7 +136,7 @@ const group = 'event';
 const EVENT_TYPE = 'com.adobe.eventtype.edge';
 
 /**
- * The value for `rootType` for a AEP Edge Response.
+ * The value for `rootType` for a AEP Edge Error Response.
  *
  * Path is `type`.
  *
@@ -150,76 +155,64 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `requestId` from the AEP Edge Response.
+ * Returns the `requestId` from the AEP Edge Error Response.
  * This is the the request ID of the edge service request.
  *
  * Path is `payload,ACPExtensionEventData,requestId`.
  *
  * @function
- * @param {object} source The AEP Edge Response instance
+ * @param {object} source The AEP Edge Error Response instance
  * @returns {string}
  */
 const getRequestId = kit.search(path.requestId);
 
 /**
- * Returns the `requestEventId` from the AEP Edge Response.
- * This is the the event ID of the event that this is a response to.
- *
- * Path is `payload,ACPExtensionEventData,requestEventId`.
- *
- * @function
- * @param {object} source The AEP Edge Response instance
- * @returns {string}
- */
-const getRequestEventId = kit.search(path.requestEventId);
-
-/**
- * Returns the `requestType` from the AEP Edge Response.
+ * Returns the `requestType` from the AEP Edge Error Response.
  * This is the the type of request that was made.
  *
  * Path is `payload,ACPExtensionEventData,type`.
  *
  * @function
- * @param {object} source The AEP Edge Response instance
+ * @param {object} source The AEP Edge Error Response instance
  * @returns {string}
  */
 const getRequestType = kit.search(path.requestType);
 
 /**
- * Returns the `requestPayload` from the AEP Edge Response.
+ * Returns the `requestPayload` from the AEP Edge Error Response.
  * This is the the information received in the response.
  *
  * Path is `payload,ACPExtensionEventData,payload`.
  *
  * @function
- * @param {object} source The AEP Edge Response instance
+ * @param {object} source The AEP Edge Error Response instance
  * @returns {Array}
  */
 const getRequestPayload = kit.search(path.requestPayload);
 
 /**
- * Matcher can be used to find matching AEP Edge Response objects.
+ * Matcher can be used to find matching AEP Edge Error Response objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource!=`com.adobe.eventsource.errorresponsecontent` && payload.ACPExtensionEventSource!=`com.adobe.eventsource.requestcontent`',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.errorresponsecontent`',
   'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's AEP Edge Response event.
+ * Tests the provided source against the matcher to see if it's AEP Edge Error Response event.
  *
  * @function
- * @param {object} source The AEP Edge Response instance
+ * @param {object} source The AEP Edge Error Response instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a AEP Edge Response with the const values set.
+ * Generates a AEP Edge Error Response with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -228,13 +221,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
+  eventSource: 'com.adobe.eventsource.errorresponsecontent',
   eventType: 'com.adobe.eventtype.edge',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a AEP Edge Response with some default values set.
+ * Generates a AEP Edge Error Response with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -245,9 +239,8 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   requestId: 'BC123-8901-1234-AAFF-580993AC6258',
-  requestEventId: 'abc-efg',
   requestType: 'state:store',
-  eventSource: 'com.adobe.eventsource.responsecontent',
+  eventSource: 'com.adobe.eventsource.errorresponsecontent',
   eventType: 'com.adobe.eventtype.edge',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
@@ -273,11 +266,11 @@ export default {
   get,
   ...customExports,
   getRequestId,
-  getRequestEventId,
   getRequestType,
   getRequestPayload,
   isMatch,
   matcher,
+  EVENT_SOURCE,
   EVENT_TYPE,
   ROOT_TYPE,
   label,

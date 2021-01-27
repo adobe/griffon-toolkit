@@ -1,7 +1,7 @@
 {
   "name": "@adobe/griffon-toolkit-aep-mobile",
   "description": "Events definitions for the AEP Mobile SDK",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/adobe/griffon-toolkit.git",
