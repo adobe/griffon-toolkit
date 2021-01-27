@@ -1,0 +1,38 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/setPushIdentifier",
+  "shortDesc": "Set Push Identifier",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "pushidentifier": {
+              "alias": "pushIdentifier",
+              "description": "The token used to send push messages",
+              "type": "string",
+              "mock": "asdfwerfasdfae-asdfasdfasdf",
+              "match": true
+            }
+          },
+          "required": ["pushidentifier"]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.generic.identity"
+        }
+      },
+      "required": ["ACPExtensionEventData"]
+    }
+  }
+}
