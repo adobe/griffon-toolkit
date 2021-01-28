@@ -188,9 +188,9 @@ const getPushToken = kit.search(path.pushToken);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.event==\'push request from pipeline\'',
-  'type==\'Push Service\'',
-  'vendor==\'com.adobe.cepheus\'',
+  'payload.event==`push request from pipeline`',
+  'type==`Push Service`',
+  'vendor==`com.adobe.cepheus`',
   'timestamp'
 ]);
 

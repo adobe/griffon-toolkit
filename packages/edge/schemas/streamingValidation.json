@@ -1,0 +1,42 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/edge/streamingValidation",
+  "shortDesc": "Streaming Validation",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the event",
+          "type": "string"
+        },
+        "messages": {
+          "description": "Messages received from the service",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "context": {
+          "description": "Additional context provided by the service",
+          "type": "object"
+        }
+      },
+      "required": [
+        "messages"
+      ]
+    },
+    "type": {
+      "inherit": true,
+      "type": "string",
+      "const": "service"
+    },
+    "vendor": {
+      "type": "string",
+      "const": "com.adobe.streaming.validation"
+    }
+  }
+}

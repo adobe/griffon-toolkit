@@ -182,8 +182,8 @@ const getPushIdentifier = kit.search(path.pushIdentifier);
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.mid',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.responseidentity\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.identity\'',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.responseidentity`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.identity`',
   'timestamp'
 ]);
 
