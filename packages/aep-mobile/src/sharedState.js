@@ -28,6 +28,7 @@ import schema from '../schemas/sharedState.json';
  *     ACPExtensionEventType: 'com.adobe.eventtype.hub'
  *     metadata: {
  *       state.data: <object>,
+ *       xdm.state.data: <object>,
  *     },
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
@@ -71,6 +72,9 @@ const path = {
 
   /** The data that is being written to shared state..<br />Path is `payload.metadata."state.data"`. */
   stateData: 'payload.metadata."state.data"',
+
+  /** XDM data that is being written to shared state..<br />Path is `payload.metadata."xdm.state.data"`. */
+  xdm: 'payload.metadata."xdm.state.data"',
 
   /** The name of the event.<br />Path is `payload.ACPExtensionEventName`. */
   eventName: 'payload.ACPExtensionEventName',
@@ -193,6 +197,31 @@ const getStateDataKey = kit.curry(
 );
 
 /**
+ * Returns the `xdm` from the Shared State Event.
+ * This is the xDM data that is being written to shared state..
+ *
+ * Path is `payload,metadata,xdm.state.data`.
+ *
+ * @function
+ * @param {object} source The Shared State Event instance
+ * @returns {object}
+ */
+const getXdm = kit.search(path.xdm);
+
+/**
+ * Returns the data using the specified path from the xdm
+ * of the Shared State Event.
+ *
+ * @function
+ * @param {...string} path key in object
+ * @param {object} source The Shared State Event instance
+ * @returns {*}
+ */
+const getXdmKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.xdm}.${searchPath}`, source)
+);
+
+/**
  * Matcher can be used to find matching Shared State Event objects.
  *
  * @see kit.match
@@ -270,6 +299,8 @@ export default {
   getStateOwner,
   getStateData,
   getStateDataKey,
+  getXdm,
+  getXdmKey,
   isMatch,
   matcher,
   EVENT_SOURCE,
