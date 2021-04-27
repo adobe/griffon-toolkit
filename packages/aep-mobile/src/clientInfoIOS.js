@@ -313,9 +313,9 @@ const getLowPowerMode = kit.search(path.lowPowerMode);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.deviceInfo."Canonical platform name"==\'iOS\'',
-  'payload.type==\'connect\'',
-  'type==\'client\'',
+  'payload.deviceInfo."Canonical platform name"==`iOS`',
+  'payload.type==`connect`',
+  'type==`client`',
   'timestamp'
 ]);
 
@@ -365,6 +365,7 @@ const mock = (input) => kit.expandWithPaths(path, {
   batteryState: 'Battery Full',
   locationEnabled: true,
   locationAuth: 'Always',
+  lowPowerMode: false,
   type: 'connect',
   rootType: 'client',
   clientId: 'appleABC',

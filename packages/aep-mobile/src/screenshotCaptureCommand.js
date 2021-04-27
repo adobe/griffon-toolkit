@@ -132,10 +132,10 @@ const getType = kit.search(path.type);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.type==\'screenshot\'',
-  'vendor==\'com.adobe.griffon.mobile\'',
+  'payload.type==`screenshot`',
+  'vendor==`com.adobe.griffon.mobile`',
   'timestamp',
-  'type==\'control\''
+  'type==`control`'
 ]);
 
 /**

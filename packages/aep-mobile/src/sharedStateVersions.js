@@ -29,6 +29,7 @@ import schema from '../schemas/sharedStateVersions.json';
  *         version: <string>,
  *         extensions: <object>,
  *       },
+ *       xdm.state.data: <object>,
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventsource.sharedstate'
  *     ACPExtensionEventType: 'com.adobe.eventtype.hub'
@@ -74,6 +75,9 @@ const path = {
 
   /** A mapping of versions per sdk extension.<br />Path is `payload.metadata."state.data".extensions`. */
   extensions: 'payload.metadata."state.data".extensions',
+
+  /** XDM data that is being written to shared state..<br />Path is `payload.metadata."xdm.state.data"`. */
+  xdm: 'payload.metadata."xdm.state.data"',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -217,10 +221,10 @@ const getExtensionsKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventData.stateowner==\'com.adobe.module.eventhub\'',
+  'payload.ACPExtensionEventData.stateowner==`com.adobe.module.eventhub`',
   'payload.metadata."state.data".extensions',
-  'payload.ACPExtensionEventSource==\'com.adobe.eventsource.sharedstate\'',
-  'payload.ACPExtensionEventType==\'com.adobe.eventtype.hub\'',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.sharedstate`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.hub`',
   'timestamp'
 ]);
 

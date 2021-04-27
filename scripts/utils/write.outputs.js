@@ -277,10 +277,21 @@ export const writeMockLine = ({
 }) => `
   ${alias}: ${makeStrValue(useMock, type)},`;
 
+export const writeCombineMatch = ({
+  not = {}, oneOf = {}, path
+}) => {
+  const enums = not.enum || oneOf.enum;
+  const matchType = not.enum ? '!=' : '==';
+  const matches = R.map((val) => `${preparePath(path)}${matchType}\`${val}\``, enums);
+  const join = not.enum ? ' && ' : ' || ';
+  return R.join(join, matches);
+};
+
 export const writeMatch = ({
   path, useConst
 }) => (
-  useConst ? `${preparePath(path)}=='${useConst}'` : preparePath(path)
+  R.type(useConst) !== 'Undefined' ? `${preparePath(path)}==\`${useConst}\``
+    : preparePath(path)
 );
 
 /*

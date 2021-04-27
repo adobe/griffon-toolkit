@@ -178,10 +178,10 @@ const getEnable = kit.search(path.enable);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.type==\'logForwarding\'',
-  'vendor==\'com.adobe.griffon.mobile\'',
+  'payload.type==`logForwarding`',
+  'vendor==`com.adobe.griffon.mobile`',
   'timestamp',
-  'type==\'control\''
+  'type==`control`'
 ]);
 
 /**

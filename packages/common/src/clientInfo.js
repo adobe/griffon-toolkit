@@ -201,8 +201,8 @@ const getVersion = kit.search(path.version);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.type==\'connect\'',
-  'type==\'client\'',
+  'payload.type==`connect`',
+  'type==`client`',
   'timestamp'
 ]);
 
