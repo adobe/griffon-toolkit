@@ -12,7 +12,7 @@
         "body": {
           "description": "The posted body. This is a fully parsed object.",
           "type": "object",
-          "mock": "{ 'firstName': 'Harvey', 'lastName': 'Jacobs' }"
+          "mock": "{ firstName: 'Harvey', lastName: 'Jacobs' }"
         },
         "initiator": {
           "description": "The webpage that initiated the request.",

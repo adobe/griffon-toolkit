@@ -419,7 +419,7 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  body: { 'firstName': 'Harvey', 'lastName': 'Jacobs' },
+  body: { firstName: 'Harvey', lastName: 'Jacobs' },
   initiator: 'http://test.demo.com',
   domain: 'demo.com',
   host: 'alt.demo.com',
