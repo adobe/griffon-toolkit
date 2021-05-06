@@ -381,7 +381,7 @@ const getRootType = kit.search(path.rootType);
  * @constant
  */
 const matcher = kit.combineAll([
-  'type==\'netreq\'',
+  'type==`netreq`',
   'timestamp'
 ]);
 

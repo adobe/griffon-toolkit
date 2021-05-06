@@ -445,7 +445,7 @@ const getRootType = kit.search(path.rootType);
  * @constant
  */
 const matcher = kit.combineAll([
-  'type==\'netres\'',
+  'type==`netres`',
   'timestamp'
 ]);
 
@@ -483,6 +483,7 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
+  fromCache: false,
   initiator: 'http://test.demo.com',
   ip: '50.51.52.53',
   domain: 'demo.com',
