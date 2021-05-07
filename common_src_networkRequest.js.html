@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      filters - Documentation
+      common/src/networkRequest.js - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,621 +83,500 @@
   <div id="main">
     
       <h1 class="page-title">
-        filters
+        common/src/networkRequest.js
       </h1>
     
 
     
+      
 
 <section>
-  <header>
-    
-      <h2>
-        
-        filters
-        
-      </h2>
-
-      
-    
-  </header>
-
   <article>
-    <div class="container-overview">
-      
-        
-            <div class="description">
-              <p>Contains utility functions for dealing with Griffon filters.</p>
-            </div>
-        
-
-        
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="core_src_filterKit.js.html">core/src/filterKit.js</a>, <a href="core_src_filterKit.js.html#line16">line 16</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-        
-      
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-
-<h4 class="name" id=".filterData">
-  <span class="type-signature">(static, constant) </span>filterData<span class="type-signature"></span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>A filter object is an object where all the values are valid JMESPath matchers.
-This will take all these values and <code>&amp;&amp;</code> them together, so that each must pass for an
-event to be valid.</p>
-  </div>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="core_src_filterKit.js.html">core/src/filterKit.js</a>, <a href="core_src_filterKit.js.html#line66">line 66</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-          
-        
-    
-
-    
-      <h3 class="subsection-title">Methods</h3>
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.filterFromHash">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".filterFromHash">
-      <span class="type-signature">(static) </span>filterFromHash<span class="signature">(url)</span><span class="type-signature"> &rarr; {object}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Extracts the filters from the provided url. Returns a filter object.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>url</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Url to decode filters from</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="core_src_filterKit.js.html">core/src/filterKit.js</a>, <a href="core_src_filterKit.js.html#line31">line 31</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.filterToHash">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".filterToHash">
-      <span class="type-signature">(static) </span>filterToHash<span class="signature">(filters)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Takes a filter object and prepares it for a url hash. It gets converted to JSON and base64 encoded.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>filters</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Filter object</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="core_src_filterKit.js.html">core/src/filterKit.js</a>, <a href="core_src_filterKit.js.html#line50">line 50</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.filterToPath">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".filterToPath">
-      <span class="type-signature">(static) </span>filterToPath<span class="signature">(filters)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Takes a filter object and returns the JMESPath query of the results.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>filters</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>Filter object</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="core_src_filterKit.js.html">core/src/filterKit.js</a>, <a href="core_src_filterKit.js.html#line59">line 59</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-    
-
-    
-
-    
+    <pre class="prettyprint source linenums"><code>/*
+Copyright 2020 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+*/
+
+import * as R from 'ramda';
+import * as kit from '@adobe/griffon-toolkit';
+import schema from '../schemas/networkRequest.json';
+
+/**
+ * Contains constants and functions for a Network Request.
+ *
+ * The structure for a Network Request is as follows:
+ * ```
+ * {
+ *   payload: {
+ *     body: &lt;object>,
+ *     initiator: &lt;string>,
+ *     location: {
+ *       domain: &lt;string>,
+ *       hash: &lt;string>,
+ *       host: &lt;string>,
+ *       hostname: &lt;string>,
+ *       origin: &lt;string>,
+ *       path: &lt;string>,
+ *       port: &lt;string>,
+ *       protocol: &lt;string>,
+ *       query: &lt;string>,
+ *     },
+ *     method: &lt;string>,
+ *     requestId: &lt;string>,
+ *     url: &lt;string>,
+ *   },
+ *   type: 'netreq'
+ *   annotations: &lt;array>,
+ *   clientId: &lt;string>,
+ *   timestamp: &lt;number>,
+ *   uuid: &lt;string>,
+ * }
+ * ```
+ *
+ * @namespace networkRequest
+ */
+
+/**
+ * Paths for the keys on a Network Request
+ *
+ * @enum {string}
+ */
+const path = {
+  /** An object with custom data describing the event.&lt;br />Path is `payload`. */
+  payload: 'payload',
+
+  /** The posted body. This is a fully parsed object..&lt;br />Path is `payload.body`. */
+  body: 'payload.body',
+
+  /** The webpage that initiated the request..&lt;br />Path is `payload.initiator`. */
+  initiator: 'payload.initiator',
+
+  /** Parsed information from the request URL..&lt;br />Path is `payload.location`. */
+  location: 'payload.location',
+
+  /** The domain portion of the request URL..&lt;br />Path is `payload.location.domain`. */
+  domain: 'payload.location.domain',
+
+  /** The hash portion of the request URL..&lt;br />Path is `payload.location.hash`. */
+  hash: 'payload.location.hash',
+
+  /** The host portion of the request URL. Includes port number.&lt;br />Path is `payload.location.host`. */
+  host: 'payload.location.host',
+
+  /** The host portion of the request URL without the port number..&lt;br />Path is `payload.location.hostname`. */
+  hostname: 'payload.location.hostname',
+
+  /** The origin portion of the request URL..&lt;br />Path is `payload.location.origin`. */
+  origin: 'payload.location.origin',
+
+  /** The path of the request URL..&lt;br />Path is `payload.location.path`. */
+  path: 'payload.location.path',
+
+  /** The port of the request URL..&lt;br />Path is `payload.location.port`. */
+  port: 'payload.location.port',
+
+  /** The protocol portion of the request URL..&lt;br />Path is `payload.location.protocol`. */
+  protocol: 'payload.location.protocol',
+
+  /** The query string portion of the request URL..&lt;br />Path is `payload.location.query`. */
+  query: 'payload.location.query',
+
+  /** HTTP method that the request is made with..&lt;br />Path is `payload.method`. */
+  method: 'payload.method',
+
+  /** ID that can be used to pair requests with responses..&lt;br />Path is `payload.requestId`. */
+  requestId: 'payload.requestId',
+
+  /** The URL the request is being made to. Contains the full host, path, and query string..&lt;br />Path is `payload.url`. */
+  url: 'payload.url',
+
+  /** The type of event. For network requests it's always 'netreq'..&lt;br />Path is `type`. */
+  rootType: 'type',
+
+  /** Array of Annotation objects.&lt;br />Path is `annotations`. */
+  annotations: 'annotations',
+
+  /** A unique id that differentiates clients from one another.&lt;br />Path is `clientId`. */
+  clientId: 'clientId',
+
+  /** When the event occurred.&lt;br />Path is `timestamp`. */
+  timestamp: 'timestamp',
+
+  /** Uniquely identifies each event.&lt;br />Path is `uuid`. */
+  rootId: 'uuid'
+};
+
+/**
+ * Describes the number of parents this object has based off schema references. When checking for matches for example, we want to
+ * use a schema that is more specific over a more generic schema
+ *
+ * @constant
+ */
+const parentDepth = 1;
+
+/**
+ * A label that can be used when describing this object
+ */
+const label = 'Network Request';
+
+/**
+ * A grouping for this object
+ */
+const group = 'network';
+
+/**
+ * The value for `rootType` for a Network Request.
+ *
+ * Path is `type`.
+ *
+ * @constant
+ */
+const ROOT_TYPE = 'netreq';
+
+/**
+ * Retrieves a value from the object. You can provide either a path or an alias.
+ *
+ * @function
+ * @param path or alias
+ * @param {*} data Data to search
+ * @returns {*}
+ */
+const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
+
+/**
+ * Returns the `body` from the Network Request.
+ * This is the the posted body. This is a fully parsed object..
+ *
+ * Path is `payload,body`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {object}
+ */
+const getBody = kit.search(path.body);
+
+/**
+ * Returns the data using the specified path from the body
+ * of the Network Request.
+ *
+ * @function
+ * @param {...string} path key in object
+ * @param {object} source The Network Request instance
+ * @returns {*}
+ */
+const getBodyKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.body}.${searchPath}`, source)
+);
+
+/**
+ * Returns the `initiator` from the Network Request.
+ * This is the the webpage that initiated the request..
+ *
+ * Path is `payload,initiator`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getInitiator = kit.search(path.initiator);
+
+/**
+ * Returns the `location` from the Network Request.
+ * This is the parsed information from the request URL..
+ *
+ * Path is `payload,location`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {object}
+ */
+const getLocation = kit.search(path.location);
+
+/**
+ * Returns the data using the specified path from the location
+ * of the Network Request.
+ *
+ * @function
+ * @param {...string} path key in object
+ * @param {object} source The Network Request instance
+ * @returns {*}
+ */
+const getLocationKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.location}.${searchPath}`, source)
+);
+
+/**
+ * Returns the `domain` from the Network Request.
+ * This is the the domain portion of the request URL..
+ *
+ * Path is `payload,location,domain`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getDomain = kit.search(path.domain);
+
+/**
+ * Returns the `hash` from the Network Request.
+ * This is the the hash portion of the request URL..
+ *
+ * Path is `payload,location,hash`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getHash = kit.search(path.hash);
+
+/**
+ * Returns the `host` from the Network Request.
+ * This is the the host portion of the request URL. Includes port number.
+ *
+ * Path is `payload,location,host`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getHost = kit.search(path.host);
+
+/**
+ * Returns the `hostname` from the Network Request.
+ * This is the the host portion of the request URL without the port number..
+ *
+ * Path is `payload,location,hostname`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getHostname = kit.search(path.hostname);
+
+/**
+ * Returns the `origin` from the Network Request.
+ * This is the the origin portion of the request URL..
+ *
+ * Path is `payload,location,origin`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getOrigin = kit.search(path.origin);
+
+/**
+ * Returns the `path` from the Network Request.
+ * This is the the path of the request URL..
+ *
+ * Path is `payload,location,path`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getPath = kit.search(path.path);
+
+/**
+ * Returns the `port` from the Network Request.
+ * This is the the port of the request URL..
+ *
+ * Path is `payload,location,port`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getPort = kit.search(path.port);
+
+/**
+ * Returns the `protocol` from the Network Request.
+ * This is the the protocol portion of the request URL..
+ *
+ * Path is `payload,location,protocol`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getProtocol = kit.search(path.protocol);
+
+/**
+ * Returns the `query` from the Network Request.
+ * This is the the query string portion of the request URL..
+ *
+ * Path is `payload,location,query`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getQuery = kit.search(path.query);
+
+/**
+ * Returns the `method` from the Network Request.
+ * This is the hTTP method that the request is made with..
+ *
+ * Path is `payload,method`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getMethod = kit.search(path.method);
+
+/**
+ * Returns the `requestId` from the Network Request.
+ * This is the iD that can be used to pair requests with responses..
+ *
+ * Path is `payload,requestId`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getRequestId = kit.search(path.requestId);
+
+/**
+ * Returns the `url` from the Network Request.
+ * This is the the URL the request is being made to. Contains the full host, path, and query string..
+ *
+ * Path is `payload,url`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getUrl = kit.search(path.url);
+
+/**
+ * Returns the `rootType` from the Network Request.
+ * This is the the type of event. For network requests it's always 'netreq'..
+ *
+ * Path is `type`.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {string}
+ */
+const getRootType = kit.search(path.rootType);
+
+/**
+ * Matcher can be used to find matching Network Request objects.
+ *
+ * @see kit.match
+ * @constant
+ */
+const matcher = kit.combineAll([
+  'type==`netreq`',
+  'timestamp'
+]);
+
+/**
+ * Tests the provided source against the matcher to see if it's Network Request event.
+ *
+ * @function
+ * @param {object} source The Network Request instance
+ * @returns {boolean}
+ * @see kit.isMatch
+ */
+const isMatch = (source) => kit.isMatch(matcher, source);
+/**
+ * Generates a Network Request with the const values set.
+ * Can be useful in testing.
+ * Can provide additional data by providing a flat object of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const make = (input) => kit.expandWithPaths(path, {
+  rootType: 'netreq',
+  ...input
+});
+
+/**
+ * Generates a Network Request with some default values set.
+ * Can be useful in testing.
+ * Can override defaults and provide additional data by providing a flat object
+ * of paths and values.
+ *
+ * @function
+ * @param {...Function} input Overrides
+ * @returns {object}
+ */
+const mock = (input) => kit.expandWithPaths(path, {
+  body: { firstName: 'Harvey', lastName: 'Jacobs' },
+  initiator: 'http://test.demo.com',
+  domain: 'demo.com',
+  host: 'alt.demo.com',
+  hostname: 'alt.demo.com',
+  origin: 'http://alt.demo.com',
+  path: '/path/to/demo',
+  protocol: 'https',
+  query: 'mode=details',
+  method: 'GET',
+  requestId: 'abcdefg',
+  url: 'http://alt.demo.com/path/to/demo?mode=details',
+  rootType: 'netreq',
+  clientId: 'appleABC',
+  timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
+  rootId: '123',
+  ...input
+});
+
+/* ADD CUSTOM CONTENT BELOW */
+
+// additional exports should be added here:
+const customExports = {};
+
+/* END CUSTOM CONTENT */
+/* The content below is autogenerated. Do not make any changes */
+
+export default {
+  path,
+  mock,
+  make,
+  schema,
+  get,
+  ...customExports,
+  getBody,
+  getBodyKey,
+  getInitiator,
+  getLocation,
+  getLocationKey,
+  getDomain,
+  getHash,
+  getHost,
+  getHostname,
+  getOrigin,
+  getPath,
+  getPort,
+  getProtocol,
+  getQuery,
+  getMethod,
+  getRequestId,
+  getUrl,
+  getRootType,
+  isMatch,
+  matcher,
+  ROOT_TYPE,
+  label,
+  group,
+  parentDepth
+};
+</code></pre>
   </article>
 </section>
 
-
+    
 
 
   </div>
