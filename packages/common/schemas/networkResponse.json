@@ -1,0 +1,118 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/common/network.response",
+  "shortDesc": "Network Response",
+  "group": "network",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "fromCache": {
+          "description": "Whether the data was loaded from the browser cache.",
+          "type": "boolean",
+          "mock": false
+        },
+        "initiator": {
+          "description": "The webpage that initiated the request.",
+          "type": "string",
+          "mock": "http://test.demo.com"
+        },
+        "ip": {
+          "description": "The ip address of the server.",
+          "type": "string",
+          "mock": "50.51.52.53"
+        },
+        "location": {
+          "description": "Parsed information from the request URL.",
+          "type": "object",
+          "properties": {
+            "domain": {
+              "description": "The domain portion of the request URL.",
+              "type": "string",
+              "mock": "demo.com"
+            },
+            "hash": {
+              "description": "The hash portion of the request URL.",
+              "type": "string"
+            },
+            "host": {
+              "description": "The host portion of the request URL. Includes port number",
+              "type": "string",
+              "mock": "alt.demo.com"
+            },
+            "hostname": {
+              "description": "The host portion of the request URL without the port number.",
+              "type": "string",
+              "mock": "alt.demo.com"
+            },
+            "origin": {
+              "description": "The origin portion of the request URL.",
+              "type": "string",
+              "mock": "http://alt.demo.com"
+            },
+            "path": {
+              "description": "The path of the request URL.",
+              "type": "string",
+              "mock": "/path/to/demo"
+            },
+            "port": {
+              "description": "The port of the request URL.",
+              "type": "string"
+            },
+            "protocol": {
+              "description": "The protocol portion of the request URL.",
+              "type": "string",
+              "mock": "https"
+            },
+            "query": {
+              "description": "The query string portion of the request URL.",
+              "type": "string",
+              "mock": "mode=details"
+            }
+          }
+        },
+        "method": {
+          "description": "HTTP method that the request is made with.",
+          "type": "string",
+          "mock": "GET"
+        },
+        "responseHeaders": {
+          "description": "The headers returned from the server.",
+          "type": "object",
+          "mock": "{ 'Content-Type': 'image/png' }"
+        },
+        "requestId": {
+          "description": "ID that can be used to pair requests with responses.",
+          "type": "string",
+          "mock": "abcdefg"
+        },
+        "statusCode": {
+          "description": "The resulting status code of the request.",
+          "type": "integer",
+          "mock": 200
+        },
+        "statusLine": {
+          "description": "More details about the status of the request.",
+          "type": "string",
+          "mock": "HTTP/1.1 200 OK"
+        },
+        "url": {
+          "description": "The URL the request is being made to. Contains the full host, path, and query string.",
+          "type": "string",
+          "mock": "http://alt.demo.com/path/to/demo?mode=details"
+        }
+      }
+    },
+    "type": {
+      "alias": "rootType",
+      "description": "The type of event. For network responses it's always 'netres'.",
+      "type": "string",
+      "const": "netres"
+    }
+  },
+  "required": [
+    "timestamp", "type"
+  ]
+}
