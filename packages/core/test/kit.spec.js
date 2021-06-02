@@ -63,7 +63,7 @@ describe('Kit Tests', () => {
       { width: 200, height: 300 }
     )).toEqual({ size: { width: 200, height: 300 } });
   });
-  fit('will map quoted paths', () => {
+  it('will map quoted paths', () => {
     const path = {
       width: 'size."the.dimensions"."the.width"',
       height: 'size."the.dimensions"."the.height"',
