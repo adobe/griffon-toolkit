@@ -67,18 +67,19 @@ describe('Kit Tests', () => {
     const path = {
       width: 'size."the.dimensions"."the.width"',
       height: 'size."the.dimensions"."the.height"',
-      dims: 'size."the.dimensions".dims',
+      dims: 'size."the.dimensions".dims'
     };
     expect(kit.expandWithPaths(
-      path,
-      { width: 200, height: 300, dims: '200x300' }
-    )).toEqual({ size: {
-      'the.dimensions': {
-        'the.width': 200,
-        'the.height': 300,
-        dims: '200x300'
+      path, { width: 200, height: 300, dims: '200x300' }
+    )).toEqual({
+      size: {
+        'the.dimensions': {
+          'the.width': 200,
+          'the.height': 300,
+          dims: '200x300'
+        }
       }
-    } });
+    });
   });
 
   it('will merge while expanding', () => {
