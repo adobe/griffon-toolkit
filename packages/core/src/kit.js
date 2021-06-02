@@ -194,7 +194,7 @@ export const modifyBulk = R.curry((instructions, data) => R.map(
 )(data));
 
 const IN_QUOTES_RX = /"(.*?)"/;
-const PATH_RX = /(?<group>".*"|[^\n."]+)/g;
+const PATH_RX = /(?<group>"[^"]*"|[^\n."]+)/g;
 
 /**
  * Takes a path and coverts it to an array by splitting the periods.

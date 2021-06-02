@@ -16,6 +16,7 @@ import aep from '../packages/aep-mobile/src/mobileEvent';
 import root from '../packages/common/src/event';
 import configuration from '../packages/aep-mobile/src/configuration';
 import iosClient from '../packages/aep-mobile/src/clientInfoIOS';
+import sharedStateConfig from '../packages/aep-mobile/src/sharedStateConfig';
 
 describe('Test Auto Generated Output', () => {
   it('exports paths', () => {
