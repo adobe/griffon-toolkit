@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      clientInfo - Documentation
+      sharedStateConfig - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        clientInfo
+        sharedStateConfig
       </h1>
     
 
@@ -92,7 +92,7 @@
     
       <h2>
         
-        clientInfo
+        sharedStateConfig
         
       </h2>
 
@@ -105,16 +105,30 @@
       
         
             <div class="description">
-              <p>Contains constants and functions for a Client Info Event.</p>
-<p>The structure for a Client Info Event is as follows:</p>
+              <p>Contains constants and functions for a Shared State - Versions.</p>
+<p>The structure for a Shared State - Versions is as follows:</p>
 <pre class="prettyprint source"><code>{
   payload: {
-    appSettings: &lt;object>,
-    deviceInfo: &lt;object>,
-    type: 'connect'
-    version: &lt;string>,
+    ACPExtensionEventData: {
+      stateowner: 'com.adobe.module.configuration'
+    },
+    metadata: {
+      state.data: {
+        build.environment: &lt;string>,
+        experienceCloud.org: &lt;string>,
+        property.id: &lt;string>,
+        rules.url: &lt;string>,
+      },
+      xdm.state.data: &lt;object>,
+    },
+    ACPExtensionEventSource: 'com.adobe.eventsource.sharedstate'
+    ACPExtensionEventType: 'com.adobe.eventtype.hub'
+    ACPExtensionEventName: &lt;string>,
+    ACPExtensionEventNumber: &lt;integer>,
+    ACPExtensionEventUniqueIdentifier: &lt;string>,
   },
-  type: 'client'
+  type: 'generic'
+  vendor: &lt;string>,
   annotations: &lt;array>,
   clientId: &lt;string>,
   timestamp: &lt;number>,
@@ -157,7 +171,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line17">line 17</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line17">line 17</a>
         </li>
       </ul>
     </dd>
@@ -188,6 +202,142 @@
     
         <h3 class="subsection-title">Members</h3>
 
+        
+            
+
+<h4 class="name" id=".EVENT_SOURCE">
+  <span class="type-signature">(static, constant) </span>EVENT_SOURCE<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventSource</code> for a Shared State - Versions.</p>
+<p>Path is <code>payload,ACPExtensionEventSource</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line158">line 158</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id=".EVENT_TYPE">
+  <span class="type-signature">(static, constant) </span>EVENT_TYPE<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventType</code> for a Shared State - Versions.</p>
+<p>Path is <code>payload,ACPExtensionEventType</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line167">line 167</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
         
             
 
@@ -236,7 +386,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line93">line 93</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line140">line 140</a>
         </li>
       </ul>
     </dd>
@@ -303,7 +453,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line88">line 88</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line135">line 135</a>
         </li>
       </ul>
     </dd>
@@ -333,7 +483,7 @@
 
 
   <div class="description">
-    <p>Matcher can be used to find matching Client Info Event objects.</p>
+    <p>Matcher can be used to find matching Shared State - Versions objects.</p>
   </div>
 
 
@@ -370,7 +520,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line203">line 203</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line242">line 242</a>
         </li>
       </ul>
     </dd>
@@ -449,7 +599,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line83">line 83</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line130">line 130</a>
         </li>
       </ul>
     </dd>
@@ -479,7 +629,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Paths for the keys on a Client Info Event</p>
+    <p>Paths for the keys on a Shared State - Versions</p>
   </div>
 
 
@@ -540,7 +690,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>appSettings</code></td>
+        <td class="name"><code>eventData</code></td>
       
 
       <td class="type">
@@ -561,7 +711,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>A map containing details about the settings of the application on which Griffon is registered.<br />Path is <code>payload.appSettings</code>.</p>
+          <p>The full list of current configuration values.<br />Path is <code>payload.ACPExtensionEventData</code>.</p>
           </td>
     </tr>
 
@@ -569,7 +719,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>deviceInfo</code></td>
+        <td class="name"><code>stateOwner</code></td>
       
 
       <td class="type">
@@ -590,7 +740,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>A map containing details about the connected device.<br />Path is <code>payload.deviceInfo</code>.</p>
+          <p>In SDK extension that owns the shared state that is being updated.<br />Path is <code>payload.ACPExtensionEventData.stateowner</code>.</p>
           </td>
     </tr>
 
@@ -598,7 +748,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>type</code></td>
+        <td class="name"><code>metadata</code></td>
       
 
       <td class="type">
@@ -619,7 +769,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>Constant value representing this event will initiate a connection.<br />Path is <code>payload.type</code>.</p>
+          <p>Additional metadata that is attacked to SDK events.<br />Path is <code>payload.metadata</code>.</p>
           </td>
     </tr>
 
@@ -627,7 +777,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>version</code></td>
+        <td class="name"><code>stateData</code></td>
       
 
       <td class="type">
@@ -648,7 +798,297 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>Griffon SDK Extension version.<br />Path is <code>payload.version</code>.</p>
+          <p>The data that is being written to shared state..<br />Path is <code>payload.metadata.&quot;state.data&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>buildEnvironment</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>In the Launch UI, the type of environment this configuration was generated for.<br />Path is <code>payload.metadata.&quot;state.data&quot;.&quot;build.environment&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>experienceCloudOrg</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The IMS Org that the mobile app's config was created by.<br />Path is <code>payload.metadata.&quot;state.data&quot;.&quot;experienceCloud.org&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>launchPropertyId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The ID of the property inside launch.<br />Path is <code>payload.metadata.&quot;state.data&quot;.&quot;property.id&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>rulesUrl</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The URL to download the rules configuration for the property.<br />Path is <code>payload.metadata.&quot;state.data&quot;.&quot;rules.url&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>xdm</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>XDM data that is being written to shared state..<br />Path is <code>payload.metadata.&quot;xdm.state.data&quot;</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventSource</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event source.<br />Path is <code>payload.ACPExtensionEventSource</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventType</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event type.<br />Path is <code>payload.ACPExtensionEventType</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventName</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The name of the event.<br />Path is <code>payload.ACPExtensionEventName</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>sdkEventNumber</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event number generated by the SDK.<br />Path is <code>payload.ACPExtensionEventNumber</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The unique event id.<br />Path is <code>payload.ACPExtensionEventUniqueIdentifier</code>.</p>
           </td>
     </tr>
 
@@ -678,6 +1118,35 @@ use a schema that is more specific over a more generic schema</p>
 
         <td class="description last">
           <p>The type of event.<br />Path is <code>type</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>vendor</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The vendor of the plugin that sent the event.<br />Path is <code>vendor</code>.</p>
           </td>
     </tr>
 
@@ -835,7 +1304,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line45">line 45</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line59">line 59</a>
         </li>
       </ul>
     </dd>
@@ -865,7 +1334,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>The value for <code>rootType</code> for a Client Info Event.</p>
+    <p>The value for <code>rootType</code> for a Shared State - Versions.</p>
 <p>Path is <code>type</code>.</p>
   </div>
 
@@ -903,7 +1372,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line111">line 111</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line176">line 176</a>
         </li>
       </ul>
     </dd>
@@ -925,16 +1394,16 @@ use a schema that is more specific over a more generic schema</p>
         
             
 
-<h4 class="name" id=".TYPE">
-  <span class="type-signature">(static, constant) </span>TYPE<span class="type-signature"></span>
+<h4 class="name" id=".STATE_OWNER">
+  <span class="type-signature">(static, constant) </span>STATE_OWNER<span class="type-signature"></span>
 </h4>
 
 
 
 
   <div class="description">
-    <p>The value for <code>type</code> for a Client Info Event.</p>
-<p>Path is <code>payload,type</code>.</p>
+    <p>The value for <code>stateOwner</code> for a Shared State - Versions.</p>
+<p>Path is <code>payload,ACPExtensionEventData,stateowner</code>.</p>
   </div>
 
 
@@ -971,7 +1440,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line102">line 102</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line149">line 149</a>
         </li>
       </ul>
     </dd>
@@ -1148,7 +1617,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line121">line 121</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line186">line 186</a>
         </li>
       </ul>
     </dd>
@@ -1169,13 +1638,13 @@ use a schema that is more specific over a more generic schema</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getAppSettings">
+    <a class="link-icon" href="#.getBuildEnvironment">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getAppSettings">
-      <span class="type-signature">(static) </span>getAppSettings<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
+    <h4 class="name" id=".getBuildEnvironment">
+      <span class="type-signature">(static) </span>getBuildEnvironment<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1184,9 +1653,9 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Returns the <code>appSettings</code> from the Client Info Event.
-This is the a map containing details about the settings of the application on which Griffon is registered.</p>
-<p>Path is <code>payload,appSettings</code>.</p>
+    <p>Returns the <code>buildEnvironment</code> from the Shared State - Versions.
+This is the in the Launch UI, the type of environment this configuration was generated for.</p>
+<p>Path is <code>payload,metadata,state.data,build.environment</code>.</p>
   </div>
 
 
@@ -1240,7 +1709,7 @@ This is the a map containing details about the settings of the application on wh
         
 
         <td class="description last">
-          <p>The Client Info Event instance</p>
+          <p>The Shared State - Versions instance</p>
           
         </td>
       </tr>
@@ -1296,7 +1765,7 @@ This is the a map containing details about the settings of the application on wh
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line133">line 133</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line198">line 198</a>
         </li>
       </ul>
     </dd>
@@ -1317,13 +1786,13 @@ This is the a map containing details about the settings of the application on wh
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getAppSettingsKey">
+    <a class="link-icon" href="#.getExperienceCloudOrg">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getAppSettingsKey">
-      <span class="type-signature">(static) </span>getAppSettingsKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    <h4 class="name" id=".getExperienceCloudOrg">
+      <span class="type-signature">(static) </span>getExperienceCloudOrg<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1332,8 +1801,9 @@ This is the a map containing details about the settings of the application on wh
 
 
   <div class="description">
-    <p>Returns the data using the specified path from the appSettings
-of the Client Info Event.</p>
+    <p>Returns the <code>experienceCloudOrg</code> from the Shared State - Versions.
+This is the the IMS Org that the mobile app's config was created by.</p>
+<p>Path is <code>payload,metadata,state.data,experienceCloud.org</code>.</p>
   </div>
 
 
@@ -1355,8 +1825,6 @@ of the Client Info Event.</p>
       <th>Type</th>
 
       
-        <th>Attributes</th>
-      
 
       
 
@@ -1365,45 +1833,6 @@ of the Client Info Event.</p>
   </thead>
 
   <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>path</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-          <td class="attributes">
-            
-
-            
-
-            
-              &lt;repeatable><br>
-            
-          </td>
-        
-
-        
-
-        <td class="description last">
-          <p>key in object</p>
-          
-        </td>
-      </tr>
-
     
       <tr>
         
@@ -1424,19 +1853,11 @@ of the Client Info Event.</p>
         </td>
 
         
-          <td class="attributes">
-            
-
-            
-
-            
-          </td>
-        
 
         
 
         <td class="description last">
-          <p>The Client Info Event instance</p>
+          <p>The Shared State - Versions instance</p>
           
         </td>
       </tr>
@@ -1492,7 +1913,7 @@ of the Client Info Event.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line144">line 144</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line210">line 210</a>
         </li>
       </ul>
     </dd>
@@ -1513,13 +1934,13 @@ of the Client Info Event.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getDeviceInfo">
+    <a class="link-icon" href="#.getLaunchPropertyId">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getDeviceInfo">
-      <span class="type-signature">(static) </span>getDeviceInfo<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
+    <h4 class="name" id=".getLaunchPropertyId">
+      <span class="type-signature">(static) </span>getLaunchPropertyId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1528,9 +1949,9 @@ of the Client Info Event.</p>
 
 
   <div class="description">
-    <p>Returns the <code>deviceInfo</code> from the Client Info Event.
-This is the a map containing details about the connected device.</p>
-<p>Path is <code>payload,deviceInfo</code>.</p>
+    <p>Returns the <code>launchPropertyId</code> from the Shared State - Versions.
+This is the the ID of the property inside launch.</p>
+<p>Path is <code>payload,metadata,state.data,property.id</code>.</p>
   </div>
 
 
@@ -1584,7 +2005,7 @@ This is the a map containing details about the connected device.</p>
         
 
         <td class="description last">
-          <p>The Client Info Event instance</p>
+          <p>The Shared State - Versions instance</p>
           
         </td>
       </tr>
@@ -1640,7 +2061,7 @@ This is the a map containing details about the connected device.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line158">line 158</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line222">line 222</a>
         </li>
       </ul>
     </dd>
@@ -1661,13 +2082,13 @@ This is the a map containing details about the connected device.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getDeviceInfoKey">
+    <a class="link-icon" href="#.getRulesUrl">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getDeviceInfoKey">
-      <span class="type-signature">(static) </span>getDeviceInfoKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    <h4 class="name" id=".getRulesUrl">
+      <span class="type-signature">(static) </span>getRulesUrl<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
     </h4>
   </span>
 
@@ -1676,8 +2097,9 @@ This is the a map containing details about the connected device.</p>
 
 
   <div class="description">
-    <p>Returns the data using the specified path from the deviceInfo
-of the Client Info Event.</p>
+    <p>Returns the <code>rulesUrl</code> from the Shared State - Versions.
+This is the the URL to download the rules configuration for the property.</p>
+<p>Path is <code>payload,metadata,state.data,rules.url</code>.</p>
   </div>
 
 
@@ -1699,8 +2121,6 @@ of the Client Info Event.</p>
       <th>Type</th>
 
       
-        <th>Attributes</th>
-      
 
       
 
@@ -1709,45 +2129,6 @@ of the Client Info Event.</p>
   </thead>
 
   <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>path</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      string
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-          <td class="attributes">
-            
-
-            
-
-            
-              &lt;repeatable><br>
-            
-          </td>
-        
-
-        
-
-        <td class="description last">
-          <p>key in object</p>
-          
-        </td>
-      </tr>
-
     
       <tr>
         
@@ -1768,19 +2149,11 @@ of the Client Info Event.</p>
         </td>
 
         
-          <td class="attributes">
-            
-
-            
-
-            
-          </td>
-        
 
         
 
         <td class="description last">
-          <p>The Client Info Event instance</p>
+          <p>The Shared State - Versions instance</p>
           
         </td>
       </tr>
@@ -1836,303 +2209,7 @@ of the Client Info Event.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line169">line 169</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getType">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getType">
-      <span class="type-signature">(static) </span>getType<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>type</code> from the Client Info Event.
-This is the constant value representing this event will initiate a connection.</p>
-<p>Path is <code>payload,type</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line183">line 183</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-      
-        
-
-
-  
-
-  <span class='name-container'>
-    <a class="link-icon" href="#.getVersion">
-      <svg height="20" width="20" style="fill: black;">
-        <use xlink:href="#linkIcon"></use>
-      </svg>
-    </a>
-    <h4 class="name" id=".getVersion">
-      <span class="type-signature">(static) </span>getVersion<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
-    </h4>
-  </span>
-
-  
-
-
-
-  <div class="description">
-    <p>Returns the <code>version</code> from the Client Info Event.
-This is the griffon SDK Extension version.</p>
-<p>Path is <code>payload,version</code>.</p>
-  </div>
-
-
-
-
-
-
-
-  <h5>Parameters:</h5>
-  
-
-<table class="params">
-  <thead>
-    <tr>
-      
-        <th>Name</th>
-      
-
-      <th>Type</th>
-
-      
-
-      
-
-      <th class="last">Description</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-      <tr>
-        
-          <td class="name"><code>source</code></td>
-        
-
-        <td class="type">
-          
-            
-    <span class="param-type">
-      object
-    </span>
-
-    
-
-
-          
-        </td>
-
-        
-
-        
-
-        <td class="description last">
-          <p>The Client Info Event instance</p>
-          
-        </td>
-      </tr>
-
-    
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line195">line 195</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line234">line 234</a>
         </li>
       </ul>
     </dd>
@@ -2168,7 +2245,7 @@ This is the griffon SDK Extension version.</p>
 
 
   <div class="description">
-    <p>Tests the provided source against the matcher to see if it's Client Info Event event.</p>
+    <p>Tests the provided source against the matcher to see if it's Shared State - Versions event.</p>
   </div>
 
 
@@ -2222,7 +2299,7 @@ This is the griffon SDK Extension version.</p>
         
 
         <td class="description last">
-          <p>The Client Info Event instance</p>
+          <p>The Shared State - Versions instance</p>
           
         </td>
       </tr>
@@ -2278,7 +2355,7 @@ This is the griffon SDK Extension version.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line217">line 217</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line257">line 257</a>
         </li>
       </ul>
     </dd>
@@ -2325,7 +2402,7 @@ This is the griffon SDK Extension version.</p>
 
 
   <div class="description">
-    <p>Generates a Client Info Event with the const values set.
+    <p>Generates a Shared State - Versions with the const values set.
 Can be useful in testing.
 Can provide additional data by providing a flat object of paths and values.</p>
   </div>
@@ -2449,7 +2526,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line227">line 227</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line267">line 267</a>
         </li>
       </ul>
     </dd>
@@ -2485,7 +2562,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
 
 
   <div class="description">
-    <p>Generates a Client Info Event with some default values set.
+    <p>Generates a Shared State - Versions with some default values set.
 Can be useful in testing.
 Can override defaults and provide additional data by providing a flat object
 of paths and values.</p>
@@ -2610,7 +2687,7 @@ of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="common_src_clientInfo.js.html">common/src/clientInfo.js</a>, <a href="common_src_clientInfo.js.html#line243">line 243</a>
+          <a href="aep-mobile_src_sharedStateConfig.js.html">aep-mobile/src/sharedStateConfig.js</a>, <a href="aep-mobile_src_sharedStateConfig.js.html#line285">line 285</a>
         </li>
       </ul>
     </dd>
