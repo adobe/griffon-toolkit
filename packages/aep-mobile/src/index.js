@@ -19,8 +19,6 @@ export { default as logForwardCommand } from './logForwardCommand.js';
 export { default as mobileEvent } from './mobileEvent.js';
 export { default as placesEntry } from './placesEntry.js';
 export { default as placesExit } from './placesExit.js';
-export { default as propositionRequest } from './propositionRequest.js';
-export { default as propositionResponse } from './propositionResponse.js';
 export { default as receivePlaces } from './receivePlaces.js';
 export { default as requestPlaces } from './requestPlaces.js';
 export { default as screenshotCaptureCommand } from './screenshotCaptureCommand.js';
