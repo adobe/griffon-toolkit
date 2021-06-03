@@ -24,6 +24,7 @@ export { default as requestPlaces } from './requestPlaces.js';
 export { default as screenshotCaptureCommand } from './screenshotCaptureCommand.js';
 export { default as setPushIdentifier } from './setPushIdentifier.js';
 export { default as sharedState } from './sharedState.js';
+export { default as sharedStateConfig } from './sharedStateConfig.js';
 export { default as sharedStateVersions } from './sharedStateVersions.js';
 export { default as startEventForwardingCommand } from './startEventForwardingCommand.js';
 export { default as startPlacesMonitor } from './startPlacesMonitor.js';
