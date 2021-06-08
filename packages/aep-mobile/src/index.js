@@ -16,6 +16,8 @@ export { default as identityResponse } from './identityResponse.js';
 export { default as lifecycleStart } from './lifecycleStart.js';
 export { default as locationAuthStatus } from './locationAuthStatus.js';
 export { default as logForwardCommand } from './logForwardCommand.js';
+export { default as mediaCreateTrackerRequest } from './mediaCreateTrackerRequest.js';
+export { default as mediaSessionCreated } from './mediaSessionCreated.js';
 export { default as mobileEvent } from './mobileEvent.js';
 export { default as placesEntry } from './placesEntry.js';
 export { default as placesExit } from './placesExit.js';
