@@ -1,0 +1,18 @@
+{
+    "$id": "http://griffon.adobe.com/schemas/hit-debugger/hitDebuggerEvent",
+    "shortDesc": "Generic Hit Debugger Event",
+    "group": "event",
+    "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/event" }],
+    "type": "object",
+    "properties": {
+      "type": {
+        "inherit": true,
+        "const": "generic"
+      },
+      "vendor": {
+        "description": "The vendor of the service that sent the event",
+        "type": "string",
+        "const": "com.adobe.analytics.hitdebugger"
+      }
+    }
+  }
