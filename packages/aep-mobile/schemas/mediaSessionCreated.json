@@ -14,13 +14,13 @@
             "type": "object",
             "properties": {
               "mediaservice.sessionid": {
-                "alias": "mediaserviceSessionid",
+                "alias": "mediaServiceSessionId",
                 "description": "The media sessionid returned by collection service",
                 "type": "string",
                 "mock": "mediaserviceSessionid123"
               },
               "sessionid": {
-                "alias": "sessionid",
+                "alias": "sessionId",
                 "description": "The unique session ID",
                 "type": "string",
                 "mock": "sessionid123"

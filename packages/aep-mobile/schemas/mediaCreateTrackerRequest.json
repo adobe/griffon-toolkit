@@ -14,7 +14,7 @@
             "type": "object",
             "properties": {
               "trackerid": {
-                "alias": "trackerid",
+                "alias": "trackerId",
                 "description": "The unique tracker ID",
                 "type": "string",
                 "mock": "trackerId123"

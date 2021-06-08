@@ -56,10 +56,10 @@ const path = {
   eventData: 'payload.ACPExtensionEventData',
 
   /** The media sessionid returned by collection service.<br />Path is `payload.ACPExtensionEventData."mediaservice.sessionid"`. */
-  mediaserviceSessionid: 'payload.ACPExtensionEventData."mediaservice.sessionid"',
+  mediaServiceSessionId: 'payload.ACPExtensionEventData."mediaservice.sessionid"',
 
   /** The unique session ID.<br />Path is `payload.ACPExtensionEventData.sessionid`. */
-  sessionid: 'payload.ACPExtensionEventData.sessionid',
+  sessionId: 'payload.ACPExtensionEventData.sessionid',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -151,7 +151,7 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `mediaserviceSessionid` from the Media Session Created Event.
+ * Returns the `mediaServiceSessionId` from the Media Session Created Event.
  * This is the the media sessionid returned by collection service.
  *
  * Path is `payload,ACPExtensionEventData,mediaservice.sessionid`.
@@ -160,10 +160,10 @@ const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
  * @param {object} source The Media Session Created Event instance
  * @returns {string}
  */
-const getMediaserviceSessionid = kit.search(path.mediaserviceSessionid);
+const getMediaServiceSessionId = kit.search(path.mediaServiceSessionId);
 
 /**
- * Returns the `sessionid` from the Media Session Created Event.
+ * Returns the `sessionId` from the Media Session Created Event.
  * This is the the unique session ID.
  *
  * Path is `payload,ACPExtensionEventData,sessionid`.
@@ -172,7 +172,7 @@ const getMediaserviceSessionid = kit.search(path.mediaserviceSessionid);
  * @param {object} source The Media Session Created Event instance
  * @returns {string}
  */
-const getSessionid = kit.search(path.sessionid);
+const getSessionId = kit.search(path.sessionId);
 
 /**
  * Matcher can be used to find matching Media Session Created Event objects.
@@ -222,8 +222,8 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  mediaserviceSessionid: 'mediaserviceSessionid123',
-  sessionid: 'sessionid123',
+  mediaServiceSessionId: 'mediaserviceSessionid123',
+  sessionId: 'sessionid123',
   eventSource: 'com.adobe.eventsource.media.sessioncreated',
   eventType: 'com.adobe.eventtype.media',
   rootType: 'generic',
@@ -249,8 +249,8 @@ export default {
   schema,
   get,
   ...customExports,
-  getMediaserviceSessionid,
-  getSessionid,
+  getMediaServiceSessionId,
+  getSessionId,
   isMatch,
   matcher,
   EVENT_SOURCE,

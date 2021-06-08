@@ -56,7 +56,7 @@ const path = {
   eventData: 'payload.ACPExtensionEventData',
 
   /** The unique tracker ID.<br />Path is `payload.ACPExtensionEventData.trackerid`. */
-  trackerid: 'payload.ACPExtensionEventData.trackerid',
+  trackerId: 'payload.ACPExtensionEventData.trackerid',
 
   /** Information about the event based on the event type.<br />Path is `payload.ACPExtensionEventData."event.param"`. */
   eventParams: 'payload.ACPExtensionEventData."event.param"',
@@ -151,7 +151,7 @@ const ROOT_TYPE = 'generic';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `trackerid` from the Media Create Tracker Request Event.
+ * Returns the `trackerId` from the Media Create Tracker Request Event.
  * This is the the unique tracker ID.
  *
  * Path is `payload,ACPExtensionEventData,trackerid`.
@@ -160,7 +160,7 @@ const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
  * @param {object} source The Media Create Tracker Request Event instance
  * @returns {string}
  */
-const getTrackerid = kit.search(path.trackerid);
+const getTrackerId = kit.search(path.trackerId);
 
 /**
  * Returns the `eventParams` from the Media Create Tracker Request Event.
@@ -235,7 +235,7 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  trackerid: 'trackerId123',
+  trackerId: 'trackerId123',
   eventSource: 'com.adobe.eventsource.media.requesttracker',
   eventType: 'com.adobe.eventtype.media',
   rootType: 'generic',
@@ -261,7 +261,7 @@ export default {
   schema,
   get,
   ...customExports,
-  getTrackerid,
+  getTrackerId,
   getEventParams,
   getEventParamsKey,
   isMatch,
