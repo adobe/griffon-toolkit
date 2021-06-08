@@ -1,0 +1,42 @@
+{
+    "$id": "http://griffon.adobe.com/schemas/aep-mobile/mediaCreateTrackerRequest",
+    "shortDesc": "Media Create Tracker Request Event",
+    "group": "event",
+    "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+    "type": "object",
+    "properties": {
+      "payload": {
+        "inherit": true,
+        "type": "object",
+        "properties": {
+          "ACPExtensionEventData": {
+            "inherit": true,
+            "type": "object",
+            "properties": {
+              "trackerid": {
+                "alias": "trackerId",
+                "description": "The unique tracker ID",
+                "type": "string",
+                "mock": "trackerId123"
+              },
+              "event.param": {
+                "alias": "eventParams",
+                "description": "Information about the event based on the event type",
+                "type": "object"
+              }
+            },
+            "required": ["trackerid"]
+          },
+          "ACPExtensionEventSource": {
+            "inherit": true,
+            "const": "com.adobe.eventsource.media.requesttracker"
+          },
+          "ACPExtensionEventType": {
+            "inherit": true,
+            "const": "com.adobe.eventtype.media"
+          }
+        },
+        "required": ["ACPExtensionEventData"]
+      }
+    }
+  }
