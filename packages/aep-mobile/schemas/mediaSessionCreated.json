@@ -1,0 +1,43 @@
+{
+    "$id": "http://griffon.adobe.com/schemas/aep-mobile/mediaSessionCreated",
+    "shortDesc": "Media Session Created Event",
+    "group": "event",
+    "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+    "type": "object",
+    "properties": {
+      "payload": {
+        "inherit": true,
+        "type": "object",
+        "properties": {
+          "ACPExtensionEventData": {
+            "inherit": true,
+            "type": "object",
+            "properties": {
+              "mediaservice.sessionid": {
+                "alias": "mediaserviceSessionid",
+                "description": "The media sessionid returned by collection service",
+                "type": "string",
+                "mock": "mediaserviceSessionid123"
+              },
+              "sessionid": {
+                "alias": "sessionid",
+                "description": "The unique session ID",
+                "type": "string",
+                "mock": "sessionid123"
+              }
+            },
+            "required": ["sessionid", "mediaservice.sessionid"]
+          },
+          "ACPExtensionEventSource": {
+            "inherit": true,
+            "const": "com.adobe.eventsource.media.sessioncreated"
+          },
+          "ACPExtensionEventType": {
+            "inherit": true,
+            "const": "com.adobe.eventtype.media"
+          }
+        },
+        "required": ["ACPExtensionEventData"]
+      }
+    }
+  }
