@@ -12,7 +12,7 @@
       "vendor": {
         "description": "The vendor of the service that sent the event",
         "type": "string",
-        "const": "com.adobe.analytics.hitdebugger"
+        "const": "com.adobe.hitdebuggeranalytics"
       }
     }
   }

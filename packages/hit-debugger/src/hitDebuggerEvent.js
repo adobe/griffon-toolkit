@@ -21,7 +21,7 @@ import schema from '../schemas/hitDebuggerEvent.json';
  * ```
  * {
  *   type: 'generic'
- *   vendor: 'com.adobe.analytics.hitdebugger'
+ *   vendor: 'com.adobe.hitdebuggeranalytics'
  *   annotations: <array>,
  *   clientId: <string>,
  *   payload: <object>,
@@ -95,7 +95,7 @@ const ROOT_TYPE = 'generic';
  *
  * @constant
  */
-const VENDOR = 'com.adobe.analytics.hitdebugger';
+const VENDOR = 'com.adobe.hitdebuggeranalytics';
 
 /**
  * Retrieves a value from the object. You can provide either a path or an alias.
@@ -127,7 +127,7 @@ const getVendor = kit.search(path.vendor);
  */
 const matcher = kit.combineAll([
   'type==`generic`',
-  'vendor==`com.adobe.analytics.hitdebugger`',
+  'vendor==`com.adobe.hitdebuggeranalytics`',
   'timestamp'
 ]);
 
@@ -151,7 +151,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  */
 const make = (input) => kit.expandWithPaths(path, {
   rootType: 'generic',
-  vendor: 'com.adobe.analytics.hitdebugger',
+  vendor: 'com.adobe.hitdebuggeranalytics',
   ...input
 });
 
@@ -167,7 +167,7 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   rootType: 'generic',
-  vendor: 'com.adobe.analytics.hitdebugger',
+  vendor: 'com.adobe.hitdebuggeranalytics',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   rootId: '123',
