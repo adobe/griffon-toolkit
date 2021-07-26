@@ -1,0 +1,88 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/pushTrackingRequest",
+  "shortDesc": "AEP Edge Request",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/edgeRequest" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "xdm": {
+              "inherit": true,
+              "type": "object",
+              "properties": {
+                "pushNotificationTracking": {
+                  "type": "object",
+                  "properties": {
+                    "pushProviderMessageID": {
+                      "alias": "pushProviderMessageId",
+                      "type": "string",
+                      "mock": "0:1626714665180817%a9278edff9fd7ecd",
+                      "match": true
+                    },
+                    "pushProvider": {
+                      "type": "string",
+                      "mock": "fcm"
+                    }
+                  },
+                  "required": [ "pushProviderMessageID", "pushProvider" ]
+                },
+                "eventType": {
+                  "alias": "interactionType",
+                  "type": "string",
+                  "mock": "pushTracking.applicationOpened"
+                },
+                "_experience": {
+                  "alias": "experience",
+                  "type": "object",
+                  "properties": {
+                    "customerJourneyManagement": {
+                      "type": "object",
+                      "properties": {
+                        "messageExecution": {
+                          "type": "object",
+                          "properties": {
+                            "messageExecutionID": {
+                              "alias": "messageExecutionId",
+                              "type": "string",
+                              "mock": "UPU-38948864"
+                            },
+                            "journeyVersionInstanceID": {
+                              "alias": "journeyVersionInstanceId",
+                              "type": "string",
+                              "mock": "d249f6f9-0cab-4d75-a64e-3d5dd50c5d76"
+                            },
+                            "journeyVersionID": {
+                              "alias": "journeyVersionId",
+                              "type": "string",
+                              "mock": "70e59e68-6ddf-46a7-bc7d-97e7a2f620ce"
+                            },
+                            "journeyActionID": {
+                              "alias": "journeyActionId",
+                              "type": "string",
+                              "mock": "70e59e68-6ddf-46a7-bc7d-97e7a2f620ce"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [ "pushNotificationTracking", "eventType" ]
+            }
+          }
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}
