@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      logForwardCommand - Documentation
+      pushTrackingRequest - Documentation
   </title>
 
   <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
@@ -81,7 +81,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        logForwardCommand
+        pushTrackingRequest
       </h1>
     
 
@@ -92,7 +92,7 @@
     
       <h2>
         
-        logForwardCommand
+        pushTrackingRequest
         
       </h2>
 
@@ -105,19 +105,42 @@
       
         
             <div class="description">
-              <p>Contains constants and functions for a Log Forward Command.</p>
-<p>The structure for a Log Forward Command is as follows:</p>
+              <p>Contains constants and functions for a AEP Edge Request.</p>
+<p>The structure for a AEP Edge Request is as follows:</p>
 <pre class="prettyprint source"><code>{
   payload: {
-    type: 'logForwarding'
-    detail: {
-      enable: &lt;boolean>,
+    ACPExtensionEventData: {
+      xdm: {
+        pushNotificationTracking: {
+          pushProviderMessageID: &lt;string>,
+          pushProvider: &lt;string>,
+        },
+        eventType: &lt;string>,
+        _experience: {
+          customerJourneyManagement: {
+            messageExecution: {
+              messageExecutionID: &lt;string>,
+              journeyVersionInstanceID: &lt;string>,
+              journeyVersionID: &lt;string>,
+              journeyActionID: &lt;string>,
+            },
+          },
+        },
+      },
+      datasetId: &lt;string>,
     },
+    ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
+    ACPExtensionEventType: 'com.adobe.eventtype.edge'
+    ACPExtensionEventName: &lt;string>,
+    ACPExtensionEventNumber: &lt;integer>,
+    ACPExtensionEventUniqueIdentifier: &lt;string>,
   },
-  vendor: 'com.adobe.griffon.mobile'
+  type: 'generic'
+  vendor: &lt;string>,
+  annotations: &lt;array>,
   clientId: &lt;string>,
   timestamp: &lt;number>,
-  type: 'control'
+  uuid: &lt;string>,
 }
 </code></pre>
             </div>
@@ -156,7 +179,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line17">line 17</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line17">line 17</a>
         </li>
       </ul>
     </dd>
@@ -187,6 +210,142 @@
     
         <h3 class="subsection-title">Members</h3>
 
+        
+            
+
+<h4 class="name" id=".EVENT_SOURCE">
+  <span class="type-signature">(static, constant) </span>EVENT_SOURCE<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventSource</code> for a AEP Edge Request.</p>
+<p>Path is <code>payload,ACPExtensionEventSource</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line161">line 161</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id=".EVENT_TYPE">
+  <span class="type-signature">(static, constant) </span>EVENT_TYPE<span class="type-signature"></span>
+</h4>
+
+
+
+
+  <div class="description">
+    <p>The value for <code>eventType</code> for a AEP Edge Request.</p>
+<p>Path is <code>payload,ACPExtensionEventType</code>.</p>
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line170">line 170</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+          
         
             
 
@@ -235,7 +394,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line86">line 86</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line152">line 152</a>
         </li>
       </ul>
     </dd>
@@ -302,7 +461,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line81">line 81</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line147">line 147</a>
         </li>
       </ul>
     </dd>
@@ -332,7 +491,7 @@
 
 
   <div class="description">
-    <p>Matcher can be used to find matching Log Forward Command objects.</p>
+    <p>Matcher can be used to find matching AEP Edge Request objects.</p>
   </div>
 
 
@@ -369,7 +528,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line180">line 180</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line381">line 381</a>
         </li>
       </ul>
     </dd>
@@ -448,7 +607,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line76">line 76</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line142">line 142</a>
         </li>
       </ul>
     </dd>
@@ -478,7 +637,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Paths for the keys on a Log Forward Command</p>
+    <p>Paths for the keys on a AEP Edge Request</p>
   </div>
 
 
@@ -539,7 +698,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>type</code></td>
+        <td class="name"><code>eventData</code></td>
       
 
       <td class="type">
@@ -560,7 +719,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The type of command.<br />Path is <code>payload.type</code>.</p>
+          <p>An object with the custom data describing the event.<br />Path is <code>payload.ACPExtensionEventData</code>.</p>
           </td>
     </tr>
 
@@ -568,7 +727,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>detail</code></td>
+        <td class="name"><code>xdm</code></td>
       
 
       <td class="type">
@@ -589,7 +748,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>Additional command detail.<br />Path is <code>payload.detail</code>.</p>
+          <p>The XDM data send to the server.<br />Path is <code>payload.ACPExtensionEventData.xdm</code>.</p>
           </td>
     </tr>
 
@@ -597,7 +756,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>enable</code></td>
+        <td class="name"><code>pushNotificationTracking</code></td>
       
 
       <td class="type">
@@ -618,7 +777,500 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>Turn on or off the log forwarding.<br />Path is <code>payload.detail.enable</code>.</p>
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>pushProviderMessageId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>pushProvider</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>interactionType</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>experience</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>customerJourneyManagement</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>messageExecution</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>messageExecutionId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>journeyVersionInstanceId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>journeyVersionId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>journeyActionId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>datasetId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The dataset to apply the XDM data to.<br />Path is <code>payload.ACPExtensionEventData.datasetId</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventSource</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event source.<br />Path is <code>payload.ACPExtensionEventSource</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventType</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event type.<br />Path is <code>payload.ACPExtensionEventType</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventName</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The name of the event.<br />Path is <code>payload.ACPExtensionEventName</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>sdkEventNumber</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The event number generated by the SDK.<br />Path is <code>payload.ACPExtensionEventNumber</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>eventId</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The unique event id.<br />Path is <code>payload.ACPExtensionEventUniqueIdentifier</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>rootType</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The type of event.<br />Path is <code>type</code>.</p>
           </td>
     </tr>
 
@@ -647,7 +1299,36 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The vendor of the plugin to receive the command.<br />Path is <code>vendor</code>.</p>
+          <p>The vendor of the plugin that sent the event.<br />Path is <code>vendor</code>.</p>
+          </td>
+    </tr>
+
+  
+
+    <tr>
+      
+        <td class="name"><code>annotations</code></td>
+      
+
+      <td class="type">
+        
+          
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+        
+      </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Array of Annotation objects.<br />Path is <code>annotations</code>.</p>
           </td>
     </tr>
 
@@ -705,7 +1386,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>When the command was triggered.<br />Path is <code>timestamp</code>.</p>
+          <p>When the event occurred.<br />Path is <code>timestamp</code>.</p>
           </td>
     </tr>
 
@@ -713,7 +1394,7 @@ use a schema that is more specific over a more generic schema</p>
 
     <tr>
       
-        <td class="name"><code>rootType</code></td>
+        <td class="name"><code>rootId</code></td>
       
 
       <td class="type">
@@ -734,7 +1415,7 @@ use a schema that is more specific over a more generic schema</p>
         
 
         <td class="description last">
-          <p>The type of event. For commands it's always 'control'..<br />Path is <code>type</code>.</p>
+          <p>Uniquely identifies each event.<br />Path is <code>uuid</code>.</p>
           </td>
     </tr>
 
@@ -776,7 +1457,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line44">line 44</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line67">line 67</a>
         </li>
       </ul>
     </dd>
@@ -806,7 +1487,7 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>The value for <code>rootType</code> for a Log Forward Command.</p>
+    <p>The value for <code>rootType</code> for a AEP Edge Request.</p>
 <p>Path is <code>type</code>.</p>
   </div>
 
@@ -844,143 +1525,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line113">line 113</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-          
-        
-            
-
-<h4 class="name" id=".TYPE">
-  <span class="type-signature">(static, constant) </span>TYPE<span class="type-signature"></span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>The value for <code>type</code> for a Log Forward Command.</p>
-<p>Path is <code>payload,type</code>.</p>
-  </div>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line95">line 95</a>
-        </li>
-      </ul>
-    </dd>
-  
-
-  
-
-  
-
-  
-</dl>
-
-
-
-
-
-
-          
-        
-            
-
-<h4 class="name" id=".VENDOR">
-  <span class="type-signature">(static, constant) </span>VENDOR<span class="type-signature"></span>
-</h4>
-
-
-
-
-  <div class="description">
-    <p>The value for <code>vendor</code> for a Log Forward Command.</p>
-<p>Path is <code>vendor</code>.</p>
-  </div>
-
-
-
-
-<dl class="details">
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source">
-      <ul class="dummy">
-        <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line104">line 104</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line179">line 179</a>
         </li>
       </ul>
     </dd>
@@ -1157,7 +1702,7 @@ use a schema that is more specific over a more generic schema</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line123">line 123</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line189">line 189</a>
         </li>
       </ul>
     </dd>
@@ -1178,13 +1723,13 @@ use a schema that is more specific over a more generic schema</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getDetail">
+    <a class="link-icon" href="#.getCustomerJourneyManagement">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getDetail">
-      <span class="type-signature">(static) </span>getDetail<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
+    <h4 class="name" id=".getCustomerJourneyManagement">
+      <span class="type-signature">(static) </span>getCustomerJourneyManagement<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
     </h4>
   </span>
 
@@ -1193,9 +1738,9 @@ use a schema that is more specific over a more generic schema</p>
 
 
   <div class="description">
-    <p>Returns the <code>detail</code> from the Log Forward Command.
-This is the additional command detail.</p>
-<p>Path is <code>payload,detail</code>.</p>
+    <p>Returns the <code>customerJourneyManagement</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,_experience,customerJourneyManagement</code>.</p>
   </div>
 
 
@@ -1249,7 +1794,7 @@ This is the additional command detail.</p>
         
 
         <td class="description last">
-          <p>The Log Forward Command instance</p>
+          <p>The AEP Edge Request instance</p>
           
         </td>
       </tr>
@@ -1305,7 +1850,7 @@ This is the additional command detail.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line147">line 147</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line287">line 287</a>
         </li>
       </ul>
     </dd>
@@ -1326,13 +1871,13 @@ This is the additional command detail.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getDetailKey">
+    <a class="link-icon" href="#.getCustomerJourneyManagementKey">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getDetailKey">
-      <span class="type-signature">(static) </span>getDetailKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    <h4 class="name" id=".getCustomerJourneyManagementKey">
+      <span class="type-signature">(static) </span>getCustomerJourneyManagementKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
     </h4>
   </span>
 
@@ -1341,8 +1886,8 @@ This is the additional command detail.</p>
 
 
   <div class="description">
-    <p>Returns the data using the specified path from the detail
-of the Log Forward Command.</p>
+    <p>Returns the data using the specified path from the customerJourneyManagement
+of the AEP Edge Request.</p>
   </div>
 
 
@@ -1445,7 +1990,7 @@ of the Log Forward Command.</p>
         
 
         <td class="description last">
-          <p>The Log Forward Command instance</p>
+          <p>The AEP Edge Request instance</p>
           
         </td>
       </tr>
@@ -1501,7 +2046,7 @@ of the Log Forward Command.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line158">line 158</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line298">line 298</a>
         </li>
       </ul>
     </dd>
@@ -1522,13 +2067,13 @@ of the Log Forward Command.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getEnable">
+    <a class="link-icon" href="#.getExperience">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getEnable">
-      <span class="type-signature">(static) </span>getEnable<span class="signature">(source)</span><span class="type-signature"> &rarr; {boolean}</span>
+    <h4 class="name" id=".getExperience">
+      <span class="type-signature">(static) </span>getExperience<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
     </h4>
   </span>
 
@@ -1537,9 +2082,9 @@ of the Log Forward Command.</p>
 
 
   <div class="description">
-    <p>Returns the <code>enable</code> from the Log Forward Command.
-This is the turn on or off the log forwarding.</p>
-<p>Path is <code>payload,detail,enable</code>.</p>
+    <p>Returns the <code>experience</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,_experience</code>.</p>
   </div>
 
 
@@ -1593,7 +2138,7 @@ This is the turn on or off the log forwarding.</p>
         
 
         <td class="description last">
-          <p>The Log Forward Command instance</p>
+          <p>The AEP Edge Request instance</p>
           
         </td>
       </tr>
@@ -1649,7 +2194,7 @@ This is the turn on or off the log forwarding.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line172">line 172</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line262">line 262</a>
         </li>
       </ul>
     </dd>
@@ -1670,13 +2215,13 @@ This is the turn on or off the log forwarding.</p>
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.getType">
+    <a class="link-icon" href="#.getExperienceKey">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".getType">
-      <span class="type-signature">(static) </span>getType<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    <h4 class="name" id=".getExperienceKey">
+      <span class="type-signature">(static) </span>getExperienceKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
     </h4>
   </span>
 
@@ -1685,9 +2230,205 @@ This is the turn on or off the log forwarding.</p>
 
 
   <div class="description">
-    <p>Returns the <code>type</code> from the Log Forward Command.
-This is the the type of command.</p>
-<p>Path is <code>payload,type</code>.</p>
+    <p>Returns the data using the specified path from the experience
+of the AEP Edge Request.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>path</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>key in object</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line273">line 273</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getInteractionType">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getInteractionType">
+      <span class="type-signature">(static) </span>getInteractionType<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>interactionType</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,eventType</code>.</p>
   </div>
 
 
@@ -1741,7 +2482,7 @@ This is the the type of command.</p>
         
 
         <td class="description last">
-          <p>The Log Forward Command instance</p>
+          <p>The AEP Edge Request instance</p>
           
         </td>
       </tr>
@@ -1797,7 +2538,1583 @@ This is the the type of command.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line135">line 135</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line250">line 250</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getJourneyActionId">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getJourneyActionId">
+      <span class="type-signature">(static) </span>getJourneyActionId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>journeyActionId</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,_experience,customerJourneyManagement,messageExecution,journeyActionID</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line373">line 373</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getJourneyVersionId">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getJourneyVersionId">
+      <span class="type-signature">(static) </span>getJourneyVersionId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>journeyVersionId</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,_experience,customerJourneyManagement,messageExecution,journeyVersionID</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line361">line 361</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getJourneyVersionInstanceId">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getJourneyVersionInstanceId">
+      <span class="type-signature">(static) </span>getJourneyVersionInstanceId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>journeyVersionInstanceId</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,_experience,customerJourneyManagement,messageExecution,journeyVersionInstanceID</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line349">line 349</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getMessageExecution">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getMessageExecution">
+      <span class="type-signature">(static) </span>getMessageExecution<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>messageExecution</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,_experience,customerJourneyManagement,messageExecution</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line312">line 312</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getMessageExecutionId">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getMessageExecutionId">
+      <span class="type-signature">(static) </span>getMessageExecutionId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>messageExecutionId</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,_experience,customerJourneyManagement,messageExecution,messageExecutionID</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line337">line 337</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getMessageExecutionKey">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getMessageExecutionKey">
+      <span class="type-signature">(static) </span>getMessageExecutionKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the data using the specified path from the messageExecution
+of the AEP Edge Request.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>path</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>key in object</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line323">line 323</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getPushNotificationTracking">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getPushNotificationTracking">
+      <span class="type-signature">(static) </span>getPushNotificationTracking<span class="signature">(source)</span><span class="type-signature"> &rarr; {object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>pushNotificationTracking</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,pushNotificationTracking</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line201">line 201</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getPushNotificationTrackingKey">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getPushNotificationTrackingKey">
+      <span class="type-signature">(static) </span>getPushNotificationTrackingKey<span class="signature">(&hellip;path, source)</span><span class="type-signature"> &rarr; {*}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the data using the specified path from the pushNotificationTracking
+of the AEP Edge Request.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>path</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>key in object</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line212">line 212</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getPushProvider">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getPushProvider">
+      <span class="type-signature">(static) </span>getPushProvider<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>pushProvider</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,pushNotificationTracking,pushProvider</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line238">line 238</a>
+        </li>
+      </ul>
+    </dd>
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.getPushProviderMessageId">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".getPushProviderMessageId">
+      <span class="type-signature">(static) </span>getPushProviderMessageId<span class="signature">(source)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Returns the <code>pushProviderMessageId</code> from the AEP Edge Request.
+This is the .</p>
+<p>Path is <code>payload,ACPExtensionEventData,xdm,pushNotificationTracking,pushProviderMessageID</code>.</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>source</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The AEP Edge Request instance</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line226">line 226</a>
         </li>
       </ul>
     </dd>
@@ -1833,7 +4150,7 @@ This is the the type of command.</p>
 
 
   <div class="description">
-    <p>Tests the provided source against the matcher to see if it's Log Forward Command event.</p>
+    <p>Tests the provided source against the matcher to see if it's AEP Edge Request event.</p>
   </div>
 
 
@@ -1887,7 +4204,7 @@ This is the the type of command.</p>
         
 
         <td class="description last">
-          <p>The Log Forward Command instance</p>
+          <p>The AEP Edge Request instance</p>
           
         </td>
       </tr>
@@ -1943,7 +4260,7 @@ This is the the type of command.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line195">line 195</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line396">line 396</a>
         </li>
       </ul>
     </dd>
@@ -1990,7 +4307,7 @@ This is the the type of command.</p>
 
 
   <div class="description">
-    <p>Generates a Log Forward Command with the const values set.
+    <p>Generates a AEP Edge Request with the const values set.
 Can be useful in testing.
 Can provide additional data by providing a flat object of paths and values.</p>
   </div>
@@ -2114,7 +4431,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line205">line 205</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line406">line 406</a>
         </li>
       </ul>
     </dd>
@@ -2150,7 +4467,7 @@ Can provide additional data by providing a flat object of paths and values.</p>
 
 
   <div class="description">
-    <p>Generates a Log Forward Command with some default values set.
+    <p>Generates a AEP Edge Request with some default values set.
 Can be useful in testing.
 Can override defaults and provide additional data by providing a flat object
 of paths and values.</p>
@@ -2275,7 +4592,7 @@ of paths and values.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="aep-mobile_src_logForwardCommand.js.html">aep-mobile/src/logForwardCommand.js</a>, <a href="aep-mobile_src_logForwardCommand.js.html#line222">line 222</a>
+          <a href="aep-mobile_src_pushTrackingRequest.js.html">aep-mobile/src/pushTrackingRequest.js</a>, <a href="aep-mobile_src_pushTrackingRequest.js.html#line423">line 423</a>
         </li>
       </ul>
     </dd>
