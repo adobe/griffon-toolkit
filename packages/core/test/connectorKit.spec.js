@@ -39,7 +39,6 @@ describe('generateConnectionContextHash', () => {
   });
 });
 
-
 describe('generateConnectionId', () => {
   it('returns the namespace if no context', () => {
     expect(generateConnectionId('test')).toBe('test');

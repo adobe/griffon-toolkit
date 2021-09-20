@@ -25,16 +25,15 @@
  * @param {object} context Context to stringify
  * @returns {string} Stringified context
  */
-export const generateConnectionContextString = context => {
+export const generateConnectionContextString = (context) => {
   const keys = Object.keys(context).sort();
   let results = '';
-  keys.forEach(key => {
+  keys.forEach((key) => {
     if (results) { results += '<>'; }
-    results += `${key}==${context[key]}`
-  })
+    results += `${key}==${context[key]}`;
+  });
   return results;
 };
-
 
 /**
  * Takes the provided context object and returns base64 encoded representation of that object
@@ -43,7 +42,7 @@ export const generateConnectionContextString = context => {
  * @param {object} context Context to encode
  * @returns {string} Encoded context
  */
-export const generateConnectionContextHash = context => btoa(generateConnectionContextString(context));
+export const generateConnectionContextHash = (context) => btoa(generateConnectionContextString(context));
 
 /**
  * Takes the namespace and context object creates a unique id based on that data
