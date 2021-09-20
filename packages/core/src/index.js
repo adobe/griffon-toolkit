@@ -13,3 +13,4 @@ governing permissions and limitations under the License.
 export * from './filterKit';
 export { curry } from 'ramda';
 export * from './kit';
+export * from './connectorKit';
