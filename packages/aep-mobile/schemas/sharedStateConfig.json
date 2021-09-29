@@ -1,0 +1,63 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/sharedStateConfig",
+  "shortDesc": "Shared State - Versions",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/sharedState" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "stateowner": {
+              "inherit": true,
+              "const": "com.adobe.module.configuration"
+            }
+          }
+        },
+        "metadata": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "state.data": {
+              "inherit": true,
+              "properties": {
+                "build.environment": {
+                  "alias": "buildEnvironment",
+                  "description": "In the Launch UI, the type of environment this configuration was generated for",
+                  "type": "string",
+                  "mock": "dev"
+                },
+                "experienceCloud.org": {
+                  "alias": "experienceCloudOrg",
+                  "description": "The IMS Org that the mobile app's config was created by",
+                  "type": "string",
+                  "mock": "abc@AdobeOrg"
+                },
+                "property.id": {
+                  "alias": "launchPropertyId",
+                  "description": "The ID of the property inside launch",
+                  "type": "string",
+                  "mock": "abcd1234"
+                },
+                "rules.url": {
+                  "alias": "rulesUrl",
+                  "description": "The URL to download the rules configuration for the property",
+                  "type": "string",
+                  "mock": "http://assets.adobedtm.com/abc/abcdefg-development-rules.zip"
+                }
+              },
+              "required": [
+                "version", "extensions"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

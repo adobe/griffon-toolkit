@@ -1,11 +1,11 @@
 {
-  "name": "@adobe/griffon-toolkit",
-  "description": "Core files used by griffon-toolkit",
-  "version": "1.2.0",
+  "name": "@adobe/griffon-toolkit-hit-debugger",
+  "description": "Events definitions for the hit debugger services",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/adobe/griffon-toolkit.git",
-    "directory": "packages/core"
+    "directory": "packages/hit-debugger"
   },
   "publishConfig": {
     "access": "public"
@@ -16,8 +16,7 @@
     "dist/"
   ],
   "dependencies": {
-    "jmespath": "^0.15.0",
-    "ramda": "^0.27.0"
+    "@adobe/griffon-toolkit": "*"
   },
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",
