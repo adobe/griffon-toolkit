@@ -13,3 +13,5 @@ export { default as screenshotResponse } from './screenshotResponse.js';
 export { default as session } from './session.js';
 export { default as sessionAnnotation } from './sessionAnnotation.js';
 
+// types
+export * from './types';

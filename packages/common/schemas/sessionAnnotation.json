@@ -9,7 +9,7 @@
     },
     "namespace": {
       "alias": "namespace",
-      "description": "This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation",
+      "description": "This is to scope annotations and prevent overwrites from other plugins. The type is usually determined by the plugin writing the annotation",
       "mock": "visibility",
       "type": "string"
     },
