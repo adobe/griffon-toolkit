@@ -10,7 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
 import schema from '../schemas/poi.json';
 
@@ -116,7 +115,11 @@ const group = 'construct';
  * @param {*} data Data to search
  * @returns {*}
  */
-const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
+const get = (alias, data) => {
+  const func = (data) => kit.search(path[alias] || alias, data);
+  if (!data) { return func; }
+  return func(data);
+}
 
 /**
  * Returns the `latitude` from the POI Object.
@@ -342,10 +345,15 @@ const mock = (input) => kit.expandWithPaths(path, {
  * @param {object} source The POI Object instance
  * @returns {object}
  */
-const getCustomMetadata = R.pipe(
-  getMetadata,
-  R.omit(['category', 'street', 'city', 'state', 'country'])
-);
+const getCustomMetadata = source => {
+  const data = getMetadata(source);
+  delete data.category;
+  delete data.street;
+  delete data.city;
+  delete data.state;
+  delete data.country;
+  return data;
+};
 
 // additional exports should be added here:
 const customExports = { getCustomMetadata };

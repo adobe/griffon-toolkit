@@ -10,7 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
 import schema from '../schemas/clientInfoIOS.json';
 
@@ -172,7 +171,11 @@ const ROOT_TYPE = 'client';
  * @param {*} data Data to search
  * @returns {*}
  */
-const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
+const get = (alias, data) => {
+  const func = (data) => kit.search(path[alias] || alias, data);
+  if (!data) { return func; }
+  return func(data);
+}
 
 /**
  * Returns the `platform` from the iOS Client Info Event.
