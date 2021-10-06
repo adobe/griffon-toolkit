@@ -1,3 +1,5 @@
+// @create-index
+
 export { Annotation } from './annotation';
 export { ClientInfo, ClientInfoPayload } from './clientInfo';
 export { Command } from './command';

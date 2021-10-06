@@ -12,25 +12,25 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/annotation.json';
+import schema from './schemas/sessionAnnotation.json';
 
 /**
- * Contains constants and functions for a Annotation Object.
+ * Contains constants and functions for a Session Annotation Object.
  *
- * The structure for a Annotation Object is as follows:
+ * The structure for a Session Annotation Object is as follows:
  * ```
  * {
  *   payload: <object>,
- *   type: <string>,
+ *   namespace: <string>,
  *   uuid: <string>,
  * }
  * ```
  *
- * @namespace annotation
+ * @namespace sessionAnnotation
  */
 
 /**
- * Paths for the keys on a Annotation Object
+ * Paths for the keys on a Session Annotation Object
  *
  * @enum {string}
  */
@@ -38,8 +38,8 @@ const path = {
   /** An object with custom data describing the annotation.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.<br />Path is `type`. */
-  namespace: 'type',
+  /** This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.<br />Path is `namespace`. */
+  namespace: 'namespace',
 
   /** Uniquely identifies each annotation.<br />Path is `uuid`. */
   uuid: 'uuid'
@@ -56,12 +56,12 @@ const parentDepth = 0;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Annotation Object';
+const label = 'Session Annotation Object';
 
 /**
  * A grouping for this object
  */
-const group = 'construct';
+const group = 'undefined';
 
 /**
  * Retrieves a value from the object. You can provide either a path or an alias.
@@ -74,24 +74,24 @@ const group = 'construct';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `payload` from the Annotation Object.
+ * Returns the `payload` from the Session Annotation Object.
  * This is the an object with custom data describing the annotation.
  *
  * Path is `payload`.
  *
  * @function
- * @param {object} source The Annotation Object instance
+ * @param {object} source The Session Annotation Object instance
  * @returns {object}
  */
 const getPayload = kit.search(path.payload);
 
 /**
  * Returns the data using the specified path from the payload
- * of the Annotation Object.
+ * of the Session Annotation Object.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Annotation Object instance
+ * @param {object} source The Session Annotation Object instance
  * @returns {*}
  */
 const getPayloadKey = kit.curry(
@@ -99,31 +99,31 @@ const getPayloadKey = kit.curry(
 );
 
 /**
- * Returns the `namespace` from the Annotation Object.
+ * Returns the `namespace` from the Session Annotation Object.
  * This is the this is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.
  *
- * Path is `type`.
+ * Path is `namespace`.
  *
  * @function
- * @param {object} source The Annotation Object instance
+ * @param {object} source The Session Annotation Object instance
  * @returns {string}
  */
 const getNamespace = kit.search(path.namespace);
 
 /**
- * Returns the `uuid` from the Annotation Object.
+ * Returns the `uuid` from the Session Annotation Object.
  * This is the uniquely identifies each annotation.
  *
  * Path is `uuid`.
  *
  * @function
- * @param {object} source The Annotation Object instance
+ * @param {object} source The Session Annotation Object instance
  * @returns {string}
  */
 const getUuid = kit.search(path.uuid);
 
 /**
- * Generates a Annotation Object with the const values set.
+ * Generates a Session Annotation Object with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -134,7 +134,7 @@ const getUuid = kit.search(path.uuid);
 const make = kit.expand;
 
 /**
- * Generates a Annotation Object with some default values set.
+ * Generates a Session Annotation Object with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -144,7 +144,7 @@ const make = kit.expand;
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  namespace: 'test_suite',
+  namespace: 'visibility',
   uuid: '423',
   ...input
 });
@@ -157,14 +157,8 @@ const mock = (input) => kit.expandWithPaths(path, {
  * @enum {string}
  */
 const publicKey = {
-  /** Key that indicates if an event is hidden or not */
-  hidden: 'hidden',
-
-  /** Key to toggle important events  */
-  important: 'important',
-
-  /** Key used for the main note in the note namespace */
-  note: 'note'
+  /** Key used in session to mark a session as cleared before this timestamp */
+  clearSessionTS: 'clearSessionTS'
 };
 
 /**
@@ -173,9 +167,6 @@ const publicKey = {
  * @enum {string}
  */
 const publicNamespace = {
-  /** Namespace for holding event notes */
-  notes: 'notes',
-
   /** Namespace for annotations that effect event visibility */
   visibility: 'visibility'
 };
@@ -185,50 +176,58 @@ const publicNamespace = {
  * will return that key from the payload.
  *
  * @example
- * import { kit, event, annotation } from '@adobe/griffon-toolkit';
- * const isHidden = annotation.makeNamespacePath('visibility', 'hidden');
- * // isHidden is annotations[?type=='visibility'].payload.hidden
+ * import { kit, session, sessionAnnotation } from '@adobe/griffon-toolkit';
+ * const publicPath = sessionAnnotation.makeNamespacePath('shared', 'pubic');
  *
- * const hiddenEvent = event.mock({
+ * const session = session.mock({
  *   annotations: [
  *     annotation.mock({
- *       [annotation.path.namespace]: 'visibility',
- *       [annotation.path.payload]: { hidden: true }
+ *       [sessionAnnotation.path.namespace]: 'shared',
+ *       [sessionAnnotation.path.payload]: { pubic: true }
  *     })
  *   ]
  * });
  *
- * console.log(kit.search(isHidden, hiddenEvent)); // [true]
+ * console.log(kit.search(publicPath, session))); // [true]
  *
  * @function
  * @param {string} namespace The namespace to reference
  * @param {string} [key] Key inside payload
  * @returns {string}
  */
-const makeNamespacePath = (namespace, key) => `(annotations[?type=='${namespace}'].payload${key ? `.${key}` : ''})[0]`;
+const makeNamespacePath = (namespace: string, key?: string) => `(annotations[?namespace=='${namespace}'].payload${key ? `.${key}` : ''})[0]`;
 
 /**
- * List of matchers that can pull data from common annotations
+ * Returns a the value of the path using the provided namespace and key.
+ *
+ * @example
+ * import { kit, session, sessionAnnotation } from '@adobe/griffon-toolkit';
+ * const isPublic = sessionAnnotation.search('shared', 'pubic');
+ *
+ * const session = session.mock({
+ *   annotations: [
+ *     annotation.mock({
+ *       [sessionAnnotation.path.namespace]: 'shared',
+ *       [sessionAnnotation.path.payload]: { pubic: true }
+ *     })
+ *   ]
+ * });
+ *
+ * console.log(isPublic(session)); // true
+ *
+ * @function
+ * @param {string} namespace The namespace to reference
+ * @param {string} [key] Key inside payload
+ * @param {*} data Data to search
+ * @returns {string}
  */
-const publicMatcher = {
-  /** Path for determining if an event is visible or not */
-  hidden: makeNamespacePath(
-    publicNamespace.visibility,
-    publicKey.hidden
-  ),
-  important: makeNamespacePath(
-    publicNamespace.visibility,
-    publicKey.important
-  ),
-  note: makeNamespacePath(
-    publicNamespace.notes,
-    publicKey.note
-  )
-};
+const search = kit.curry(
+  (namespace, key, data) => kit.search(makeNamespacePath(namespace, key), data)
+);
 
 // additional exports should be added here:
 const customExports = {
-  publicKey, publicMatcher, publicNamespace, makeNamespacePath
+  publicKey, publicNamespace, makeNamespacePath, search
 };
 
 /* END CUSTOM CONTENT */

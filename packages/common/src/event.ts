@@ -12,45 +12,49 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/command.json';
+import schema from './schemas/event.json';
 
 /**
- * Contains constants and functions for a Outgoing Command.
+ * Contains constants and functions for a Generic Event.
  *
- * The structure for a Outgoing Command is as follows:
+ * The structure for a Generic Event is as follows:
  * ```
  * {
+ *   annotations: <array>,
  *   clientId: <string>,
  *   payload: <object>,
  *   timestamp: <number>,
- *   type: 'control'
- *   vendor: <string>,
+ *   type: <enum(blob, client, control, generic, log, status)>,
+ *   uuid: <string>,
  * }
  * ```
  *
- * @namespace command
+ * @namespace event
  */
 
 /**
- * Paths for the keys on a Outgoing Command
+ * Paths for the keys on a Generic Event
  *
  * @enum {string}
  */
 const path = {
+  /** Array of Annotation objects.<br />Path is `annotations`. */
+  annotations: 'annotations',
+
   /** A unique id that differentiates clients from one another.<br />Path is `clientId`. */
   clientId: 'clientId',
 
   /** An object with custom data describing the event.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** When the command was triggered.<br />Path is `timestamp`. */
+  /** When the event occurred.<br />Path is `timestamp`. */
   timestamp: 'timestamp',
 
-  /** The type of event. For commands it's always 'control'..<br />Path is `type`. */
+  /** The type of event.<br />Path is `type`. */
   rootType: 'type',
 
-  /** The vendor of the plugin to receive the command.<br />Path is `vendor`. */
-  vendor: 'vendor'
+  /** Uniquely identifies each event.<br />Path is `uuid`. */
+  rootId: 'uuid'
 };
 
 /**
@@ -64,21 +68,12 @@ const parentDepth = 0;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Outgoing Command';
+const label = 'Generic Event';
 
 /**
  * A grouping for this object
  */
-const group = 'command';
-
-/**
- * The value for `rootType` for a Outgoing Command.
- *
- * Path is `type`.
- *
- * @constant
- */
-const ROOT_TYPE = 'control';
+const group = 'event';
 
 /**
  * Retrieves a value from the object. You can provide either a path or an alias.
@@ -91,36 +86,48 @@ const ROOT_TYPE = 'control';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `clientId` from the Outgoing Command.
+ * Returns the `annotations` from the Generic Event.
+ * This is the array of Annotation objects.
+ *
+ * Path is `annotations`.
+ *
+ * @function
+ * @param {object} source The Generic Event instance
+ * @returns {Array}
+ */
+const getAnnotations = kit.search(path.annotations);
+
+/**
+ * Returns the `clientId` from the Generic Event.
  * This is the a unique id that differentiates clients from one another.
  *
  * Path is `clientId`.
  *
  * @function
- * @param {object} source The Outgoing Command instance
+ * @param {object} source The Generic Event instance
  * @returns {string}
  */
 const getClientId = kit.search(path.clientId);
 
 /**
- * Returns the `payload` from the Outgoing Command.
+ * Returns the `payload` from the Generic Event.
  * This is the an object with custom data describing the event.
  *
  * Path is `payload`.
  *
  * @function
- * @param {object} source The Outgoing Command instance
+ * @param {object} source The Generic Event instance
  * @returns {object}
  */
 const getPayload = kit.search(path.payload);
 
 /**
  * Returns the data using the specified path from the payload
- * of the Outgoing Command.
+ * of the Generic Event.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Outgoing Command instance
+ * @param {object} source The Generic Event instance
  * @returns {*}
  */
 const getPayloadKey = kit.curry(
@@ -128,63 +135,63 @@ const getPayloadKey = kit.curry(
 );
 
 /**
- * Returns the `timestamp` from the Outgoing Command.
- * This is the when the command was triggered.
+ * Returns the `timestamp` from the Generic Event.
+ * This is the when the event occurred.
  *
  * Path is `timestamp`.
  *
  * @function
- * @param {object} source The Outgoing Command instance
+ * @param {object} source The Generic Event instance
  * @returns {number}
  */
 const getTimestamp = kit.search(path.timestamp);
 
 /**
- * Returns the `rootType` from the Outgoing Command.
- * This is the the type of event. For commands it's always 'control'..
+ * Returns the `rootType` from the Generic Event.
+ * This is the the type of event.
  *
  * Path is `type`.
  *
  * @function
- * @param {object} source The Outgoing Command instance
+ * @param {object} source The Generic Event instance
  * @returns {string}
  */
 const getRootType = kit.search(path.rootType);
 
 /**
- * Returns the `vendor` from the Outgoing Command.
- * This is the the vendor of the plugin to receive the command.
+ * Returns the `rootId` from the Generic Event.
+ * This is the uniquely identifies each event.
  *
- * Path is `vendor`.
+ * Path is `uuid`.
  *
  * @function
- * @param {object} source The Outgoing Command instance
+ * @param {object} source The Generic Event instance
  * @returns {string}
  */
-const getVendor = kit.search(path.vendor);
+const getRootId = kit.search(path.rootId);
 
 /**
- * Matcher can be used to find matching Outgoing Command objects.
+ * Matcher can be used to find matching Generic Event objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
   'timestamp',
-  'type==`control`'
+  'type'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Outgoing Command event.
+ * Tests the provided source against the matcher to see if it's Generic Event event.
  *
  * @function
- * @param {object} source The Outgoing Command instance
+ * @param {object} source The Generic Event instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Outgoing Command with the const values set.
+ * Generates a Generic Event with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -192,13 +199,10 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const make = (input) => kit.expandWithPaths(path, {
-  rootType: 'control',
-  ...input
-});
+const make = kit.expand;
 
 /**
- * Generates a Outgoing Command with some default values set.
+ * Generates a Generic Event with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -207,18 +211,52 @@ const make = (input) => kit.expandWithPaths(path, {
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input) => kit.expandWithPaths(path, {
+const mock = (input?) => kit.expandWithPaths(path, {
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
-  rootType: 'control',
-  vendor: 'com.adobe.mobile.sdk',
+  rootType: 'generic',
+  rootId: '123',
   ...input
 });
 
 /* ADD CUSTOM CONTENT BELOW */
+/* eslint import/first: 0 */
+
+import annotation from './annotation';
+
+/**
+ * Makes a event filter using the provided client ids.
+ *
+ * @function
+ * @param {string[]} clients Array of clientIds to filter by
+ * @returns {object} Filter object
+ */
+const makeClientFilter = (clients) => kit.combineAny(
+  clients.map((client) => `${path.clientId} == \`${client}\``)
+);
+
+/**
+ * Makes a hidden event filter based on the provided clear timestamp. If null, we'll filter all
+ * events with a hidden annotation set. If provided, we'll also hide everything before that timestamp
+ * unless the hidden annotation is explicitly set to `false`.
+ *
+ * @function
+ * @param {number=} clearTS Hide events before this timestamp
+ * @returns {object} Filter object
+ */
+const makeHiddenFilter = (clearTS?: number) => (clearTS
+  ? kit.combineAll([
+    kit.not(`${annotation.publicMatcher.hidden} == \`true\``),
+    kit.combineAny([
+      `${path.timestamp} > \`${clearTS}\``,
+      `${annotation.publicMatcher.hidden} == \`false\``
+    ])
+  ])
+  : kit.not(`${annotation.publicMatcher.hidden} == \`true\``)
+);
 
 // additional exports should be added here:
-const customExports = {};
+const customExports = { makeClientFilter, makeHiddenFilter };
 
 /* END CUSTOM CONTENT */
 /* The content below is autogenerated. Do not make any changes */
@@ -230,15 +268,15 @@ export default {
   schema,
   get,
   ...customExports,
+  getAnnotations,
   getClientId,
   getPayload,
   getPayloadKey,
   getTimestamp,
   getRootType,
-  getVendor,
+  getRootId,
   isMatch,
   matcher,
-  ROOT_TYPE,
   label,
   group,
   parentDepth

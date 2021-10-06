@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "rootDir": "src",
+  },
+  "include": [
+    "src",
+    "schemas"
+  ],
+  "exclude": [
+    "node_modules",
+    "test"
+  ]
+}
