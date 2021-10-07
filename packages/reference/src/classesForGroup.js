@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as R from 'ramda';
+import { forEach, forEachObjIndexed } from 'ramda';
 import * as common from '@adobe/griffon-toolkit-common';
 import * as aep from '@adobe/griffon-toolkit-aep-mobile';
 
@@ -18,8 +18,8 @@ const references = [common, aep];
 
 export default (group) => {
   const matches = {};
-  R.forEach(
-    R.forEachObjIndexed((file, key) => {
+  forEach(
+    forEachObjIndexed((file, key) => {
       if (file.group === group) {
         matches[key] = file;
       }
