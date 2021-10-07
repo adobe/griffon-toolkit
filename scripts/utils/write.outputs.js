@@ -135,15 +135,15 @@ ${constants}
  * Retrieves a value from the object. You can provide either a path or an alias.
  *
  * @function
- * @param path or alias
+ * @param {string} alias Path or alias
  * @param {*} data Data to search
  * @returns {*}
  */
 const get = (alias, data) => {
-  const func = (data) => kit.search(path[alias] || alias, data);
+  const func = (data2) => kit.search(path[alias] || alias, data2);
   if (!data) { return func; }
   return func(data);
-}
+};
 ${gets}${writeMatches(matches, shortDesc)}
 ${make}
 ${mock}

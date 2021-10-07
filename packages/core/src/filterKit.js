@@ -10,7 +10,9 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { tryCatch, pipe, match as rMatch, nth, curry } from 'ramda';
+import {
+  tryCatch, pipe, match as rMatch, nth, curry
+} from 'ramda';
 import { match, combineAll } from './kit';
 
 /**
