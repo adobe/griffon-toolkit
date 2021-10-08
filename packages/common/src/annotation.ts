@@ -12,7 +12,7 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from './schemas/annotation.json';
+import schema from '../schemas/annotation.json';
 
 /**
  * Contains constants and functions for a Annotation Object.

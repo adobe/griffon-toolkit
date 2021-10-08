@@ -113,7 +113,7 @@ const path = {
   /** Is the user currently in the POI.<br />Path is `payload.ACPExtensionEventData.triggeringregion.useriswithin`. */
   within: 'payload.ACPExtensionEventData.triggeringregion.useriswithin',
 
-  /** The weight of the POI. It is used to prioritze POIs when a user is inside multile POIS.<br />Path is `payload.ACPExtensionEventData.triggeringregion.weight`. */
+  /** The weight of the POI. It is used to prioritize POIs when a user is inside multiple POIS.<br />Path is `payload.ACPExtensionEventData.triggeringregion.weight`. */
   weight: 'payload.ACPExtensionEventData.triggeringregion.weight',
 
   /** The type of action that took place. In this case it is entry.<br />Path is `payload.ACPExtensionEventData.regioneventtype`. */

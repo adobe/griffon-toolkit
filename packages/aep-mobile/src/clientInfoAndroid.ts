@@ -15,9 +15,9 @@ import * as kit from '@adobe/griffon-toolkit';
 import schema from '../schemas/clientInfoAndroid.json';
 
 /**
- * Contains constants and functions for a iOS Client Info Event.
+ * Contains constants and functions for a Android Client Info Event.
  *
- * The structure for a iOS Client Info Event is as follows:
+ * The structure for a Android Client Info Event is as follows:
  * ```
  * {
  *   payload: {
@@ -50,7 +50,7 @@ import schema from '../schemas/clientInfoAndroid.json';
  */
 
 /**
- * Paths for the keys on a iOS Client Info Event
+ * Paths for the keys on a Android Client Info Event
  *
  * @enum {string}
  */
@@ -130,7 +130,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const label = 'iOS Client Info Event';
+const label = 'Android Client Info Event';
 
 /**
  * A grouping for this object
@@ -138,7 +138,7 @@ const label = 'iOS Client Info Event';
 const group = 'event';
 
 /**
- * The value for `platform` for a iOS Client Info Event.
+ * The value for `platform` for a Android Client Info Event.
  *
  * Path is `payload,deviceInfo,Canonical platform name`.
  *
@@ -147,7 +147,7 @@ const group = 'event';
 const PLATFORM = 'Android';
 
 /**
- * The value for `type` for a iOS Client Info Event.
+ * The value for `type` for a Android Client Info Event.
  *
  * Path is `payload,type`.
  *
@@ -156,7 +156,7 @@ const PLATFORM = 'Android';
 const TYPE = 'connect';
 
 /**
- * The value for `rootType` for a iOS Client Info Event.
+ * The value for `rootType` for a Android Client Info Event.
  *
  * Path is `type`.
  *
@@ -175,139 +175,139 @@ const ROOT_TYPE = 'client';
 const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
 
 /**
- * Returns the `platform` from the iOS Client Info Event.
+ * Returns the `platform` from the Android Client Info Event.
  * This is the canonical name for the platform. Used for Griffon identifying if the device is iOS or Android.
  *
  * Path is `payload,deviceInfo,Canonical platform name`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {string}
  */
 const getPlatform = kit.search(path.platform);
 
 /**
- * Returns the `deviceName` from the iOS Client Info Event.
+ * Returns the `deviceName` from the Android Client Info Event.
  * This is the read from Build.MODEL, which is the end-user-visible name for the end product..
  *
  * Path is `payload,deviceInfo,Device name`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {string}
  */
 const getDeviceName = kit.search(path.deviceName);
 
 /**
- * Returns the `deviceType` from the iOS Client Info Event.
+ * Returns the `deviceType` from the Android Client Info Event.
  * This is the the style of interface to use on the current device..
  *
  * Path is `payload,deviceInfo,Device type`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {string}
  */
 const getDeviceType = kit.search(path.deviceType);
 
 /**
- * Returns the `manufacturer` from the iOS Client Info Event.
+ * Returns the `manufacturer` from the Android Client Info Event.
  * This is the the manufacturer of the product/hardware..
  *
  * Path is `payload,deviceInfo,Device manufacturer`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {string}
  */
 const getManufacturer = kit.search(path.manufacturer);
 
 /**
- * Returns the `os` from the iOS Client Info Event.
+ * Returns the `os` from the Android Client Info Event.
  * This is the the value is in the format "Android <OperatingSystemVersion>".
  *
  * Path is `payload,deviceInfo,Operating system`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {string}
  */
 const getOs = kit.search(path.os);
 
 /**
- * Returns the `screenSize` from the iOS Client Info Event.
+ * Returns the `screenSize` from the Android Client Info Event.
  * This is the phones display resolution in pixels (width x height).
  *
  * Path is `payload,deviceInfo,Screen size`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {string}
  */
 const getScreenSize = kit.search(path.screenSize);
 
 /**
- * Returns the `batteryLevel` from the iOS Client Info Event.
+ * Returns the `batteryLevel` from the Android Client Info Event.
  * This is the the battery charge level for the device. This is integer value ranging from 1 to 100. If unable to fetch battery value -1 is returned.
  *
  * Path is `payload,deviceInfo,Battery level`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {number}
  */
 const getBatteryLevel = kit.search(path.batteryLevel);
 
 /**
- * Returns the `locationEnabled` from the iOS Client Info Event.
+ * Returns the `locationEnabled` from the Android Client Info Event.
  * This is the the current enabled/disabled state of location for the device..
  *
  * Path is `payload,deviceInfo,Location service enabled`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {boolean}
  */
 const getLocationEnabled = kit.search(path.locationEnabled);
 
 /**
- * Returns the `locationAuth` from the iOS Client Info Event.
+ * Returns the `locationAuth` from the Android Client Info Event.
  * This is the tells the app’s authorization status for using location services..
  *
  * Path is `payload,deviceInfo,Location authorization status`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {string}
  */
 const getLocationAuth = kit.search(path.locationAuth);
 
 /**
- * Returns the `carrierName` from the iOS Client Info Event.
+ * Returns the `carrierName` from the Android Client Info Event.
  * This is the represents the carrier name. "Unknown" if this value is not available, or not valid on the platform..
  *
  * Path is `payload,deviceInfo,Carrier name`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {string}
  */
 const getCarrierName = kit.search(path.carrierName);
 
 /**
- * Returns the `lowPowerMode` from the iOS Client Info Event.
+ * Returns the `lowPowerMode` from the Android Client Info Event.
  * This is the indicates whether Low Power Mode is enabled on an iOS device..
  *
  * Path is `payload,deviceInfo,Low power mode enabled`.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {boolean}
  */
 const getLowPowerMode = kit.search(path.lowPowerMode);
 
 /**
- * Matcher can be used to find matching iOS Client Info Event objects.
+ * Matcher can be used to find matching Android Client Info Event objects.
  *
  * @see kit.match
  * @constant
@@ -320,16 +320,16 @@ const matcher = kit.combineAll([
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's iOS Client Info Event event.
+ * Tests the provided source against the matcher to see if it's Android Client Info Event event.
  *
  * @function
- * @param {object} source The iOS Client Info Event instance
+ * @param {object} source The Android Client Info Event instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a iOS Client Info Event with the const values set.
+ * Generates a Android Client Info Event with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -345,7 +345,7 @@ const make = (input) => kit.expandWithPaths(path, {
 });
 
 /**
- * Generates a iOS Client Info Event with some default values set.
+ * Generates a Android Client Info Event with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.

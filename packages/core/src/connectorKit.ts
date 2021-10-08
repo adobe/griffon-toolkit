@@ -25,7 +25,7 @@
  * @param {object} context Context to stringify
  * @returns {string} Stringified context
  */
-export const generateConnectionContextString = (context) => {
+export const generateConnectionContextString = (context: object) => {
   const keys = Object.keys(context).sort();
   let results = '';
   keys.forEach((key) => {
@@ -42,7 +42,7 @@ export const generateConnectionContextString = (context) => {
  * @param {object} context Context to encode
  * @returns {string} Encoded context
  */
-export const generateConnectionContextHash = (context) => btoa(generateConnectionContextString(context));
+export const generateConnectionContextHash = (context: object) => btoa(generateConnectionContextString(context));
 
 /**
  * Takes the namespace and context object creates a unique id based on that data
@@ -52,7 +52,7 @@ export const generateConnectionContextHash = (context) => btoa(generateConnectio
  * @param {object} context Context to stringify
  * @returns {string} unique connection id
  */
-export const generateConnectionId = (namespace, context) => {
+export const generateConnectionId = (namespace: string, context?: object) => {
   let uuid = namespace;
 
   if (context && typeof context === 'object' && Object.keys(context).length > 0) {

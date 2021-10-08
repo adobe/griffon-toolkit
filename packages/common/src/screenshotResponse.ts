@@ -12,7 +12,7 @@ governing permissions and limitations under the License.
 
 import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from './schemas/screenshotResponse.json';
+import schema from '../schemas/screenshotResponse.json';
 
 /**
  * Contains constants and functions for a Screenshot Response Event.

@@ -27,9 +27,9 @@ import jmespath from 'jmespath';
  * @param {*} data Data to search
  * @returns {*}
  */
-export const search = R.curry((path, data) => jmespath.search(data, path));
+export const search = R.curry((path: string, data: any) => jmespath.search(data, path));
 
-const isAlreadyWrapped = (str) => {
+const isAlreadyWrapped = (str: string) => {
   if (str.charAt(0) !== '(' || str.charAt(str.length - 1) !== ')') { return false; }
 
   let parens = 0;
@@ -43,9 +43,9 @@ const isAlreadyWrapped = (str) => {
   return true;
 };
 
-const hasAndOrOr = (str) => str.indexOf('&&') !== -1 || str.indexOf('||') !== -1;
+const hasAndOrOr = (str: string) => str.indexOf('&&') !== -1 || str.indexOf('||') !== -1;
 
-const wrapInParens = (str) => {
+const wrapInParens = (str: string) => {
   if (!hasAndOrOr(str) || isAlreadyWrapped(str)) { return str; }
   return `(${str})`;
 };
@@ -83,7 +83,7 @@ export const combineAll = combineMatchers(' && ');
  * @param {string[]} matchers valid JMESPath comparator expression
  * @returns {string} joined matcher
  */
-export const combineNone = (matchers) => `!(${combineAny(matchers)})`;
+export const combineNone = (matchers: string[]) => `!(${combineAny(matchers)})`;
 
 /**
  * Takes a matcher and returns the opposite (`!`) matcher.
@@ -92,7 +92,7 @@ export const combineNone = (matchers) => `!(${combineAny(matchers)})`;
  * @param {string} matcher valid JMESPath comparator expression
  * @returns {string} joined matcher
  */
-export const not = (matcher) => `!${wrapInParens(matcher)}`;
+export const not = (matcher: string) => `!${wrapInParens(matcher)}`;
 
 /**
  * Performs a JMESPath filter using the provided expression.
@@ -102,7 +102,7 @@ export const not = (matcher) => `!${wrapInParens(matcher)}`;
  * @param {object[]} data Data to search
  * @returns {*}
  */
-export const match = R.curry((matcher, data) => jmespath.search(data, `[?${matcher}]`));
+export const match = R.curry((matcher: string, data: object[]) => jmespath.search(data, `[?${matcher}]`));
 
 /**
  * Tests to see if the specified data matches the specified JMESPath filter.
@@ -112,7 +112,7 @@ export const match = R.curry((matcher, data) => jmespath.search(data, `[?${match
  * @param {object[]} data Item to match against
  * @returns {*}
  */
-export const isMatch = R.curry((matcher, data) => match(matcher, [data]).length > 0);
+export const isMatch = R.curry((matcher: string, data: object): boolean => match(matcher, [data]).length > 0);
 
 const processMods = (mods, data) => (
   typeof mods === 'function'
@@ -152,9 +152,15 @@ const processMods = (mods, data) => (
  * @see core.modifyBulk
  * @returns {*}
  */
-export const modify = R.curry((modifications, matcher, data) => R.map(
-  (item) => (isMatch(matcher, item) ? R.mergeDeepLeft(processMods(modifications, item), item) : item)
+export const modify = R.curry((modifications: object, matcher: string, data: object[]) => R.map(
+  (item: object) => (isMatch(matcher, item) ? R.mergeDeepLeft(processMods(modifications, item), item) : item)
 )(data));
+
+interface ModifyBulkInstructions {
+  matcher: string;
+  modifications?: object;
+  mods?: object;
+}
 
 /**
  * Performs a series of match and modify operations on the data. Takes an array
@@ -173,13 +179,13 @@ export const modify = R.curry((modifications, matcher, data) => R.map(
  * // result is [{ color: 'red' }, { name: 'Joe', color: 'red', gender: 'male' } ]
  *
  * @function
- * @param {string} instructions { matcher, modifications }
+ * @param {ModifyBulkInstructions[]} instructions { matcher, modifications }
  * @param {object[]} data Data to search
  * @see core.modify
  * @returns {*}
  */
-export const modifyBulk = R.curry((instructions, data) => R.map(
-  (item) => {
+export const modifyBulk = R.curry((instructions: ModifyBulkInstructions[], data: any[]) => R.map(
+  (item: any) => {
     let results = item;
     R.forEach(
       ({ matcher, modifications, mods }) => {
@@ -204,9 +210,9 @@ const PATH_RX = /(?<group>"[^"]*"|[^\n."]+)/g;
  * @returns {Array}
  */
 
-export const convertPath = (path) => R.pipe(
+export const convertPath = (path: string) => R.pipe(
   (pathIn) => pathIn.match(PATH_RX),
-  R.map((section) => {
+  R.map((section: string) => {
     const hasQuotes = section.match(IN_QUOTES_RX);
     return hasQuotes ? hasQuotes[1] : section;
   })
@@ -230,8 +236,8 @@ export const convertPath = (path) => R.pipe(
  * @see core.convertPath
  */
 export const expand = R.pipe(
-  R.reject(R.isNil),
   R.toPairs,
+  R.reject(R.isNil),
   R.reduce((acc, [path, value]) => R.mergeDeepLeft(
     R.assocPath(convertPath(path), value, {}),
     acc
@@ -259,8 +265,8 @@ export const expand = R.pipe(
  * @see kit.expand
  */
 export const expandWithPaths = R.curry((path, kvps) => R.pipe(
-  (data) => {
-    const mapped = {};
+  (data: object) => {
+    const mapped: Record<string, any> = {};
     R.forEachObjIndexed((value, key) => {
       const newKey = path[key] || key;
       mapped[newKey] = value;
