@@ -38,7 +38,7 @@ const path = {
   /** An object with custom data describing the annotation.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.<br />Path is `namespace`. */
+  /** This is to scope annotations and prevent overwrites from other plugins. The type is usually determined by the plugin writing the annotation.<br />Path is `namespace`. */
   namespace: 'namespace',
 
   /** Uniquely identifies each annotation.<br />Path is `uuid`. */
@@ -100,7 +100,7 @@ const getPayloadKey = kit.curry(
 
 /**
  * Returns the `namespace` from the Session Annotation Object.
- * This is the this is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.
+ * This is the this is to scope annotations and prevent overwrites from other plugins. The type is usually determined by the plugin writing the annotation.
  *
  * Path is `namespace`.
  *

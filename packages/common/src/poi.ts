@@ -86,7 +86,7 @@ const path = {
   /** Is the user currently in the POI.<br />Path is `useriswithin`. */
   within: 'useriswithin',
 
-  /** The weight of the POI. It is used to prioritze POIs when a user is inside multile POIS.<br />Path is `weight`. */
+  /** The weight of the POI. It is used to prioritize POIs when a user is inside multiple POIS.<br />Path is `weight`. */
   weight: 'weight'
 };
 
@@ -289,7 +289,7 @@ const getWithin = kit.search(path.within);
 
 /**
  * Returns the `weight` from the POI Object.
- * This is the the weight of the POI. It is used to prioritze POIs when a user is inside multile POIS.
+ * This is the the weight of the POI. It is used to prioritize POIs when a user is inside multiple POIS.
  *
  * Path is `weight`.
  *

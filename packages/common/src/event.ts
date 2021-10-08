@@ -211,7 +211,7 @@ const make = kit.expand;
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input?) => kit.expandWithPaths(path, {
+const mock = (input) => kit.expandWithPaths(path, {
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   rootType: 'generic',

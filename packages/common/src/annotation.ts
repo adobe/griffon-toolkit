@@ -38,7 +38,7 @@ const path = {
   /** An object with custom data describing the annotation.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** This is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.<br />Path is `type`. */
+  /** This is to scope annotations and prevent overwrites from other plugins. The type is usually determined by the plugin writing the annotation.<br />Path is `type`. */
   namespace: 'type',
 
   /** Uniquely identifies each annotation.<br />Path is `uuid`. */
@@ -100,7 +100,7 @@ const getPayloadKey = kit.curry(
 
 /**
  * Returns the `namespace` from the Annotation Object.
- * This is the this is to scope annotations and prevent overwrites from other plugins. The type is usually deteremined by the plugin writing the annotation.
+ * This is the this is to scope annotations and prevent overwrites from other plugins. The type is usually determined by the plugin writing the annotation.
  *
  * Path is `type`.
  *
@@ -143,7 +143,7 @@ const make = kit.expand;
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input?) => kit.expandWithPaths(path, {
+const mock = (input) => kit.expandWithPaths(path, {
   namespace: 'test_suite',
   uuid: '423',
   ...input

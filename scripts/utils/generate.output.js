@@ -213,7 +213,7 @@ export default (schema, outputFile, schemaMap) => {
     exports = [...exports, 'isMatch', 'matcher', ...expandedFull.exports];
   }
 
-  const namespace = outputFile.match(/src\/(.*).js/)[1];
+  const namespace = outputFile.match(/src\/(.*).ts/)[1];
 
   const depth = calculateDepth(schema, schemaMap);
 

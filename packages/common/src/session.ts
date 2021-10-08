@@ -178,7 +178,7 @@ const make = kit.expand;
  * @param {...Function} input Overrides
  * @returns {object}
  */
-const mock = (input?) => kit.expandWithPaths(path, {
+const mock = (input) => kit.expandWithPaths(path, {
   link: 'test://',
   firstName: 'John',
   lastName: 'Doe',

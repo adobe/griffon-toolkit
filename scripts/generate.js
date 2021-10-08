@@ -53,7 +53,7 @@ fs.readdirSync(packagePath).forEach((dirName) => {
  * Takes all the schema files and outputs a script file with the generated content.
  */
 R.mapObjIndexed((schemaName, schemaFile) => {
-  const outputFile = schemaFile.replace('schemas', 'src').replace('json', 'js');
+  const outputFile = schemaFile.replace('schemas', 'src').replace('json', 'ts');
   const { schema } = ajv.getSchema(schemaName);
   generateOutput(schema, outputFile, schemaMap);
 }, schemaFiles);
