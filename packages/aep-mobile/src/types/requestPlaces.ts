@@ -1,5 +1,3 @@
-import { RootGriffonEvent } from "./rootGriffonEvent";
-
 export interface RequestPlacesEventPayload {
     ACPExtensionEventData: {
         count: number;
@@ -10,6 +8,6 @@ export interface RequestPlacesEventPayload {
     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent';
 }
 
-export interface RequestPlacesEvent extends RootGriffonEvent {
+export interface RequestPlacesEvent {
     payload: RequestPlacesEventPayload;
 }

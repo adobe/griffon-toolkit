@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-export * from './filterKit';
+export * from './src/filterKit';
 export { curry } from 'ramda';
-export * from './kit';
-export * from './connectorKit';
+export * from './src/kit';
+export * from './src/connectorKit';
