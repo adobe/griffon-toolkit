@@ -38,7 +38,7 @@
     "generate": "npm run generate-code && npm run docs",
     "generate-code": "npx babel-node ./scripts/generate.js",
     "postinstall": "lerna bootstrap",
-    "build:make-index": "lerna exec --parallel --ignore @adobe/griffon-toolkit 'npx create-ts-index . -b -e=['test']'",
+    "build:make-index": "lerna exec --parallel --ignore @adobe/griffon-toolkit 'npx create-ts-index . -b -e test node_modules schemas'",
     "build:files": "lerna exec --parallel 'tsc'",
     "build": "npm run build:make-index && npm run build:files",
     "lint": "eslint \"**/*.js\"",
