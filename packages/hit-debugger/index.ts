@@ -1,5 +1,6 @@
-// @create-index
+// created from 'create-ts-index'
 
-export { default as hitDebuggerEvent } from './src/hitDebuggerEvent.js';
-
-export type { HitDebuggerEvent } from './src/types/hitDebuggerEvent';
+export * from './dist';
+export * from './node_modules';
+export * from './schemas';
+export * from './src';
