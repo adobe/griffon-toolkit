@@ -19,7 +19,8 @@ const references = [common, aep];
 export default (group) => {
   const matches = {};
   R.forEach(
-    R.forEachObjIndexed((file, key) => {
+    R.forEachObjIndexed((file: any, key: any) => {
+      console.log(file)
       if (file.group === group) {
         matches[key] = file;
       }

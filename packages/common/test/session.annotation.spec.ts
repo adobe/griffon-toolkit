@@ -23,7 +23,7 @@ describe('Annotation Tests', () => {
       })
     ]
   });
-  const genericSession = session.mock();
+  const genericSession = session.mock(null);
 
   it('can create paths', () => {
     const visibilityPath = sessionAnnotation.makeNamespacePath('visibility');

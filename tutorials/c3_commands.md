@@ -37,7 +37,7 @@ Since the majority of the code is auto generated, we don't require 100% test cov
 
 
 ### Build
-The build process will run [Babel](https://babeljs.io/) on all the files in [src](https://git.corp.adobe.com/dms-mobile/griffon-toolkit/blob/master/src/) and export them in `dist`. It also will generate an [index.js]((https://git.corp.adobe.com/dms-mobile/griffon-toolkit/blob/master/src/index.js) file that exports all the namespaces.
+The build process will run the [Typescript ](https://www.typescriptlang.org/) on all the files in [src](https://git.corp.adobe.com/dms-mobile/griffon-toolkit/blob/master/src/) and export them in `dist`. It also will generate an [index.js]((https://git.corp.adobe.com/dms-mobile/griffon-toolkit/blob/master/src/index.js) file that exports all the namespaces.
 
 To build, run:
 ```

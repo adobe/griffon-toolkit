@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 
 import * as kit from '@adobe/griffon-toolkit';
-import { event, annotation } from '../src';
+import { event, annotation } from '../';
 
 const makeHiddenAnnotation = (value = true) => annotation.mock({
   [annotation.path.namespace]: annotation.publicNamespace.visibility,

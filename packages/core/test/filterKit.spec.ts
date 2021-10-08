@@ -14,7 +14,7 @@ import {
   filterData,
   filterFromHash,
   filterToHash
-} from '../src';
+} from '../';
 
 import event from '../../common/src/event';
 import annotation from '../../common/src/annotation';

@@ -27,7 +27,7 @@ describe('Annotation Tests', () => {
         })
       ]
     });
-    const genericEvent = event.mock();
+    const genericEvent = event.mock(null);
 
     expect(kit.isMatch(hiddenPath, hiddenEvent)).toBe(true);
     expect(kit.isMatch(hiddenPath, genericEvent)).toBe(false);

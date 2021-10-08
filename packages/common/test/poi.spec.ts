@@ -25,6 +25,7 @@ describe('POI', () => {
 
     expect(Object.keys(poi.getMetadata(mock)).length).toBe(7);
 
+    //@ts-ignore
     const custom = poi.getCustomMetadata(mock);
     expect(Object.keys(custom).length).toBe(2);
     expect(custom.capacity).toBe(25);

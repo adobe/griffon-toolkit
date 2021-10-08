@@ -10,15 +10,15 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as kit from '../src';
+import * as kit from '../';
 import entry from '../../aep-mobile/src/placesEntry';
 import aep from '../../aep-mobile/src/mobileEvent';
 import annotation from '../../common/src/annotation';
 
 const mockEntry = entry.mock({
-  annotations: [annotation.mock()]
+  annotations: [annotation.mock(null)]
 });
-const mockAEP = aep.mock();
+const mockAEP = aep.mock(null);
 const events = [mockEntry, mockAEP];
 const matchAEP = aep.path.eventSource;
 

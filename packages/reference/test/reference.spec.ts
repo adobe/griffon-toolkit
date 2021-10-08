@@ -10,16 +10,17 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { findLabel, findGroup, classesForGroup } from '../src';
+//@ts-nocheck
+import { findLabel, findGroup, classesForGroup } from '../';
 import entry from '../../aep-mobile/src/placesEntry';
 import aep from '../../aep-mobile/src/mobileEvent';
 import event from '../../common/src/event';
 import command from '../../common/src/command';
 
-const mockEntry = entry.mock();
-const mockAEP = aep.mock();
-const mockEvent = event.mock();
-const mockCommand = command.mock();
+const mockEntry = entry.mock(null);
+const mockAEP = aep.mock(null);
+const mockEvent = event.mock(null);
+const mockCommand = command.mock(null);
 
 describe('findLabel', () => {
   it('gets a label for the provided event', () => {

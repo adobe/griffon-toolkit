@@ -24,16 +24,16 @@ const isProperSchemaSource = (source) => !!source.label && !!source.isMatch;
  * parentDepth.
  *
  * @function
- * @param {string} source The metadata to request
+ * @param {string} type The metadata to request
  * @param {object} source The object to match against
  * @returns {string} label
  */
-export default R.curry((type, source) => {
+export default R.curry((type: any, source: any) => {
   let matchDepth = -1;
   let match = '';
 
   R.forEach(
-    R.forEachObjIndexed((file) => {
+    R.forEachObjIndexed((file: any) => {
       if (isProperSchemaSource(file)
         && file.parentDepth > matchDepth
         && file.isMatch
