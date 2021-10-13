@@ -10,7 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
 import schema from '../schemas/edgeHitReceived.json';
 
@@ -132,11 +131,15 @@ const ROOT_TYPE = 'service';
  * Retrieves a value from the object. You can provide either a path or an alias.
  *
  * @function
- * @param path or alias
+ * @param {string} alias Path or alias
  * @param {*} data Data to search
  * @returns {*}
  */
-const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
+const get = (alias, data) => {
+  const func = (data2) => kit.search(path[alias] || alias, data2);
+  if (!data) { return func; }
+  return func(data);
+};
 
 /**
  * Returns the `attributes` from the Hit Received.

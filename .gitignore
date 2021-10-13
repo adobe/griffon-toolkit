@@ -6,6 +6,7 @@ build
 
 .cache
 .tmp
+.parcel-cache
 
 *.log
 

@@ -10,7 +10,21 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as R from 'ramda';
+import {
+  curry,
+  map,
+  pipe,
+  forEachObjIndexed,
+  mapObjIndexed,
+  join,
+  mergeDeepLeft,
+  forEach,
+  reject,
+  toPairs,
+  reduce,
+  assocPath,
+  isNil
+} from 'ramda';
 import jmespath from 'jmespath';
 
 /**
@@ -27,7 +41,7 @@ import jmespath from 'jmespath';
  * @param {*} data Data to search
  * @returns {*}
  */
-export const search = R.curry((path: string, data: any) => jmespath.search(data, path));
+export const search = curry((path: string, data: any) => jmespath.search(data, path));
 
 const isAlreadyWrapped = (str: string) => {
   if (str.charAt(0) !== '(' || str.charAt(str.length - 1) !== ')') { return false; }
@@ -50,9 +64,9 @@ const wrapInParens = (str: string) => {
   return `(${str})`;
 };
 
-export const combineMatchers = R.curry((joinStr, matchers) => R.pipe(
-  R.map(wrapInParens),
-  R.join(joinStr)
+export const combineMatchers = curry((joinStr, matchers) => pipe(
+  map(wrapInParens),
+  join(joinStr)
 )(matchers));
 
 /**
@@ -102,7 +116,7 @@ export const not = (matcher: string) => `!${wrapInParens(matcher)}`;
  * @param {object[]} data Data to search
  * @returns {*}
  */
-export const match = R.curry((matcher: string, data: object[]) => jmespath.search(data, `[?${matcher}]`));
+export const match = curry((matcher: string, data: object[]) => jmespath.search(data, `[?${matcher}]`));
 
 /**
  * Tests to see if the specified data matches the specified JMESPath filter.
@@ -112,15 +126,15 @@ export const match = R.curry((matcher: string, data: object[]) => jmespath.searc
  * @param {object[]} data Item to match against
  * @returns {*}
  */
-export const isMatch = R.curry((matcher: string, data: object): boolean => match(matcher, [data]).length > 0);
+export const isMatch = curry((matcher: string, data: object): boolean => match(matcher, [data]).length > 0);
 
 const processMods = (mods, data) => (
   typeof mods === 'function'
     ? mods(data)
     : Array.isArray(mods)
-      ? R.map((v) => processMods(v, data), mods)
+      ? map((v) => processMods(v, data), mods)
       : typeof mods === 'object'
-        ? R.mapObjIndexed((v) => processMods(v, data), mods)
+        ? mapObjIndexed((v) => processMods(v, data), mods)
         : mods
 );
 
@@ -152,8 +166,8 @@ const processMods = (mods, data) => (
  * @see core.modifyBulk
  * @returns {*}
  */
-export const modify = R.curry((modifications: object, matcher: string, data: object[]) => R.map(
-  (item: object) => (isMatch(matcher, item) ? R.mergeDeepLeft(processMods(modifications, item), item) : item)
+export const modify = curry((modifications: object, matcher: string, data: object[]) => map(
+  (item: object) => (isMatch(matcher, item) ? mergeDeepLeft(processMods(modifications, item), item) : item)
 )(data));
 
 interface ModifyBulkInstructions {
@@ -184,13 +198,13 @@ interface ModifyBulkInstructions {
  * @see core.modify
  * @returns {*}
  */
-export const modifyBulk = R.curry((instructions: ModifyBulkInstructions[], data: any[]) => R.map(
+export const modifyBulk = curry((instructions: ModifyBulkInstructions[], data: any[]) => map(
   (item: any) => {
     let results = item;
-    R.forEach(
+    forEach(
       ({ matcher, modifications, mods }) => {
         if (isMatch(matcher, item)) {
-          results = R.mergeDeepLeft(processMods(modifications || mods, item), results);
+          results = mergeDeepLeft(processMods(modifications || mods, item), results);
         }
       },
       instructions
@@ -210,9 +224,9 @@ const PATH_RX = /(?<group>"[^"]*"|[^\n."]+)/g;
  * @returns {Array}
  */
 
-export const convertPath = (path: string) => R.pipe(
+export const convertPath = (path: string) => pipe(
   (pathIn) => pathIn.match(PATH_RX),
-  R.map((section: string) => {
+  map((section: string) => {
     const hasQuotes = section.match(IN_QUOTES_RX);
     return hasQuotes ? hasQuotes[1] : section;
   })
@@ -235,11 +249,11 @@ export const convertPath = (path: string) => R.pipe(
  * core.expand({ 'size.width': 200, 'size.height': 300 });
  * @see core.convertPath
  */
-export const expand = R.pipe(
-  R.toPairs,
-  R.reject(R.isNil),
-  R.reduce((acc, [path, value]) => R.mergeDeepLeft(
-    R.assocPath(convertPath(path), value, {}),
+export const expand = pipe(
+  reject(isNil),
+  toPairs,
+  reduce((acc, [path, value]) => mergeDeepLeft(
+    assocPath(convertPath(path), value, {}),
     acc
   ), {})
 );
@@ -264,10 +278,10 @@ export const expand = R.pipe(
  * core.expandWithPath({ width: 200, height: 300 });
  * @see kit.expand
  */
-export const expandWithPaths = R.curry((path, kvps) => R.pipe(
-  (data: object) => {
+export const expandWithPaths = curry((path, kvps) => pipe(
+  (data) => {
     const mapped: Record<string, any> = {};
-    R.forEachObjIndexed((value, key) => {
+    forEachObjIndexed((value, key) => {
       const newKey = path[key] || key;
       mapped[newKey] = value;
     }, data);

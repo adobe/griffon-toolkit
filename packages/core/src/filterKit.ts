@@ -10,7 +10,9 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as R from 'ramda';
+import {
+  tryCatch, pipe, match as rMatch, nth, curry
+} from 'ramda';
 import { match, combineAll } from './kit';
 
 /**
@@ -28,10 +30,10 @@ const HASH_REGEX = /.*#filters=(.*)/;
  * @param {string} url Url to decode filters from
  * @returns {object} Filter object
  */
-const filterFromHash = R.tryCatch(
-  R.pipe(
-    R.match(HASH_REGEX),
-    R.nth(1),
+const filterFromHash = tryCatch(
+  pipe(
+    rMatch(HASH_REGEX),
+    nth(1),
     (a) => atob(a),
     JSON.parse
   ),
@@ -63,7 +65,7 @@ const filterToPath = (filters) => (Object.values(filters).length ? combineAll(Ob
  * This will take all these values and `&&` them together, so that each must pass for an
  * event to be valid.
  */
-const filterData = R.curry(
+const filterData = curry(
   (filters, data) => (Object.values(filters).length
     ? match(filterToPath(filters), data)
     : data)

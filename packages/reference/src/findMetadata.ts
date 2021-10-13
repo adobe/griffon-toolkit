@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as R from 'ramda';
+import { curry, forEach, forEachObjIndexed } from 'ramda';
 import * as common from '@adobe/griffon-toolkit-common';
 import * as aep from '@adobe/griffon-toolkit-aep-mobile';
 
@@ -28,12 +28,12 @@ const isProperSchemaSource = (source) => !!source.label && !!source.isMatch;
  * @param {object} source The object to match against
  * @returns {string} label
  */
-export default R.curry((type: any, source: any) => {
+export default curry((type, source) => {
   let matchDepth = -1;
   let match = '';
 
-  R.forEach(
-    R.forEachObjIndexed((file: any) => {
+  forEach(
+    forEachObjIndexed((file: any) => {
       if (isProperSchemaSource(file)
         && file.parentDepth > matchDepth
         && file.isMatch
