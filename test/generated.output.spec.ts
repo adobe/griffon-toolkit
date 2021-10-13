@@ -12,7 +12,7 @@ governing permissions and limitations under the License.
 
 // import jmespath from 'jmespath';
 import entry from '../packages/aep-mobile/src/placesEntry';
-import { PlacesEntry } from '../packages/aep-mobile/types';
+import { PlacesEntry } from '../packages/aep-mobile';
 import aep from '../packages/aep-mobile/src/mobileEvent';
 import root from '../packages/common/src/event';
 import configuration from '../packages/aep-mobile/src/configuration';
