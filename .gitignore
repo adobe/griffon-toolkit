@@ -13,3 +13,5 @@ build
 junit.xml
 src/index.js
 docs
+
+*.ts.bak

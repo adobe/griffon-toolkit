@@ -1,4 +1,4 @@
-// created from 'create-ts-index'
+// created from ctix
 
 export * from './analyticsResponse';
 export * from './clientInfoAndroid';
