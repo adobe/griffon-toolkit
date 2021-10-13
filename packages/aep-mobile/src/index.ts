@@ -34,3 +34,4 @@ export { default as startPlacesMonitor } from './startPlacesMonitor';
 export { default as trackAction } from './trackAction';
 export { default as trackMedia } from './trackMedia';
 export { default as trackState } from './trackState';
+export * from './types';

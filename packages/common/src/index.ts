@@ -12,3 +12,4 @@ export { default as reference } from './reference';
 export { default as screenshotResponse } from './screenshotResponse';
 export { default as session } from './session';
 export { default as sessionAnnotation } from './sessionAnnotation';
+export * from './types';
