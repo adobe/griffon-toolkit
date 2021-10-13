@@ -1,7 +1,7 @@
 import { ACPExtensionEventSource, ACPExtensionEventType, MobileEvent } from "./mobileEvent";
 
 /** Payload of the Configuration Update Event */
-export interface ConfigurationUpdateEventPayload {
+export type ConfigurationUpdateEventPayload = {
     ACPExtensionEventData: {
         /** The configuration values to write */
         'config.update': object;
@@ -11,6 +11,6 @@ export interface ConfigurationUpdateEventPayload {
 }
 
 /** Configuration Update */
-export interface ConfigurationUpdateEvent extends MobileEvent {
+export type ConfigurationUpdateEvent = MobileEvent & {
     payload: ConfigurationUpdateEventPayload;
 }

@@ -1,4 +1,6 @@
-export interface RequestPlacesEventPayload {
+import { GenericPlaces } from "./genericPlaces";
+
+export type RequestPlacesEventPayload = {
     ACPExtensionEventData: {
         count: number;
         latitude: number;
@@ -8,6 +10,6 @@ export interface RequestPlacesEventPayload {
     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent';
 }
 
-export interface RequestPlacesEvent {
+export type RequestPlacesEvent = GenericPlaces & {
     payload: RequestPlacesEventPayload;
 }

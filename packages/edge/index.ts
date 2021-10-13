@@ -2,3 +2,4 @@
 
 export * from './dist';
 export * from './src';
+export * from './types';

@@ -1,6 +1,6 @@
 import { ACPExtensionEventSource, ACPExtensionEventType, MobileEvent } from "./mobileEvent";
 
-export interface ConfigurationEventPayload {
+export type ConfigurationEventPayload = {
     ACPExtensionEventData: {
         /** The full list of current configuration values */
         'build.environment': string;
@@ -16,6 +16,6 @@ export interface ConfigurationEventPayload {
 }
 
 /** Configuration Event */
-export interface ConfigurationEvent extends MobileEvent {
+export type ConfigurationEvent = MobileEvent & {
     payload: ConfigurationEventPayload;
 }

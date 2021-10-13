@@ -2,7 +2,7 @@ import { GriffonEvent, GriffonEventType } from "./event";
 import { Location } from "./location";
 
 /** The payload of a Network Response Event */
-export interface NetworkResponsePayload {
+export type NetworkResponsePayload = {
     /** Whether the data was loaded from the browser cache. */
     fromCache?: boolean;
     /** The webpage that initiated the request. */
@@ -26,7 +26,7 @@ export interface NetworkResponsePayload {
 }
 
 /** Network Response */
-export interface NetworkResponse extends GriffonEvent {
+export type NetworkResponse = GriffonEvent & {
     payload?: NetworkResponsePayload; 
     /** The type of event. For network responses it's always 'netres'. */
     type: GriffonEventType.NETWORKRESPONSE;

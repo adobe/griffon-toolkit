@@ -2,7 +2,7 @@ import { GriffonEvent, GriffonEventType } from "./event";
 import { Location } from "./location";
 
 /** Network Request Payload */
-export interface NetworkRequestPayload {
+export type NetworkRequestPayload = {
     /** The posted body. This is a fully parsed object. */
     body?: object;
     /** The webpage that initiated the request. */
@@ -18,7 +18,7 @@ export interface NetworkRequestPayload {
 }
 
 /** Network Request */
-export interface NetworkRequest extends GriffonEvent {
+export type NetworkRequest = GriffonEvent & {
     payload?: NetworkRequestPayload;
     /** The type of event. For network requests it's always 'netreq'. */
     type: GriffonEventType.NETWORKREQUEST;

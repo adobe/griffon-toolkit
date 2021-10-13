@@ -1,7 +1,7 @@
 import { ACPExtensionEventSource, ACPExtensionEventType, MobileEvent } from "./mobileEvent";
 
 /** The payload of a AEP Edge Request Event */
-export interface EdgeRequestEventPayload {
+export type EdgeRequestEventPayload = {
     ACPExtensionEventData: {
         /** The dataset to apply the XDM data to */
         datasetId: string;
@@ -13,6 +13,6 @@ export interface EdgeRequestEventPayload {
 }
 
 /** AEP Edge Request */
-export interface EdgeRequestEvent extends MobileEvent {
+export type EdgeRequestEvent = MobileEvent & {
     payload: EdgeRequestEventPayload;
 }

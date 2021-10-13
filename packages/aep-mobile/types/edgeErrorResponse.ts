@@ -1,7 +1,7 @@
 import { ACPExtensionEventSource, ACPExtensionEventType, MobileEvent } from "./mobileEvent";
 
 /** AEP Edge Error Response Payload */
-export interface EdgeErrorResponseEventPayload {
+export type EdgeErrorResponseEventPayload = {
     ACPExtensionEventData: {
         /** The request ID of the edge service request */
         requestId: string;
@@ -15,6 +15,6 @@ export interface EdgeErrorResponseEventPayload {
 }
 
 /** AEP Edge Error Response */
-export interface EdgeErrorResponseEvent extends MobileEvent {
+export type EdgeErrorResponseEvent = MobileEvent & {
     payload: EdgeErrorResponseEventPayload;
 }

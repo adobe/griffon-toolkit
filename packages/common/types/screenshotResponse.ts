@@ -1,7 +1,7 @@
 import { GriffonEvent, GriffonEventType } from "./event";
 
 /** The payload of a Screenshot Response Event */
-export interface ScreenshotResponsePayload {
+export type ScreenshotResponsePayload = {
     /** ID returned from the blob service */
     blobId: string;
     /** Describes the type of blob content uploaded */
@@ -9,7 +9,7 @@ export interface ScreenshotResponsePayload {
 }
 
 /** Screenshot Response Event */
-export interface ScreenshotResponse extends GriffonEvent {
+export type ScreenshotResponse = GriffonEvent & {
     payload?: ScreenshotResponsePayload;
     type: GriffonEventType.BLOB;
 }

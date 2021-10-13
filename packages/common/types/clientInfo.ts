@@ -1,7 +1,7 @@
 import { GriffonEventType } from "./event";
 
 /** The payload of the Client Info Event */
-export interface ClientInfoPayload {
+export type ClientInfoPayload = {
     /** A map containing details about the settings of the application on which Griffon is registered */
     appSettings?: object;
     /** A map containing details about the connected device */
@@ -13,7 +13,7 @@ export interface ClientInfoPayload {
 }
 
 /** Client Info Event */
-export interface ClientInfo extends Event {
+export type ClientInfo = Event & {
     payload?: ClientInfoPayload;
     type: GriffonEventType.CLIENT;
 }

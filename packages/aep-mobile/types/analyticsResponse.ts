@@ -6,7 +6,7 @@ export interface HitHeaders {
     [key: string]: any;
 }
 
-export interface AnalyticsResponseEventPayload {
+export type AnalyticsResponseEventPayload = {
     ACPExtensionEventData: {
         /** The ID of the event that this is a response to */
         requestEventIdentifier: string;
@@ -22,6 +22,6 @@ export interface AnalyticsResponseEventPayload {
 }
 
 /** Analytics Response */
-export interface AnalyticsResponseEvent extends MobileEvent {
+export type AnalyticsResponseEvent = MobileEvent & {
     payload?: AnalyticsResponseEventPayload;
 }

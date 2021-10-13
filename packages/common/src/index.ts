@@ -1,6 +1,5 @@
 // created from 'create-ts-index'
 
-export * from './types';
 export * from './annotation';
 export * from './clientInfo';
 export * from './command';
