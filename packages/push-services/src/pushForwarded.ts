@@ -63,7 +63,7 @@ const path = {
   /** The body sent to the push service.<br />Path is `payload.body`. */
   body: 'payload.body',
 
-  /** The status returend from the service.<br />Path is `payload.status`. */
+  /** The status returned from the service.<br />Path is `payload.status`. */
   status: 'payload.status',
 
   /** The type of event.<br />Path is `type`. */
@@ -206,7 +206,7 @@ const getBody = kit.search(path.body);
 
 /**
  * Returns the `status` from the Push Request Forwarded.
- * This is the the status returend from the service.
+ * This is the the status returned from the service.
  *
  * Path is `payload,status`.
  *

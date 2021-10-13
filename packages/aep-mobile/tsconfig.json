@@ -5,5 +5,5 @@
     "outDir": "dist",
     "resolveJsonModule": true,
   },
-  "exclude": ["dist", "test"]
+  "exclude": ["node_modules", "dist", "test"]
 }

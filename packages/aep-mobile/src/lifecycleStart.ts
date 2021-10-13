@@ -130,7 +130,7 @@ const path = {
   /** The resolution of the device.<br />Path is `payload.ACPExtensionEventData.lifecyclecontextdata.resolution`. */
   resolution: 'payload.ACPExtensionEventData.lifecyclecontextdata.resolution',
 
-  /** Used in calculdating length of session.<br />Path is `payload.ACPExtensionEventData.lifecyclecontextdata.ignoredsessionlength`. */
+  /** Used in calculating length of session.<br />Path is `payload.ACPExtensionEventData.lifecyclecontextdata.ignoredsessionlength`. */
   ignoredSessionLength: 'payload.ACPExtensionEventData.lifecyclecontextdata.ignoredsessionlength',
 
   /** The version of the OS.<br />Path is `payload.ACPExtensionEventData.lifecyclecontextdata.osversion`. */
@@ -469,7 +469,7 @@ const getResolution = kit.search(path.resolution);
 
 /**
  * Returns the `ignoredSessionLength` from the Lifecycle Start.
- * This is the used in calculdating length of session.
+ * This is the used in calculating length of session.
  *
  * Path is `payload,ACPExtensionEventData,lifecyclecontextdata,ignoredsessionlength`.
  *
