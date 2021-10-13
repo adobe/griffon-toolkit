@@ -12,6 +12,7 @@ governing permissions and limitations under the License.
 
 // import jmespath from 'jmespath';
 import entry from '../packages/aep-mobile/src/placesEntry';
+import { PlacesEntry } from '../packages/aep-mobile/types';
 import aep from '../packages/aep-mobile/src/mobileEvent';
 import root from '../packages/common/src/event';
 import configuration from '../packages/aep-mobile/src/configuration';
@@ -28,17 +29,17 @@ describe('Test Auto Generated Output', () => {
     expect(Object.keys(entry.path).length).toBe(29);
   });
   it('creates a make command', () => {
-    expect(root.make()).toEqual({});
+    expect(root.make({})).toEqual({});
 
-    const entryEvent = entry.make();
+    const entryEvent = entry.make(null) as PlacesEntry;
     expect(Object.keys(entryEvent.payload).length).toBe(3);
     expect(entry.getRegionEventType(entryEvent)).toBe('entry');
   });
   it('matches against matchers', () => {
     const events = [
-      entry.mock(),
-      aep.mock(),
-      root.mock()
+      entry.mock({}),
+      aep.mock({}),
+      root.mock({})
     ];
     expect(entry.isMatch(events[0])).toBe(true);
     expect(entry.isMatch(events[1])).toBe(false);
@@ -47,7 +48,7 @@ describe('Test Auto Generated Output', () => {
     expect(entry.REGION_EVENT_TYPE).toBe('entry');
   });
   it('exports getters', () => {
-    const mock = root.mock();
+    const mock = root.mock({});
     expect(root.getClientId(mock)).toBe('appleABC');
     expect(root.getRootType(mock)).toBe('generic');
   });
