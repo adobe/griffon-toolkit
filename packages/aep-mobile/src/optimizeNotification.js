@@ -10,23 +10,21 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import * as R from 'ramda';
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/propositionRequest.json';
+import schema from '../schemas/optimizeNotification.json';
 
 /**
- * Contains constants and functions for a Update Proposition.
+ * Contains constants and functions for a Notification From the Optimize Extension.
  *
- * The structure for a Update Proposition is as follows:
+ * The structure for a Notification From the Optimize Extension is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       requesttype: <string>,
- *       decisionscopes: <array>,
+ *       propositions: <array>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.offerdecisioning'
+ *     ACPExtensionEventSource: 'com.adobe.eventsource.notification'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.optimize'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -40,11 +38,11 @@ import schema from '../schemas/propositionRequest.json';
  * }
  * ```
  *
- * @namespace propositionRequest
+ * @namespace optimizeNotification
  */
 
 /**
- * Paths for the keys on a Update Proposition
+ * Paths for the keys on a Notification From the Optimize Extension
  *
  * @enum {string}
  */
@@ -55,11 +53,8 @@ const path = {
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** The type of offer request being made.<br />Path is `payload.ACPExtensionEventData.requesttype`. */
-  requesttype: 'payload.ACPExtensionEventData.requesttype',
-
-  /** The XDM data send to the server.<br />Path is `payload.ACPExtensionEventData.decisionscopes`. */
-  decisionscopes: 'payload.ACPExtensionEventData.decisionscopes',
+  /** The resulting propositions received from the edge.<br />Path is `payload.ACPExtensionEventData.propositions`. */
+  propositions: 'payload.ACPExtensionEventData.propositions',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -106,7 +101,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const label = 'Update Proposition';
+const label = 'Notification From the Optimize Extension';
 
 /**
  * A grouping for this object
@@ -114,25 +109,25 @@ const label = 'Update Proposition';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a Update Proposition.
+ * The value for `eventSource` for a Notification From the Optimize Extension.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventsource.notification';
 
 /**
- * The value for `eventType` for a Update Proposition.
+ * The value for `eventType` for a Notification From the Optimize Extension.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.offerdecisioning';
+const EVENT_TYPE = 'com.adobe.eventtype.optimize';
 
 /**
- * The value for `rootType` for a Update Proposition.
+ * The value for `rootType` for a Notification From the Optimize Extension.
  *
  * Path is `type`.
  *
@@ -144,59 +139,51 @@ const ROOT_TYPE = 'generic';
  * Retrieves a value from the object. You can provide either a path or an alias.
  *
  * @function
- * @param path or alias
+ * @param {string} alias Path or alias
  * @param {*} data Data to search
  * @returns {*}
  */
-const get = R.curry((alias, data) => kit.search(path[alias] || alias, data));
+const get = (alias, data) => {
+  const func = (data2) => kit.search(path[alias] || alias, data2);
+  if (!data) { return func; }
+  return func(data);
+};
 
 /**
- * Returns the `requesttype` from the Update Proposition.
- * This is the the type of offer request being made.
+ * Returns the `propositions` from the Notification From the Optimize Extension.
+ * This is the the resulting propositions received from the edge.
  *
- * Path is `payload,ACPExtensionEventData,requesttype`.
- *
- * @function
- * @param {object} source The Update Proposition instance
- * @returns {string}
- */
-const getRequesttype = kit.search(path.requesttype);
-
-/**
- * Returns the `decisionscopes` from the Update Proposition.
- * This is the the XDM data send to the server.
- *
- * Path is `payload,ACPExtensionEventData,decisionscopes`.
+ * Path is `payload,ACPExtensionEventData,propositions`.
  *
  * @function
- * @param {object} source The Update Proposition instance
+ * @param {object} source The Notification From the Optimize Extension instance
  * @returns {Array}
  */
-const getDecisionscopes = kit.search(path.decisionscopes);
+const getPropositions = kit.search(path.propositions);
 
 /**
- * Matcher can be used to find matching Update Proposition objects.
+ * Matcher can be used to find matching Notification From the Optimize Extension objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.offerdecisioning`',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.notification`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.optimize`',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Update Proposition event.
+ * Tests the provided source against the matcher to see if it's Notification From the Optimize Extension event.
  *
  * @function
- * @param {object} source The Update Proposition instance
+ * @param {object} source The Notification From the Optimize Extension instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Update Proposition with the const values set.
+ * Generates a Notification From the Optimize Extension with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -205,14 +192,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.offerdecisioning',
+  eventSource: 'com.adobe.eventsource.notification',
+  eventType: 'com.adobe.eventtype.optimize',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a Update Proposition with some default values set.
+ * Generates a Notification From the Optimize Extension with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -222,10 +209,9 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  requesttype: 'updatedecisions',
-  decisionscopes: [{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }],
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.offerdecisioning',
+  propositions: [{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }, { 'id': 'abcd', scope: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }],
+  eventSource: 'com.adobe.eventsource.notification',
+  eventType: 'com.adobe.eventtype.optimize',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -249,8 +235,7 @@ export default {
   schema,
   get,
   ...customExports,
-  getRequesttype,
-  getDecisionscopes,
+  getPropositions,
   isMatch,
   matcher,
   EVENT_SOURCE,
