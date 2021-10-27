@@ -209,7 +209,7 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  propositions: [{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }, { 'id': 'abcd', scope: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }],
+  propositions: [{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }, { id: 'abcd', scope: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }],
   eventSource: 'com.adobe.eventsource.notification',
   eventType: 'com.adobe.eventtype.optimize',
   rootType: 'generic',

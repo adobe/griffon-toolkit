@@ -16,7 +16,7 @@
             "propositions": {
               "description": "The resulting propositions received from the edge",
               "type": "array",
-              "mock": "[{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }, { 'id': 'abcd', scope: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }]"
+              "mock": "[{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }, { id: 'abcd', scope: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }]"
             }
           },
           "required": [ "propositions" ]
