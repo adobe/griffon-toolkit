@@ -1,0 +1,43 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/propositionRequest",
+  "shortDesc": "Update Proposition",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "requesttype": {
+              "description": "The type of offer request being made",
+              "type": "string",
+              "mock": "updatedecisions"
+            },
+            "decisionscopes": {
+              "description": "The XDM data send to the server",
+              "type": "array",
+              "mock": "[{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }]"
+            }
+          },
+          "required": [ "requesttype", "decisionscopes" ]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.offerdecisioning"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}
