@@ -38,7 +38,7 @@
     "docs": "rm -rf docs; jsdoc -c .jsdoc.json --package ''",
     "postdocs": "mv -f docs-temp/griffon-toolkit-root/* docs; rm -rf docs-temp",
     "generate": "npm run generate-code && npm run docs",
-    "generate-code": "npx babel-node ./scripts/generate.js",
+    "generate-code": "npx babel-node ./scripts/generate.js && rm -rf tmp",
     "postinstall": "lerna bootstrap",
     "build:make-index": "lerna exec --parallel --ignore @adobe/griffon-toolkit 'npx ctix create ./tsconfig.json'",
     "build:files": "lerna exec --parallel 'tsc'",

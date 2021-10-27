@@ -64,6 +64,3 @@ R.mapObjIndexed((schemaName, schemaFile) => {
   const { schema } = ajv.getSchema(schemaName);
   generateOutput(schema, outputFile, schemaMap, typeFiles[schemaName]);
 }, schemaFiles);
-
-fs.emptyDirSync(TEMP_DIR);
-fs.removeSync(TEMP_DIR);
