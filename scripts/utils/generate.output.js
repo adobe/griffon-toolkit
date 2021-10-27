@@ -34,6 +34,7 @@ import {
   CUSTOM_CONTENT_END,
   writeFile
 } from './shared';
+import { generateTypeDefinition } from './types';
 
 const fs = require('fs');
 
@@ -198,7 +199,7 @@ const calculateDepth = (schema, schemaMap, depth = 0) => {
 /*
  * Takes the provided schema, generates the content, and writes it to disk.
  */
-export default (schema, outputFile, schemaMap) => {
+export default (schema, outputFile, schemaMap, typeFilePath) => {
   const expanded = expandMyProperties({
     properties: schema.properties,
     parent: schema.shortDesc
@@ -237,4 +238,7 @@ export default (schema, outputFile, schemaMap) => {
   });
 
   writeFile(outputFile, output);
+
+  const typeFile = fs.readFileSync(typeFilePath, 'utf-8');
+  generateTypeDefinition(JSON.parse(typeFile), outputFile.replace('src', 'src/types'));
 };
