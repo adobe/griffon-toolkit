@@ -18,6 +18,10 @@
               "type": "string",
               "mock": "abcdefg"
             },
+            "query": {
+              "description": "Data to request from the edge",
+              "type": "object"
+            },
             "xdm": {
               "description": "The XDM data send to the server",
               "type": "object",
