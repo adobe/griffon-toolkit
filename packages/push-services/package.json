@@ -21,8 +21,5 @@
     "main": {
       "optimize": false
     }
-  },
-  "devDependencies": {
-    "@babel/core": "^7.15.8"
   }
 }
