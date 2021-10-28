@@ -11,22 +11,20 @@ governing permissions and limitations under the License.
 */
 
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/edgeRequest.json';
+import schema from '../schemas/optimizeNotification.json';
 
 /**
- * Contains constants and functions for a AEP Edge Request.
+ * Contains constants and functions for a Notification From the Optimize Extension.
  *
- * The structure for a AEP Edge Request is as follows:
+ * The structure for a Notification From the Optimize Extension is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       datasetId: <string>,
- *       query: <object>,
- *       xdm: <object>,
+ *       propositions: <array>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.edge'
+ *     ACPExtensionEventSource: 'com.adobe.eventsource.notification'
+ *     ACPExtensionEventType: 'com.adobe.eventtype.optimize'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -40,11 +38,11 @@ import schema from '../schemas/edgeRequest.json';
  * }
  * ```
  *
- * @namespace edgeRequest
+ * @namespace optimizeNotification
  */
 
 /**
- * Paths for the keys on a AEP Edge Request
+ * Paths for the keys on a Notification From the Optimize Extension
  *
  * @enum {string}
  */
@@ -55,14 +53,8 @@ const path = {
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** The dataset to apply the XDM data to.<br />Path is `payload.ACPExtensionEventData.datasetId`. */
-  datasetId: 'payload.ACPExtensionEventData.datasetId',
-
-  /** Data to request from the edge.<br />Path is `payload.ACPExtensionEventData.query`. */
-  query: 'payload.ACPExtensionEventData.query',
-
-  /** The XDM data send to the server.<br />Path is `payload.ACPExtensionEventData.xdm`. */
-  xdm: 'payload.ACPExtensionEventData.xdm',
+  /** The resulting propositions received from the edge.<br />Path is `payload.ACPExtensionEventData.propositions`. */
+  propositions: 'payload.ACPExtensionEventData.propositions',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -109,7 +101,7 @@ const parentDepth = 2;
 /**
  * A label that can be used when describing this object
  */
-const label = 'AEP Edge Request';
+const label = 'Notification From the Optimize Extension';
 
 /**
  * A grouping for this object
@@ -117,25 +109,25 @@ const label = 'AEP Edge Request';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a AEP Edge Request.
+ * The value for `eventSource` for a Notification From the Optimize Extension.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventsource.notification';
 
 /**
- * The value for `eventType` for a AEP Edge Request.
+ * The value for `eventType` for a Notification From the Optimize Extension.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.edge';
+const EVENT_TYPE = 'com.adobe.eventtype.optimize';
 
 /**
- * The value for `rootType` for a AEP Edge Request.
+ * The value for `rootType` for a Notification From the Optimize Extension.
  *
  * Path is `type`.
  *
@@ -158,90 +150,40 @@ const get = (alias, data) => {
 };
 
 /**
- * Returns the `datasetId` from the AEP Edge Request.
- * This is the the dataset to apply the XDM data to.
+ * Returns the `propositions` from the Notification From the Optimize Extension.
+ * This is the the resulting propositions received from the edge.
  *
- * Path is `payload,ACPExtensionEventData,datasetId`.
- *
- * @function
- * @param {object} source The AEP Edge Request instance
- * @returns {string}
- */
-const getDatasetId = kit.search(path.datasetId);
-
-/**
- * Returns the `query` from the AEP Edge Request.
- * This is the data to request from the edge.
- *
- * Path is `payload,ACPExtensionEventData,query`.
+ * Path is `payload,ACPExtensionEventData,propositions`.
  *
  * @function
- * @param {object} source The AEP Edge Request instance
- * @returns {object}
+ * @param {object} source The Notification From the Optimize Extension instance
+ * @returns {Array}
  */
-const getQuery = kit.search(path.query);
+const getPropositions = kit.search(path.propositions);
 
 /**
- * Returns the data using the specified path from the query
- * of the AEP Edge Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The AEP Edge Request instance
- * @returns {*}
- */
-const getQueryKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.query}.${searchPath}`, source)
-);
-
-/**
- * Returns the `xdm` from the AEP Edge Request.
- * This is the the XDM data send to the server.
- *
- * Path is `payload,ACPExtensionEventData,xdm`.
- *
- * @function
- * @param {object} source The AEP Edge Request instance
- * @returns {object}
- */
-const getXdm = kit.search(path.xdm);
-
-/**
- * Returns the data using the specified path from the xdm
- * of the AEP Edge Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The AEP Edge Request instance
- * @returns {*}
- */
-const getXdmKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.xdm}.${searchPath}`, source)
-);
-
-/**
- * Matcher can be used to find matching AEP Edge Request objects.
+ * Matcher can be used to find matching Notification From the Optimize Extension objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`',
+  'payload.ACPExtensionEventSource==`com.adobe.eventsource.notification`',
+  'payload.ACPExtensionEventType==`com.adobe.eventtype.optimize`',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's AEP Edge Request event.
+ * Tests the provided source against the matcher to see if it's Notification From the Optimize Extension event.
  *
  * @function
- * @param {object} source The AEP Edge Request instance
+ * @param {object} source The Notification From the Optimize Extension instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a AEP Edge Request with the const values set.
+ * Generates a Notification From the Optimize Extension with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -250,14 +192,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.edge',
+  eventSource: 'com.adobe.eventsource.notification',
+  eventType: 'com.adobe.eventtype.optimize',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a AEP Edge Request with some default values set.
+ * Generates a Notification From the Optimize Extension with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -267,10 +209,9 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  datasetId: 'abcdefg',
-  xdm: { eventType: 'commerce.purchases' },
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.edge',
+  propositions: [{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }, { id: 'abcd', scope: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }],
+  eventSource: 'com.adobe.eventsource.notification',
+  eventType: 'com.adobe.eventtype.optimize',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
@@ -294,11 +235,7 @@ export default {
   schema,
   get,
   ...customExports,
-  getDatasetId,
-  getQuery,
-  getQueryKey,
-  getXdm,
-  getXdmKey,
+  getPropositions,
   isMatch,
   matcher,
   EVENT_SOURCE,

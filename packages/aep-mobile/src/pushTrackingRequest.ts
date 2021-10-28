@@ -39,6 +39,7 @@ import schema from '../schemas/pushTrackingRequest.json';
  *         },
  *       },
  *       datasetId: <string>,
+ *       query: <object>,
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
  *     ACPExtensionEventType: 'com.adobe.eventtype.edge'
@@ -97,6 +98,9 @@ const path = {
 
   /** The dataset to apply the XDM data to.<br />Path is `payload.ACPExtensionEventData.datasetId`. */
   datasetId: 'payload.ACPExtensionEventData.datasetId',
+
+  /** Data to request from the edge.<br />Path is `payload.ACPExtensionEventData.query`. */
+  query: 'payload.ACPExtensionEventData.query',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',

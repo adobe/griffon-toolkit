@@ -11,21 +11,22 @@ governing permissions and limitations under the License.
 */
 
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/edgeRequest.json';
+import schema from '../schemas/personalizationEdgeResponse.json';
 
 /**
- * Contains constants and functions for a AEP Edge Request.
+ * Contains constants and functions for a Edge Personalization Request.
  *
- * The structure for a AEP Edge Request is as follows:
+ * The structure for a Edge Personalization Request is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
- *       datasetId: <string>,
- *       query: <object>,
- *       xdm: <object>,
+ *       type: 'personalization:decisions'
+ *       requestId: <string>,
+ *       requestEventId: <string>,
+ *       payload: <array>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
+ *     ACPExtensionEventSource: <string>,
  *     ACPExtensionEventType: 'com.adobe.eventtype.edge'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
@@ -40,11 +41,11 @@ import schema from '../schemas/edgeRequest.json';
  * }
  * ```
  *
- * @namespace edgeRequest
+ * @namespace personalizationEdgeResponse
  */
 
 /**
- * Paths for the keys on a AEP Edge Request
+ * Paths for the keys on a Edge Personalization Request
  *
  * @enum {string}
  */
@@ -55,14 +56,17 @@ const path = {
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** The dataset to apply the XDM data to.<br />Path is `payload.ACPExtensionEventData.datasetId`. */
-  datasetId: 'payload.ACPExtensionEventData.datasetId',
+  /** The type of request that was made.<br />Path is `payload.ACPExtensionEventData.type`. */
+  requestType: 'payload.ACPExtensionEventData.type',
 
-  /** Data to request from the edge.<br />Path is `payload.ACPExtensionEventData.query`. */
-  query: 'payload.ACPExtensionEventData.query',
+  /** The request ID of the edge service request.<br />Path is `payload.ACPExtensionEventData.requestId`. */
+  requestId: 'payload.ACPExtensionEventData.requestId',
 
-  /** The XDM data send to the server.<br />Path is `payload.ACPExtensionEventData.xdm`. */
-  xdm: 'payload.ACPExtensionEventData.xdm',
+  /** The event ID of the event that this is a response to.<br />Path is `payload.ACPExtensionEventData.requestEventId`. */
+  requestEventId: 'payload.ACPExtensionEventData.requestEventId',
+
+  /** The information received in the response.<br />Path is `payload.ACPExtensionEventData.payload`. */
+  requestPayload: 'payload.ACPExtensionEventData.payload',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -104,12 +108,12 @@ const path = {
  *
  * @constant
  */
-const parentDepth = 2;
+const parentDepth = 3;
 
 /**
  * A label that can be used when describing this object
  */
-const label = 'AEP Edge Request';
+const label = 'Edge Personalization Request';
 
 /**
  * A grouping for this object
@@ -117,16 +121,16 @@ const label = 'AEP Edge Request';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a AEP Edge Request.
+ * The value for `requestType` for a Edge Personalization Request.
  *
- * Path is `payload,ACPExtensionEventSource`.
+ * Path is `payload,ACPExtensionEventData,type`.
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const REQUEST_TYPE = 'personalization:decisions';
 
 /**
- * The value for `eventType` for a AEP Edge Request.
+ * The value for `eventType` for a Edge Personalization Request.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
@@ -135,7 +139,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
 const EVENT_TYPE = 'com.adobe.eventtype.edge';
 
 /**
- * The value for `rootType` for a AEP Edge Request.
+ * The value for `rootType` for a Edge Personalization Request.
  *
  * Path is `type`.
  *
@@ -158,90 +162,29 @@ const get = (alias, data) => {
 };
 
 /**
- * Returns the `datasetId` from the AEP Edge Request.
- * This is the the dataset to apply the XDM data to.
- *
- * Path is `payload,ACPExtensionEventData,datasetId`.
- *
- * @function
- * @param {object} source The AEP Edge Request instance
- * @returns {string}
- */
-const getDatasetId = kit.search(path.datasetId);
-
-/**
- * Returns the `query` from the AEP Edge Request.
- * This is the data to request from the edge.
- *
- * Path is `payload,ACPExtensionEventData,query`.
- *
- * @function
- * @param {object} source The AEP Edge Request instance
- * @returns {object}
- */
-const getQuery = kit.search(path.query);
-
-/**
- * Returns the data using the specified path from the query
- * of the AEP Edge Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The AEP Edge Request instance
- * @returns {*}
- */
-const getQueryKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.query}.${searchPath}`, source)
-);
-
-/**
- * Returns the `xdm` from the AEP Edge Request.
- * This is the the XDM data send to the server.
- *
- * Path is `payload,ACPExtensionEventData,xdm`.
- *
- * @function
- * @param {object} source The AEP Edge Request instance
- * @returns {object}
- */
-const getXdm = kit.search(path.xdm);
-
-/**
- * Returns the data using the specified path from the xdm
- * of the AEP Edge Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The AEP Edge Request instance
- * @returns {*}
- */
-const getXdmKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.xdm}.${searchPath}`, source)
-);
-
-/**
- * Matcher can be used to find matching AEP Edge Request objects.
+ * Matcher can be used to find matching Edge Personalization Request objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
+  'payload.ACPExtensionEventData.type==`personalization:decisions`',
+  'payload.ACPExtensionEventSource!=`com.adobe.eventsource.errorresponsecontent` && payload.ACPExtensionEventSource!=`com.adobe.eventsource.requestcontent`',
   'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's AEP Edge Request event.
+ * Tests the provided source against the matcher to see if it's Edge Personalization Request event.
  *
  * @function
- * @param {object} source The AEP Edge Request instance
+ * @param {object} source The Edge Personalization Request instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a AEP Edge Request with the const values set.
+ * Generates a Edge Personalization Request with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -250,14 +193,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
+  requestType: 'personalization:decisions',
   eventType: 'com.adobe.eventtype.edge',
   rootType: 'generic',
   ...input
 });
 
 /**
- * Generates a AEP Edge Request with some default values set.
+ * Generates a Edge Personalization Request with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -267,9 +210,10 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  datasetId: 'abcdefg',
-  xdm: { eventType: 'commerce.purchases' },
-  eventSource: 'com.adobe.eventsource.requestcontent',
+  requestType: 'personalization:decisions',
+  requestId: 'BC123-8901-1234-AAFF-580993AC6258',
+  requestEventId: 'abc-efg',
+  eventSource: 'com.adobe.eventsource.responsecontent',
   eventType: 'com.adobe.eventtype.edge',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
@@ -294,14 +238,9 @@ export default {
   schema,
   get,
   ...customExports,
-  getDatasetId,
-  getQuery,
-  getQueryKey,
-  getXdm,
-  getXdmKey,
   isMatch,
   matcher,
-  EVENT_SOURCE,
+  REQUEST_TYPE,
   EVENT_TYPE,
   ROOT_TYPE,
   label,

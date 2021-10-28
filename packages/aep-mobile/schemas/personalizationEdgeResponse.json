@@ -1,0 +1,29 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/personalizationEdgeResponse",
+  "shortDesc": "Edge Personalization Request",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/edgeResponse" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "type": {
+              "inherit": true,
+              "const": "personalization:decisions"
+            }
+          },
+          "required": [ "requestEventId", "type" ]
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

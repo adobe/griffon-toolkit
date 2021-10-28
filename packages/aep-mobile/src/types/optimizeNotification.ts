@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type EdgeRequest = {
+export type OptimizeNotification = {
   /**
    * Array of Annotation objects
    */
@@ -53,25 +53,13 @@ export type EdgeRequest = {
   payload?: {
     ACPExtensionEventData: {
       /**
-       * The dataset to apply the XDM data to
+       * The resulting propositions received from the edge
        */
-      datasetId: string;
-      /**
-       * Data to request from the edge
-       */
-      query?: {
-        [k: string]: unknown;
-      };
-      /**
-       * The XDM data send to the server
-       */
-      xdm: {
-        [k: string]: unknown;
-      };
+      propositions: unknown[];
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.requestcontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.edge";
+    ACPExtensionEventSource: "com.adobe.eventsource.notification";
+    ACPExtensionEventType: "com.adobe.eventtype.optimize";
     [k: string]: unknown;
   };
   [k: string]: unknown;
