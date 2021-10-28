@@ -56,8 +56,8 @@ const path = {
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
-  /** The type of request that was made.<br />Path is `payload.ACPExtensionEventData.type`. */
-  requestType: 'payload.ACPExtensionEventData.type',
+  /** The type of response being returned.<br />Path is `payload.ACPExtensionEventData.type`. */
+  responseType: 'payload.ACPExtensionEventData.type',
 
   /** The request ID of the edge service request.<br />Path is `payload.ACPExtensionEventData.requestId`. */
   requestId: 'payload.ACPExtensionEventData.requestId',
@@ -66,7 +66,7 @@ const path = {
   requestEventId: 'payload.ACPExtensionEventData.requestEventId',
 
   /** The information received in the response.<br />Path is `payload.ACPExtensionEventData.payload`. */
-  requestPayload: 'payload.ACPExtensionEventData.payload',
+  responsePayload: 'payload.ACPExtensionEventData.payload',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -121,13 +121,13 @@ const label = 'Edge Personalization Request';
 const group = 'event';
 
 /**
- * The value for `requestType` for a Edge Personalization Request.
+ * The value for `responseType` for a Edge Personalization Request.
  *
  * Path is `payload,ACPExtensionEventData,type`.
  *
  * @constant
  */
-const REQUEST_TYPE = 'personalization:decisions';
+const RESPONSE_TYPE = 'personalization:decisions';
 
 /**
  * The value for `eventType` for a Edge Personalization Request.
@@ -193,7 +193,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  requestType: 'personalization:decisions',
+  responseType: 'personalization:decisions',
   eventType: 'com.adobe.eventtype.edge',
   rootType: 'generic',
   ...input
@@ -210,7 +210,7 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  requestType: 'personalization:decisions',
+  responseType: 'personalization:decisions',
   requestId: 'BC123-8901-1234-AAFF-580993AC6258',
   requestEventId: 'abc-efg',
   eventSource: 'com.adobe.eventsource.responsecontent',
@@ -240,7 +240,7 @@ export default {
   ...customExports,
   isMatch,
   matcher,
-  REQUEST_TYPE,
+  RESPONSE_TYPE,
   EVENT_TYPE,
   ROOT_TYPE,
   label,

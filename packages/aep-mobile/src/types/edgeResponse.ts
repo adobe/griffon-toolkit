@@ -61,7 +61,7 @@ export type EdgeResponse = {
        */
       requestEventId: string;
       /**
-       * The type of request that was made
+       * The type of response being returned
        */
       type?: string;
       /**
