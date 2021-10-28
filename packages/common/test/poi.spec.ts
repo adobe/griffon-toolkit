@@ -28,6 +28,8 @@ describe('POI', () => {
     //@ts-ignore
     const custom = poi.getCustomMetadata(mock);
     expect(Object.keys(custom).length).toBe(2);
+    expect(poi.getCity(mock)).toBe('New York'); // shoudln't disrupt the non custom metadata
+
     expect(custom.capacity).toBe(25);
     expect(custom.nearPark).toBe(true);
   });
