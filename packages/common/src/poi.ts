@@ -346,7 +346,7 @@ const mock = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const getCustomMetadata = (source) => {
-  const data = getMetadata(source);
+  const data = { ...getMetadata(source) };
   delete data.category;
   delete data.street;
   delete data.city;
