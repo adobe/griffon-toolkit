@@ -17,6 +17,10 @@
   "dependencies": {
     "@adobe/griffon-toolkit": "*"
   },
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "tsc"
+  },
   "targets": {
     "main": {
       "optimize": false

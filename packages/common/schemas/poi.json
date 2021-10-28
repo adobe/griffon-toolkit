@@ -71,7 +71,7 @@
       "type": "boolean"
     },
     "weight": {
-      "description": "The weight of the POI. It is used to prioritze POIs when a user is inside multile POIS",
+      "description": "The weight of the POI. It is used to prioritize POIs when a user is inside multiple POIS",
       "mock": "2",
       "type": "number"
     }

@@ -1,6 +1,6 @@
 {
   "$id": "http://griffon.adobe.com/schemas/aep-mobile/clientInfoAndroid",
-  "shortDesc": "iOS Client Info Event",
+  "shortDesc": "Android Client Info Event",
   "group": "event",
   "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/common/clientInfo" }],
   "type": "object",

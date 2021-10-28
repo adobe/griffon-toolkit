@@ -14,15 +14,21 @@ import * as R from 'ramda';
 import Ajv from 'ajv';
 
 import generateOutput from './utils/generate.output';
+import { generateTypeSchema } from './utils/types';
 
 const filePath = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 
 const packagePath = filePath.join(__dirname, '../packages');
 
 const ajv = new Ajv();
 const schemaFiles = {};
 const schemaMap = {};
+const typeFiles = {};
+
+const TEMP_DIR = 'tmp';
+
+fs.ensureDirSync(TEMP_DIR);
 
 fs.readdirSync(packagePath).forEach((dirName) => {
   const schemaPath = filePath.join(packagePath, dirName, '/schemas');
@@ -38,6 +44,7 @@ fs.readdirSync(packagePath).forEach((dirName) => {
         const schema = JSON.parse(data);
         schemaFiles[fullFile] = schema.$id;
         schemaMap[schema.$id] = schema;
+        typeFiles[schema.$id] = generateTypeSchema(schema, fileName);
         return ajv.addSchema(schema);
       } catch (err) {
         console.error(err);
@@ -53,7 +60,7 @@ fs.readdirSync(packagePath).forEach((dirName) => {
  * Takes all the schema files and outputs a script file with the generated content.
  */
 R.mapObjIndexed((schemaName, schemaFile) => {
-  const outputFile = schemaFile.replace('schemas', 'src').replace('json', 'js');
+  const outputFile = schemaFile.replace('schemas', 'src').replace('json', 'ts');
   const { schema } = ajv.getSchema(schemaName);
-  generateOutput(schema, outputFile, schemaMap);
+  generateOutput(schema, outputFile, schemaMap, typeFiles[schemaName]);
 }, schemaFiles);

@@ -18,6 +18,10 @@
     "@adobe/griffon-toolkit-aep-mobile": "*",
     "@adobe/griffon-toolkit-common": "*"
   },
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "tsc"
+  },
   "targets": {
     "main": {
       "includeNodeModules": [

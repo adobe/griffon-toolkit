@@ -120,7 +120,7 @@
                 },
                 "ignoredsessionlength": {
                   "alias": "ignoredSessionLength",
-                  "description": "Used in calculdating length of session",
+                  "description": "Used in calculating length of session",
                   "type": "string",
                   "mock": "-1595526608"
                 },

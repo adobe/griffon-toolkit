@@ -6,6 +6,7 @@ build
 
 .cache
 .tmp
+tmp
 .parcel-cache
 
 *.log
@@ -13,3 +14,5 @@ build
 junit.xml
 src/index.js
 docs
+
+*.ts.bak

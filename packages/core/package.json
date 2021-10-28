@@ -18,6 +18,14 @@
     "jmespath": "^0.15.0",
     "ramda": "^0.27.0"
   },
+  "devDependencies": {
+    "@types/jmespath": "^0.15.0",
+    "@types/ramda": "^0.27.45"
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "tsc"
+  },
   "targets": {
     "main": {
       "includeNodeModules": [

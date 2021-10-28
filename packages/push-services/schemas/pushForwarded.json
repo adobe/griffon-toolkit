@@ -38,7 +38,7 @@
           "mock": "{ \"name\": \"mymessage\" }"
         },
         "status": {
-          "description": "The status returend from the service",
+          "description": "The status returned from the service",
           "type": "integer",
           "mock": 200
         }
