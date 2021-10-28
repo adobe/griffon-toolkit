@@ -25,13 +25,13 @@
               "mock": "abc-efg"
             },
             "type": {
-              "alias": "requestType",
-              "description": "The type of request that was made",
+              "alias": "responseType",
+              "description": "The type of response being returned",
               "type": "string",
               "mock": "state:store"
             },
             "payload": {
-              "alias": "requestPayload",
+              "alias": "responsePayload",
               "description": "The information received in the response",
               "type": "array"
             }
