@@ -1,7 +1,7 @@
 {
   "name": "@adobe/griffon-toolkit-reference",
   "description": "Utilities to build UIs from schema defs",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/adobe/griffon-toolkit.git",
