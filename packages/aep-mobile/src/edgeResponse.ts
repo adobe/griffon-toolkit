@@ -62,11 +62,11 @@ const path = {
   /** The event ID of the event that this is a response to.<br />Path is `payload.ACPExtensionEventData.requestEventId`. */
   requestEventId: 'payload.ACPExtensionEventData.requestEventId',
 
-  /** The type of request that was made.<br />Path is `payload.ACPExtensionEventData.type`. */
-  requestType: 'payload.ACPExtensionEventData.type',
+  /** The type of response being returned.<br />Path is `payload.ACPExtensionEventData.type`. */
+  responseType: 'payload.ACPExtensionEventData.type',
 
   /** The information received in the response.<br />Path is `payload.ACPExtensionEventData.payload`. */
-  requestPayload: 'payload.ACPExtensionEventData.payload',
+  responsePayload: 'payload.ACPExtensionEventData.payload',
 
   /** The event source.<br />Path is `payload.ACPExtensionEventSource`. */
   eventSource: 'payload.ACPExtensionEventSource',
@@ -177,8 +177,8 @@ const getRequestId = kit.search(path.requestId);
 const getRequestEventId = kit.search(path.requestEventId);
 
 /**
- * Returns the `requestType` from the AEP Edge Response.
- * This is the the type of request that was made.
+ * Returns the `responseType` from the AEP Edge Response.
+ * This is the the type of response being returned.
  *
  * Path is `payload,ACPExtensionEventData,type`.
  *
@@ -186,10 +186,10 @@ const getRequestEventId = kit.search(path.requestEventId);
  * @param {object} source The AEP Edge Response instance
  * @returns {string}
  */
-const getRequestType = kit.search(path.requestType);
+const getResponseType = kit.search(path.responseType);
 
 /**
- * Returns the `requestPayload` from the AEP Edge Response.
+ * Returns the `responsePayload` from the AEP Edge Response.
  * This is the the information received in the response.
  *
  * Path is `payload,ACPExtensionEventData,payload`.
@@ -198,7 +198,7 @@ const getRequestType = kit.search(path.requestType);
  * @param {object} source The AEP Edge Response instance
  * @returns {Array}
  */
-const getRequestPayload = kit.search(path.requestPayload);
+const getResponsePayload = kit.search(path.responsePayload);
 
 /**
  * Matcher can be used to find matching AEP Edge Response objects.
@@ -249,7 +249,7 @@ const make = (input) => kit.expandWithPaths(path, {
 const mock = (input) => kit.expandWithPaths(path, {
   requestId: 'BC123-8901-1234-AAFF-580993AC6258',
   requestEventId: 'abc-efg',
-  requestType: 'state:store',
+  responseType: 'state:store',
   eventSource: 'com.adobe.eventsource.responsecontent',
   eventType: 'com.adobe.eventtype.edge',
   rootType: 'generic',
@@ -277,8 +277,8 @@ export default {
   ...customExports,
   getRequestId,
   getRequestEventId,
-  getRequestType,
-  getRequestPayload,
+  getResponseType,
+  getResponsePayload,
   isMatch,
   matcher,
   EVENT_TYPE,
