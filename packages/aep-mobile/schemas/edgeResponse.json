@@ -42,14 +42,14 @@
           "inherit": true,
           "not": {
             "enum": [
-              "com.adobe.eventsource.errorresponsecontent",
-              "com.adobe.eventsource.requestcontent"
+              "com.adobe.eventSource.errorResponseContent",
+              "com.adobe.eventSource.requestContent"
             ]
           }
         },
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventtype.edge"
+          "const": "com.adobe.eventType.edge"
         }
       },
       "required": [

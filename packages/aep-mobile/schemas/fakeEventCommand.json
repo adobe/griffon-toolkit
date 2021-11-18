@@ -25,12 +25,12 @@
             },
             "eventType": {
               "description": "The event type",
-              "mock": "com.adobe.eventtype.fake",
+              "mock": "com.adobe.eventType.fake",
               "type": "string"
             },
             "eventSource": {
               "description": "The event source",
-              "mock": "com.adobe.eventsource.responsecontent",
+              "mock": "com.adobe.eventSource.responseContent",
               "type": "string"
             },
             "eventData": {

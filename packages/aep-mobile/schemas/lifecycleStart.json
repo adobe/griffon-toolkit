@@ -154,11 +154,11 @@
         },
         "ACPExtensionEventSource": {
           "inherit": true,
-          "const": "com.adobe.eventsource.responsecontent"
+          "const": "com.adobe.eventSource.responseContent"
         },
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventtype.lifecycle"
+          "const": "com.adobe.eventType.lifecycle"
         }
       },
       "required": [

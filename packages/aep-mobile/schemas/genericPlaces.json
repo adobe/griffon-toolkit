@@ -11,7 +11,7 @@
       "properties": {
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventtype.places"
+          "const": "com.adobe.eventType.places"
         }
       },
       "required": [

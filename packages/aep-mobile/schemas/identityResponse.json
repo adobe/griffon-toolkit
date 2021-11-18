@@ -30,11 +30,11 @@
         },
         "ACPExtensionEventSource": {
           "inherit": true,
-          "const": "com.adobe.eventsource.responseidentity"
+          "const": "com.adobe.eventSource.responseIdentity"
         },
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventtype.identity"
+          "const": "com.adobe.eventType.identity"
         }
       },
       "required": ["ACPExtensionEventData"]

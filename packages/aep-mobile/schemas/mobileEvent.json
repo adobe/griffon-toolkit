@@ -28,7 +28,7 @@
           "alias": "eventSource",
           "description": "The event source",
           "type": "string",
-          "mock": "com.adobe.eventsource.responsecontent",
+          "mock": "com.adobe.eventSource.responseContent",
           "match": true
         },
         "ACPExtensionEventType": {

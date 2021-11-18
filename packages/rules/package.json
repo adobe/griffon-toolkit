@@ -1,0 +1,21 @@
+{
+  "name": "@adobe/griffon-toolkit-rules",
+  "description": "Utilities for building rules UIs",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adobe/griffon-toolkit.git",
+    "directory": "packages/reference"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Adobe Systems",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "source": "src/index.js",
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "cp src/rules.json dist/rules.json"
+  }
+}

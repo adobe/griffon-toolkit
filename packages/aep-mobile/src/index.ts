@@ -1,6 +1,8 @@
 // created from ctix
 
 export { default as analyticsResponse } from './analyticsResponse';
+export { default as applicationLaunch } from './applicationLaunch';
+export { default as applicationUpgrade } from './applicationUpgrade';
 export { default as clientInfoAndroid } from './clientInfoAndroid';
 export { default as clientInfoIos } from './clientInfoIOS';
 export { default as configUpdateCommand } from './configUpdateCommand';
@@ -13,6 +15,8 @@ export { default as fakeEventCommand } from './fakeEventCommand';
 export { default as genericPlaces } from './genericPlaces';
 export { default as genericTrack } from './genericTrack';
 export { default as identityResponse } from './identityResponse';
+export { default as lifecycleBackground } from './lifecycleBackground';
+export { default as lifecycleForeground } from './lifecycleForeground';
 export { default as lifecycleStart } from './lifecycleStart';
 export { default as locationAuthStatus } from './locationAuthStatus';
 export { default as logForwardCommand } from './logForwardCommand';

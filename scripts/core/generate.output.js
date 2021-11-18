@@ -10,10 +10,9 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import lodash from 'lodash';
 import * as R from 'ramda';
 
-import mergeProperties from './merge.properties';
+import mergeProperties from '../utils/merge.properties';
 import {
   writeFullContent,
   writeCommentLine,
@@ -31,32 +30,14 @@ import {
 import {
   ucFirst,
   CUSTOM_CONTENT_START,
-  CUSTOM_CONTENT_END,
-  writeFile
+  CUSTOM_CONTENT_END
 } from './shared';
 import { generateTypeDefinition } from './types';
+import makePropertyProps from '../utils/make.property.props';
+import writeFile from '../utils/write.file';
+import { normalizePropsForLegacy } from '../utils/normalize.for.legacy';
 
 const fs = require('fs');
-
-/*
- * Formats the data into a common structure so it can be used by all the writes
- */
-const makePropertyProps = (property, key, path, parent) => {
-  const constDefined = R.type(property.const) !== 'Undefined';
-  const mockDefined = R.type(property.mock) !== 'Undefined';
-
-  return {
-    ...property,
-    path: [...path, key],
-    alias: property.alias || key,
-    useCombine: property.oneOf || property.not,
-    useConst: property.const,
-    useMock: constDefined ? property.const : mockDefined ? property.mock : undefined,
-    useMatch: (constDefined && property.match !== false) || property.match,
-    parent,
-    snakeName: lodash.snakeCase(property.alias || key).toUpperCase()
-  };
-};
 
 /*
  * This is the code we want to generate for just this class. We don't export
@@ -109,6 +90,8 @@ const expandFullProperties = ({
   depth = 2,
   parent
 }) => {
+  const useProps = normalizePropsForLegacy(properties);
+
   let output = { ...outputIn };
   R.forEachObjIndexed(
     (property, key) => {
@@ -153,7 +136,7 @@ const expandFullProperties = ({
         output.event += writeStructureLine(depth, key, props);
       }
     },
-    properties
+    useProps
   );
   return output;
 };

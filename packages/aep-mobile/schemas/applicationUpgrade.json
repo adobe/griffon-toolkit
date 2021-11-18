@@ -1,0 +1,49 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/applicationUpgrade",
+  "shortDesc": "Application Upgrade",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventSource.responseContent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventType.lifecycle"
+        },
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "alias": "data",
+          "type": "object",
+          "properties": {
+            "lifecyclecontextdata": {
+              "alias": "lifecycleContextData",
+              "description": "Context data about the launch",
+              "type": "object",
+              "properties": {
+                "upgradeevent": {
+                  "type": "string",
+                  "alias": "upgradeevent",
+                  "description": "Whether this is an upgrade event",
+                  "match": true
+                }
+              },
+              "required": [
+                "upgradeevent"
+              ]
+            }
+          },
+          "required": [
+            "lifecyclecontextdata"
+          ]
+        }
+      }
+    }
+  }
+}

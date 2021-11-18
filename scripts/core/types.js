@@ -1,5 +1,6 @@
 import { compile } from 'json-schema-to-typescript';
 import * as R from 'ramda';
+import normalizeSchema from '../utils/normalize.for.legacy';
 
 const fs = require('fs-extra');
 const filePath = require('path');
@@ -33,6 +34,6 @@ export const generateTypeSchema = (schema, outputFile) => {
 };
 
 export const generateTypeDefinition = (schema, fileName) => {
-  compile(schema, fileName)
+  compile(normalizeSchema(schema), fileName)
     .then((output) => fs.writeFileSync(fileName, output));
 };

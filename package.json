@@ -41,8 +41,9 @@
     "generate-code": "npx babel-node ./scripts/generate.js && rm -rf tmp",
     "postinstall": "lerna bootstrap",
     "build:make-index": "lerna exec --parallel --ignore @adobe/griffon-toolkit 'npx ctix create ./tsconfig.json'",
-    "build:files": "lerna exec --parallel 'tsc'",
-    "build": "npm run build:make-index && npm run build:files",
+    "build:files": "lerna exec --parallel 'tsc' --ignore @adobe/griffon-toolkit-rules",
+    "build:rules": "lerna exec 'npm run build' --scope @adobe/griffon-toolkit-rules",
+    "build": "npm run build:make-index && npm run build:files && npm run build:rules",
     "lint": "eslint \"**/*.js\"",
     "test": "jest"
   },
