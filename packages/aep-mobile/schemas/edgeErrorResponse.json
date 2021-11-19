@@ -33,11 +33,11 @@
         },
         "ACPExtensionEventSource": {
           "inherit": true,
-          "const": "com.adobe.eventsource.errorresponsecontent"
+          "const": "com.adobe.eventSource.errorResponseContent"
         },
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventtype.edge"
+          "const": "com.adobe.eventType.edge"
         }
       },
       "required": [

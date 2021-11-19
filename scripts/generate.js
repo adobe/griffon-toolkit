@@ -13,8 +13,11 @@ governing permissions and limitations under the License.
 import * as R from 'ramda';
 import Ajv from 'ajv';
 
-import generateOutput from './utils/generate.output';
-import { generateTypeSchema } from './utils/types';
+import generateOutput from './core/generate.output';
+import { generateTypeSchema } from './core/types';
+import generateRules from './rules/generate.rules';
+import rulesHitList from './rules/list';
+import outputRules from './rules/output.rules';
 
 const filePath = require('path');
 const fs = require('fs-extra');
@@ -56,11 +59,26 @@ fs.readdirSync(packagePath).forEach((dirName) => {
   }
 });
 
+const rulesInfo = [];
+
 /*
  * Takes all the schema files and outputs a script file with the generated content.
  */
 R.mapObjIndexed((schemaName, schemaFile) => {
   const outputFile = schemaFile.replace('schemas', 'src').replace('json', 'ts');
   const { schema } = ajv.getSchema(schemaName);
+
+  const shortName = schemaName.replace('http://griffon.adobe.com/schemas/', '');
+
+  // generate the schema file
   generateOutput(schema, outputFile, schemaMap, typeFiles[schemaName]);
+
+  if (rulesHitList[shortName]) {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+    rulesInfo.push(generateRules(schema, schemaMap, rulesHitList[shortName]));
+  }
 }, schemaFiles);
+
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+
+if (rulesInfo.length) { outputRules(rulesInfo); }

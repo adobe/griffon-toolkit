@@ -62,8 +62,8 @@ export type MediaSessionCreated = {
       sessionid: string;
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.media.sessioncreated";
-    ACPExtensionEventType?: "com.adobe.eventtype.media";
+    ACPExtensionEventSource?: "com.adobe.eventSource.media.sessionCreated";
+    ACPExtensionEventType?: "com.adobe.eventType.media";
     [k: string]: unknown;
   };
   [k: string]: unknown;

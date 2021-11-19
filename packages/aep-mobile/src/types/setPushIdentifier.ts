@@ -58,8 +58,8 @@ export type SetPushIdentifier = {
       pushidentifier: string;
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.requestcontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.generic.identity";
+    ACPExtensionEventSource?: "com.adobe.eventSource.requestContent";
+    ACPExtensionEventType?: "com.adobe.eventType.generic.identity";
     [k: string]: unknown;
   };
   [k: string]: unknown;

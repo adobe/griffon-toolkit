@@ -29,11 +29,11 @@
           },
           "ACPExtensionEventSource": {
             "inherit": true,
-            "const": "com.adobe.eventsource.media.requesttracker"
+            "const": "com.adobe.eventSource.media.requestTracker"
           },
           "ACPExtensionEventType": {
             "inherit": true,
-            "const": "com.adobe.eventtype.media"
+            "const": "com.adobe.eventType.media"
           }
         },
         "required": ["ACPExtensionEventData"]

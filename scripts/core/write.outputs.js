@@ -16,6 +16,7 @@ import {
   CUSTOM_CONTENT_START,
   CUSTOM_CONTENT_END
 } from './shared';
+import preparePath from '../utils/prepare.path';
 
 const makeStrValue = (value, type) => (type === 'string' ? `'${value}'` : value);
 
@@ -26,13 +27,6 @@ const normalizeType = (type) => (
 );
 
 const escapeQuote = (str) => str.replace(/'/g, '\\\'');
-
-const preparePath = R.pipe(
-  R.map((str) => (
-    str.indexOf(' ') >= 0 || str.indexOf('.') >= 0
-      ? `"${str}"` : str)),
-  R.join('.')
-);
 
 /*
  * Writes a matcher. Is written if constants are found on the schema.
@@ -46,8 +40,8 @@ export const writeMatches = (matches, parent) => (matches.length > 0
  * @constant
  */
 const matcher = kit.combineAll([
-  '${matches.map(escapeQuote).join(`',
-  '`)}'
+  ${matches.join(`,
+  `)}
 ]);
 
 /**
@@ -278,7 +272,9 @@ export const writeMockLine = ({
   type,
   useMock
 }) => `
-  ${alias}: ${makeStrValue(useMock, type)},`;
+  ${alias}: ${makeStrValue(
+  useMock, type
+)},`;
 
 export const writeCombineMatch = ({
   not = {}, oneOf = {}, path
@@ -287,14 +283,24 @@ export const writeCombineMatch = ({
   const matchType = not.enum ? '!=' : '==';
   const matches = R.map((val) => `${preparePath(path)}${matchType}\`${val}\``, enums);
   const join = not.enum ? ' && ' : ' || ';
-  return R.join(join, matches);
+  return `'${R.join(join, matches)}'`;
+};
+
+const formatMatch = (path, useConst) => {
+  const value = R.type(useConst) !== 'Undefined'
+    ? `${preparePath(path)}==\`${useConst}\``
+    : `${preparePath(path)}`;
+  return `'${escapeQuote(value)}'`;
 };
 
 export const writeMatch = ({
-  path, useConst
+  path, useConst, useLegacy
 }) => (
-  R.type(useConst) !== 'Undefined' ? `${preparePath(path)}==\`${useConst}\``
-    : preparePath(path)
+  R.type(useConst) !== 'Undefined' && useLegacy
+    ? `kit.combineAny([
+    ${formatMatch(path, useConst)},
+    ${formatMatch(path, useConst.toLowerCase())}
+  ])` : formatMatch(path, useConst)
 );
 
 /*
@@ -315,5 +321,7 @@ export const writeConstant = ({
  *
  * @constant
  */
-const ${snakeName} = ${makeStrValue(useConst, type)};
+const ${snakeName} = ${makeStrValue(
+  useConst, type
+)};
 `;

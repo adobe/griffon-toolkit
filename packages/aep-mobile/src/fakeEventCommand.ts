@@ -286,8 +286,8 @@ const make = (input) => kit.expandWithPaths(path, {
 const mock = (input) => kit.expandWithPaths(path, {
   type: 'fakeEvent',
   eventName: 'Fake Event',
-  eventType: 'com.adobe.eventtype.fake',
-  eventSource: 'com.adobe.eventsource.responsecontent',
+  eventType: 'com.adobe.eventType.fake',
+  eventSource: 'com.adobe.eventSource.responseContent',
   vendor: 'com.adobe.griffon.mobile',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),

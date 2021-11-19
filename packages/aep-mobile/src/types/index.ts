@@ -1,6 +1,8 @@
 // created from ctix
 
 export * from './analyticsResponse';
+export * from './applicationLaunch';
+export * from './applicationUpgrade';
 export * from './clientInfoAndroid';
 export * from './clientInfoIOS';
 export * from './configUpdateCommand';
@@ -13,6 +15,8 @@ export * from './fakeEventCommand';
 export * from './genericPlaces';
 export * from './genericTrack';
 export * from './identityResponse';
+export * from './lifecycleBackground';
+export * from './lifecycleForeground';
 export * from './lifecycleStart';
 export * from './locationAuthStatus';
 export * from './logForwardCommand';

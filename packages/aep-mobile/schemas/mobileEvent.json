@@ -28,15 +28,17 @@
           "alias": "eventSource",
           "description": "The event source",
           "type": "string",
-          "mock": "com.adobe.eventsource.responsecontent",
-          "match": true
+          "mock": "com.adobe.eventSource.responseContent",
+          "match": true,
+          "legacyCase": true
         },
         "ACPExtensionEventType": {
           "alias": "eventType",
           "description": "The event type",
           "type": "string",
           "mock": "test event",
-          "match": true
+          "match": true,
+          "legacyCase": true
         },
         "ACPExtensionEventUniqueIdentifier": {
           "alias": "eventId",

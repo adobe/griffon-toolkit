@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rule generation adds children 1`] = `
+Array [
+  Object {
+    "dataType": "object",
+    "description": "Context data sent with the track call",
+    "name": "contextData",
+    "path": "contextdata",
+  },
+]
+`;
+
+exports[`Rule generation should generate rules 1`] = `
+Object {
+  "children": Array [],
+  "condition": Object {
+    "definition": Object {
+      "conditions": Array [
+        Object {
+          "definition": Object {
+            "key": "~source",
+            "matcher": "eq",
+            "values": Array [
+              "com.adobe.eventSource.applicationClose",
+            ],
+          },
+          "type": "matcher",
+        },
+        Object {
+          "definition": Object {
+            "key": "~type",
+            "matcher": "eq",
+            "values": Array [
+              "com.adobe.eventType.lifecycle",
+            ],
+          },
+          "type": "matcher",
+        },
+      ],
+      "logic": "and",
+    },
+    "type": "group",
+  },
+  "conditionType": "event",
+  "dataType": "const",
+  "name": "Lifecycle Background",
+}
+`;

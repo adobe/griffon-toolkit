@@ -42,7 +42,7 @@
         },
         "ACPExtensionEventSource": {
           "inherit": true,
-          "const": "com.adobe.eventsource.requestcontent"
+          "const": "com.adobe.eventSource.requestContent"
         }
       },
       "required": [

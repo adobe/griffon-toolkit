@@ -44,6 +44,22 @@ describe('Test Auto Generated Output', () => {
     expect(entry.isMatch(events[0])).toBe(true);
     expect(entry.isMatch(events[1])).toBe(false);
   });
+  it('matches legacy source', () => {
+    const events = [
+      entry.mock({
+
+      }),
+      entry.mock({
+        source: 'com.adobe.eventsource.responsecontent'
+      }),
+    ];
+    expect(entry.isMatch(events[0])).toBe(true);
+    expect(entry.isMatch(events[1])).toBe(true);
+
+  });
+  it('matches legacy type', () => {
+
+  });
   it('exports constants', () => {
     expect(entry.REGION_EVENT_TYPE).toBe('entry');
   });

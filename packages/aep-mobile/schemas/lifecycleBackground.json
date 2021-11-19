@@ -1,0 +1,23 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/lifecycleBackground",
+  "shortDesc": "Lifecycle Background",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventSource.applicationClose"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventType.lifecycle"
+        }
+      }
+    }
+  }
+}

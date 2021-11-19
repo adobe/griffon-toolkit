@@ -1,0 +1,262 @@
+[
+  {
+    "name": "Application Launch (Analytics)",
+    "conditionType": "event",
+    "dataType": "const",
+    "condition": {
+      "type": "group",
+      "definition": {
+        "logic": "and",
+        "conditions": [
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~source",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventSource.responseContent"
+              ]
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~type",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventType.lifecycle"
+              ]
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "lifecyclecontextdata.launchevent",
+              "matcher": "ex"
+            }
+          }
+        ]
+      }
+    },
+    "children": [
+      {
+        "name": "lifecycleContextData",
+        "description": "Context data about the launch",
+        "dataType": "object",
+        "path": "lifecyclecontextdata"
+      }
+    ]
+  },
+  {
+    "name": "Application Upgrade",
+    "conditionType": "event",
+    "dataType": "const",
+    "condition": {
+      "type": "group",
+      "definition": {
+        "logic": "and",
+        "conditions": [
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~source",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventSource.responseContent"
+              ]
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~type",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventType.lifecycle"
+              ]
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "lifecyclecontextdata.upgradeevent",
+              "matcher": "ex"
+            }
+          }
+        ]
+      }
+    },
+    "children": [
+      {
+        "name": "lifecycleContextData",
+        "description": "Context data about the launch",
+        "dataType": "object",
+        "path": "lifecyclecontextdata"
+      }
+    ]
+  },
+  {
+    "name": "Lifecycle Background",
+    "conditionType": "event",
+    "dataType": "const",
+    "condition": {
+      "type": "group",
+      "definition": {
+        "logic": "and",
+        "conditions": [
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~source",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventSource.applicationClose"
+              ]
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~type",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventType.lifecycle"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "children": []
+  },
+  {
+    "name": "Lifecycle Background",
+    "conditionType": "event",
+    "dataType": "const",
+    "condition": {
+      "type": "group",
+      "definition": {
+        "logic": "and",
+        "conditions": [
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~source",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventSource.applicationLaunch"
+              ]
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~type",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventType.lifecycle"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "children": []
+  },
+  {
+    "name": "Track Action Event",
+    "conditionType": "event",
+    "dataType": "const",
+    "condition": {
+      "type": "group",
+      "definition": {
+        "logic": "and",
+        "conditions": [
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "action",
+              "matcher": "ex"
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~source",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventSource.requestContent"
+              ]
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~type",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventType.generic.track"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "children": [
+      {
+        "name": "contextData",
+        "description": "Context data sent with the track call",
+        "dataType": "object",
+        "path": "contextdata"
+      }
+    ]
+  },
+  {
+    "name": "Track State Event",
+    "conditionType": "event",
+    "dataType": "const",
+    "condition": {
+      "type": "group",
+      "definition": {
+        "logic": "and",
+        "conditions": [
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "state",
+              "matcher": "ex"
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~source",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventSource.requestContent"
+              ]
+            }
+          },
+          {
+            "type": "matcher",
+            "definition": {
+              "key": "~type",
+              "matcher": "eq",
+              "values": [
+                "com.adobe.eventType.generic.track"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "children": [
+      {
+        "name": "contextData",
+        "description": "Context data sent with the track call",
+        "dataType": "object",
+        "path": "contextdata"
+      }
+    ]
+  }
+]

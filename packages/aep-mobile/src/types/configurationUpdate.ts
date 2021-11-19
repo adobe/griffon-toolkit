@@ -59,8 +59,8 @@ export type ConfigurationUpdate = {
         [k: string]: unknown;
       };
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.requestcontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.configuration";
+    ACPExtensionEventSource?: "com.adobe.eventSource.requestContent";
+    ACPExtensionEventType?: "com.adobe.eventType.configuration";
     [k: string]: unknown;
   };
   [k: string]: unknown;

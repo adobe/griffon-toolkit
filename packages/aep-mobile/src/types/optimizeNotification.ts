@@ -58,8 +58,8 @@ export type OptimizeNotification = {
       propositions: unknown[];
       [k: string]: unknown;
     };
-    ACPExtensionEventSource: "com.adobe.eventsource.notification";
-    ACPExtensionEventType: "com.adobe.eventtype.optimize";
+    ACPExtensionEventSource: "com.adobe.eventSource.notification";
+    ACPExtensionEventType: "com.adobe.eventType.optimize";
     [k: string]: unknown;
   };
   [k: string]: unknown;

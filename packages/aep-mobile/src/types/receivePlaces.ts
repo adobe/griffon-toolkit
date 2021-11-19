@@ -58,7 +58,7 @@ export type ReceivePlaces = {
       nearbypois?: unknown[];
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.responsecontent";
+    ACPExtensionEventSource?: "com.adobe.eventSource.responseContent";
     [k: string]: unknown;
   };
   [k: string]: unknown;

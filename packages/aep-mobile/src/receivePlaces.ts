@@ -23,8 +23,8 @@ import schema from '../schemas/receivePlaces.json';
  *     ACPExtensionEventData: {
  *       nearbypois: <array>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.responsecontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.places'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.responseContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.places'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -115,7 +115,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.responseContent';
 
 /**
  * The value for `eventType` for a Receive Places Event.
@@ -124,7 +124,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.places';
+const EVENT_TYPE = 'com.adobe.eventType.places';
 
 /**
  * The value for `rootType` for a Receive Places Event.
@@ -194,8 +194,14 @@ const getPOIs = kit.search(path.POIs);
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.nearbypois',
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.places`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.responseContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.places`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.places`'
+  ]),
   'timestamp'
 ]);
 
@@ -218,8 +224,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.places',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.places',
   rootType: 'generic',
   ...input
 });
@@ -235,8 +241,8 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.places',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.places',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

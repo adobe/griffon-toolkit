@@ -23,11 +23,11 @@
         },
         "ACPExtensionEventSource": {
           "inherit": true,
-          "const": "com.adobe.eventsource.notification"
+          "const": "com.adobe.eventSource.notification"
         },
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventtype.optimize"
+          "const": "com.adobe.eventType.optimize"
         }
       },
       "required": [

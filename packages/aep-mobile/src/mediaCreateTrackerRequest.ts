@@ -24,8 +24,8 @@ import schema from '../schemas/mediaCreateTrackerRequest.json';
  *       trackerid: <string>,
  *       event.param: <object>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.media.requesttracker'
- *     ACPExtensionEventType: 'com.adobe.eventtype.media'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.media.requestTracker'
+ *     ACPExtensionEventType: 'com.adobe.eventType.media'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -119,7 +119,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.media.requesttracker';
+const EVENT_SOURCE = 'com.adobe.eventSource.media.requestTracker';
 
 /**
  * The value for `eventType` for a Media Create Tracker Request Event.
@@ -128,7 +128,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.media.requesttracker';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.media';
+const EVENT_TYPE = 'com.adobe.eventType.media';
 
 /**
  * The value for `rootType` for a Media Create Tracker Request Event.
@@ -197,8 +197,14 @@ const getEventParamsKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.media.requesttracker`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.media`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.media.requestTracker`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.media.requesttracker`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.media`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.media`'
+  ]),
   'timestamp'
 ]);
 
@@ -221,8 +227,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.media.requesttracker',
-  eventType: 'com.adobe.eventtype.media',
+  eventSource: 'com.adobe.eventSource.media.requestTracker',
+  eventType: 'com.adobe.eventType.media',
   rootType: 'generic',
   ...input
 });
@@ -239,8 +245,8 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   trackerId: 'trackerId123',
-  eventSource: 'com.adobe.eventsource.media.requesttracker',
-  eventType: 'com.adobe.eventtype.media',
+  eventSource: 'com.adobe.eventSource.media.requestTracker',
+  eventType: 'com.adobe.eventType.media',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

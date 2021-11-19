@@ -1,5 +1,5 @@
 /*
-Copyright 2020 Adobe. All rights reserved.
+Copyright 2021 Adobe. All rights reserved.
 This file is licensed to you under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License. You may obtain a copy
 of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -13,16 +13,10 @@ governing permissions and limitations under the License.
 const filePath = require('path');
 const fs = require('fs');
 
-export const CUSTOM_CONTENT_START = 'ADD CUSTOM CONTENT BELOW';
-export const CUSTOM_CONTENT_END = 'END CUSTOM CONTENT';
-
-export const ucFirst = (str) => str.replace(/^\w/, (c) => c.toUpperCase());
-export const lcFirst = (str) => (str || '').replace(/^\w/, (c) => c.toLowerCase());
-
 /*
  * Writes the content to disk
  */
-export const writeFile = (file, content) => {
+export default (file, content) => {
   // make sure the directory exists
   const outputDir = filePath.dirname(file);
   if (!fs.existsSync(outputDir)) { fs.mkdirSync(outputDir); }

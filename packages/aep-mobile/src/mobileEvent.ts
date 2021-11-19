@@ -269,7 +269,7 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.responsecontent',
+  eventSource: 'com.adobe.eventSource.responseContent',
   eventType: 'test event',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',

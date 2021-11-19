@@ -73,8 +73,8 @@ export type Configuration = {
       "rules.url"?: string;
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.responsecontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.configuration";
+    ACPExtensionEventSource?: "com.adobe.eventSource.responseContent";
+    ACPExtensionEventType?: "com.adobe.eventType.configuration";
     [k: string]: unknown;
   };
   [k: string]: unknown;

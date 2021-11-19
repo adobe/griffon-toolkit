@@ -28,8 +28,8 @@ import schema from '../schemas/analyticsResponse.json';
  *       },
  *       hitHost: <string>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.responsecontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.analytics'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.responseContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.analytics'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -132,7 +132,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.responseContent';
 
 /**
  * The value for `eventType` for a Analytics Response.
@@ -141,7 +141,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.analytics';
+const EVENT_TYPE = 'com.adobe.eventType.analytics';
 
 /**
  * The value for `rootType` for a Analytics Response.
@@ -246,8 +246,14 @@ const getHitHost = kit.search(path.hitHost);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.analytics`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.responseContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.analytics`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.analytics`'
+  ]),
   'timestamp'
 ]);
 
@@ -270,8 +276,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.analytics',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.analytics',
   rootType: 'generic',
   ...input
 });
@@ -291,8 +297,8 @@ const mock = (input) => kit.expandWithPaths(path, {
   hitUrl: 'ndh=1&c.&a.&AppID=TestApp-Swift&DayOfWeek=5',
   ETag: 'qwerty-asdfgh',
   hitHost: 'https://testorg.sc.omtrdc.net/b/ss/mobile5griffon.analytics.debug/0/OIP-2.3.0-2.7.1/s',
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.analytics',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.analytics',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

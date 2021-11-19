@@ -23,8 +23,8 @@ import schema from '../schemas/optimizeNotification.json';
  *     ACPExtensionEventData: {
  *       propositions: <array>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.notification'
- *     ACPExtensionEventType: 'com.adobe.eventtype.optimize'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.notification'
+ *     ACPExtensionEventType: 'com.adobe.eventType.optimize'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -115,7 +115,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.notification';
+const EVENT_SOURCE = 'com.adobe.eventSource.notification';
 
 /**
  * The value for `eventType` for a Notification From the Optimize Extension.
@@ -124,7 +124,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.notification';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.optimize';
+const EVENT_TYPE = 'com.adobe.eventType.optimize';
 
 /**
  * The value for `rootType` for a Notification From the Optimize Extension.
@@ -168,8 +168,14 @@ const getPropositions = kit.search(path.propositions);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.notification`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.optimize`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.notification`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.notification`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.optimize`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.optimize`'
+  ]),
   'timestamp'
 ]);
 
@@ -192,8 +198,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.notification',
-  eventType: 'com.adobe.eventtype.optimize',
+  eventSource: 'com.adobe.eventSource.notification',
+  eventType: 'com.adobe.eventType.optimize',
   rootType: 'generic',
   ...input
 });
@@ -210,8 +216,8 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   propositions: [{ name: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }, { id: 'abcd', scope: 'eyJ4ZG06YWN0aXZpdHlJZCI6Inhjb3JlOm9mZmVyLWFjdGl2aXR5OjEzNGNlY2MyMGU2NjljZWEiLCJ4ZG06cGxhY2VtZW50SWQiOiJ4Y29yZTpvZmZlci1wbGFjZW1lbnQ6MTJiOWE0MGVhNjkyOGJmOSJ9' }],
-  eventSource: 'com.adobe.eventsource.notification',
-  eventType: 'com.adobe.eventtype.optimize',
+  eventSource: 'com.adobe.eventSource.notification',
+  eventType: 'com.adobe.eventType.optimize',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

@@ -20,8 +20,8 @@ import schema from '../schemas/startPlacesMonitor.json';
  * ```
  * {
  *   payload: {
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.placesmonitor'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.requestContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.placesMonitor'
  *     ACPExtensionEventData: <object>,
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
@@ -110,7 +110,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.requestContent';
 
 /**
  * The value for `eventType` for a Start Monitor Event.
@@ -119,7 +119,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.placesmonitor';
+const EVENT_TYPE = 'com.adobe.eventType.placesMonitor';
 
 /**
  * The value for `rootType` for a Start Monitor Event.
@@ -151,8 +151,14 @@ const get = (alias, data) => {
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.placesmonitor`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.requestContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.placesMonitor`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.placesmonitor`'
+  ]),
   'timestamp'
 ]);
 
@@ -175,8 +181,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.placesmonitor',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.placesMonitor',
   rootType: 'generic',
   ...input
 });
@@ -192,8 +198,8 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.placesmonitor',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.placesMonitor',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

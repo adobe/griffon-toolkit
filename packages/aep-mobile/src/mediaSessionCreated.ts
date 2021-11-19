@@ -24,8 +24,8 @@ import schema from '../schemas/mediaSessionCreated.json';
  *       mediaservice.sessionid: <string>,
  *       sessionid: <string>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.media.sessioncreated'
- *     ACPExtensionEventType: 'com.adobe.eventtype.media'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.media.sessionCreated'
+ *     ACPExtensionEventType: 'com.adobe.eventType.media'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -119,7 +119,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.media.sessioncreated';
+const EVENT_SOURCE = 'com.adobe.eventSource.media.sessionCreated';
 
 /**
  * The value for `eventType` for a Media Session Created Event.
@@ -128,7 +128,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.media.sessioncreated';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.media';
+const EVENT_TYPE = 'com.adobe.eventType.media';
 
 /**
  * The value for `rootType` for a Media Session Created Event.
@@ -184,8 +184,14 @@ const getSessionId = kit.search(path.sessionId);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.media.sessioncreated`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.media`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.media.sessionCreated`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.media.sessioncreated`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.media`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.media`'
+  ]),
   'timestamp'
 ]);
 
@@ -208,8 +214,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.media.sessioncreated',
-  eventType: 'com.adobe.eventtype.media',
+  eventSource: 'com.adobe.eventSource.media.sessionCreated',
+  eventType: 'com.adobe.eventType.media',
   rootType: 'generic',
   ...input
 });
@@ -227,8 +233,8 @@ const make = (input) => kit.expandWithPaths(path, {
 const mock = (input) => kit.expandWithPaths(path, {
   mediaServiceSessionId: 'mediaserviceSessionid123',
   sessionId: 'sessionid123',
-  eventSource: 'com.adobe.eventsource.media.sessioncreated',
-  eventType: 'com.adobe.eventtype.media',
+  eventSource: 'com.adobe.eventSource.media.sessionCreated',
+  eventType: 'com.adobe.eventType.media',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

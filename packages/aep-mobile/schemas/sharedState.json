@@ -26,11 +26,11 @@
         },
         "ACPExtensionEventSource": {
           "inherit": true,
-          "const": "com.adobe.eventsource.sharedstate"
+          "const": "com.adobe.eventSource.sharedState"
         },
         "ACPExtensionEventType": {
           "inherit": true,
-          "const": "com.adobe.eventtype.hub"
+          "const": "com.adobe.eventType.hub"
         },
         "metadata": {
           "inherit": true,

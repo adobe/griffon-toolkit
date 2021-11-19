@@ -32,7 +32,7 @@
         },
         "ACPExtensionEventSource": {
           "inherit": true,
-          "const": "com.adobe.eventsource.responsecontent"
+          "const": "com.adobe.eventSource.responseContent"
         }
       },
       "required": [

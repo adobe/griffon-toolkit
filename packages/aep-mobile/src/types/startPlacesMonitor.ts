@@ -51,8 +51,8 @@ export type StartPlacesMonitor = {
   [k: string]: unknown;
 } & {
   payload?: {
-    ACPExtensionEventSource?: "com.adobe.eventsource.requestcontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.placesmonitor";
+    ACPExtensionEventSource?: "com.adobe.eventSource.requestContent";
+    ACPExtensionEventType?: "com.adobe.eventType.placesMonitor";
     [k: string]: unknown;
   };
   [k: string]: unknown;

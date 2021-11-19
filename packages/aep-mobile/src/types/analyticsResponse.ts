@@ -76,8 +76,8 @@ export type AnalyticsResponse = {
       hitHost?: string;
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.responsecontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.analytics";
+    ACPExtensionEventSource?: "com.adobe.eventSource.responseContent";
+    ACPExtensionEventType?: "com.adobe.eventType.analytics";
     [k: string]: unknown;
   };
   [k: string]: unknown;

@@ -73,7 +73,7 @@ export type EdgeResponse = {
     ACPExtensionEventSource?: {
       [k: string]: unknown;
     };
-    ACPExtensionEventType?: "com.adobe.eventtype.edge";
+    ACPExtensionEventType?: "com.adobe.eventType.edge";
     [k: string]: unknown;
   };
   [k: string]: unknown;

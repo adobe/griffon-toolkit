@@ -66,8 +66,8 @@ export type EdgeErrorResponse = {
       payload?: unknown[];
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.errorresponsecontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.edge";
+    ACPExtensionEventSource?: "com.adobe.eventSource.errorResponseContent";
+    ACPExtensionEventType?: "com.adobe.eventType.edge";
     [k: string]: unknown;
   };
   [k: string]: unknown;

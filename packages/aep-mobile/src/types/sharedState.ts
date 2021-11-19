@@ -60,8 +60,8 @@ export type SharedState = {
        */
       stateowner: string;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.sharedstate";
-    ACPExtensionEventType?: "com.adobe.eventtype.hub";
+    ACPExtensionEventSource?: "com.adobe.eventSource.sharedState";
+    ACPExtensionEventType?: "com.adobe.eventType.hub";
     /**
      * Additional metadata that is attacked to SDK events
      */

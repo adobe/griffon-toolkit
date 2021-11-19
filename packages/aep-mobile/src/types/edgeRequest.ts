@@ -70,8 +70,8 @@ export type EdgeRequest = {
       };
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.requestcontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.edge";
+    ACPExtensionEventSource?: "com.adobe.eventSource.requestContent";
+    ACPExtensionEventType?: "com.adobe.eventType.edge";
     [k: string]: unknown;
   };
   [k: string]: unknown;

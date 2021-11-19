@@ -151,8 +151,8 @@ export type LifecycleStart = {
       previoussessionstarttimestampseconds?: number;
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.responsecontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.lifecycle";
+    ACPExtensionEventSource?: "com.adobe.eventSource.responseContent";
+    ACPExtensionEventType?: "com.adobe.eventType.lifecycle";
     [k: string]: unknown;
   };
   [k: string]: unknown;
