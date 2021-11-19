@@ -296,8 +296,8 @@ const formatMatch = (path, useConst) => {
 export const writeMatch = ({
   path, useConst, useLegacy
 }) => (
-  R.type(useConst) !== 'Undefined' && useLegacy ?
-  `kit.combineAny([
+  R.type(useConst) !== 'Undefined' && useLegacy
+    ? `kit.combineAny([
     ${formatMatch(path, useConst)},
     ${formatMatch(path, useConst.toLowerCase())}
   ])` : formatMatch(path, useConst)

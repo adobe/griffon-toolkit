@@ -41,12 +41,6 @@ export default {
   'aep-mobile/lifecycleBackground': {
 
   },
-  'aep-mobile/lifecycleBackground': {
-
-  },
-  'aep-mobile/lifecycleBackground': {
-
-  },
   'aep-mobile/trackState': {
 
   },
