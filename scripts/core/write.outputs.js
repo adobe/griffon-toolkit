@@ -40,8 +40,8 @@ export const writeMatches = (matches, parent) => (matches.length > 0
  * @constant
  */
 const matcher = kit.combineAll([
-  '${matches.map(escapeQuote).join(`',
-  '`)}'
+  ${matches.join(`,
+  `)}
 ]);
 
 /**
@@ -286,12 +286,23 @@ export const writeCombineMatch = ({
   return R.join(join, matches);
 };
 
-export const writeMatch = ({
-  path, useConst
-}) => (
-  R.type(useConst) !== 'Undefined'
+const formatMatch = (path, useConst) => {
+  const value = R.type(useConst) !== 'Undefined'
     ? `${preparePath(path)}==\`${useConst}\``
-    : preparePath(path)
+    : `${preparePath(path)}`;
+  return `'${escapeQuote(value)}'`;
+};
+
+export const writeMatch = ({
+  path, useConst, useLegacy
+}) => (
+  R.type(useConst) !== 'Undefined' && useLegacy ?
+  `kit.combineAny([
+    ${formatMatch(path, useConst)},
+    ${formatMatch(path, useConst.toLowerCase())}
+  ])`
+  :
+   formatMatch(path, useConst)
 );
 
 /*

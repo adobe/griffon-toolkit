@@ -60,8 +60,8 @@ export type GenericTrack = {
       };
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.requestcontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.generic.track";
+    ACPExtensionEventSource?: "com.adobe.eventSource.requestContent";
+    ACPExtensionEventType?: "com.adobe.eventType.generic.track";
     [k: string]: unknown;
   };
   [k: string]: unknown;

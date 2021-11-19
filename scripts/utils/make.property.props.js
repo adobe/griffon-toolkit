@@ -28,6 +28,7 @@ export default (property, key, path, parent) => {
     useConst: property.const,
     useMock: constDefined ? property.const : mockDefined ? property.mock : undefined,
     useMatch: (constDefined && property.match !== false) || property.match,
+    useLegacy: property.legacyCase,
     parent,
     snakeName: lodash.snakeCase(property.alias || key).toUpperCase()
   };

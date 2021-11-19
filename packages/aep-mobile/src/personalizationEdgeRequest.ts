@@ -31,8 +31,8 @@ import schema from '../schemas/personalizationEdgeRequest.json';
  *       },
  *       datasetId: <string>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.edge'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.requestContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.edge'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -147,7 +147,7 @@ const EDGE_EVENT_TYPE = 'personalization.request';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.requestContent';
 
 /**
  * The value for `eventType` for a Edge Personalization Request.
@@ -156,7 +156,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.edge';
+const EVENT_TYPE = 'com.adobe.eventType.edge';
 
 /**
  * The value for `rootType` for a Edge Personalization Request.
@@ -238,8 +238,14 @@ const getDecisionScopes = kit.search(path.decisionScopes);
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.xdm.eventType==`personalization.request`',
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.requestContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.edge`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`'
+  ]),
   'timestamp'
 ]);
 
@@ -263,8 +269,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  */
 const make = (input) => kit.expandWithPaths(path, {
   edgeEventType: 'personalization.request',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.edge',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.edge',
   rootType: 'generic',
   ...input
 });
@@ -283,8 +289,8 @@ const mock = (input) => kit.expandWithPaths(path, {
   xdm: { eventType: 'commerce.purchases' },
   edgeEventType: 'personalization.request',
   datasetId: 'abcdefg',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.edge',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.edge',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

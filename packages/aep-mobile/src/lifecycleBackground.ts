@@ -20,8 +20,8 @@ import schema from '../schemas/lifecycleBackground.json';
  * ```
  * {
  *   payload: {
- *     ACPExtensionEventSource: 'com.adobe.eventsource.applicationclose'
- *     ACPExtensionEventType: 'com.adobe.eventtype.lifecycle'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.applicationClose'
+ *     ACPExtensionEventType: 'com.adobe.eventType.lifecycle'
  *     ACPExtensionEventData: <object>,
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
@@ -110,7 +110,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.applicationclose';
+const EVENT_SOURCE = 'com.adobe.eventSource.applicationClose';
 
 /**
  * The value for `eventType` for a Lifecycle Background.
@@ -119,7 +119,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.applicationclose';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.lifecycle';
+const EVENT_TYPE = 'com.adobe.eventType.lifecycle';
 
 /**
  * The value for `rootType` for a Lifecycle Background.
@@ -151,8 +151,14 @@ const get = (alias, data) => {
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.applicationclose`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.lifecycle`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.applicationClose`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.applicationclose`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.lifecycle`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.lifecycle`'
+  ]),
   'timestamp'
 ]);
 
@@ -175,8 +181,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.applicationclose',
-  eventType: 'com.adobe.eventtype.lifecycle',
+  eventSource: 'com.adobe.eventSource.applicationClose',
+  eventType: 'com.adobe.eventType.lifecycle',
   rootType: 'generic',
   ...input
 });
@@ -192,8 +198,8 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.applicationclose',
-  eventType: 'com.adobe.eventtype.lifecycle',
+  eventSource: 'com.adobe.eventSource.applicationClose',
+  eventType: 'com.adobe.eventType.lifecycle',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

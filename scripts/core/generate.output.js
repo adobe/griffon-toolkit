@@ -35,7 +35,6 @@ import {
 import { generateTypeDefinition } from './types';
 import makePropertyProps from '../utils/make.property.props';
 import writeFile from '../utils/write.file';
-import { normalizePropsForLegacy } from '../utils/normalize.for.legacy';
 
 const fs = require('fs');
 
@@ -90,8 +89,6 @@ const expandFullProperties = ({
   depth = 2,
   parent
 }) => {
-  const useProps = normalizePropsForLegacy(properties);
-
   let output = { ...outputIn };
   R.forEachObjIndexed(
     (property, key) => {
@@ -136,7 +133,7 @@ const expandFullProperties = ({
         output.event += writeStructureLine(depth, key, props);
       }
     },
-    useProps
+    properties
   );
   return output;
 };

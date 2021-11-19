@@ -20,7 +20,7 @@ import schema from '../schemas/genericPlaces.json';
  * ```
  * {
  *   payload: {
- *     ACPExtensionEventType: 'com.adobe.eventtype.places'
+ *     ACPExtensionEventType: 'com.adobe.eventType.places'
  *     ACPExtensionEventData: <object>,
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
@@ -110,7 +110,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.places';
+const EVENT_TYPE = 'com.adobe.eventType.places';
 
 /**
  * The value for `rootType` for a Generic Places Event.
@@ -142,7 +142,10 @@ const get = (alias, data) => {
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.places`',
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.places`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.places`'
+  ]),
   'payload.ACPExtensionEventSource',
   'timestamp'
 ]);
@@ -166,7 +169,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventType: 'com.adobe.eventtype.places',
+  eventType: 'com.adobe.eventType.places',
   rootType: 'generic',
   ...input
 });
@@ -182,8 +185,8 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  eventType: 'com.adobe.eventtype.places',
-  eventSource: 'com.adobe.eventsource.responsecontent',
+  eventType: 'com.adobe.eventType.places',
+  eventSource: 'com.adobe.eventSource.responseContent',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

@@ -70,7 +70,7 @@ export type RequestPlaces = {
       requesttype: "requestgetnearbyplaces";
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.requestcontent";
+    ACPExtensionEventSource?: "com.adobe.eventSource.requestContent";
     [k: string]: unknown;
   };
   [k: string]: unknown;

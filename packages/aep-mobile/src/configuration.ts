@@ -26,8 +26,8 @@ import schema from '../schemas/configuration.json';
  *       property.id: <string>,
  *       rules.url: <string>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.responsecontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.configuration'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.responseContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.configuration'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -127,7 +127,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.responseContent';
 
 /**
  * The value for `eventType` for a Configuration Event.
@@ -136,7 +136,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.configuration';
+const EVENT_TYPE = 'com.adobe.eventType.configuration';
 
 /**
  * The value for `rootType` for a Configuration Event.
@@ -241,8 +241,14 @@ const getRulesUrl = kit.search(path.rulesUrl);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.configuration`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.responseContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.configuration`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.configuration`'
+  ]),
   'timestamp'
 ]);
 
@@ -265,8 +271,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.configuration',
   rootType: 'generic',
   ...input
 });
@@ -286,8 +292,8 @@ const mock = (input) => kit.expandWithPaths(path, {
   experienceCloudOrg: 'abc@AdobeOrg',
   launchPropertyId: 'abcd1234',
   rulesUrl: 'http://assets.adobedtm.com/abc/abcdefg-development-rules.zip',
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.configuration',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.configuration',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

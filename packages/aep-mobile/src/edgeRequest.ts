@@ -25,8 +25,8 @@ import schema from '../schemas/edgeRequest.json';
  *       query: <object>,
  *       xdm: <object>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.edge'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.requestContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.edge'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -123,7 +123,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.requestContent';
 
 /**
  * The value for `eventType` for a AEP Edge Request.
@@ -132,7 +132,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.edge';
+const EVENT_TYPE = 'com.adobe.eventType.edge';
 
 /**
  * The value for `rootType` for a AEP Edge Request.
@@ -226,8 +226,14 @@ const getXdmKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.requestContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.edge`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`'
+  ]),
   'timestamp'
 ]);
 
@@ -250,8 +256,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.edge',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.edge',
   rootType: 'generic',
   ...input
 });
@@ -269,8 +275,8 @@ const make = (input) => kit.expandWithPaths(path, {
 const mock = (input) => kit.expandWithPaths(path, {
   datasetId: 'abcdefg',
   xdm: { eventType: 'commerce.purchases' },
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.edge',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.edge',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

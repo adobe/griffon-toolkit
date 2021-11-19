@@ -27,7 +27,7 @@ import schema from '../schemas/edgeResponse.json';
  *       payload: <array>,
  *     },
  *     ACPExtensionEventSource: <string>,
- *     ACPExtensionEventType: 'com.adobe.eventtype.edge'
+ *     ACPExtensionEventType: 'com.adobe.eventType.edge'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -127,7 +127,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.edge';
+const EVENT_TYPE = 'com.adobe.eventType.edge';
 
 /**
  * The value for `rootType` for a AEP Edge Response.
@@ -207,8 +207,11 @@ const getResponsePayload = kit.search(path.responsePayload);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource!=`com.adobe.eventsource.errorresponsecontent` && payload.ACPExtensionEventSource!=`com.adobe.eventsource.requestcontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`',
+  payload.ACPExtensionEventSource!=`com.adobe.eventSource.errorResponseContent` && payload.ACPExtensionEventSource!=`com.adobe.eventSource.requestContent`,
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.edge`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`'
+  ]),
   'timestamp'
 ]);
 
@@ -231,7 +234,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventType: 'com.adobe.eventtype.edge',
+  eventType: 'com.adobe.eventType.edge',
   rootType: 'generic',
   ...input
 });
@@ -250,8 +253,8 @@ const mock = (input) => kit.expandWithPaths(path, {
   requestId: 'BC123-8901-1234-AAFF-580993AC6258',
   requestEventId: 'abc-efg',
   responseType: 'state:store',
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.edge',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.edge',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

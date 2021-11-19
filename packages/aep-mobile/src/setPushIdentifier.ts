@@ -23,8 +23,8 @@ import schema from '../schemas/setPushIdentifier.json';
  *     ACPExtensionEventData: {
  *       pushidentifier: <string>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.generic.identity'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.requestContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.generic.identity'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -115,7 +115,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.requestContent';
 
 /**
  * The value for `eventType` for a Set Push Identifier.
@@ -124,7 +124,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.generic.identity';
+const EVENT_TYPE = 'com.adobe.eventType.generic.identity';
 
 /**
  * The value for `rootType` for a Set Push Identifier.
@@ -169,8 +169,14 @@ const getPushIdentifier = kit.search(path.pushIdentifier);
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.pushidentifier',
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.generic.identity`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.requestContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.generic.identity`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.generic.identity`'
+  ]),
   'timestamp'
 ]);
 
@@ -193,8 +199,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.generic.identity',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.generic.identity',
   rootType: 'generic',
   ...input
 });
@@ -211,8 +217,8 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   pushIdentifier: 'asdfwerfasdfae-asdfasdfasdf',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.generic.identity',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.generic.identity',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

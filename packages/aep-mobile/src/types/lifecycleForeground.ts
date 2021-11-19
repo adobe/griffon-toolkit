@@ -51,8 +51,8 @@ export type LifecycleForeground = {
   [k: string]: unknown;
 } & {
   payload?: {
-    ACPExtensionEventSource?: "com.adobe.eventsource.applicationlaunch";
-    ACPExtensionEventType?: "com.adobe.eventtype.lifecycle";
+    ACPExtensionEventSource?: "com.adobe.eventSource.applicationLaunch";
+    ACPExtensionEventType?: "com.adobe.eventType.lifecycle";
     [k: string]: unknown;
   };
   [k: string]: unknown;

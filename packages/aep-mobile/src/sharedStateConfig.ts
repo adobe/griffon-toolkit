@@ -32,8 +32,8 @@ import schema from '../schemas/sharedStateConfig.json';
  *       },
  *       xdm.state.data: <object>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.sharedstate'
- *     ACPExtensionEventType: 'com.adobe.eventtype.hub'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.sharedState'
+ *     ACPExtensionEventType: 'com.adobe.eventType.hub'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -154,7 +154,7 @@ const STATE_OWNER = 'com.adobe.module.configuration';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.sharedstate';
+const EVENT_SOURCE = 'com.adobe.eventSource.sharedState';
 
 /**
  * The value for `eventType` for a Shared State - Versions.
@@ -163,7 +163,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.sharedstate';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.hub';
+const EVENT_TYPE = 'com.adobe.eventType.hub';
 
 /**
  * The value for `rootType` for a Shared State - Versions.
@@ -244,8 +244,14 @@ const getRulesUrl = kit.search(path.rulesUrl);
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.stateowner==`com.adobe.module.configuration`',
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.sharedstate`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.hub`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.sharedState`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.sharedstate`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.hub`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.hub`'
+  ]),
   'timestamp'
 ]);
 
@@ -269,8 +275,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  */
 const make = (input) => kit.expandWithPaths(path, {
   stateOwner: 'com.adobe.module.configuration',
-  eventSource: 'com.adobe.eventsource.sharedstate',
-  eventType: 'com.adobe.eventtype.hub',
+  eventSource: 'com.adobe.eventSource.sharedState',
+  eventType: 'com.adobe.eventType.hub',
   rootType: 'generic',
   ...input
 });
@@ -292,8 +298,8 @@ const mock = (input) => kit.expandWithPaths(path, {
   experienceCloudOrg: 'abc@AdobeOrg',
   launchPropertyId: 'abcd1234',
   rulesUrl: 'http://assets.adobedtm.com/abc/abcdefg-development-rules.zip',
-  eventSource: 'com.adobe.eventsource.sharedstate',
-  eventType: 'com.adobe.eventtype.hub',
+  eventSource: 'com.adobe.eventSource.sharedState',
+  eventType: 'com.adobe.eventType.hub',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

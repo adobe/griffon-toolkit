@@ -23,8 +23,8 @@ import schema from '../schemas/sharedState.json';
  *     ACPExtensionEventData: {
  *       stateowner: <string>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.sharedstate'
- *     ACPExtensionEventType: 'com.adobe.eventtype.hub'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.sharedState'
+ *     ACPExtensionEventType: 'com.adobe.eventType.hub'
  *     metadata: {
  *       state.data: <object>,
  *       xdm.state.data: <object>,
@@ -128,7 +128,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.sharedstate';
+const EVENT_SOURCE = 'com.adobe.eventSource.sharedState';
 
 /**
  * The value for `eventType` for a Shared State Event.
@@ -137,7 +137,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.sharedstate';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.hub';
+const EVENT_TYPE = 'com.adobe.eventType.hub';
 
 /**
  * The value for `rootType` for a Shared State Event.
@@ -231,8 +231,14 @@ const getXdmKey = kit.curry(
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.sharedstate`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.hub`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.sharedState`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.sharedstate`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.hub`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.hub`'
+  ]),
   'timestamp'
 ]);
 
@@ -255,8 +261,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.sharedstate',
-  eventType: 'com.adobe.eventtype.hub',
+  eventSource: 'com.adobe.eventSource.sharedState',
+  eventType: 'com.adobe.eventType.hub',
   rootType: 'generic',
   ...input
 });
@@ -273,8 +279,8 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   stateOwner: 'com.adobe.mobule.eventhub',
-  eventSource: 'com.adobe.eventsource.sharedstate',
-  eventType: 'com.adobe.eventtype.hub',
+  eventSource: 'com.adobe.eventSource.sharedState',
+  eventType: 'com.adobe.eventType.hub',
   stateData: { version: '2.1.3' },
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',

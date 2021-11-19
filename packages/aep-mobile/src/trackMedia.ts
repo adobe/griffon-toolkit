@@ -29,8 +29,8 @@ import schema from '../schemas/trackMedia.json';
  *       event.timestamp: <number>,
  *       event.internal: <boolean>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.media.trackmedia'
- *     ACPExtensionEventType: 'com.adobe.eventtype.media'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.media.trackMedia'
+ *     ACPExtensionEventType: 'com.adobe.eventType.media'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -139,7 +139,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.media.trackmedia';
+const EVENT_SOURCE = 'com.adobe.eventSource.media.trackMedia';
 
 /**
  * The value for `eventType` for a Track Media Event.
@@ -148,7 +148,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.media.trackmedia';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.media';
+const EVENT_TYPE = 'com.adobe.eventType.media';
 
 /**
  * The value for `rootType` for a Track Media Event.
@@ -291,8 +291,14 @@ const getEventInternal = kit.search(path.eventInternal);
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData."event.internal"==`false`',
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.media.trackmedia`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.media`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.media.trackMedia`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.media.trackmedia`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.media`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.media`'
+  ]),
   'timestamp'
 ]);
 
@@ -315,8 +321,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.media.trackmedia',
-  eventType: 'com.adobe.eventtype.media',
+  eventSource: 'com.adobe.eventSource.media.trackMedia',
+  eventType: 'com.adobe.eventType.media',
   rootType: 'generic',
   ...input
 });
@@ -336,8 +342,8 @@ const mock = (input) => kit.expandWithPaths(path, {
   sessionid: 'sessionid123',
   eventTimestamp: 1599617251119,
   eventInternal: false,
-  eventSource: 'com.adobe.eventsource.media.trackmedia',
-  eventType: 'com.adobe.eventtype.media',
+  eventSource: 'com.adobe.eventSource.media.trackMedia',
+  eventType: 'com.adobe.eventType.media',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

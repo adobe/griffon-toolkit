@@ -20,8 +20,8 @@ import schema from '../schemas/applicationLaunch.json';
  * ```
  * {
  *   payload: {
- *     ACPExtensionEventSource: 'com.adobe.eventsource.responsecontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.lifecycle'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.responseContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.lifecycle'
  *     ACPExtensionEventData: {
  *       lifecyclecontextdata: {
  *         launchevent: <string>,
@@ -120,7 +120,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.responseContent';
 
 /**
  * The value for `eventType` for a Application Launch (Analytics).
@@ -129,7 +129,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.responsecontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.lifecycle';
+const EVENT_TYPE = 'com.adobe.eventType.lifecycle';
 
 /**
  * The value for `rootType` for a Application Launch (Analytics).
@@ -223,8 +223,14 @@ const getLaunchEvent = kit.search(path.launchEvent);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.lifecycle`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.responseContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.responsecontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.lifecycle`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.lifecycle`'
+  ]),
   'payload.ACPExtensionEventData.lifecyclecontextdata.launchevent',
   'timestamp'
 ]);
@@ -248,8 +254,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.lifecycle',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.lifecycle',
   rootType: 'generic',
   ...input
 });
@@ -265,8 +271,8 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.responsecontent',
-  eventType: 'com.adobe.eventtype.lifecycle',
+  eventSource: 'com.adobe.eventSource.responseContent',
+  eventType: 'com.adobe.eventType.lifecycle',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

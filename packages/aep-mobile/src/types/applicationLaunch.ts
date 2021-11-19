@@ -51,8 +51,8 @@ export type ApplicationLaunch = {
   [k: string]: unknown;
 } & {
   payload?: {
-    ACPExtensionEventSource?: "com.adobe.eventsource.responsecontent";
-    ACPExtensionEventType?: "com.adobe.eventtype.lifecycle";
+    ACPExtensionEventSource?: "com.adobe.eventSource.responseContent";
+    ACPExtensionEventType?: "com.adobe.eventType.lifecycle";
     ACPExtensionEventData?: {
       /**
        * Context data about the launch

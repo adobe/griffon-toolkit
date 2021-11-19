@@ -51,8 +51,8 @@ export type LifecycleBackground = {
   [k: string]: unknown;
 } & {
   payload?: {
-    ACPExtensionEventSource?: "com.adobe.eventsource.applicationclose";
-    ACPExtensionEventType?: "com.adobe.eventtype.lifecycle";
+    ACPExtensionEventSource?: "com.adobe.eventSource.applicationClose";
+    ACPExtensionEventType?: "com.adobe.eventType.lifecycle";
     [k: string]: unknown;
   };
   [k: string]: unknown;

@@ -51,7 +51,7 @@ export type GenericPlaces = {
   [k: string]: unknown;
 } & {
   payload?: {
-    ACPExtensionEventType?: "com.adobe.eventtype.places";
+    ACPExtensionEventType?: "com.adobe.eventType.places";
     [k: string]: unknown;
   };
   [k: string]: unknown;

@@ -25,8 +25,8 @@ import schema from '../schemas/edgeErrorResponse.json';
  *       type: <string>,
  *       payload: <array>,
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.errorresponsecontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.edge'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.errorResponseContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.edge'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -123,7 +123,7 @@ const group = 'event';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.errorresponsecontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.errorResponseContent';
 
 /**
  * The value for `eventType` for a AEP Edge Error Response.
@@ -132,7 +132,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.errorresponsecontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.edge';
+const EVENT_TYPE = 'com.adobe.eventType.edge';
 
 /**
  * The value for `rootType` for a AEP Edge Error Response.
@@ -200,8 +200,14 @@ const getRequestPayload = kit.search(path.requestPayload);
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.errorresponsecontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.errorResponseContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.errorresponsecontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.edge`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`'
+  ]),
   'timestamp'
 ]);
 
@@ -224,8 +230,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.eventsource.errorresponsecontent',
-  eventType: 'com.adobe.eventtype.edge',
+  eventSource: 'com.adobe.eventSource.errorResponseContent',
+  eventType: 'com.adobe.eventType.edge',
   rootType: 'generic',
   ...input
 });
@@ -243,8 +249,8 @@ const make = (input) => kit.expandWithPaths(path, {
 const mock = (input) => kit.expandWithPaths(path, {
   requestId: 'BC123-8901-1234-AAFF-580993AC6258',
   requestType: 'state:store',
-  eventSource: 'com.adobe.eventsource.errorresponsecontent',
-  eventType: 'com.adobe.eventtype.edge',
+  eventSource: 'com.adobe.eventSource.errorResponseContent',
+  eventType: 'com.adobe.eventType.edge',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

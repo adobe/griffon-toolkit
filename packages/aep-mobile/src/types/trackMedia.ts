@@ -86,8 +86,8 @@ export type TrackMedia = {
       "event.internal": false;
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.media.trackmedia";
-    ACPExtensionEventType?: "com.adobe.eventtype.media";
+    ACPExtensionEventSource?: "com.adobe.eventSource.media.trackMedia";
+    ACPExtensionEventType?: "com.adobe.eventType.media";
     [k: string]: unknown;
   };
   [k: string]: unknown;

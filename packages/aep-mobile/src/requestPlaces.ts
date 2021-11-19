@@ -26,8 +26,8 @@ import schema from '../schemas/requestPlaces.json';
  *       longitude: <number>,
  *       requesttype: 'requestgetnearbyplaces'
  *     },
- *     ACPExtensionEventSource: 'com.adobe.eventsource.requestcontent'
- *     ACPExtensionEventType: 'com.adobe.eventtype.places'
+ *     ACPExtensionEventSource: 'com.adobe.eventSource.requestContent'
+ *     ACPExtensionEventType: 'com.adobe.eventType.places'
  *     ACPExtensionEventName: <string>,
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
@@ -136,7 +136,7 @@ const REQUEST_TYPE = 'requestgetnearbyplaces';
  *
  * @constant
  */
-const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
+const EVENT_SOURCE = 'com.adobe.eventSource.requestContent';
 
 /**
  * The value for `eventType` for a Request Places Event.
@@ -145,7 +145,7 @@ const EVENT_SOURCE = 'com.adobe.eventsource.requestcontent';
  *
  * @constant
  */
-const EVENT_TYPE = 'com.adobe.eventtype.places';
+const EVENT_TYPE = 'com.adobe.eventType.places';
 
 /**
  * The value for `rootType` for a Request Places Event.
@@ -251,8 +251,14 @@ const getRequestType = kit.search(path.requestType);
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.requesttype==`requestgetnearbyplaces`',
-  'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`',
-  'payload.ACPExtensionEventType==`com.adobe.eventtype.places`',
+  kit.combineAny([
+    'payload.ACPExtensionEventSource==`com.adobe.eventSource.requestContent`',
+    'payload.ACPExtensionEventSource==`com.adobe.eventsource.requestcontent`'
+  ]),
+  kit.combineAny([
+    'payload.ACPExtensionEventType==`com.adobe.eventType.places`',
+    'payload.ACPExtensionEventType==`com.adobe.eventtype.places`'
+  ]),
   'timestamp'
 ]);
 
@@ -276,8 +282,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  */
 const make = (input) => kit.expandWithPaths(path, {
   requestType: 'requestgetnearbyplaces',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.places',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.places',
   rootType: 'generic',
   ...input
 });
@@ -297,8 +303,8 @@ const mock = (input) => kit.expandWithPaths(path, {
   latitude: 40.4349,
   longitude: -111.891,
   requestType: 'requestgetnearbyplaces',
-  eventSource: 'com.adobe.eventsource.requestcontent',
-  eventType: 'com.adobe.eventtype.places',
+  eventSource: 'com.adobe.eventSource.requestContent',
+  eventType: 'com.adobe.eventType.places',
   rootType: 'generic',
   vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',

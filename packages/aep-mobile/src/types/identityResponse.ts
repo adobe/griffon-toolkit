@@ -62,8 +62,8 @@ export type IdentityResponse = {
       pushidentifier?: string;
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.responseidentity";
-    ACPExtensionEventType?: "com.adobe.eventtype.identity";
+    ACPExtensionEventSource?: "com.adobe.eventSource.responseIdentity";
+    ACPExtensionEventType?: "com.adobe.eventType.identity";
     [k: string]: unknown;
   };
   [k: string]: unknown;

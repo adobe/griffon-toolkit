@@ -122,7 +122,7 @@ export type PlacesExit = {
       regioneventtype: "exit";
       [k: string]: unknown;
     };
-    ACPExtensionEventSource?: "com.adobe.eventsource.responsecontent";
+    ACPExtensionEventSource?: "com.adobe.eventSource.responseContent";
     [k: string]: unknown;
   };
   [k: string]: unknown;
