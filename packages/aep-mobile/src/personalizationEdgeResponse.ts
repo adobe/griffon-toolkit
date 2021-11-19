@@ -169,7 +169,7 @@ const get = (alias, data) => {
  */
 const matcher = kit.combineAll([
   'payload.ACPExtensionEventData.type==`personalization:decisions`',
-  payload.ACPExtensionEventSource!=`com.adobe.eventSource.errorResponseContent` && payload.ACPExtensionEventSource!=`com.adobe.eventSource.requestContent`,
+  'payload.ACPExtensionEventSource!=`com.adobe.eventSource.errorResponseContent` && payload.ACPExtensionEventSource!=`com.adobe.eventSource.requestContent`',
   kit.combineAny([
     'payload.ACPExtensionEventType==`com.adobe.eventType.edge`',
     'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`'

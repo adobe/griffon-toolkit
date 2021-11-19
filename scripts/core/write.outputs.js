@@ -283,7 +283,7 @@ export const writeCombineMatch = ({
   const matchType = not.enum ? '!=' : '==';
   const matches = R.map((val) => `${preparePath(path)}${matchType}\`${val}\``, enums);
   const join = not.enum ? ' && ' : ' || ';
-  return R.join(join, matches);
+  return `'${R.join(join, matches)}'`;
 };
 
 const formatMatch = (path, useConst) => {
@@ -300,9 +300,7 @@ export const writeMatch = ({
   `kit.combineAny([
     ${formatMatch(path, useConst)},
     ${formatMatch(path, useConst.toLowerCase())}
-  ])`
-  :
-   formatMatch(path, useConst)
+  ])` : formatMatch(path, useConst)
 );
 
 /*

@@ -207,7 +207,7 @@ const getResponsePayload = kit.search(path.responsePayload);
  * @constant
  */
 const matcher = kit.combineAll([
-  payload.ACPExtensionEventSource!=`com.adobe.eventSource.errorResponseContent` && payload.ACPExtensionEventSource!=`com.adobe.eventSource.requestContent`,
+  'payload.ACPExtensionEventSource!=`com.adobe.eventSource.errorResponseContent` && payload.ACPExtensionEventSource!=`com.adobe.eventSource.requestContent`',
   kit.combineAny([
     'payload.ACPExtensionEventType==`com.adobe.eventType.edge`',
     'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`'
