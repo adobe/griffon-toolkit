@@ -55,11 +55,11 @@ export type EdgeHitReceived = {
      * An object containing metadata about the request
      */
     attributes?: {
-      source?: "com.adobe.edge.konductor";
       [k: string]: unknown;
     };
     name?: "hitReceived";
     [k: string]: unknown;
   };
+  vendor?: "com.adobe.edge.konductor";
   [k: string]: unknown;
 };

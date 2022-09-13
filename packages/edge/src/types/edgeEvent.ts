@@ -59,10 +59,6 @@ export type EdgeEvent = {
        * The request id that is shared between the different service requests
        */
       requestId?: string;
-      /**
-       * The event source
-       */
-      source?: string;
       [k: string]: unknown;
     };
     /**
@@ -82,5 +78,6 @@ export type EdgeEvent = {
     [k: string]: unknown;
   };
   type?: "service";
+  vendor?: "com.adobe.edge.konductor";
   [k: string]: unknown;
 };

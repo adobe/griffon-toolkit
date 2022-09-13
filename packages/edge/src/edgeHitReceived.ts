@@ -21,13 +21,13 @@ import schema from '../schemas/edgeHitReceived.json';
  * {
  *   payload: {
  *     attributes: {
- *       source: 'com.adobe.edge.konductor'
  *       requestId: <string>,
  *     },
  *     name: 'hitReceived'
  *     messages: <array>,
  *     context: <object>,
  *   },
+ *   vendor: 'com.adobe.edge.konductor'
  *   type: 'service'
  *   annotations: <array>,
  *   clientId: <string>,
@@ -51,9 +51,6 @@ const path = {
   /** An object containing metadata about the request.<br />Path is `payload.attributes`. */
   attributes: 'payload.attributes',
 
-  /** The event source.<br />Path is `payload.attributes.source`. */
-  eventSource: 'payload.attributes.source',
-
   /** The request id that is shared between the different service requests.<br />Path is `payload.attributes.requestId`. */
   requestId: 'payload.attributes.requestId',
 
@@ -65,6 +62,8 @@ const path = {
 
   /** Additional context provided by the service.<br />Path is `payload.context`. */
   context: 'payload.context',
+
+  vendor: 'vendor',
 
   /** The type of event.<br />Path is `type`. */
   rootType: 'type',
@@ -101,15 +100,6 @@ const label = 'Hit Received';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a Hit Received.
- *
- * Path is `payload,attributes,source`.
- *
- * @constant
- */
-const EVENT_SOURCE = 'com.adobe.edge.konductor';
-
-/**
  * The value for `name` for a Hit Received.
  *
  * Path is `payload,name`.
@@ -117,6 +107,15 @@ const EVENT_SOURCE = 'com.adobe.edge.konductor';
  * @constant
  */
 const NAME = 'hitReceived';
+
+/**
+ * The value for `vendor` for a Hit Received.
+ *
+ * Path is `vendor`.
+ *
+ * @constant
+ */
+const VENDOR = 'com.adobe.edge.konductor';
 
 /**
  * The value for `rootType` for a Hit Received.
@@ -167,15 +166,27 @@ const getAttributesKey = kit.curry(
 );
 
 /**
+ * Returns the `vendor` from the Hit Received.
+ * This is the .
+ *
+ * Path is `vendor`.
+ *
+ * @function
+ * @param {object} source The Hit Received instance
+ * @returns {string}
+ */
+const getVendor = kit.search(path.vendor);
+
+/**
  * Matcher can be used to find matching Hit Received objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.attributes.source==`com.adobe.edge.konductor`',
   'payload.attributes.requestId',
   'payload.name==`hitReceived`',
+  'vendor==`com.adobe.edge.konductor`',
   'type==`service`',
   'timestamp'
 ]);
@@ -199,8 +210,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.edge.konductor',
   name: 'hitReceived',
+  vendor: 'com.adobe.edge.konductor',
   rootType: 'service',
   ...input
 });
@@ -216,9 +227,9 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.edge.konductor',
   requestId: '93619B4C-D4EE-4BA9-BE3F-DD430A155013',
   name: 'hitReceived',
+  vendor: 'com.adobe.edge.konductor',
   rootType: 'service',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
@@ -243,10 +254,11 @@ export default {
   ...customExports,
   getAttributes,
   getAttributesKey,
+  getVendor,
   isMatch,
   matcher,
-  EVENT_SOURCE,
   NAME,
+  VENDOR,
   ROOT_TYPE,
   label,
   group,

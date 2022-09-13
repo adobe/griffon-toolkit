@@ -55,12 +55,12 @@ export type AnalyticsHit = {
      * An object containing metadata about the request
      */
     attributes?: {
-      source?: "com.adobe.analytics";
       hitId?: string;
       [k: string]: unknown;
     };
     name?: "analytics.hit";
     [k: string]: unknown;
   };
+  vendor?: "com.adobe.analytics";
   [k: string]: unknown;
 };

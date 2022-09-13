@@ -22,13 +22,13 @@ import schema from '../schemas/edgeEvent.json';
  *   payload: {
  *     attributes: {
  *       requestId: <string>,
- *       source: <string>,
  *     },
  *     name: <string>,
  *     messages: <array>,
  *     context: <object>,
  *   },
  *   type: 'service'
+ *   vendor: 'com.adobe.edge.konductor'
  *   annotations: <array>,
  *   clientId: <string>,
  *   timestamp: <number>,
@@ -54,9 +54,6 @@ const path = {
   /** The request id that is shared between the different service requests.<br />Path is `payload.attributes.requestId`. */
   requestId: 'payload.attributes.requestId',
 
-  /** The event source.<br />Path is `payload.attributes.source`. */
-  eventSource: 'payload.attributes.source',
-
   /** The name of the event.<br />Path is `payload.name`. */
   name: 'payload.name',
 
@@ -68,6 +65,8 @@ const path = {
 
   /** The type of event.<br />Path is `type`. */
   rootType: 'type',
+
+  vendor: 'vendor',
 
   /** Array of Annotation objects.<br />Path is `annotations`. */
   annotations: 'annotations',
@@ -108,6 +107,15 @@ const group = 'event';
  * @constant
  */
 const ROOT_TYPE = 'service';
+
+/**
+ * The value for `vendor` for a Generic Edge Event.
+ *
+ * Path is `vendor`.
+ *
+ * @constant
+ */
+const VENDOR = 'com.adobe.edge.konductor';
 
 /**
  * Retrieves a value from the object. You can provide either a path or an alias.
@@ -159,18 +167,6 @@ const getAttributesKey = kit.curry(
  * @returns {string}
  */
 const getRequestId = kit.search(path.requestId);
-
-/**
- * Returns the `eventSource` from the Generic Edge Event.
- * This is the the event source.
- *
- * Path is `payload,attributes,source`.
- *
- * @function
- * @param {object} source The Generic Edge Event instance
- * @returns {string}
- */
-const getEventSource = kit.search(path.eventSource);
 
 /**
  * Returns the `name` from the Generic Edge Event.
@@ -229,8 +225,8 @@ const getContextKey = kit.curry(
  */
 const matcher = kit.combineAll([
   'payload.attributes.requestId',
-  'payload.attributes.source',
   'type==`service`',
+  'vendor==`com.adobe.edge.konductor`',
   'timestamp'
 ]);
 
@@ -254,6 +250,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  */
 const make = (input) => kit.expandWithPaths(path, {
   rootType: 'service',
+  vendor: 'com.adobe.edge.konductor',
   ...input
 });
 
@@ -269,8 +266,8 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   requestId: '93619B4C-D4EE-4BA9-BE3F-DD430A155013',
-  eventSource: 'com.adobe.edge.konductor',
   rootType: 'service',
+  vendor: 'com.adobe.edge.konductor',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   rootId: '123',
@@ -295,7 +292,6 @@ export default {
   getAttributes,
   getAttributesKey,
   getRequestId,
-  getEventSource,
   getName,
   getMessages,
   getContext,
@@ -303,6 +299,7 @@ export default {
   isMatch,
   matcher,
   ROOT_TYPE,
+  VENDOR,
   label,
   group,
   parentDepth

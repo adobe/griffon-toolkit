@@ -55,12 +55,12 @@ export type AnalyticsMapping = {
      * An object containing metadata about the request
      */
     attributes?: {
-      source?: "com.adobe.analytics";
       primaryHitId?: string;
       [k: string]: unknown;
     };
     name?: "analytics.mapping";
     [k: string]: unknown;
   };
+  vendor?: "com.adobe.analytics";
   [k: string]: unknown;
 };

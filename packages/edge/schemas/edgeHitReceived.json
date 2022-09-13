@@ -11,14 +11,7 @@
       "properties": {
         "attributes": {
           "description": "An object containing metadata about the request",
-          "type": "object",
-          "properties": {
-            "source": {
-              "inherit": true,
-              "type": "string",
-              "const": "com.adobe.edge.konductor"
-            }
-          }
+          "type": "object"
         },
         "name": {
           "inherit": true,
@@ -26,6 +19,10 @@
           "const": "hitReceived"
         }
       }
+    },
+    "vendor": {
+      "type": "string",
+      "const": "com.adobe.edge.konductor"
     }
   }
 }
