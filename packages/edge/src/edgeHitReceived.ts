@@ -23,7 +23,7 @@ import schema from '../schemas/edgeHitReceived.json';
  *     attributes: {
  *       requestId: <string>,
  *     },
- *     name: 'hitProcessed'
+ *     name: 'hitReceived'
  *     messages: <array>,
  *     context: <object>,
  *   },
@@ -48,7 +48,7 @@ const path = {
   /** An object with custom data describing the event.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** An object containing processed metadata about the request.<br />Path is `payload.attributes`. */
+  /** An object containing metadata about the request.<br />Path is `payload.attributes`. */
   attributes: 'payload.attributes',
 
   /** The request id that is shared between the different service requests.<br />Path is `payload.attributes.requestId`. */
@@ -106,7 +106,7 @@ const group = 'event';
  *
  * @constant
  */
-const NAME = 'hitProcessed';
+const NAME = 'hitReceived';
 
 /**
  * The value for `vendor` for a Hit Received.
@@ -142,7 +142,7 @@ const get = (alias, data) => {
 
 /**
  * Returns the `attributes` from the Hit Received.
- * This is the an object containing processed metadata about the request.
+ * This is the an object containing metadata about the request.
  *
  * Path is `payload,attributes`.
  *
@@ -166,53 +166,16 @@ const getAttributesKey = kit.curry(
 );
 
 /**
- * Returns the `requestId` from the Hit Received.
- * This is the the request id that is shared between the different service requests.
+ * Returns the `vendor` from the Hit Received.
+ * This is the .
  *
- * Path is `payload,attributes,requestId`.
+ * Path is `vendor`.
  *
  * @function
  * @param {object} source The Hit Received instance
  * @returns {string}
  */
-const getRequestId = kit.search(path.requestId);
-
-/**
- * Returns the `messages` from the Hit Received.
- * This is the messages received from the service.
- *
- * Path is `payload,messages`.
- *
- * @function
- * @param {object} source The Hit Received instance
- * @returns {Array}
- */
-const getMessages = kit.search(path.messages);
-
-/**
- * Returns the `context` from the Hit Received.
- * This is the additional context provided by the service.
- *
- * Path is `payload,context`.
- *
- * @function
- * @param {object} source The Hit Received instance
- * @returns {object}
- */
-const getContext = kit.search(path.context);
-
-/**
- * Returns the data using the specified path from the context
- * of the Hit Received.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Hit Received instance
- * @returns {*}
- */
-const getContextKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.context}.${searchPath}`, source)
-);
+const getVendor = kit.search(path.vendor);
 
 /**
  * Matcher can be used to find matching Hit Received objects.
@@ -222,7 +185,7 @@ const getContextKey = kit.curry(
  */
 const matcher = kit.combineAll([
   'payload.attributes.requestId',
-  'payload.name==`hitProcessed`',
+  'payload.name==`hitReceived`',
   'vendor==`com.adobe.edge.konductor`',
   'type==`service`',
   'timestamp'
@@ -247,7 +210,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  name: 'hitProcessed',
+  name: 'hitReceived',
   vendor: 'com.adobe.edge.konductor',
   rootType: 'service',
   ...input
@@ -265,7 +228,7 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   requestId: '93619B4C-D4EE-4BA9-BE3F-DD430A155013',
-  name: 'hitProcessed',
+  name: 'hitReceived',
   vendor: 'com.adobe.edge.konductor',
   rootType: 'service',
   clientId: 'appleABC',
@@ -291,10 +254,7 @@ export default {
   ...customExports,
   getAttributes,
   getAttributesKey,
-  getRequestId,
-  getMessages,
-  getContext,
-  getContextKey,
+  getVendor,
   isMatch,
   matcher,
   NAME,

@@ -52,12 +52,12 @@ export type EdgeHitProcessed = {
 } & {
   payload?: {
     /**
-     * An object containing metadata about the request
+     * An object containing processed metadata about the request
      */
     attributes?: {
       [k: string]: unknown;
     };
-    name?: "hitReceived";
+    name?: "hitProcessed";
     [k: string]: unknown;
   };
   vendor?: "com.adobe.edge.konductor";
