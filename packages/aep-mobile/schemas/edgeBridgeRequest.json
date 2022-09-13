@@ -1,0 +1,55 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/edgeBridgeRequest",
+  "shortDesc": "AEP Edge Bridge Request",
+  "group": "event",
+  "allOf": [
+    { "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }
+  ],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "data": {
+              "inherit": true,
+              "type": "object",
+              "properties": {
+                "contextdata": {
+                  "alias": "contextData",
+                  "description": "Context data sent with the track call",
+                  "type": "object",
+                  "mock": "{ 'myapp.purchase': '1' }"
+                }
+              },
+              "required": ["contextdata"]
+            },
+            "xdm": {
+              "description": "The XDM data send to the server",
+              "type": "object",
+              "mock": "{ eventType: 'commerce.purchases' }"
+            }
+          },
+          "required": ["data", "xdm"]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventType.edge"
+        },
+        "ACPExtensionEventName": {
+          "inherit": true,
+          "const": "Edge Bridge Request"
+        }
+      },
+      "required": ["ACPExtensionEventData"]
+    }
+  }
+}

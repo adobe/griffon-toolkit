@@ -1,0 +1,58 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/iamConsequence",
+  "shortDesc": "Rules Consequence Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/ruleConsequence" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+              "triggeredconsequence": {
+                "inherit": true,
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "inherit": true,
+                    "const": "cjmiam"
+                  },
+                  "data": {
+                    "inherit": true,
+                    "properties": {
+                      "html": {
+                        "type": "string",
+                        "description": "The IAM message HTML to display",
+                        "mock": "<html><body>This is a message</body></html>"
+                      },
+                      "mobileParameters": {
+                        "type": "object",
+                        "description": "Parameters describing how the messsage should be displayed"
+                      }
+                    }
+                  }
+                },
+                "required": ["html", "mobileParameters"]
+              }
+          }
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventSource.responseContent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.rulesEngine"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

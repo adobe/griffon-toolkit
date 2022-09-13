@@ -1,0 +1,64 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/iamTrackingRequest",
+  "shortDesc": "IAM Tracking Request",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/edgeRequest" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "iam": {
+              "type": "object",
+              "description": "IAM Payload",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "alias": "interactionAction",
+                  "description": "Action associated with interaction"
+                },
+                "eventType": {
+                  "alias": "interactionType",
+                  "type": "string",
+                  "mock": "trigger",
+                  "description": "The type of interaction triggered",
+                  "match": true
+                }
+              },
+              "required": [ "eventType" ]
+            },
+            "xdm": {
+              "inherit": true,
+              "properties": {
+                "_experience": {
+                  "type": "object",
+                  "properties": {
+                    "decisioning": {
+                      "type": "object",
+                      "properties": {
+                        "propositionEventType": {
+                          "type": "object"
+                        },
+                        "propositions": {
+                          "type": "array"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}
