@@ -11,24 +11,24 @@ governing permissions and limitations under the License.
 */
 
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/edgeEvent.json';
+import schema from '../schemas/edgeHitProcessed.json';
 
 /**
- * Contains constants and functions for a Generic Edge Event.
+ * Contains constants and functions for a Hit Received.
  *
- * The structure for a Generic Edge Event is as follows:
+ * The structure for a Hit Received is as follows:
  * ```
  * {
  *   payload: {
  *     attributes: {
  *       requestId: <string>,
  *     },
- *     name: <string>,
+ *     name: 'hitProcessed'
  *     messages: <array>,
  *     context: <object>,
  *   },
- *   type: 'service'
  *   vendor: 'com.adobe.edge.konductor'
+ *   type: 'service'
  *   annotations: <array>,
  *   clientId: <string>,
  *   timestamp: <number>,
@@ -36,11 +36,11 @@ import schema from '../schemas/edgeEvent.json';
  * }
  * ```
  *
- * @namespace edgeEvent
+ * @namespace edgeHitProcessed
  */
 
 /**
- * Paths for the keys on a Generic Edge Event
+ * Paths for the keys on a Hit Received
  *
  * @enum {string}
  */
@@ -48,7 +48,7 @@ const path = {
   /** An object with custom data describing the event.<br />Path is `payload`. */
   payload: 'payload',
 
-  /** An object containing metadata about the request.<br />Path is `payload.attributes`. */
+  /** An object containing processed metadata about the request.<br />Path is `payload.attributes`. */
   attributes: 'payload.attributes',
 
   /** The request id that is shared between the different service requests.<br />Path is `payload.attributes.requestId`. */
@@ -63,10 +63,10 @@ const path = {
   /** Additional context provided by the service.<br />Path is `payload.context`. */
   context: 'payload.context',
 
+  vendor: 'vendor',
+
   /** The type of event.<br />Path is `type`. */
   rootType: 'type',
-
-  vendor: 'vendor',
 
   /** Array of Annotation objects.<br />Path is `annotations`. */
   annotations: 'annotations',
@@ -87,12 +87,12 @@ const path = {
  *
  * @constant
  */
-const parentDepth = 1;
+const parentDepth = 2;
 
 /**
  * A label that can be used when describing this object
  */
-const label = 'Generic Edge Event';
+const label = 'Hit Received';
 
 /**
  * A grouping for this object
@@ -100,22 +100,31 @@ const label = 'Generic Edge Event';
 const group = 'event';
 
 /**
- * The value for `rootType` for a Generic Edge Event.
+ * The value for `name` for a Hit Received.
  *
- * Path is `type`.
+ * Path is `payload,name`.
  *
  * @constant
  */
-const ROOT_TYPE = 'service';
+const NAME = 'hitProcessed';
 
 /**
- * The value for `vendor` for a Generic Edge Event.
+ * The value for `vendor` for a Hit Received.
  *
  * Path is `vendor`.
  *
  * @constant
  */
 const VENDOR = 'com.adobe.edge.konductor';
+
+/**
+ * The value for `rootType` for a Hit Received.
+ *
+ * Path is `type`.
+ *
+ * @constant
+ */
+const ROOT_TYPE = 'service';
 
 /**
  * Retrieves a value from the object. You can provide either a path or an alias.
@@ -132,24 +141,24 @@ const get = (alias, data) => {
 };
 
 /**
- * Returns the `attributes` from the Generic Edge Event.
- * This is the an object containing metadata about the request.
+ * Returns the `attributes` from the Hit Received.
+ * This is the an object containing processed metadata about the request.
  *
  * Path is `payload,attributes`.
  *
  * @function
- * @param {object} source The Generic Edge Event instance
+ * @param {object} source The Hit Received instance
  * @returns {object}
  */
 const getAttributes = kit.search(path.attributes);
 
 /**
  * Returns the data using the specified path from the attributes
- * of the Generic Edge Event.
+ * of the Hit Received.
  *
  * @function
  * @param {...string} path key in object
- * @param {object} source The Generic Edge Event instance
+ * @param {object} source The Hit Received instance
  * @returns {*}
  */
 const getAttributesKey = kit.curry(
@@ -157,90 +166,30 @@ const getAttributesKey = kit.curry(
 );
 
 /**
- * Returns the `requestId` from the Generic Edge Event.
- * This is the the request id that is shared between the different service requests.
- *
- * Path is `payload,attributes,requestId`.
- *
- * @function
- * @param {object} source The Generic Edge Event instance
- * @returns {string}
- */
-const getRequestId = kit.search(path.requestId);
-
-/**
- * Returns the `name` from the Generic Edge Event.
- * This is the the name of the event.
- *
- * Path is `payload,name`.
- *
- * @function
- * @param {object} source The Generic Edge Event instance
- * @returns {string}
- */
-const getName = kit.search(path.name);
-
-/**
- * Returns the `messages` from the Generic Edge Event.
- * This is the messages received from the service.
- *
- * Path is `payload,messages`.
- *
- * @function
- * @param {object} source The Generic Edge Event instance
- * @returns {Array}
- */
-const getMessages = kit.search(path.messages);
-
-/**
- * Returns the `context` from the Generic Edge Event.
- * This is the additional context provided by the service.
- *
- * Path is `payload,context`.
- *
- * @function
- * @param {object} source The Generic Edge Event instance
- * @returns {object}
- */
-const getContext = kit.search(path.context);
-
-/**
- * Returns the data using the specified path from the context
- * of the Generic Edge Event.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Generic Edge Event instance
- * @returns {*}
- */
-const getContextKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.context}.${searchPath}`, source)
-);
-
-/**
- * Matcher can be used to find matching Generic Edge Event objects.
+ * Matcher can be used to find matching Hit Received objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
   'payload.attributes.requestId',
-  'type==`service`',
+  'payload.name==`hitProcessed`',
   'vendor==`com.adobe.edge.konductor`',
+  'type==`service`',
   'timestamp'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Generic Edge Event event.
+ * Tests the provided source against the matcher to see if it's Hit Received event.
  *
  * @function
- * @param {object} source The Generic Edge Event instance
+ * @param {object} source The Hit Received instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Generic Edge Event with the const values set.
+ * Generates a Hit Received with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -249,13 +198,14 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  rootType: 'service',
+  name: 'hitProcessed',
   vendor: 'com.adobe.edge.konductor',
+  rootType: 'service',
   ...input
 });
 
 /**
- * Generates a Generic Edge Event with some default values set.
+ * Generates a Hit Received with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -266,8 +216,9 @@ const make = (input) => kit.expandWithPaths(path, {
  */
 const mock = (input) => kit.expandWithPaths(path, {
   requestId: '93619B4C-D4EE-4BA9-BE3F-DD430A155013',
-  rootType: 'service',
+  name: 'hitProcessed',
   vendor: 'com.adobe.edge.konductor',
+  rootType: 'service',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   rootId: '123',
@@ -291,15 +242,11 @@ export default {
   ...customExports,
   getAttributes,
   getAttributesKey,
-  getRequestId,
-  getName,
-  getMessages,
-  getContext,
-  getContextKey,
   isMatch,
   matcher,
-  ROOT_TYPE,
+  NAME,
   VENDOR,
+  ROOT_TYPE,
   label,
   group,
   parentDepth

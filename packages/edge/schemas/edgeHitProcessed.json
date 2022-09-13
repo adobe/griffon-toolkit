@@ -1,5 +1,5 @@
 {
-  "$id": "http://griffon.adobe.com/schemas/edge/edgeHitReceived",
+  "$id": "http://griffon.adobe.com/schemas/edge/edgeHitProcessed",
   "shortDesc": "Hit Received",
   "group": "event",
   "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/edge/edgeEvent" }],
@@ -10,17 +10,18 @@
       "type": "object",
       "properties": {
         "attributes": {
-          "description": "An object containing metadata about the request",
+          "description": "An object containing processed metadata about the request",
           "type": "object"
         },
         "name": {
           "inherit": true,
           "type": "string",
-          "const": "hitReceived"
+          "const": "hitProcessed"
         }
       }
     },
     "vendor": {
+      "inherit": true,
       "type": "string",
       "const": "com.adobe.edge.konductor"
     }

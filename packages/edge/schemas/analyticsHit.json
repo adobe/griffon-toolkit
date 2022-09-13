@@ -13,11 +13,6 @@
           "description": "An object containing metadata about the request",
           "type": "object",
           "properties": {
-            "source": {
-              "inherit": true,
-              "type": "string",
-              "const": "com.adobe.analytics"
-            },
             "hitId": {
               "inherit": true,
               "type": "string",
@@ -31,6 +26,10 @@
           "const": "analytics.hit"
         }
       }
+    },
+    "vendor": {
+      "type": "string",
+      "const": "com.adobe.analytics"
     }
   }
 }

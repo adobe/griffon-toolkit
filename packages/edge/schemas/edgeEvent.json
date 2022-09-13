@@ -18,13 +18,6 @@
               "type": "string",
               "mock": "93619B4C-D4EE-4BA9-BE3F-DD430A155013",
               "match": true
-            },
-            "source": {
-              "alias": "eventSource",
-              "description": "The event source",
-              "type": "string",
-              "mock": "com.adobe.edge.konductor",
-              "match": true
             }
           }
         },
@@ -52,6 +45,11 @@
       "inherit": true,
       "type": "string",
       "const": "service"
+    },
+    "vendor": {
+      "inherit": true,
+      "type": "string",
+      "const": "com.adobe.edge.konductor"
     }
   }
 }

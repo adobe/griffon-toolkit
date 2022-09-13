@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type AnalyticsMapping = {
+export type EdgeHitProcessed = {
   /**
    * Array of Annotation objects
    */
@@ -52,15 +52,14 @@ export type AnalyticsMapping = {
 } & {
   payload?: {
     /**
-     * An object containing metadata about the request
+     * An object containing processed metadata about the request
      */
     attributes?: {
-      primaryHitId?: string;
       [k: string]: unknown;
     };
-    name?: "analytics.mapping";
+    name?: "hitProcessed";
     [k: string]: unknown;
   };
-  vendor?: "com.adobe.analytics";
+  vendor?: "com.adobe.edge.konductor";
   [k: string]: unknown;
 };

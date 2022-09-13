@@ -21,7 +21,6 @@ import schema from '../schemas/analyticsHit.json';
  * {
  *   payload: {
  *     attributes: {
- *       source: 'com.adobe.analytics'
  *       hitId: <string>,
  *       requestId: <string>,
  *     },
@@ -29,6 +28,7 @@ import schema from '../schemas/analyticsHit.json';
  *     messages: <array>,
  *     context: <object>,
  *   },
+ *   vendor: 'com.adobe.analytics'
  *   type: 'service'
  *   annotations: <array>,
  *   clientId: <string>,
@@ -52,9 +52,6 @@ const path = {
   /** An object containing metadata about the request.<br />Path is `payload.attributes`. */
   attributes: 'payload.attributes',
 
-  /** The event source.<br />Path is `payload.attributes.source`. */
-  eventSource: 'payload.attributes.source',
-
   hitId: 'payload.attributes.hitId',
 
   /** The request id that is shared between the different service requests.<br />Path is `payload.attributes.requestId`. */
@@ -68,6 +65,8 @@ const path = {
 
   /** Additional context provided by the service.<br />Path is `payload.context`. */
   context: 'payload.context',
+
+  vendor: 'vendor',
 
   /** The type of event.<br />Path is `type`. */
   rootType: 'type',
@@ -104,15 +103,6 @@ const label = 'Analytics Hit';
 const group = 'event';
 
 /**
- * The value for `eventSource` for a Analytics Hit.
- *
- * Path is `payload,attributes,source`.
- *
- * @constant
- */
-const EVENT_SOURCE = 'com.adobe.analytics';
-
-/**
  * The value for `name` for a Analytics Hit.
  *
  * Path is `payload,name`.
@@ -120,6 +110,15 @@ const EVENT_SOURCE = 'com.adobe.analytics';
  * @constant
  */
 const NAME = 'analytics.hit';
+
+/**
+ * The value for `vendor` for a Analytics Hit.
+ *
+ * Path is `vendor`.
+ *
+ * @constant
+ */
+const VENDOR = 'com.adobe.analytics';
 
 /**
  * The value for `rootType` for a Analytics Hit.
@@ -170,15 +169,27 @@ const getAttributesKey = kit.curry(
 );
 
 /**
+ * Returns the `vendor` from the Analytics Hit.
+ * This is the .
+ *
+ * Path is `vendor`.
+ *
+ * @function
+ * @param {object} source The Analytics Hit instance
+ * @returns {string}
+ */
+const getVendor = kit.search(path.vendor);
+
+/**
  * Matcher can be used to find matching Analytics Hit objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
-  'payload.attributes.source==`com.adobe.analytics`',
   'payload.attributes.requestId',
   'payload.name==`analytics.hit`',
+  'vendor==`com.adobe.analytics`',
   'type==`service`',
   'timestamp'
 ]);
@@ -202,8 +213,8 @@ const isMatch = (source) => kit.isMatch(matcher, source);
  * @returns {object}
  */
 const make = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.analytics',
   name: 'analytics.hit',
+  vendor: 'com.adobe.analytics',
   rootType: 'service',
   ...input
 });
@@ -219,10 +230,10 @@ const make = (input) => kit.expandWithPaths(path, {
  * @returns {object}
  */
 const mock = (input) => kit.expandWithPaths(path, {
-  eventSource: 'com.adobe.analytics',
   hitId: '2FC717AB05158000-4023A7954DCA58D7',
   requestId: '93619B4C-D4EE-4BA9-BE3F-DD430A155013',
   name: 'analytics.hit',
+  vendor: 'com.adobe.analytics',
   rootType: 'service',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
@@ -247,10 +258,11 @@ export default {
   ...customExports,
   getAttributes,
   getAttributesKey,
+  getVendor,
   isMatch,
   matcher,
-  EVENT_SOURCE,
   NAME,
+  VENDOR,
   ROOT_TYPE,
   label,
   group,
