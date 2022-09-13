@@ -1,5 +1,5 @@
 {
-  "$id": "http://griffon.adobe.com/schemas/edge/edgeHitReceived",
+  "$id": "http://griffon.adobe.com/schemas/edge/edgeHitProcessed",
   "shortDesc": "Hit Received",
   "group": "event",
   "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/edge/edgeEvent" }],
