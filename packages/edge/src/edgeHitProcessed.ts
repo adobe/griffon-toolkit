@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/edgeHitReceived.json';
+import schema from '../schemas/edgeHitProcessed.json';
 
 /**
  * Contains constants and functions for a Hit Received.
@@ -36,7 +36,7 @@ import schema from '../schemas/edgeHitReceived.json';
  * }
  * ```
  *
- * @namespace edgeHitReceived
+ * @namespace edgeHitProcessed
  */
 
 /**
@@ -166,55 +166,6 @@ const getAttributesKey = kit.curry(
 );
 
 /**
- * Returns the `requestId` from the Hit Received.
- * This is the the request id that is shared between the different service requests.
- *
- * Path is `payload,attributes,requestId`.
- *
- * @function
- * @param {object} source The Hit Received instance
- * @returns {string}
- */
-const getRequestId = kit.search(path.requestId);
-
-/**
- * Returns the `messages` from the Hit Received.
- * This is the messages received from the service.
- *
- * Path is `payload,messages`.
- *
- * @function
- * @param {object} source The Hit Received instance
- * @returns {Array}
- */
-const getMessages = kit.search(path.messages);
-
-/**
- * Returns the `context` from the Hit Received.
- * This is the additional context provided by the service.
- *
- * Path is `payload,context`.
- *
- * @function
- * @param {object} source The Hit Received instance
- * @returns {object}
- */
-const getContext = kit.search(path.context);
-
-/**
- * Returns the data using the specified path from the context
- * of the Hit Received.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Hit Received instance
- * @returns {*}
- */
-const getContextKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.context}.${searchPath}`, source)
-);
-
-/**
  * Matcher can be used to find matching Hit Received objects.
  *
  * @see kit.match
@@ -291,10 +242,6 @@ export default {
   ...customExports,
   getAttributes,
   getAttributesKey,
-  getRequestId,
-  getMessages,
-  getContext,
-  getContextKey,
   isMatch,
   matcher,
   NAME,
