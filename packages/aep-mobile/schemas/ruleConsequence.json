@@ -1,0 +1,59 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/ruleConsequence",
+  "shortDesc": "Rules Consequence Event",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "triggeredconsequence": {
+              "description": "The rule consequence",
+              "alias": "consequence",
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "alias": "consequenceType",
+                  "description": "The type of consequence that was triggered. All types have their own detail format"
+                },
+                "id": {
+                  "type": "string",
+                  "alias": "consequenceId",
+                  "description": "UUID for the consequence",
+                  "mock": "1617ddfb-9cb6-4021-9b58-af87d84f9052"
+                },
+                "data": {
+                  "alias": "consequenceData",
+                  "type": "object"
+                }
+              },
+              "additionalProperties": false,
+              "required": ["type", "id"]
+            }
+          },
+          "additionalProperties": false,
+          "required": ["triggeredconsequence"]
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventSource.responseContent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventType.rulesengine"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}
