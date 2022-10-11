@@ -10,11 +10,18 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import { curry, forEach, forEachObjIndexed } from 'ramda';
+import { assoc, curry, forEach, forEachObjIndexed, reduce } from 'ramda';
 import * as common from '@adobe/griffon-toolkit-common';
 import * as aep from '@adobe/griffon-toolkit-aep-mobile';
+import * as edge from '@adobe/griffon-toolkit-edge';
+import * as pushServices from '@adobe/griffon-toolkit-push-services';
 
-const references = [common, aep];
+const references = [
+  common,
+  aep,
+  edge,
+  pushServices
+];
 
 const isProperSchemaSource = (source) => !!source.label && !!source.isMatch;
 
@@ -24,13 +31,13 @@ const isProperSchemaSource = (source) => !!source.label && !!source.isMatch;
  * parentDepth.
  *
  * @function
- * @param {string} type The metadata to request
+ * @param {string[]} types The metadata to request
  * @param {object} source The object to match against
  * @returns {string} label
  */
-export default curry((type, source) => {
+export default curry((types, source): { [key: string]: any } => {
   let matchDepth = -1;
-  let match = '';
+  let matches = {};
 
   forEach(
     forEachObjIndexed((file: any) => {
@@ -39,11 +46,15 @@ export default curry((type, source) => {
         && file.isMatch
         && file.isMatch(source)
       ) {
-        match = file[type];
+        matches = reduce(
+          (acc, type: string) => assoc(type, type === 'file' ? file : file[type], acc),
+          {},
+          types
+        );
         matchDepth = file.parentDepth;
       }
     }),
     references
   );
-  return match;
+  return matches;
 });

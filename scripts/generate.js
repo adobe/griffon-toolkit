@@ -60,6 +60,7 @@ fs.readdirSync(packagePath).forEach((dirName) => {
 });
 
 const rulesInfo = [];
+const matchers = [];
 
 /*
  * Takes all the schema files and outputs a script file with the generated content.
@@ -74,7 +75,6 @@ R.mapObjIndexed((schemaName, schemaFile) => {
   generateOutput(schema, outputFile, schemaMap, typeFiles[schemaName]);
 
   if (rulesHitList[shortName]) {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
     rulesInfo.push(generateRules(schema, schemaMap, rulesHitList[shortName]));
   }
 }, schemaFiles);

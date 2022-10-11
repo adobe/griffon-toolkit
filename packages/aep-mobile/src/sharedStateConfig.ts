@@ -129,7 +129,17 @@ const path = {
 const parentDepth = 3;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = 'sharedStateConfig';
+
+/**
+ * The package of this event
+ */
+const packageName = 'aep-mobile';
+
+/**
+ * The unique name of this event
  */
 const label = 'Shared State - Versions';
 
@@ -335,5 +345,7 @@ export default {
   ROOT_TYPE,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };

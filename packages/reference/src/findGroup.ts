@@ -21,4 +21,4 @@ import findMetadata from './findMetadata';
  * @param {object} source The object to match against
  * @returns {string} group
  */
-export default findMetadata('group');
+export default source => findMetadata(['group'])(source).group;
