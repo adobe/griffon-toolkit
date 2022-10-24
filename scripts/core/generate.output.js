@@ -218,12 +218,8 @@ export default (schema, outputFile, schemaMap, typeFilePath) => {
     }),
     ...expanded,
     ...expandedFull,
-<<<<<<< Updated upstream
-    exports: [...exports, 'label', 'group', 'parentDepth']
-=======
     matches: [...expandedFull.matches, ...customMatches],
     exports: [...exports, 'label', 'group', 'parentDepth', 'uniqueName', 'packageName']
->>>>>>> Stashed changes
   });
 
   writeFile(outputFile, output);
