@@ -11,12 +11,12 @@ governing permissions and limitations under the License.
 */
 
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/personalizationEdgeResponse.json';
+import schema from '../schemas/iamMessagesResponse.json';
 
 /**
- * Contains constants and functions for a Edge Personalization Request.
+ * Contains constants and functions for a IAM Messages Response.
  *
- * The structure for a Edge Personalization Request is as follows:
+ * The structure for a IAM Messages Response is as follows:
  * ```
  * {
  *   payload: {
@@ -41,11 +41,11 @@ import schema from '../schemas/personalizationEdgeResponse.json';
  * }
  * ```
  *
- * @namespace personalizationEdgeResponse
+ * @namespace iamMessagesResponse
  */
 
 /**
- * Paths for the keys on a Edge Personalization Request
+ * Paths for the keys on a IAM Messages Response
  *
  * @enum {string}
  */
@@ -108,12 +108,22 @@ const path = {
  *
  * @constant
  */
-const parentDepth = 3;
+const parentDepth = 4;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
  */
-const label = 'Edge Personalization Request';
+const uniqueName = 'iamMessagesResponse';
+
+/**
+ * The package of this event
+ */
+const packageName = 'aep-mobile';
+
+/**
+ * The unique name of this event
+ */
+const label = 'IAM Messages Response';
 
 /**
  * A grouping for this object
@@ -121,7 +131,7 @@ const label = 'Edge Personalization Request';
 const group = 'event';
 
 /**
- * The value for `responseType` for a Edge Personalization Request.
+ * The value for `responseType` for a IAM Messages Response.
  *
  * Path is `payload,ACPExtensionEventData,type`.
  *
@@ -130,7 +140,7 @@ const group = 'event';
 const RESPONSE_TYPE = 'personalization:decisions';
 
 /**
- * The value for `eventType` for a Edge Personalization Request.
+ * The value for `eventType` for a IAM Messages Response.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
@@ -139,7 +149,7 @@ const RESPONSE_TYPE = 'personalization:decisions';
 const EVENT_TYPE = 'com.adobe.eventType.edge';
 
 /**
- * The value for `rootType` for a Edge Personalization Request.
+ * The value for `rootType` for a IAM Messages Response.
  *
  * Path is `type`.
  *
@@ -162,179 +172,7 @@ const get = (alias, data) => {
 };
 
 /**
- * Returns the `eventData` from the Edge Personalization Request.
- * This is the an object with the custom data describing the event.
- *
- * Path is `payload,ACPExtensionEventData`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {object}
- */
-const getEventData = kit.search(path.eventData);
-
-/**
- * Returns the data using the specified path from the eventData
- * of the Edge Personalization Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Edge Personalization Request instance
- * @returns {*}
- */
-const getEventDataKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.eventData}.${searchPath}`, source)
-);
-
-/**
- * Returns the `responseType` from the Edge Personalization Request.
- * This is the the type of response being returned.
- *
- * Path is `payload,ACPExtensionEventData,type`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {string}
- */
-const getResponseType = kit.search(path.responseType);
-
-/**
- * Returns the data using the specified path from the responseType
- * of the Edge Personalization Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Edge Personalization Request instance
- * @returns {*}
- */
-const getResponseTypeKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.responseType}.${searchPath}`, source)
-);
-
-/**
- * Returns the `requestId` from the Edge Personalization Request.
- * This is the the request ID of the edge service request.
- *
- * Path is `payload,ACPExtensionEventData,requestId`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {string}
- */
-const getRequestId = kit.search(path.requestId);
-
-/**
- * Returns the `requestEventId` from the Edge Personalization Request.
- * This is the the event ID of the event that this is a response to.
- *
- * Path is `payload,ACPExtensionEventData,requestEventId`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {string}
- */
-const getRequestEventId = kit.search(path.requestEventId);
-
-/**
- * Returns the `responsePayload` from the Edge Personalization Request.
- * This is the the information received in the response.
- *
- * Path is `payload,ACPExtensionEventData,payload`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {Array}
- */
-const getResponsePayload = kit.search(path.responsePayload);
-
-/**
- * Returns the `eventSource` from the Edge Personalization Request.
- * This is the the event source.
- *
- * Path is `payload,ACPExtensionEventSource`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {string}
- */
-const getEventSource = kit.search(path.eventSource);
-
-/**
- * Returns the data using the specified path from the eventSource
- * of the Edge Personalization Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Edge Personalization Request instance
- * @returns {*}
- */
-const getEventSourceKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.eventSource}.${searchPath}`, source)
-);
-
-/**
- * Returns the `eventType` from the Edge Personalization Request.
- * This is the the event type.
- *
- * Path is `payload,ACPExtensionEventType`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {string}
- */
-const getEventType = kit.search(path.eventType);
-
-/**
- * Returns the data using the specified path from the eventType
- * of the Edge Personalization Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Edge Personalization Request instance
- * @returns {*}
- */
-const getEventTypeKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.eventType}.${searchPath}`, source)
-);
-
-/**
- * Returns the `eventName` from the Edge Personalization Request.
- * This is the the name of the event.
- *
- * Path is `payload,ACPExtensionEventName`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {string}
- */
-const getEventName = kit.search(path.eventName);
-
-/**
- * Returns the `sdkEventNumber` from the Edge Personalization Request.
- * This is the the event number generated by the SDK.
- *
- * Path is `payload,ACPExtensionEventNumber`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {number}
- */
-const getSdkEventNumber = kit.search(path.sdkEventNumber);
-
-/**
- * Returns the `eventId` from the Edge Personalization Request.
- * This is the the unique event id.
- *
- * Path is `payload,ACPExtensionEventUniqueIdentifier`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {string}
- */
-const getEventId = kit.search(path.eventId);
-
-/**
- * Matcher can be used to find matching Edge Personalization Request objects.
+ * Matcher can be used to find matching IAM Messages Response objects.
  *
  * @see kit.match
  * @constant
@@ -346,20 +184,21 @@ const matcher = kit.combineAll([
     'payload.ACPExtensionEventType==`com.adobe.eventType.edge`',
     'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`'
   ]),
-  'timestamp'
+  'timestamp',
+  'payload.ACPExtensionEventData.payload[0].scopeDetails.decisionProvider==`AJO`'
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Edge Personalization Request event.
+ * Tests the provided source against the matcher to see if it's IAM Messages Response event.
  *
  * @function
- * @param {object} source The Edge Personalization Request instance
+ * @param {object} source The IAM Messages Response instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Edge Personalization Request with the const values set.
+ * Generates a IAM Messages Response with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -375,7 +214,7 @@ const make = (input) => kit.expandWithPaths(path, {
 });
 
 /**
- * Generates a Edge Personalization Request with some default values set.
+ * Generates a IAM Messages Response with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -413,20 +252,6 @@ export default {
   schema,
   get,
   ...customExports,
-  getEventData,
-  getEventDataKey,
-  getResponseType,
-  getResponseTypeKey,
-  getRequestId,
-  getRequestEventId,
-  getResponsePayload,
-  getEventSource,
-  getEventSourceKey,
-  getEventType,
-  getEventTypeKey,
-  getEventName,
-  getSdkEventNumber,
-  getEventId,
   isMatch,
   matcher,
   RESPONSE_TYPE,
@@ -434,5 +259,7 @@ export default {
   ROOT_TYPE,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };

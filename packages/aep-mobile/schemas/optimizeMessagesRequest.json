@@ -1,0 +1,47 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/optimizeMessageRequest",
+  "shortDesc": "Optimize Messages Request",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/personalizationEdgeRequest" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "query": {
+              "inherit": true,
+              "type": "object",
+              "properties": {
+                "personalization": {
+                  "description": "The personalization details",
+                  "type": "object",
+                  "properties": {
+                    "decisionScopes": {
+                      "description": "List of decision scopes to load",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "match": true
+                    }
+                  },
+                  "required": [ "decisionScopes" ]
+                }
+              },
+              "required": [ "personalization" ]
+            }
+          },
+          "required": [ "xdm", "query" ]
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}

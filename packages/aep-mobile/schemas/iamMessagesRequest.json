@@ -1,0 +1,47 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/iamMessageRequest",
+  "shortDesc": "IAM Messages Request",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/personalizationEdgeRequest" }],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "query": {
+              "inherit": true,
+              "type": "object",
+              "properties": {
+                "personalization": {
+                  "description": "The personalization details",
+                  "type": "object",
+                  "properties": {
+                    "surfaces": {
+                      "description": "List of surfaces to pull messages from",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "match": true
+                    }
+                  },
+                  "required": [ "decisionScopes" ]
+                }
+              },
+              "required": [ "personalization" ]
+            }
+          },
+          "required": [ "xdm", "query" ]
+        }
+      },
+      "required": [
+        "ACPExtensionEventData"
+      ]
+    }
+  }
+}
