@@ -219,7 +219,7 @@ export default (schema, outputFile, schemaMap, typeFilePath) => {
     ...expanded,
     ...expandedFull,
     matches: [...expandedFull.matches, ...customMatches],
-    exports: [...exports, 'label', 'group', 'parentDepth', 'uniqueName', 'packageName']
+    exports: [...exports, 'label', 'group', 'parentDepth']
   });
 
   writeFile(outputFile, output);

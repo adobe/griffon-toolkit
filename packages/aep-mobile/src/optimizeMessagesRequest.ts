@@ -122,17 +122,7 @@ const path = {
 const parentDepth = 4;
 
 /**
- * The name of this event. Same as the file name
- */
-const uniqueName = 'optimizeMessagesRequest';
-
-/**
- * The package of this event
- */
-const packageName = 'aep-mobile';
-
-/**
- * The unique name of this event
+ * A label that can be used when describing this object
  */
 const label = 'Optimize Messages Request';
 
@@ -324,7 +314,5 @@ export default {
   ROOT_TYPE,
   label,
   group,
-  parentDepth,
-  uniqueName,
-  packageName
+  parentDepth
 };
