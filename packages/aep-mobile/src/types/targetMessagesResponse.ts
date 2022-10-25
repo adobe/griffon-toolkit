@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type PersonalizationEdgeRequest = {
+export type TargetMessagesResponse = {
   /**
    * Array of Annotation objects
    */
@@ -48,23 +48,5 @@ export type PersonalizationEdgeRequest = {
    * Uniquely identifies each event
    */
   uuid: string;
-  [k: string]: unknown;
-} & {
-  payload?: {
-    ACPExtensionEventData: {
-      xdm: {
-        /**
-         * The type of event on the edge to execute
-         */
-        eventType: "personalization.request";
-        [k: string]: unknown;
-      };
-      query: {
-        [k: string]: unknown;
-      };
-      [k: string]: unknown;
-    };
-    [k: string]: unknown;
-  };
   [k: string]: unknown;
 };

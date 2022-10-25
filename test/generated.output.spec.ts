@@ -12,7 +12,8 @@ governing permissions and limitations under the License.
 
 // import jmespath from 'jmespath';
 import entry from '../packages/aep-mobile/src/placesEntry';
-import { PlacesEntry } from '../packages/aep-mobile';
+import offersMessagesResponse from '../packages/aep-mobile/src/offersMessagesResponse';
+import { PlacesEntry  } from '../packages/aep-mobile';
 import aep from '../packages/aep-mobile/src/mobileEvent';
 import root from '../packages/common/src/event';
 import configuration from '../packages/aep-mobile/src/configuration';
@@ -57,8 +58,8 @@ describe('Test Auto Generated Output', () => {
     expect(entry.isMatch(events[1])).toBe(true);
 
   });
-  it('matches legacy type', () => {
-
+  it('can provide custom matchers', () => {
+    expect(offersMessagesResponse.matcher).toMatchSnapshot();
   });
   it('exports constants', () => {
     expect(entry.REGION_EVENT_TYPE).toBe('entry');
