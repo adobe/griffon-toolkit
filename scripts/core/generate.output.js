@@ -34,6 +34,7 @@ import {
 } from './shared';
 import { generateTypeDefinition } from './types';
 import makePropertyProps from '../utils/make.property.props';
+import mergeCustomMatchers from '../utils/merge.custom.matchers';
 import writeFile from '../utils/write.file';
 
 const fs = require('fs');
@@ -184,6 +185,9 @@ export default (schema, outputFile, schemaMap, typeFilePath) => {
     properties: schema.properties,
     parent: schema.shortDesc
   });
+
+  const customMatches = mergeCustomMatchers(schema, schemaMap);
+
   const expandedFull = expandFullProperties({
     properties: mergeProperties(schema, schemaMap),
     parent: schema.shortDesc
@@ -216,6 +220,7 @@ export default (schema, outputFile, schemaMap, typeFilePath) => {
     }),
     ...expanded,
     ...expandedFull,
+    matches: [...expandedFull.matches, ...customMatches],
     exports: [...exports, 'label', 'group', 'parentDepth', 'uniqueName', 'packageName']
   });
 

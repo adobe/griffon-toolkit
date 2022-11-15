@@ -11,20 +11,24 @@ governing permissions and limitations under the License.
 */
 
 import * as kit from '@adobe/griffon-toolkit';
-import schema from '../schemas/personalizationEdgeRequest.json';
+import schema from '../schemas/optimizeMessagesRequest.json';
 
 /**
- * Contains constants and functions for a Edge Personalization Request.
+ * Contains constants and functions for a Optimize Messages Request.
  *
- * The structure for a Edge Personalization Request is as follows:
+ * The structure for a Optimize Messages Request is as follows:
  * ```
  * {
  *   payload: {
  *     ACPExtensionEventData: {
+ *       query: {
+ *         personalization: {
+ *           decisionScopes: <array>,
+ *         },
+ *       },
  *       xdm: {
  *         eventType: 'personalization.request'
  *       },
- *       query: <object>,
  *       datasetId: <string>,
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventSource.requestContent'
@@ -42,11 +46,11 @@ import schema from '../schemas/personalizationEdgeRequest.json';
  * }
  * ```
  *
- * @namespace personalizationEdgeRequest
+ * @namespace optimizeMessagesRequest
  */
 
 /**
- * Paths for the keys on a Edge Personalization Request
+ * Paths for the keys on a Optimize Messages Request
  *
  * @enum {string}
  */
@@ -57,14 +61,20 @@ const path = {
   /** An object with the custom data describing the event.<br />Path is `payload.ACPExtensionEventData`. */
   eventData: 'payload.ACPExtensionEventData',
 
+  /** Data to request from the edge.<br />Path is `payload.ACPExtensionEventData.query`. */
+  query: 'payload.ACPExtensionEventData.query',
+
+  /** The personalization details.<br />Path is `payload.ACPExtensionEventData.query.personalization`. */
+  personalization: 'payload.ACPExtensionEventData.query.personalization',
+
+  /** List of decision scopes to load.<br />Path is `payload.ACPExtensionEventData.query.personalization.decisionScopes`. */
+  decisionScopes: 'payload.ACPExtensionEventData.query.personalization.decisionScopes',
+
   /** The XDM data send to the server.<br />Path is `payload.ACPExtensionEventData.xdm`. */
   xdm: 'payload.ACPExtensionEventData.xdm',
 
   /** The type of event on the edge to execute.<br />Path is `payload.ACPExtensionEventData.xdm.eventType`. */
   edgeEventType: 'payload.ACPExtensionEventData.xdm.eventType',
-
-  /** Data to request from the edge.<br />Path is `payload.ACPExtensionEventData.query`. */
-  query: 'payload.ACPExtensionEventData.query',
 
   /** The dataset to apply the XDM data to.<br />Path is `payload.ACPExtensionEventData.datasetId`. */
   datasetId: 'payload.ACPExtensionEventData.datasetId',
@@ -109,22 +119,12 @@ const path = {
  *
  * @constant
  */
-const parentDepth = 3;
+const parentDepth = 4;
 
 /**
- * The name of this event. Same as the file name
+ * A label that can be used when describing this object
  */
-const uniqueName = 'personalizationEdgeRequest';
-
-/**
- * The package of this event
- */
-const packageName = 'aep-mobile';
-
-/**
- * The unique name of this event
- */
-const label = 'Edge Personalization Request';
+const label = 'Optimize Messages Request';
 
 /**
  * A grouping for this object
@@ -132,7 +132,7 @@ const label = 'Edge Personalization Request';
 const group = 'event';
 
 /**
- * The value for `edgeEventType` for a Edge Personalization Request.
+ * The value for `edgeEventType` for a Optimize Messages Request.
  *
  * Path is `payload,ACPExtensionEventData,xdm,eventType`.
  *
@@ -141,7 +141,7 @@ const group = 'event';
 const EDGE_EVENT_TYPE = 'personalization.request';
 
 /**
- * The value for `eventSource` for a Edge Personalization Request.
+ * The value for `eventSource` for a Optimize Messages Request.
  *
  * Path is `payload,ACPExtensionEventSource`.
  *
@@ -150,7 +150,7 @@ const EDGE_EVENT_TYPE = 'personalization.request';
 const EVENT_SOURCE = 'com.adobe.eventSource.requestContent';
 
 /**
- * The value for `eventType` for a Edge Personalization Request.
+ * The value for `eventType` for a Optimize Messages Request.
  *
  * Path is `payload,ACPExtensionEventType`.
  *
@@ -159,7 +159,7 @@ const EVENT_SOURCE = 'com.adobe.eventSource.requestContent';
 const EVENT_TYPE = 'com.adobe.eventType.edge';
 
 /**
- * The value for `rootType` for a Edge Personalization Request.
+ * The value for `rootType` for a Optimize Messages Request.
  *
  * Path is `type`.
  *
@@ -182,24 +182,50 @@ const get = (alias, data) => {
 };
 
 /**
- * Returns the `edgeEventType` from the Edge Personalization Request.
- * This is the the type of event on the edge to execute.
+ * Returns the `personalization` from the Optimize Messages Request.
+ * This is the the personalization details.
  *
- * Path is `payload,ACPExtensionEventData,xdm,eventType`.
+ * Path is `payload,ACPExtensionEventData,query,personalization`.
  *
  * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {string}
+ * @param {object} source The Optimize Messages Request instance
+ * @returns {object}
  */
-const getEdgeEventType = kit.search(path.edgeEventType);
+const getPersonalization = kit.search(path.personalization);
 
 /**
- * Matcher can be used to find matching Edge Personalization Request objects.
+ * Returns the data using the specified path from the personalization
+ * of the Optimize Messages Request.
+ *
+ * @function
+ * @param {...string} path key in object
+ * @param {object} source The Optimize Messages Request instance
+ * @returns {*}
+ */
+const getPersonalizationKey = kit.curry(
+  (searchPath, source) => kit.search(`${path.personalization}.${searchPath}`, source)
+);
+
+/**
+ * Returns the `decisionScopes` from the Optimize Messages Request.
+ * This is the list of decision scopes to load.
+ *
+ * Path is `payload,ACPExtensionEventData,query,personalization,decisionScopes`.
+ *
+ * @function
+ * @param {object} source The Optimize Messages Request instance
+ * @returns {Array}
+ */
+const getDecisionScopes = kit.search(path.decisionScopes);
+
+/**
+ * Matcher can be used to find matching Optimize Messages Request objects.
  *
  * @see kit.match
  * @constant
  */
 const matcher = kit.combineAll([
+  'payload.ACPExtensionEventData.query.personalization.decisionScopes',
   'payload.ACPExtensionEventData.xdm.eventType==`personalization.request`',
   kit.combineAny([
     'payload.ACPExtensionEventSource==`com.adobe.eventSource.requestContent`',
@@ -213,16 +239,16 @@ const matcher = kit.combineAll([
 ]);
 
 /**
- * Tests the provided source against the matcher to see if it's Edge Personalization Request event.
+ * Tests the provided source against the matcher to see if it's Optimize Messages Request event.
  *
  * @function
- * @param {object} source The Edge Personalization Request instance
+ * @param {object} source The Optimize Messages Request instance
  * @returns {boolean}
  * @see kit.isMatch
  */
 const isMatch = (source) => kit.isMatch(matcher, source);
 /**
- * Generates a Edge Personalization Request with the const values set.
+ * Generates a Optimize Messages Request with the const values set.
  * Can be useful in testing.
  * Can provide additional data by providing a flat object of paths and values.
  *
@@ -239,7 +265,7 @@ const make = (input) => kit.expandWithPaths(path, {
 });
 
 /**
- * Generates a Edge Personalization Request with some default values set.
+ * Generates a Optimize Messages Request with some default values set.
  * Can be useful in testing.
  * Can override defaults and provide additional data by providing a flat object
  * of paths and values.
@@ -277,7 +303,9 @@ export default {
   schema,
   get,
   ...customExports,
-  getEdgeEventType,
+  getPersonalization,
+  getPersonalizationKey,
+  getDecisionScopes,
   isMatch,
   matcher,
   EDGE_EVENT_TYPE,
@@ -286,7 +314,5 @@ export default {
   ROOT_TYPE,
   label,
   group,
-  parentDepth,
-  uniqueName,
-  packageName
+  parentDepth
 };

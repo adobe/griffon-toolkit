@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type PersonalizationEdgeRequest = {
+export type IamMessagesRequest = {
   /**
    * Array of Annotation objects
    */
@@ -52,14 +52,17 @@ export type PersonalizationEdgeRequest = {
 } & {
   payload?: {
     ACPExtensionEventData: {
-      xdm: {
-        /**
-         * The type of event on the edge to execute
-         */
-        eventType: "personalization.request";
-        [k: string]: unknown;
-      };
       query: {
+        /**
+         * The personalization details
+         */
+        personalization: {
+          /**
+           * List of surfaces to pull messages from
+           */
+          surfaces?: string[];
+          [k: string]: unknown;
+        };
         [k: string]: unknown;
       };
       [k: string]: unknown;
