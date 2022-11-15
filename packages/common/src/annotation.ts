@@ -53,7 +53,17 @@ const path = {
 const parentDepth = 0;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = 'annotation';
+
+/**
+ * The package of this event
+ */
+const packageName = 'common';
+
+/**
+ * The unique name of this event
  */
 const label = 'Annotation Object';
 
@@ -250,5 +260,7 @@ export default {
   getUuid,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };

@@ -90,7 +90,17 @@ const path = {
 const parentDepth = 1;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = 'edgeEvent';
+
+/**
+ * The package of this event
+ */
+const packageName = 'edge';
+
+/**
+ * The unique name of this event
  */
 const label = 'Generic Edge Event';
 
@@ -302,5 +312,7 @@ export default {
   VENDOR,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };

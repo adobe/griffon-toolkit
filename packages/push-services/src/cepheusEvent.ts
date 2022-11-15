@@ -69,7 +69,17 @@ const path = {
 const parentDepth = 1;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = 'cepheusEvent';
+
+/**
+ * The package of this event
+ */
+const packageName = 'push-services';
+
+/**
+ * The unique name of this event
  */
 const label = 'Generic Cepheus Event';
 
@@ -199,5 +209,7 @@ export default {
   VENDOR,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };

@@ -99,7 +99,17 @@ const path = {
 const parentDepth = 2;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = 'pushFeedback';
+
+/**
+ * The package of this event
+ */
+const packageName = 'push-services';
+
+/**
+ * The unique name of this event
  */
 const label = 'Push Request Feedback';
 
@@ -339,5 +349,7 @@ export default {
   VENDOR,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };

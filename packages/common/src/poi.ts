@@ -98,7 +98,17 @@ const path = {
 const parentDepth = 0;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = 'poi';
+
+/**
+ * The package of this event
+ */
+const packageName = 'common';
+
+/**
+ * The unique name of this event
  */
 const label = 'POI Object';
 
@@ -385,5 +395,7 @@ export default {
   getWeight,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };

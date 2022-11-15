@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`classesForGroup retrieves all the classes for a group 1`] = `"payload.ACPExtensionEventData.regioneventtype==\`entry\` && (payload.ACPExtensionEventSource==\`com.adobe.eventSource.responseContent\` || payload.ACPExtensionEventSource==\`com.adobe.eventsource.responsecontent\`) && (payload.ACPExtensionEventType==\`com.adobe.eventType.places\` || payload.ACPExtensionEventType==\`com.adobe.eventtype.places\`) && timestamp"`;

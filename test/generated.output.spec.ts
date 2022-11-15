@@ -81,6 +81,10 @@ describe('Test Auto Generated Output', () => {
     expect(aep.parentDepth).toBe(1);
     expect(entry.parentDepth).toBe(3);
   });
+  it('adds metadata', () => {
+    expect(entry.uniqueName).toBe('placesEntry');
+    expect(entry.packageName).toBe('aep-mobile');
+  });
   it('exports get from object functions', () => {
     const mock = root.mock({
       [root.path.payload]: {
