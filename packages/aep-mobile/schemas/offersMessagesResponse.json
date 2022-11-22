@@ -1,0 +1,11 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/offersMessagesResponse",
+  "shortDesc": "Offers Messages Response",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/personalizationEdgeResponse" }],
+  "type": "object",
+  "customMatchers": [
+    "payload.ACPExtensionEventData.payload[0].placement.id"
+  ],
+  "inherit": true
+}

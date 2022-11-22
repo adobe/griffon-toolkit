@@ -64,6 +64,7 @@ export const writeFullContent = ({
   depth,
   event,
   exports,
+  packageName,
   paths,
   gets,
   group,
@@ -116,7 +117,17 @@ const path = {${paths.join(`,
 const parentDepth = ${depth};
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = '${namespace}';
+
+/**
+ * The package of this event
+ */
+const packageName = '${packageName}';
+
+/**
+ * The unique name of this event
  */
 const label = '${shortDesc}';
 

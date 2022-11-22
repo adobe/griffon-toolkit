@@ -28,24 +28,7 @@
             },
             "query": {
               "inherit": true,
-              "type": "object",
-              "properties": {
-                "personalization": {
-                  "description": "The personalization details",
-                  "type": "object",
-                  "properties": {
-                    "decisionScopes": {
-                      "description": "List of decision scopes to load",
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "required": [ "decisionScopes" ]
-                }
-              },
-              "required": [ "personalization" ]
+              "type": "object"
             }
           },
           "required": [ "xdm", "query" ]

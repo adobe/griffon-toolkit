@@ -21,4 +21,4 @@ import findMetadata from './findMetadata';
  * @param {object} source The object to match against
  * @returns {string} label
  */
-export default findMetadata('label');
+export default source => findMetadata(['label'])(source).label;

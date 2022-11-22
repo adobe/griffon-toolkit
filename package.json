@@ -4,7 +4,7 @@
   "version": "0.3.0",
   "main": "dist/index.js",
   "dependencies": {
-    "ramda": "^0.27.1"
+    "ramda": "^0.28.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
@@ -45,6 +45,7 @@
     "build:rules": "lerna exec 'npm run build' --scope @adobe/griffon-toolkit-rules",
     "build": "npm run build:make-index && npm run build:files && npm run build:rules",
     "lint": "eslint \"**/*.js\"",
+    "sync": "npx lerna-ci synclocal local",
     "test": "jest"
   },
   "repository": {

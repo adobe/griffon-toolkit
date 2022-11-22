@@ -60,16 +60,6 @@ export type PersonalizationEdgeRequest = {
         [k: string]: unknown;
       };
       query: {
-        /**
-         * The personalization details
-         */
-        personalization: {
-          /**
-           * List of decision scopes to load
-           */
-          decisionScopes: string[];
-          [k: string]: unknown;
-        };
         [k: string]: unknown;
       };
       [k: string]: unknown;

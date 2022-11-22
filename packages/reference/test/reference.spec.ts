@@ -13,6 +13,7 @@ governing permissions and limitations under the License.
 import classesForGroup from '../src/classesForGroup';
 import findGroup from '../src/findGroup';
 import findLabel from '../src/findLabel';
+import findMetadata from '../src/findMetadata';
 import entry from '../../aep-mobile/src/placesEntry';
 import aep from '../../aep-mobile/src/mobileEvent';
 import event from '../../common/src/event';
@@ -28,7 +29,7 @@ describe('findLabel', () => {
     expect(findLabel(mockEntry)).toBe('Places Entry Event');
     expect(findLabel(mockAEP)).toBe('Generic Mobile Event');
     expect(findLabel(mockEvent)).toBe('Generic Event');
-    expect(findLabel({})).toBe('');
+    expect(findLabel({})).toBe(undefined);
   });
 });
 
@@ -36,7 +37,7 @@ describe('findGroup', () => {
   it('gets a group for the provided data', () => {
     expect(findGroup(mockEntry)).toBe('event');
     expect(findGroup(mockCommand)).toBe('command');
-    expect(findGroup({})).toBe('');
+    expect(findGroup({})).toBe(undefined);
   });
 });
 
@@ -45,3 +46,13 @@ describe('classesForGroup', () => {
     expect(Object.keys(classesForGroup('construct')).indexOf('annotation')).not.toBe(-1);
   });
 });
+
+describe('classesForGroup', () => {
+  it('retrieves all the classes for a group', () => {
+    const metadata = findMetadata(['file', 'uniqueName', 'packageName'], mockEntry);
+    expect(metadata.file.matcher).toMatchSnapshot();
+    expect(metadata.uniqueName).toBe('placesEntry');
+    expect(metadata.packageName).toBe('aep-mobile');
+  });
+});
+

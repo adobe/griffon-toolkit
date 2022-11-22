@@ -1,0 +1,11 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/iamMessagesResponse",
+  "shortDesc": "IAM Messages Response",
+  "group": "event",
+  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/personalizationEdgeResponse" }],
+  "type": "object",
+  "customMatchers": [
+    "payload.ACPExtensionEventData.payload[0].scopeDetails.decisionProvider==`AJO`"
+  ],
+  "inherit": true
+}

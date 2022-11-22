@@ -1,7 +1,7 @@
 {
   "name": "@adobe/griffon-toolkit-reference",
   "description": "Utilities to build UIs from schema defs",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/adobe/griffon-toolkit.git",
@@ -15,8 +15,10 @@
   "main": "dist/index.js",
   "source": "src/index.js",
   "dependencies": {
-    "@adobe/griffon-toolkit-aep-mobile": "*",
-    "@adobe/griffon-toolkit-common": "*"
+    "@adobe/griffon-toolkit-aep-mobile": "0.11.2",
+    "@adobe/griffon-toolkit-common": "0.3.3",
+    "@adobe/griffon-toolkit-edge": "0.2.2",
+    "@adobe/griffon-toolkit-push-services": "0.1.2"
   },
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist",

@@ -24,11 +24,7 @@ import schema from '../schemas/personalizationEdgeRequest.json';
  *       xdm: {
  *         eventType: 'personalization.request'
  *       },
- *       query: {
- *         personalization: {
- *           decisionScopes: <array>,
- *         },
- *       },
+ *       query: <object>,
  *       datasetId: <string>,
  *     },
  *     ACPExtensionEventSource: 'com.adobe.eventSource.requestContent'
@@ -69,12 +65,6 @@ const path = {
 
   /** Data to request from the edge.<br />Path is `payload.ACPExtensionEventData.query`. */
   query: 'payload.ACPExtensionEventData.query',
-
-  /** The personalization details.<br />Path is `payload.ACPExtensionEventData.query.personalization`. */
-  personalization: 'payload.ACPExtensionEventData.query.personalization',
-
-  /** List of decision scopes to load.<br />Path is `payload.ACPExtensionEventData.query.personalization.decisionScopes`. */
-  decisionScopes: 'payload.ACPExtensionEventData.query.personalization.decisionScopes',
 
   /** The dataset to apply the XDM data to.<br />Path is `payload.ACPExtensionEventData.datasetId`. */
   datasetId: 'payload.ACPExtensionEventData.datasetId',
@@ -122,7 +112,17 @@ const path = {
 const parentDepth = 3;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = 'personalizationEdgeRequest';
+
+/**
+ * The package of this event
+ */
+const packageName = 'aep-mobile';
+
+/**
+ * The unique name of this event
  */
 const label = 'Edge Personalization Request';
 
@@ -192,43 +192,6 @@ const get = (alias, data) => {
  * @returns {string}
  */
 const getEdgeEventType = kit.search(path.edgeEventType);
-
-/**
- * Returns the `personalization` from the Edge Personalization Request.
- * This is the the personalization details.
- *
- * Path is `payload,ACPExtensionEventData,query,personalization`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {object}
- */
-const getPersonalization = kit.search(path.personalization);
-
-/**
- * Returns the data using the specified path from the personalization
- * of the Edge Personalization Request.
- *
- * @function
- * @param {...string} path key in object
- * @param {object} source The Edge Personalization Request instance
- * @returns {*}
- */
-const getPersonalizationKey = kit.curry(
-  (searchPath, source) => kit.search(`${path.personalization}.${searchPath}`, source)
-);
-
-/**
- * Returns the `decisionScopes` from the Edge Personalization Request.
- * This is the list of decision scopes to load.
- *
- * Path is `payload,ACPExtensionEventData,query,personalization,decisionScopes`.
- *
- * @function
- * @param {object} source The Edge Personalization Request instance
- * @returns {Array}
- */
-const getDecisionScopes = kit.search(path.decisionScopes);
 
 /**
  * Matcher can be used to find matching Edge Personalization Request objects.
@@ -315,9 +278,6 @@ export default {
   get,
   ...customExports,
   getEdgeEventType,
-  getPersonalization,
-  getPersonalizationKey,
-  getDecisionScopes,
   isMatch,
   matcher,
   EDGE_EVENT_TYPE,
@@ -326,5 +286,7 @@ export default {
   ROOT_TYPE,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };
