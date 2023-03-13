@@ -8,6 +8,7 @@ export * from './clientInfoIOS';
 export * from './configUpdateCommand';
 export * from './configuration';
 export * from './configurationUpdate';
+export * from './edgeBridgeRequest';
 export * from './edgeErrorResponse';
 export * from './edgeRequest';
 export * from './edgeResponse';

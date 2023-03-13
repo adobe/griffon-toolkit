@@ -8,6 +8,7 @@ export { default as clientInfoIos } from './clientInfoIOS';
 export { default as configUpdateCommand } from './configUpdateCommand';
 export { default as configuration } from './configuration';
 export { default as configurationUpdate } from './configurationUpdate';
+export { default as edgeBridgeRequest } from './edgeBridgeRequest';
 export { default as edgeErrorResponse } from './edgeErrorResponse';
 export { default as edgeRequest } from './edgeRequest';
 export { default as edgeResponse } from './edgeResponse';
