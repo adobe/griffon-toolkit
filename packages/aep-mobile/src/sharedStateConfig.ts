@@ -320,9 +320,19 @@ const mock = (input) => kit.expandWithPaths(path, {
 
 /* ADD CUSTOM CONTENT BELOW */
 
+import { MobileEvent } from './types';
+
+/**
+ * Finds the most recent sharedStateConfig relative to a given event's timestamp
+ *
+ * @function
+ * @param {object} event A mobileEvent Object instance
+ * @param {object} events A mobileEvent Array sorted by timestamp descending
+ * @returns {object}
+ */
 const findCurrentConfigEvent = (event, events) => {
   const index = events.findIndex(e => e.uuid === event.uuid);
-  for (let i = index; i >= 0; --i) {
+  for (let i = index; i < events.length; i++) {
     if (isMatch(events[i])) {
       return events[i];
     }
