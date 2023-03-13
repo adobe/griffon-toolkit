@@ -32,8 +32,8 @@ import schema from '../schemas/targetMessagesResponse.json';
  *     ACPExtensionEventNumber: <integer>,
  *     ACPExtensionEventUniqueIdentifier: <string>,
  *   },
+ *   vendor: 'com.adobe.griffon.mobile'
  *   type: 'generic'
- *   vendor: <string>,
  *   annotations: <array>,
  *   clientId: <string>,
  *   timestamp: <number>,
@@ -83,11 +83,11 @@ const path = {
   /** The unique event id.<br />Path is `payload.ACPExtensionEventUniqueIdentifier`. */
   eventId: 'payload.ACPExtensionEventUniqueIdentifier',
 
-  /** The type of event.<br />Path is `type`. */
-  rootType: 'type',
-
   /** The vendor of the plugin that sent the event.<br />Path is `vendor`. */
   vendor: 'vendor',
+
+  /** The type of event.<br />Path is `type`. */
+  rootType: 'type',
 
   /** Array of Annotation objects.<br />Path is `annotations`. */
   annotations: 'annotations',
@@ -111,7 +111,17 @@ const path = {
 const parentDepth = 4;
 
 /**
- * A label that can be used when describing this object
+ * The name of this event. Same as the file name
+ */
+const uniqueName = 'targetMessagesResponse';
+
+/**
+ * The package of this event
+ */
+const packageName = 'aep-mobile';
+
+/**
+ * The unique name of this event
  */
 const label = 'Target Messages Response';
 
@@ -137,6 +147,15 @@ const RESPONSE_TYPE = 'personalization:decisions';
  * @constant
  */
 const EVENT_TYPE = 'com.adobe.eventType.edge';
+
+/**
+ * The value for `vendor` for a Target Messages Response.
+ *
+ * Path is `vendor`.
+ *
+ * @constant
+ */
+const VENDOR = 'com.adobe.griffon.mobile';
 
 /**
  * The value for `rootType` for a Target Messages Response.
@@ -174,6 +193,7 @@ const matcher = kit.combineAll([
     'payload.ACPExtensionEventType==`com.adobe.eventType.edge`',
     'payload.ACPExtensionEventType==`com.adobe.eventtype.edge`'
   ]),
+  'vendor==`com.adobe.griffon.mobile`',
   'timestamp',
   'payload.ACPExtensionEventData.payload[0].scopeDetails.decisionProvider==`TGT`'
 ]);
@@ -199,6 +219,7 @@ const isMatch = (source) => kit.isMatch(matcher, source);
 const make = (input) => kit.expandWithPaths(path, {
   responseType: 'personalization:decisions',
   eventType: 'com.adobe.eventType.edge',
+  vendor: 'com.adobe.griffon.mobile',
   rootType: 'generic',
   ...input
 });
@@ -219,8 +240,8 @@ const mock = (input) => kit.expandWithPaths(path, {
   requestEventId: 'abc-efg',
   eventSource: 'com.adobe.eventSource.responseContent',
   eventType: 'com.adobe.eventType.edge',
+  vendor: 'com.adobe.griffon.mobile',
   rootType: 'generic',
-  vendor: 'com.adobe.mobile.sdk',
   clientId: 'appleABC',
   timestamp: Date.parse('12 Jan 2020 07:23:17 GMT'),
   rootId: '123',
@@ -246,8 +267,11 @@ export default {
   matcher,
   RESPONSE_TYPE,
   EVENT_TYPE,
+  VENDOR,
   ROOT_TYPE,
   label,
   group,
-  parentDepth
+  parentDepth,
+  uniqueName,
+  packageName
 };
