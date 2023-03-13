@@ -15,9 +15,9 @@
   "main": "dist/index.js",
   "source": "src/index.js",
   "dependencies": {
-    "@adobe/griffon-toolkit-aep-mobile": "0.11.2",
+    "@adobe/griffon-toolkit-aep-mobile": "0.11.3",
     "@adobe/griffon-toolkit-common": "0.3.3",
-    "@adobe/griffon-toolkit-edge": "0.2.2",
+    "@adobe/griffon-toolkit-edge": "0.2.3",
     "@adobe/griffon-toolkit-push-services": "0.1.2"
   },
   "scripts": {
