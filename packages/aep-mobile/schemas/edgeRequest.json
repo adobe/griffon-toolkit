@@ -42,6 +42,11 @@
       "required": [
         "ACPExtensionEventData"
       ]
+    },
+    "vendor": {
+      "inherit": true,
+      "type": "string",
+      "const": "com.adobe.griffon.mobile"
     }
   }
 }
