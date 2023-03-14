@@ -70,5 +70,6 @@ export type EdgeErrorResponse = {
     ACPExtensionEventType?: "com.adobe.eventType.edge";
     [k: string]: unknown;
   };
+  vendor?: "com.adobe.griffon.mobile";
   [k: string]: unknown;
 };
