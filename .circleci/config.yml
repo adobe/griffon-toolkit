@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~
     docker:
-      - image: circleci/node:14.16.1
+      - image: cimg/node:16.18.0
     steps: # a collection of executable commands
       - checkout
       - restore_cache: # special step to restore the dependency cache
