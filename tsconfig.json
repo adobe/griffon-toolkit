@@ -1,7 +1,24 @@
 {
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "lib": ["DOM"],
-        "resolveJsonModule": true,
-    }
+  "compilerOptions": {
+    "noEmit": true,
+    "target": "es2015",
+    "module": "commonjs",
+    "declaration": true,
+    "importHelpers": true,
+    "jsx": "react-native",
+    "sourceMap": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "lib": ["DOM", "esnext"],
+    "strictNullChecks": false,
+    "resolveJsonModule": true,
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

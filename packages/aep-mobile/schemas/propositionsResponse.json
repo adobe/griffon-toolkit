@@ -1,0 +1,107 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/propositionsResponse",
+  "shortDesc": "Messaging Propositions Response",
+  "group": "event",
+  "allOf": [
+    { "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }
+  ],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "propositions": {
+              "description": "The list of surfaces propositions were requested for",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "content": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "schema": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["id", "data", "schema"]
+                    }
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  },
+                  "scopeDetails": {
+                    "type": "object",
+                    "properties": {
+                      "activity": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "characteristics": {
+                        "type": "object",
+                        "properties": {
+                          "eventToken": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "correlationID": {
+                        "type": "string"
+                      },
+                      "decisionProvider": {
+                        "const": "AJO"
+                      }
+                    }
+                  }
+                },
+                "required": ["id", "scope", "scopeDetails", "items"]
+              }
+            }
+          }
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.responsecontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.messaging"
+        }
+      },
+      "required": [
+        "ACPExtensionEventData",
+        "ACPExtensionEventSource",
+        "ACPExtensionEventType"
+      ]
+    },
+    "vendor": {
+      "inherit": true,
+      "type": "string",
+      "const": "com.adobe.griffon.mobile"
+    }
+  }
+}

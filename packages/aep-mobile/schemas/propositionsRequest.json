@@ -1,0 +1,52 @@
+{
+  "$id": "http://griffon.adobe.com/schemas/aep-mobile/propositionsRequest",
+  "shortDesc": "Get Propositions Request",
+  "group": "event",
+  "allOf": [
+    { "$ref": "http://griffon.adobe.com/schemas/aep-mobile/mobileEvent" }
+  ],
+  "type": "object",
+  "properties": {
+    "payload": {
+      "inherit": true,
+      "type": "object",
+      "properties": {
+        "ACPExtensionEventData": {
+          "inherit": true,
+          "type": "object",
+          "properties": {
+            "getpropositions": {
+              "const": true
+            },
+            "surfaces": {
+              "description": "The list of surfaces propositions were requested for",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "uri": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ACPExtensionEventSource": {
+          "inherit": true,
+          "const": "com.adobe.eventsource.requestcontent"
+        },
+        "ACPExtensionEventType": {
+          "inherit": true,
+          "const": "com.adobe.eventtype.messaging"
+        }
+      },
+      "required": ["ACPExtensionEventData", "ACPExtensionEventSource", "ACPExtensionEventType"]
+    },
+    "vendor": {
+      "inherit": true,
+      "type": "string",
+      "const": "com.adobe.griffon.mobile"
+    }
+  }
+}

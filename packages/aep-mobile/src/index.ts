@@ -35,6 +35,8 @@ export { default as personalizationEdgeRequest } from './personalizationEdgeRequ
 export { default as personalizationEdgeResponse } from './personalizationEdgeResponse';
 export { default as placesEntry } from './placesEntry';
 export { default as placesExit } from './placesExit';
+export { default as propositionsRequest } from './propositionsRequest';
+export { default as propositionsResponse } from './propositionsResponse';
 export { default as pushTrackingRequest } from './pushTrackingRequest';
 export { default as receivePlaces } from './receivePlaces';
 export { default as requestPlaces } from './requestPlaces';

@@ -35,6 +35,8 @@ export * from './personalizationEdgeRequest';
 export * from './personalizationEdgeResponse';
 export * from './placesEntry';
 export * from './placesExit';
+export * from './propositionsRequest';
+export * from './propositionsResponse';
 export * from './pushTrackingRequest';
 export * from './receivePlaces';
 export * from './requestPlaces';
