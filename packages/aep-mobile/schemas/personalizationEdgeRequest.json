@@ -2,7 +2,11 @@
   "$id": "http://griffon.adobe.com/schemas/aep-mobile/personalizationEdgeRequest",
   "shortDesc": "Edge Personalization Request",
   "group": "event",
-  "allOf": [{ "$ref": "http://griffon.adobe.com/schemas/aep-mobile/edgeRequest" }],
+  "allOf": [
+    {
+      "$ref": "http://griffon.adobe.com/schemas/aep-mobile/edgeRequest"
+    }
+  ],
   "type": "object",
   "properties": {
     "payload": {
@@ -21,17 +25,25 @@
                   "description": "The type of event on the edge to execute",
                   "alias": "edgeEventType",
                   "type": "string",
-                  "const": "personalization.request"
+                  "enum": [
+                    "personalization.request",
+                    "decisioning.propositionFetch"
+                  ]
                 }
               },
-              "required": [ "eventType" ]
+              "required": [
+                "eventType"
+              ]
             },
             "query": {
               "inherit": true,
               "type": "object"
             }
           },
-          "required": [ "xdm", "query" ]
+          "required": [
+            "xdm",
+            "query"
+          ]
         }
       },
       "required": [

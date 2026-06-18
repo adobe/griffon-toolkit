@@ -1,5 +1,6 @@
 // created from ctix
 
+export * from './personalizationFetchEventTypes';
 export { default as analyticsResponse } from './analyticsResponse';
 export { default as applicationLaunch } from './applicationLaunch';
 export { default as applicationUpgrade } from './applicationUpgrade';
